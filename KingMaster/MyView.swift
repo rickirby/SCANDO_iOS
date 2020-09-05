@@ -10,7 +10,4 @@ import UIKit
 import RBToolkit
 
 class MyView: View {
-	override func setViews() {
-		backgroundColor = .orange
-	}
 }
