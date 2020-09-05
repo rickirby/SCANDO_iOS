@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MyViewController.swift
 //  KingMaster
 //
 //  Created by Ricki Bin Yamin on 05/09/20.
@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import RBToolkit
 
-class ViewController: UIViewController {
+class MyViewController: ViewController<MyView> {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
+		title = "Succeed"
+		setNavigationBarColor(backgroundColor: .red, textColor: .white, tintColor: .white)
 	}
 
 
