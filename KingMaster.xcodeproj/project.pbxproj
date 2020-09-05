@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0901C69725038A320051FF16 /* KingMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KingMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0901C69725038A320051FF16 /* SCANDO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCANDO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0901C69A25038A320051FF16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0901C69C25038A320051FF16 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0901C69E25038A320051FF16 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,7 +50,7 @@
 		0901C69825038A320051FF16 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0901C69725038A320051FF16 /* KingMaster.app */,
+				0901C69725038A320051FF16 /* SCANDO.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -87,7 +87,7 @@
 			);
 			name = KingMaster;
 			productName = KingMaster;
-			productReference = 0901C69725038A320051FF16 /* KingMaster.app */;
+			productReference = 0901C69725038A320051FF16 /* SCANDO.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -291,14 +291,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6NMANHT3A2;
 				INFOPLIST_FILE = KingMaster/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.apps.KingMaster;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 0.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.apps.SCANDO;
+				PRODUCT_NAME = SCANDO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -309,14 +311,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6NMANHT3A2;
 				INFOPLIST_FILE = KingMaster/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.apps.KingMaster;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 0.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.apps.SCANDO;
+				PRODUCT_NAME = SCANDO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
