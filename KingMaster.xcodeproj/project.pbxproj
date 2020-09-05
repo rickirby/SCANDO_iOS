@@ -9,21 +9,44 @@
 /* Begin PBXBuildFile section */
 		0901C69B25038A320051FF16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0901C69A25038A320051FF16 /* AppDelegate.swift */; };
 		0901C69D25038A320051FF16 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0901C69C25038A320051FF16 /* SceneDelegate.swift */; };
-		0901C69F25038A320051FF16 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0901C69E25038A320051FF16 /* ViewController.swift */; };
+		0901C69F25038A320051FF16 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0901C69E25038A320051FF16 /* MyViewController.swift */; };
 		0901C6A525038A320051FF16 /* KingMaster.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0901C6A325038A320051FF16 /* KingMaster.xcdatamodeld */; };
 		0901C6A725038A340051FF16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0901C6A625038A340051FF16 /* Assets.xcassets */; };
 		0901C6AA25038A340051FF16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0901C6A825038A340051FF16 /* LaunchScreen.storyboard */; };
+		099AB2012503E6C600B76522 /* RBPhotosGallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 099AB1FF2503E6C500B76522 /* RBPhotosGallery.framework */; };
+		099AB2022503E6C600B76522 /* RBPhotosGallery.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 099AB1FF2503E6C500B76522 /* RBPhotosGallery.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		099AB2032503E6C600B76522 /* RBToolkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 099AB2002503E6C600B76522 /* RBToolkit.framework */; };
+		099AB2042503E6C600B76522 /* RBToolkit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 099AB2002503E6C600B76522 /* RBToolkit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		09C587562503E8BC009AADC0 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C587552503E8BC009AADC0 /* MyView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		099AB2052503E6C600B76522 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				099AB2022503E6C600B76522 /* RBPhotosGallery.framework in Embed Frameworks */,
+				099AB2042503E6C600B76522 /* RBToolkit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0901C69725038A320051FF16 /* SCANDO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCANDO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0901C69A25038A320051FF16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0901C69C25038A320051FF16 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0901C69E25038A320051FF16 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0901C69E25038A320051FF16 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		0901C6A425038A320051FF16 /* KingMaster.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KingMaster.xcdatamodel; sourceTree = "<group>"; };
 		0901C6A625038A340051FF16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0901C6A925038A340051FF16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0901C6AB25038A340051FF16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		099AB1FF2503E6C500B76522 /* RBPhotosGallery.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBPhotosGallery.framework; path = Carthage/Build/iOS/RBPhotosGallery.framework; sourceTree = "<group>"; };
+		099AB2002503E6C600B76522 /* RBToolkit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBToolkit.framework; path = Carthage/Build/iOS/RBToolkit.framework; sourceTree = "<group>"; };
+		09C587552503E8BC009AADC0 /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +54,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				099AB2012503E6C600B76522 /* RBPhotosGallery.framework in Frameworks */,
+				099AB2032503E6C600B76522 /* RBToolkit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +67,7 @@
 			children = (
 				0901C69925038A320051FF16 /* KingMaster */,
 				0901C69825038A320051FF16 /* Products */,
+				099AB1FE2503E6C500B76522 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,13 +84,23 @@
 			children = (
 				0901C69A25038A320051FF16 /* AppDelegate.swift */,
 				0901C69C25038A320051FF16 /* SceneDelegate.swift */,
-				0901C69E25038A320051FF16 /* ViewController.swift */,
+				0901C69E25038A320051FF16 /* MyViewController.swift */,
+				09C587552503E8BC009AADC0 /* MyView.swift */,
 				0901C6A625038A340051FF16 /* Assets.xcassets */,
 				0901C6A825038A340051FF16 /* LaunchScreen.storyboard */,
 				0901C6AB25038A340051FF16 /* Info.plist */,
 				0901C6A325038A320051FF16 /* KingMaster.xcdatamodeld */,
 			);
 			path = KingMaster;
+			sourceTree = "<group>";
+		};
+		099AB1FE2503E6C500B76522 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				099AB1FF2503E6C500B76522 /* RBPhotosGallery.framework */,
+				099AB2002503E6C600B76522 /* RBToolkit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,6 +113,7 @@
 				0901C69325038A320051FF16 /* Sources */,
 				0901C69425038A320051FF16 /* Frameworks */,
 				0901C69525038A320051FF16 /* Resources */,
+				099AB2052503E6C600B76522 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -138,7 +175,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0901C6A525038A320051FF16 /* KingMaster.xcdatamodeld in Sources */,
-				0901C69F25038A320051FF16 /* ViewController.swift in Sources */,
+				0901C69F25038A320051FF16 /* MyViewController.swift in Sources */,
+				09C587562503E8BC009AADC0 /* MyView.swift in Sources */,
 				0901C69B25038A320051FF16 /* AppDelegate.swift in Sources */,
 				0901C69D25038A320051FF16 /* SceneDelegate.swift in Sources */,
 			);
@@ -278,6 +316,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6NMANHT3A2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = KingMaster/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -298,6 +340,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6NMANHT3A2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = KingMaster/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
