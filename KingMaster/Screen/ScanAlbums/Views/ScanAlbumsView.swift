@@ -54,6 +54,7 @@ class ScanAlbumsView: View {
 	private func configureTableView() {
 		tableView.delegate = self
 		tableView.dataSource = self
+		tableView.register(ScanAlbumsTableViewCell.self, forCellReuseIdentifier: "ScanAlbumsCell")
 	}
 	
 }
