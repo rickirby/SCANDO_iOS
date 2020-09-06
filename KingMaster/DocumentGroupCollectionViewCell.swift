@@ -11,4 +11,15 @@ import RBToolkit
 
 class DocumentGroupCollectionViewCell: UICollectionViewCell {
 	
+	// MARK: - Private Properties
+	
+	private lazy var imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.backgroundColor = .secondarySystemFill
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        
+        return imageView
+    }()
 }
