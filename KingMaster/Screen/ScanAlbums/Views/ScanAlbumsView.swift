@@ -16,6 +16,8 @@ class ScanAlbumsView: View {
 	lazy var tableView: UITableView = {
 		let tableView = UITableView()
 		tableView.translatesAutoresizingMaskIntoConstraints = false
+		tableView.separatorInset = UIEdgeInsets.zero
+		tableView.tableFooterView = UIView()
 		
 		return tableView
 	}()
@@ -28,6 +30,7 @@ class ScanAlbumsView: View {
 	
 	override func setViews() {
 		configureView()
+		configureTableView()
 	}
 	
 	// MARK: - Public Method
@@ -50,6 +53,12 @@ class ScanAlbumsView: View {
 		])
 	}
 	
+	private func configureTableView() {
+		tableView.delegate = self
+		tableView.dataSource = self
+		tableView.register(ScanAlbumsTableViewCell.self, forCellReuseIdentifier: "ScanAlbumsCell")
+	}
+	
 }
 
 extension ScanAlbumsView {
@@ -63,4 +72,21 @@ extension ScanAlbumsView {
 	@objc func fileBarButtonTapped() {
 		
 	}
+}
+
+extension ScanAlbumsView: UITableViewDelegate, UITableViewDataSource {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return 4
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: "ScanAlbumsCell", for: indexPath) as? ScanAlbumsTableViewCell else {
+			return UITableViewCell()
+		}
+		cell.configureCell(image: #imageLiteral(resourceName: "ICON"), document: "Scando", date: "11/11/20", number: 3)
+		
+		return cell
+	}
+	
+	
 }
