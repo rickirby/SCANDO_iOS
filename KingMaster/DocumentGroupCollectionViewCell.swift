@@ -22,4 +22,29 @@ class DocumentGroupCollectionViewCell: UICollectionViewCell {
         
         return imageView
     }()
+	
+	// MARK: - Life Cycle
+	
+	override init(frame: CGRect) {
+		super.init(frame: frame)
+		
+		configureView()
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
+	// MARK: - Private Method
+	
+	func configureView() {
+		addAllSubviews(views: [imageView])
+		
+		NSLayoutConstraint.activate([
+			imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            imageView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            imageView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+		])
+	}
 }
