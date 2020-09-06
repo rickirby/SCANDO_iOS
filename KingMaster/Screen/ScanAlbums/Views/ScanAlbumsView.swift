@@ -16,6 +16,8 @@ class ScanAlbumsView: View {
 	lazy var tableView: UITableView = {
 		let tableView = UITableView()
 		tableView.translatesAutoresizingMaskIntoConstraints = false
+		tableView.separatorInset = UIEdgeInsets.zero
+		tableView.tableFooterView = UIView()
 		
 		return tableView
 	}()
