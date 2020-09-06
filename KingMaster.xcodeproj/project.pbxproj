@@ -13,6 +13,9 @@
 		0901C6A525038A320051FF16 /* KingMaster.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0901C6A325038A320051FF16 /* KingMaster.xcdatamodeld */; };
 		0901C6A725038A340051FF16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0901C6A625038A340051FF16 /* Assets.xcassets */; };
 		0901C6AA25038A340051FF16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0901C6A825038A340051FF16 /* LaunchScreen.storyboard */; };
+		09195CDA2504C429006CC8A4 /* ScanAlbumsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09195CD92504C429006CC8A4 /* ScanAlbumsTableViewCell.swift */; };
+		097A18A825046E660044D5FB /* ScanAlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A18A725046E660044D5FB /* ScanAlbumsViewController.swift */; };
+		097A18AC25046FD70044D5FB /* ScanAlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A18AB25046FD70044D5FB /* ScanAlbumsView.swift */; };
 		099AB2012503E6C600B76522 /* RBPhotosGallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 099AB1FF2503E6C500B76522 /* RBPhotosGallery.framework */; };
 		099AB2022503E6C600B76522 /* RBPhotosGallery.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 099AB1FF2503E6C500B76522 /* RBPhotosGallery.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		099AB2032503E6C600B76522 /* RBToolkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 099AB2002503E6C600B76522 /* RBToolkit.framework */; };
@@ -44,6 +47,9 @@
 		0901C6A625038A340051FF16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0901C6A925038A340051FF16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0901C6AB25038A340051FF16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09195CD92504C429006CC8A4 /* ScanAlbumsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanAlbumsTableViewCell.swift; sourceTree = "<group>"; };
+		097A18A725046E660044D5FB /* ScanAlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAlbumsViewController.swift; sourceTree = "<group>"; };
+		097A18AB25046FD70044D5FB /* ScanAlbumsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAlbumsView.swift; sourceTree = "<group>"; };
 		099AB1FF2503E6C500B76522 /* RBPhotosGallery.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBPhotosGallery.framework; path = Carthage/Build/iOS/RBPhotosGallery.framework; sourceTree = "<group>"; };
 		099AB2002503E6C600B76522 /* RBToolkit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBToolkit.framework; path = Carthage/Build/iOS/RBToolkit.framework; sourceTree = "<group>"; };
 		09C587552503E8BC009AADC0 /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
@@ -84,6 +90,7 @@
 			children = (
 				0901C69A25038A320051FF16 /* AppDelegate.swift */,
 				0901C69C25038A320051FF16 /* SceneDelegate.swift */,
+				097A18A525046CED0044D5FB /* Screen */,
 				0901C69E25038A320051FF16 /* MyViewController.swift */,
 				09C587552503E8BC009AADC0 /* MyView.swift */,
 				0901C6A625038A340051FF16 /* Assets.xcassets */,
@@ -92,6 +99,48 @@
 				0901C6A325038A320051FF16 /* KingMaster.xcdatamodeld */,
 			);
 			path = KingMaster;
+			sourceTree = "<group>";
+		};
+		09195CDB2504C5B1006CC8A4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		097A18A525046CED0044D5FB /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				097A18A625046D540044D5FB /* ScanAlbums */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		097A18A625046D540044D5FB /* ScanAlbums */ = {
+			isa = PBXGroup;
+			children = (
+				09195CDB2504C5B1006CC8A4 /* Models */,
+				097A18AA25046F980044D5FB /* Views */,
+				097A18A925046F8D0044D5FB /* Controllers */,
+			);
+			path = ScanAlbums;
+			sourceTree = "<group>";
+		};
+		097A18A925046F8D0044D5FB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				097A18A725046E660044D5FB /* ScanAlbumsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		097A18AA25046F980044D5FB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				097A18AB25046FD70044D5FB /* ScanAlbumsView.swift */,
+				09195CD92504C429006CC8A4 /* ScanAlbumsTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		099AB1FE2503E6C500B76522 /* Frameworks */ = {
@@ -174,10 +223,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				097A18A825046E660044D5FB /* ScanAlbumsViewController.swift in Sources */,
 				0901C6A525038A320051FF16 /* KingMaster.xcdatamodeld in Sources */,
 				0901C69F25038A320051FF16 /* MyViewController.swift in Sources */,
 				09C587562503E8BC009AADC0 /* MyView.swift in Sources */,
+				09195CDA2504C429006CC8A4 /* ScanAlbumsTableViewCell.swift in Sources */,
 				0901C69B25038A320051FF16 /* AppDelegate.swift in Sources */,
+				097A18AC25046FD70044D5FB /* ScanAlbumsView.swift in Sources */,
 				0901C69D25038A320051FF16 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
