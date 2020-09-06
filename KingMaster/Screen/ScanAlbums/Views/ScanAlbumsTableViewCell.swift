@@ -70,20 +70,20 @@ class ScanAlbumsTableViewCell: UITableViewCell {
 		contentView.addAllSubviews(views: [previewImageView, documentLabel, dateLabel, numberLabel])
 		
 		NSLayoutConstraint.activate([
-			previewImageView.heightAnchor.constraint(equalToConstant: 80),
-			previewImageView.widthAnchor.constraint(equalToConstant: 80),
+			previewImageView.heightAnchor.constraint(equalToConstant: 64),
+			previewImageView.widthAnchor.constraint(equalToConstant: 64),
 			previewImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 			previewImageView.leftAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leftAnchor),
 			
-			documentLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
+			documentLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
 			documentLabel.leftAnchor.constraint(equalTo: previewImageView.rightAnchor, constant: 20),
 			
-			dateLabel.topAnchor.constraint(equalTo: documentLabel.bottomAnchor, constant: 5),
+			dateLabel.topAnchor.constraint(equalTo: documentLabel.bottomAnchor, constant: 3),
 			dateLabel.leftAnchor.constraint(equalTo: previewImageView.rightAnchor, constant: 20),
 			
-			numberLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 5),
+			numberLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 3),
 			numberLabel.leftAnchor.constraint(equalTo: previewImageView.rightAnchor, constant: 20),
-			numberLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12)
+			numberLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
 		])
 	}
 	
