@@ -226,11 +226,13 @@
 				097A18A825046E660044D5FB /* ScanAlbumsViewController.swift in Sources */,
 				0901C6A525038A320051FF16 /* KingMaster.xcdatamodeld in Sources */,
 				0901C69F25038A320051FF16 /* MyViewController.swift in Sources */,
+				0984CAD925050EFC00A6C331 /* DocumentGroupCollectionViewCell.swift in Sources */,
 				09C587562503E8BC009AADC0 /* MyView.swift in Sources */,
 				09195CDA2504C429006CC8A4 /* ScanAlbumsTableViewCell.swift in Sources */,
 				0901C69B25038A320051FF16 /* AppDelegate.swift in Sources */,
 				097A18AC25046FD70044D5FB /* ScanAlbumsView.swift in Sources */,
 				0901C69D25038A320051FF16 /* SceneDelegate.swift in Sources */,
+				0984CAD52505097200A6C331 /* DocumentGroupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
