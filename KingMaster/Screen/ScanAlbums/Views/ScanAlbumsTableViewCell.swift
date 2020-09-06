@@ -70,20 +70,20 @@ class ScanAlbumsTableViewCell: UITableViewCell {
 		contentView.addAllSubviews(views: [previewImageView, documentLabel, dateLabel, numberLabel])
 		
 		NSLayoutConstraint.activate([
-			documentLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: CGFloat(13).makeDynamicH()),
-			documentLabel.leftAnchor.constraint(equalTo: previewImageView.rightAnchor, constant: CGFloat(20).makeDynamicW()),
-			
-			dateLabel.topAnchor.constraint(equalTo: documentLabel.bottomAnchor, constant: CGFloat(5).makeDynamicH()),
-			dateLabel.leftAnchor.constraint(equalTo: previewImageView.rightAnchor, constant: CGFloat(20).makeDynamicW()),
-			
-			numberLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: CGFloat(5).makeDynamicH()),
-			numberLabel.leftAnchor.constraint(equalTo: previewImageView.rightAnchor, constant: CGFloat(20).makeDynamicW()),
-			numberLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: CGFloat(-13).makeDynamicH()),
-			
-			previewImageView.heightAnchor.constraint(equalToConstant: CGFloat(83).makeDynamicW() < 83 ? CGFloat(83).makeDynamicW() : 87),
-			previewImageView.widthAnchor.constraint(equalToConstant: CGFloat(83).makeDynamicW() < 83 ? CGFloat(83).makeDynamicW() : 87),
+			previewImageView.heightAnchor.constraint(equalToConstant: 80),
+			previewImageView.widthAnchor.constraint(equalToConstant: 80),
 			previewImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-			previewImageView.leftAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leftAnchor)
+			previewImageView.leftAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leftAnchor),
+			
+			documentLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
+			documentLabel.leftAnchor.constraint(equalTo: previewImageView.rightAnchor, constant: 20),
+			
+			dateLabel.topAnchor.constraint(equalTo: documentLabel.bottomAnchor, constant: 5),
+			dateLabel.leftAnchor.constraint(equalTo: previewImageView.rightAnchor, constant: 20),
+			
+			numberLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 5),
+			numberLabel.leftAnchor.constraint(equalTo: previewImageView.rightAnchor, constant: 20),
+			numberLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12)
 		])
 	}
 	
