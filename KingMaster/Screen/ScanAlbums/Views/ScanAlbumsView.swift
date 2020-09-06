@@ -28,6 +28,7 @@ class ScanAlbumsView: View {
 	
 	override func setViews() {
 		configureView()
+		configureTableView()
 	}
 	
 	// MARK: - Public Method
@@ -48,6 +49,11 @@ class ScanAlbumsView: View {
 			tableView.rightAnchor.constraint(equalTo: self.rightAnchor),
 			tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
 		])
+	}
+	
+	private func configureTableView() {
+		tableView.delegate = self
+		tableView.dataSource = self
 	}
 	
 }
