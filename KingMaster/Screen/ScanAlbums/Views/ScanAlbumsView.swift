@@ -20,6 +20,10 @@ class ScanAlbumsView: View {
 		return tableView
 	}()
 	
+	lazy var cameraBarButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(cameraBarButtonTapped))
+	
+	lazy var fileBarButton = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(fileBarButtonTapped))
+	
 	// MARK: - Life Cycle
 	
 	override func setViews() {
@@ -46,4 +50,17 @@ class ScanAlbumsView: View {
 		])
 	}
 	
+}
+
+extension ScanAlbumsView {
+	
+	// MARK: - @Objc Target
+	
+	@objc func cameraBarButtonTapped() {
+		
+	}
+	
+	@objc func fileBarButtonTapped() {
+		
+	}
 }
