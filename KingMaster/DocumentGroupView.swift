@@ -32,12 +32,19 @@ class DocumentGroupView: View {
 	override func setViews() {
 		super.setViews()
 		
-		configureCollectionView()
+		configureView()
 	}
 	
 	// MARK: - Private Method
 	
-	func configureCollectionView() {
+	func configureView() {
+		addAllSubviews(views: [collectionView])
 		
+		NSLayoutConstraint.activate([
+			collectionView.topAnchor.constraint(equalTo: self.topAnchor),
+			collectionView.leftAnchor.constraint(equalTo: self.leftAnchor),
+			collectionView.rightAnchor.constraint(equalTo: self.rightAnchor),
+			collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+		])
 	}
 }
