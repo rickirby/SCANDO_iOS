@@ -58,4 +58,15 @@ class ScanAlbumsTableViewCell: UITableViewCell {
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+	
+	// MARK: - Private Method
+	
+	func configureView() {
+		backgroundColor = .systemBackground
+		accessoryType = .disclosureIndicator
+		
+		contentView.addAllSubviews(views: [previewImageView, documentLabel, dateLabel, numberLabel])
+		
+		
+	}
 }
