@@ -37,7 +37,7 @@ class DocumentGroupView: View {
 	
 	// MARK: - Private Method
 	
-	func configureView() {
+	private func configureView() {
 		addAllSubviews(views: [collectionView])
 		
 		NSLayoutConstraint.activate([
