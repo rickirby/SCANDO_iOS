@@ -15,9 +15,7 @@ class DocumentGroupView: View {
 	
 	lazy var collectionView: UICollectionView = {
 		
-		let layout = UICollectionViewFlowLayout()
-		
-		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 		collectionView.translatesAutoresizingMaskIntoConstraints = false
 		collectionView.backgroundColor = .systemBackground
 		collectionView.contentInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
@@ -37,13 +35,7 @@ class DocumentGroupView: View {
 	override func onViewWillLayoutSubviews() {
 		super.onViewWillLayoutSubviews()
 		
-		let cellSize = self.bounds.width / 2 - 20
-		
-		let layout = UICollectionViewFlowLayout()
-		layout.scrollDirection = .vertical
-		layout.itemSize = CGSize(width: cellSize, height: cellSize)
-		
-		collectionView.setCollectionViewLayout(layout, animated: true)
+		configureCollectionViewLayout()
 	}
 	
 	// MARK: - Private Method
@@ -64,6 +56,20 @@ class DocumentGroupView: View {
 		collectionView.dataSource = self
 		
 		collectionView.register(DocumentGroupCollectionViewCell.self, forCellWithReuseIdentifier: "DocumentGroupCell")
+	}
+	
+	private func configureCollectionViewLayout() {
+		let cellSpacing: CGFloat = 10
+		let contentInset: CGFloat = 20
+		let cellSize = (self.bounds.width - 2 * contentInset) / 2 - cellSpacing
+		
+		let layout = UICollectionViewFlowLayout()
+		layout.scrollDirection = .vertical
+		layout.itemSize = CGSize(width: cellSize, height: cellSize)
+		layout.minimumLineSpacing = self.bounds.width - 2 * (cellSize + contentInset)
+		
+		collectionView.setCollectionViewLayout(layout, animated: true)
+		collectionView.contentInset = UIEdgeInsets(top: contentInset, left: contentInset, bottom: contentInset, right: contentInset)
 	}
 }
 
