@@ -26,4 +26,18 @@ class DocumentGroupView: View {
 		
 		return collectionView
 	}()
+	
+	// MARK: - Life Cycle
+	
+	override func setViews() {
+		super.setViews()
+		
+		configureCollectionView()
+	}
+	
+	// MARK: - Private Method
+	
+	func configureCollectionView() {
+		
+	}
 }
