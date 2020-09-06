@@ -24,5 +24,6 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	func configureNavigationBar() {
 		title = "Scan Albums"
 		setLargeTitleDisplayMode(.always)
+		navigationItem.rightBarButtonItems = [screenView.cameraBarButton, screenView.fileBarButton]
 	}
 }
