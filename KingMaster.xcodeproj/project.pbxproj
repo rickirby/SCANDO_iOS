@@ -101,6 +101,13 @@
 			path = KingMaster;
 			sourceTree = "<group>";
 		};
+		09195CDB2504C5B1006CC8A4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		097A18A525046CED0044D5FB /* Screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +119,7 @@
 		097A18A625046D540044D5FB /* ScanAlbums */ = {
 			isa = PBXGroup;
 			children = (
+				09195CDB2504C5B1006CC8A4 /* Models */,
 				097A18AA25046F980044D5FB /* Views */,
 				097A18A925046F8D0044D5FB /* Controllers */,
 			);
