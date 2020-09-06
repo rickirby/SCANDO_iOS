@@ -11,4 +11,18 @@ import RBToolkit
 
 class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	
+	// MARK: - Life Cycle
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		configureNavigationBar()
+	}
+	
+	// MARK: - Private Method
+	
+	func configureNavigationBar() {
+		title = "Scan Albums"
+		setLargeTitleDisplayMode(.always)
+	}
 }
