@@ -37,7 +37,7 @@ class DocumentGroupCollectionViewCell: UICollectionViewCell {
 	
 	// MARK: - Private Method
 	
-	func configureView() {
+	private func configureView() {
 		addAllSubviews(views: [imageView])
 		
 		NSLayoutConstraint.activate([
@@ -46,5 +46,11 @@ class DocumentGroupCollectionViewCell: UICollectionViewCell {
             imageView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
             imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 		])
+	}
+	
+	// MARK: - Public Method
+	
+	func configureCell(image: UIImage) {
+		imageView.image = image
 	}
 }
