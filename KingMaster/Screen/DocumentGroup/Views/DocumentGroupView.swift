@@ -82,7 +82,7 @@ extension DocumentGroupView: UICollectionViewDelegate, UICollectionViewDataSourc
 		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DocumentGroupCell", for: indexPath) as? DocumentGroupCollectionViewCell else {
 			return UICollectionViewCell()
 		}
-		cell.configureCell(image: #imageLiteral(resourceName: "Mask"))
+		cell.configureCell(image: #imageLiteral(resourceName: "ICON"))
 		
 		return cell
 	}
