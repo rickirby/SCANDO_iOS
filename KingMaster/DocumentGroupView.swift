@@ -14,15 +14,13 @@ class DocumentGroupView: View {
 	// MARK: - Public Properties
 	
 	lazy var collectionView: UICollectionView = {
-		let cellSize = self.bounds.width / 2 - 30
 		
 		let layout = UICollectionViewFlowLayout()
-		layout.scrollDirection = .vertical
-		layout.itemSize = CGSize(width: cellSize, height: cellSize)
 		
 		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
 		collectionView.translatesAutoresizingMaskIntoConstraints = false
 		collectionView.backgroundColor = .systemBackground
+		collectionView.contentInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
 		
 		return collectionView
 	}()
@@ -33,6 +31,19 @@ class DocumentGroupView: View {
 		super.setViews()
 		
 		configureView()
+		configureCollectionView()
+	}
+	
+	override func onViewWillLayoutSubviews() {
+		super.onViewWillLayoutSubviews()
+		
+		let cellSize = self.bounds.width / 2 - 20
+		
+		let layout = UICollectionViewFlowLayout()
+		layout.scrollDirection = .vertical
+		layout.itemSize = CGSize(width: cellSize, height: cellSize)
+		
+		collectionView.setCollectionViewLayout(layout, animated: true)
 	}
 	
 	// MARK: - Private Method
@@ -51,16 +62,23 @@ class DocumentGroupView: View {
 	private func configureCollectionView() {
 		collectionView.delegate = self
 		collectionView.dataSource = self
+		
+		collectionView.register(DocumentGroupCollectionViewCell.self, forCellWithReuseIdentifier: "DocumentGroupCell")
 	}
 }
 
 extension DocumentGroupView: UICollectionViewDelegate, UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 0
+		return 4
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		return UICollectionViewCell()
+		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DocumentGroupCell", for: indexPath) as? DocumentGroupCollectionViewCell else {
+			return UICollectionViewCell()
+		}
+		cell.configureCell(image: #imageLiteral(resourceName: "Mask"))
+		
+		return cell
 	}
 	
 	
