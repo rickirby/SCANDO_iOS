@@ -84,4 +84,13 @@ class ScanAlbumsTableViewCell: UITableViewCell {
 			previewImageView.leftAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leftAnchor)
 		])
 	}
+	
+	// MARK: - Public Method
+	
+	func configureCell(image: UIImage, document: String, date: String, number: Int) {
+		previewImageView.image = image
+		documentLabel.text = document
+		dateLabel.text = date
+		numberLabel.text = number > 1 ? "\(number) pages" : "\(number) page"
+	}
 }
