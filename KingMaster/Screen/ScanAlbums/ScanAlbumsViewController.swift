@@ -18,6 +18,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	}
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
+	var halo = 0
 	
 	// MARK: - Life Cycle
 	
@@ -25,6 +26,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		super.viewDidLoad()
 		
 		configureLoadNavigationBar()
+		configureViewEvent()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -35,12 +37,22 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	
 	// MARK: - Private Method
 	
-	func configureLoadNavigationBar() {
+	private func configureLoadNavigationBar() {
 		title = "Scan Albums"
 		navigationItem.rightBarButtonItems = [screenView.cameraBarButton, screenView.fileBarButton]
 	}
 	
-	func configureNavigationBar() {
+	private func configureNavigationBar() {
 		setLargeTitleDisplayMode(.always)
+	}
+	
+	private func configureViewEvent() {
+		screenView.onViewEvent = { [weak self] (viewEvent: ScanAlbumsView.ViewEvent) in
+			switch viewEvent {
+			case .didSelectRow(let index):
+				self?.onNavigationEvent?(.selectItem(index: index))
+				self?.halo = index
+			}
+		}
 	}
 }
