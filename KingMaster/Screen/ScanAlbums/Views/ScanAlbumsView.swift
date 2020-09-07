@@ -13,6 +13,12 @@ class ScanAlbumsView: View {
 	
 	// MARK: - Public Properties
 	
+	enum ViewEvent {
+		case didSelectRow(index: Int)
+	}
+	
+	var onViewEvent: ((ViewEvent) -> Void)?
+	
 	lazy var tableView: UITableView = {
 		let tableView = UITableView()
 		tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -75,6 +81,7 @@ extension ScanAlbumsView {
 }
 
 extension ScanAlbumsView: UITableViewDelegate, UITableViewDataSource {
+	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return 4
 	}
@@ -88,5 +95,7 @@ extension ScanAlbumsView: UITableViewDelegate, UITableViewDataSource {
 		return cell
 	}
 	
-	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		onViewEvent?(.didSelectRow(index: indexPath.row))
+	}
 }
