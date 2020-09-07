@@ -17,6 +17,13 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		super.viewDidLoad()
 		
 		configureNavigationBar()
+		
+		screenView.onViewEvent = { [weak self] (viewEvent: ScanAlbumsView.ViewEvent) in
+			switch viewEvent {
+			case .didSelectRow(let index):
+				print(index)
+			}
+		}
 	}
 	
 	// MARK: - Private Method

@@ -81,6 +81,7 @@ extension ScanAlbumsView {
 }
 
 extension ScanAlbumsView: UITableViewDelegate, UITableViewDataSource {
+	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return 4
 	}
@@ -94,5 +95,7 @@ extension ScanAlbumsView: UITableViewDelegate, UITableViewDataSource {
 		return cell
 	}
 	
-	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		onViewEvent?(.didSelectRow(index: indexPath.row))
+	}
 }
