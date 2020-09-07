@@ -51,8 +51,26 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 			case .didSelectRow(let index):
 				self?.onNavigationEvent?(.didSelectRow(index: index))
 			case .editingStart:
-				print("Editing Start")
+				self?.configureNavigationItemForEditingState()
+			case .editingEnd:
+				self?.configureNavigationItemForNormalState()
+			case .selectAll:
+				print("Select All")
 			}
 		}
+	}
+	
+	private func configureNavigationItemForEditingState() {
+		navigationItem.leftBarButtonItem = screenView.cancelBarButton
+		navigationItem.rightBarButtonItems = [screenView.selectAllBarButton]
+		
+		navigationController?.setToolbarHidden(false, animated: true)
+	}
+	
+	private func configureNavigationItemForNormalState() {
+		navigationItem.leftBarButtonItem = nil
+		navigationItem.rightBarButtonItems = [screenView.cameraBarButton, screenView.fileBarButton]
+		
+		navigationController?.setToolbarHidden(true, animated: true)
 	}
 }

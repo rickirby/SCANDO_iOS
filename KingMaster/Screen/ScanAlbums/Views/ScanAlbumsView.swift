@@ -16,6 +16,8 @@ class ScanAlbumsView: View {
 	enum ViewEvent {
 		case didSelectRow(index: Int)
 		case editingStart
+		case editingEnd
+		case selectAll
 	}
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
@@ -91,11 +93,13 @@ extension ScanAlbumsView {
 	}
 	
 	@objc func cancelBarButtonTapped() {
+		tableView.setEditing(false, animated: true)
 		
+		onViewEvent?(.editingEnd)
 	}
 	
 	@objc func selectAllBarButtonTapped() {
-		
+		onViewEvent?(.selectAll)
 	}
 	
 	@objc func startEditTableView(_ gesture: UILongPressGestureRecognizer) {
@@ -128,6 +132,10 @@ extension ScanAlbumsView: UITableViewDelegate, UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		onViewEvent?(.didSelectRow(index: indexPath.row))
+		if !tableView.isEditing {
+			onViewEvent?(.didSelectRow(index: indexPath.row))
+		} else {
+			
+		}
 	}
 }
