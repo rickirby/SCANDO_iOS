@@ -17,6 +17,8 @@ class ScanAlbumsView: View {
 		case didSelectRow(index: Int)
 	}
 	
+	var onViewEvent: ((ViewEvent) -> Void)?
+	
 	lazy var tableView: UITableView = {
 		let tableView = UITableView()
 		tableView.translatesAutoresizingMaskIntoConstraints = false
