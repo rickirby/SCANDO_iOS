@@ -15,6 +15,7 @@ class ScanAlbumsCoordinator: Coordinator {
 	}
 	
 	private let navigationController: UINavigationController = UINavigationController()
+	private var documentGroupCoordinator: DocumentGroupCoordinator?
 	
 	func start() {
 		let vc = makeViewController()
@@ -24,6 +25,13 @@ class ScanAlbumsCoordinator: Coordinator {
 	
 	private func makeViewController() -> UIViewController {
 		let vc = ScanAlbumsViewController()
+		vc.onNavigationEvent = { [weak self] (navigationEvent: ScanAlbumsViewController.NavigationEvent) in
+			switch navigationEvent {
+			case .selectItem(let index):
+				self?.documentGroupCoordinator = DocumentGroupCoordinator(navigationController: self?.rootViewController as? UINavigationController ?? UINavigationController())
+				self?.documentGroupCoordinator?.start()
+			}
+		}
 		
 		return vc
 	}

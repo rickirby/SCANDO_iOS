@@ -18,7 +18,6 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	}
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
-	var halo = 0
 	
 	// MARK: - Life Cycle
 	
@@ -51,7 +50,6 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 			switch viewEvent {
 			case .didSelectRow(let index):
 				self?.onNavigationEvent?(.selectItem(index: index))
-				self?.halo = index
 			}
 		}
 	}
