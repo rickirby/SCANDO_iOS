@@ -39,6 +39,10 @@ class ScanAlbumsView: View {
 	
 	lazy var fileBarButton = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(fileBarButtonTapped))
 	
+	lazy var cancelBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelBarButtonTapped))
+	
+	lazy var selectAllBarButton = UIBarButtonItem(title: "Select All", style: .plain, target: self, action: #selector(selectAllBarButtonTapped))
+	
 	// MARK: - Life Cycle
 	
 	override func setViews() {
@@ -83,6 +87,14 @@ extension ScanAlbumsView {
 	}
 	
 	@objc func fileBarButtonTapped() {
+		
+	}
+	
+	@objc func cancelBarButtonTapped() {
+		
+	}
+	
+	@objc func selectAllBarButtonTapped() {
 		
 	}
 	
