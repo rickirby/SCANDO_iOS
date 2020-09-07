@@ -13,6 +13,10 @@ class ScanAlbumsView: View {
 	
 	// MARK: - Public Properties
 	
+	enum ViewEvent {
+		case didSelectRow(index: Int)
+	}
+	
 	lazy var tableView: UITableView = {
 		let tableView = UITableView()
 		tableView.translatesAutoresizingMaskIntoConstraints = false
