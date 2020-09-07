@@ -54,6 +54,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 				self?.onNavigationEvent?(.didSelectRow(index: index))
 			case .editingStart:
 				self?.configureNavigationItemForEditingState()
+				print("EDITING")
 			case .editingEnd:
 				self?.configureNavigationItemForNormalState()
 			case .selectAll:
