@@ -27,7 +27,7 @@ class ScanAlbumsCoordinator: Coordinator {
 		let vc = ScanAlbumsViewController()
 		vc.onNavigationEvent = { [weak self] (navigationEvent: ScanAlbumsViewController.NavigationEvent) in
 			switch navigationEvent {
-			case .selectItem(let index):
+			case .didSelectRow(let index):
 				self?.documentGroupCoordinator = DocumentGroupCoordinator(navigationController: self?.rootViewController as? UINavigationController ?? UINavigationController())
 				self?.documentGroupCoordinator?.start()
 			}

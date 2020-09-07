@@ -14,7 +14,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	// MARK: - Public Properties
 	
 	enum NavigationEvent {
-		case selectItem(index: Int)
+		case didSelectRow(index: Int)
 	}
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
@@ -49,7 +49,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		screenView.onViewEvent = { [weak self] (viewEvent: ScanAlbumsView.ViewEvent) in
 			switch viewEvent {
 			case .didSelectRow(let index):
-				self?.onNavigationEvent?(.selectItem(index: index))
+				self?.onNavigationEvent?(.didSelectRow(index: index))
 			}
 		}
 	}
