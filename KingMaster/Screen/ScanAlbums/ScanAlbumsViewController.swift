@@ -11,26 +11,36 @@ import RBToolkit
 
 class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	
+	// MARK: - Public Properties
+	
+	enum NavigationEvent {
+		case selectItem(index: Int)
+	}
+	
+	var onNavigationEvent: ((NavigationEvent) -> Void)?
+	
 	// MARK: - Life Cycle
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		configureNavigationBar()
+		configureLoadNavigationBar()
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
 		
-		screenView.onViewEvent = { [weak self] (viewEvent: ScanAlbumsView.ViewEvent) in
-			switch viewEvent {
-			case .didSelectRow(let index):
-				print(index)
-			}
-		}
+		configureNavigationBar()
 	}
 	
 	// MARK: - Private Method
 	
-	func configureNavigationBar() {
+	func configureLoadNavigationBar() {
 		title = "Scan Albums"
-		setLargeTitleDisplayMode(.always)
 		navigationItem.rightBarButtonItems = [screenView.cameraBarButton, screenView.fileBarButton]
+	}
+	
+	func configureNavigationBar() {
+		setLargeTitleDisplayMode(.always)
 	}
 }

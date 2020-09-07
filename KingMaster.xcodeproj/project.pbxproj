@@ -157,19 +157,11 @@
 			isa = PBXGroup;
 			children = (
 				09C8ADAF250652BC004BA0F7 /* ScanAlbumsCoordinator.swift */,
+				097A18A725046E660044D5FB /* ScanAlbumsViewController.swift */,
 				09195CDB2504C5B1006CC8A4 /* Models */,
 				097A18AA25046F980044D5FB /* Views */,
-				097A18A925046F8D0044D5FB /* Controllers */,
 			);
 			path = ScanAlbums;
-			sourceTree = "<group>";
-		};
-		097A18A925046F8D0044D5FB /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				097A18A725046E660044D5FB /* ScanAlbumsViewController.swift */,
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 		097A18AA25046F980044D5FB /* Views */ = {
