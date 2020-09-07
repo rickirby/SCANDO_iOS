@@ -22,6 +22,7 @@
 		099AB2022503E6C600B76522 /* RBPhotosGallery.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 099AB1FF2503E6C500B76522 /* RBPhotosGallery.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		099AB2032503E6C600B76522 /* RBToolkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 099AB2002503E6C600B76522 /* RBToolkit.framework */; };
 		099AB2042503E6C600B76522 /* RBToolkit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 099AB2002503E6C600B76522 /* RBToolkit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		09C8ADAC2506511F004BA0F7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADAB2506511F004BA0F7 /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,6 +56,7 @@
 		097A18AB25046FD70044D5FB /* ScanAlbumsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAlbumsView.swift; sourceTree = "<group>"; };
 		099AB1FF2503E6C500B76522 /* RBPhotosGallery.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBPhotosGallery.framework; path = Carthage/Build/iOS/RBPhotosGallery.framework; sourceTree = "<group>"; };
 		099AB2002503E6C600B76522 /* RBToolkit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBToolkit.framework; path = Carthage/Build/iOS/RBToolkit.framework; sourceTree = "<group>"; };
+		09C8ADAB2506511F004BA0F7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				0901C69A25038A320051FF16 /* AppDelegate.swift */,
 				0901C69C25038A320051FF16 /* SceneDelegate.swift */,
 				097A18A525046CED0044D5FB /* Screen */,
+				09C8ADA9250650E7004BA0F7 /* Common */,
 				0901C6A625038A340051FF16 /* Assets.xcassets */,
 				0901C6A825038A340051FF16 /* LaunchScreen.storyboard */,
 				0901C6AB25038A340051FF16 /* Info.plist */,
@@ -179,6 +182,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		09C8ADA9250650E7004BA0F7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				09C8ADAA2506510D004BA0F7 /* Flow */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		09C8ADAA2506510D004BA0F7 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				09C8ADAB2506511F004BA0F7 /* Coordinator.swift */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -252,6 +271,7 @@
 			files = (
 				097A18A825046E660044D5FB /* ScanAlbumsViewController.swift in Sources */,
 				0901C6A525038A320051FF16 /* KingMaster.xcdatamodeld in Sources */,
+				09C8ADAC2506511F004BA0F7 /* Coordinator.swift in Sources */,
 				0922627525053E0B00BDDB90 /* DocumentGroupViewController.swift in Sources */,
 				0922627425053E0B00BDDB90 /* DocumentGroupView.swift in Sources */,
 				09195CDA2504C429006CC8A4 /* ScanAlbumsTableViewCell.swift in Sources */,
