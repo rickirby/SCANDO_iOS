@@ -15,15 +15,22 @@ class ScanAlbumsView: View {
 	
 	enum ViewEvent {
 		case didSelectRow(index: Int)
+		case editingStart
 	}
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
 	
 	lazy var tableView: UITableView = {
+		let gesture = UILongPressGestureRecognizer(target: self, action: #selector(startEditTableView(_:)))
+		gesture.minimumPressDuration = 0.5
+		
 		let tableView = UITableView()
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 		tableView.separatorInset = UIEdgeInsets.zero
 		tableView.tableFooterView = UIView()
+		tableView.allowsSelectionDuringEditing = true
+		tableView.allowsMultipleSelectionDuringEditing = true
+		tableView.addGestureRecognizer(gesture)
 		
 		return tableView
 	}()
@@ -77,6 +84,19 @@ extension ScanAlbumsView {
 	
 	@objc func fileBarButtonTapped() {
 		
+	}
+	
+	@objc func startEditTableView(_ gesture: UILongPressGestureRecognizer) {
+		if gesture.state == .began && !tableView.isEditing {
+			let point = gesture.location(in: tableView)
+			guard let indexPath = tableView.indexPathForRow(at: point), let _ = tableView.cellForRow(at: indexPath) else { return }
+			let generator = UIImpactFeedbackGenerator()
+			generator.impactOccurred()
+			tableView.setEditing(true, animated: true)
+			tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+			
+			onViewEvent?(.editingStart)
+		}
 	}
 }
 

@@ -50,6 +50,8 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 			switch viewEvent {
 			case .didSelectRow(let index):
 				self?.onNavigationEvent?(.didSelectRow(index: index))
+			case .editingStart:
+				print("Editing Start")
 			}
 		}
 	}
