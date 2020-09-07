@@ -18,6 +18,7 @@ class ScanAlbumsView: View {
 		case editingStart
 		case editingEnd
 		case selectAll
+		case delete(indexes: [Int])
 	}
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
@@ -44,6 +45,8 @@ class ScanAlbumsView: View {
 	lazy var cancelBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelBarButtonTapped))
 	
 	lazy var selectAllBarButton = UIBarButtonItem(title: "Select All", style: .plain, target: self, action: #selector(selectAllBarButtonTapped))
+	
+	lazy var deleteBarButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteBarButtonTapped))
 	
 	// MARK: - Life Cycle
 	
@@ -102,6 +105,13 @@ extension ScanAlbumsView {
 		onViewEvent?(.selectAll)
 	}
 	
+	@objc func deleteBarButtonTapped() {
+		guard let selectedIndexPaths = tableView.indexPathsForSelectedRows else { return }
+		let selectedIndexes = selectedIndexPaths.map { $0.row }
+		
+		onViewEvent?(.delete(indexes: selectedIndexes))
+	}
+	
 	@objc func startEditTableView(_ gesture: UILongPressGestureRecognizer) {
 		if gesture.state == .began && !tableView.isEditing {
 			let point = gesture.location(in: tableView)
@@ -135,7 +145,8 @@ extension ScanAlbumsView: UITableViewDelegate, UITableViewDataSource {
 		if !tableView.isEditing {
 			onViewEvent?(.didSelectRow(index: indexPath.row))
 		} else {
-			
+			print("Ini")
+			deleteBarButton.isEnabled = tableView.indexPathsForSelectedRows?.count ?? 0 > 0
 		}
 	}
 }

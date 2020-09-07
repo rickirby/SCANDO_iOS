@@ -24,25 +24,27 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		configureLoadNavigationBar()
+		configureLoadBar()
 		configureViewEvent()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		configureNavigationBar()
+		configureBar()
 	}
 	
 	// MARK: - Private Method
 	
-	private func configureLoadNavigationBar() {
+	private func configureLoadBar() {
 		title = "Scan Albums"
 		navigationItem.rightBarButtonItems = [screenView.cameraBarButton, screenView.fileBarButton]
+		toolbarItems = [screenView.deleteBarButton]
 	}
 	
-	private func configureNavigationBar() {
+	private func configureBar() {
 		setLargeTitleDisplayMode(.always)
+		navigationController?.setToolbarHidden(true, animated: true)
 	}
 	
 	private func configureViewEvent() {
@@ -56,6 +58,8 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 				self?.configureNavigationItemForNormalState()
 			case .selectAll:
 				print("Select All")
+			case .delete(let indexes):
+				print("Delete \(indexes)")
 			}
 		}
 	}
