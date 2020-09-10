@@ -19,6 +19,8 @@ class ScanAlbumsView: View {
 		case editingEnd
 		case selectAll
 		case delete(indexes: [Int])
+        case swipeDelete(index: Int, complete: (Bool) -> Void)
+        case swipeMore(index: Int, complete: (Bool) -> Void)
 	}
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
@@ -174,12 +176,12 @@ extension ScanAlbumsView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") {
             _, _, complete in
-            
+            self.onViewEvent?(.swipeDelete(index: indexPath.row, complete: complete))
         }
         
         let moreAction = UIContextualAction(style: .normal, title: "More") {
             _, _, complete in
-            
+            self.onViewEvent?(.swipeMore(index: indexPath.row, complete: complete))
         }
         
         return UISwipeActionsConfiguration(actions: [deleteAction, moreAction])
