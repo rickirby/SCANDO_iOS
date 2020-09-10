@@ -88,6 +88,14 @@ class ScanAlbumsView: View {
 		tableView.dataSource = self
 		tableView.register(ScanAlbumsTableViewCell.self, forCellReuseIdentifier: "ScanAlbumsCell")
 	}
+    
+    private func swipeDeleteHandler(_ complete: (Bool) -> Void) {
+        
+    }
+    
+    private func swipeMoreHandler(_ complete: (Bool) -> Void) {
+        
+    }
 	
 }
 
@@ -174,12 +182,12 @@ extension ScanAlbumsView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") {
             _, _, complete in
-            
+            self.swipeDeleteHandler(complete)
         }
         
         let moreAction = UIContextualAction(style: .normal, title: "More") {
             _, _, complete in
-            
+            self.swipeMoreHandler(complete)
         }
         
         return UISwipeActionsConfiguration(actions: [deleteAction, moreAction])
