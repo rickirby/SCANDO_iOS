@@ -55,6 +55,14 @@ class ScanAlbumsView: View {
 		configureTableView()
 	}
 	
+	override func onViewWillAppear() {
+		super.onViewWillAppear()
+		
+		if let indexPath = tableView.indexPathForSelectedRow {
+			tableView.deselectRow(at: indexPath, animated: true)
+		}
+	}
+	
 	// MARK: - Public Method
 	
 	func reloadData() {
