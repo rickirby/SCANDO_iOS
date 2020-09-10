@@ -15,15 +15,25 @@ class ScanAlbumsView: View {
 	
 	enum ViewEvent {
 		case didSelectRow(index: Int)
+		case editingStart
+		case editingEnd
+		case selectAll
+		case delete(indexes: [Int])
 	}
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
 	
 	lazy var tableView: UITableView = {
+		let gesture = UILongPressGestureRecognizer(target: self, action: #selector(startEditTableView(_:)))
+		gesture.minimumPressDuration = 0.5
+		
 		let tableView = UITableView()
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 		tableView.separatorInset = UIEdgeInsets.zero
 		tableView.tableFooterView = UIView()
+		tableView.allowsSelectionDuringEditing = true
+		tableView.allowsMultipleSelectionDuringEditing = true
+		tableView.addGestureRecognizer(gesture)
 		
 		return tableView
 	}()
@@ -32,11 +42,25 @@ class ScanAlbumsView: View {
 	
 	lazy var fileBarButton = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(fileBarButtonTapped))
 	
+	lazy var cancelBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelBarButtonTapped))
+	
+	lazy var selectAllBarButton = UIBarButtonItem(title: "Select All", style: .plain, target: self, action: #selector(selectAllBarButtonTapped))
+	
+	lazy var deleteBarButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteBarButtonTapped))
+	
 	// MARK: - Life Cycle
 	
 	override func setViews() {
 		configureView()
 		configureTableView()
+	}
+	
+	override func onViewWillAppear() {
+		super.onViewWillAppear()
+		
+		if let indexPath = tableView.indexPathForSelectedRow {
+			tableView.deselectRow(at: indexPath, animated: true)
+		}
 	}
 	
 	// MARK: - Public Method
@@ -64,6 +88,14 @@ class ScanAlbumsView: View {
 		tableView.dataSource = self
 		tableView.register(ScanAlbumsTableViewCell.self, forCellReuseIdentifier: "ScanAlbumsCell")
 	}
+    
+    private func swipeDeleteHandler(index: Int, _ complete: (Bool) -> Void) {
+        print("Delete \(index)")
+    }
+    
+    private func swipeMoreHandler(index: Int, _ complete: (Bool) -> Void) {
+        print("More \(index)")
+    }
 	
 }
 
@@ -77,6 +109,37 @@ extension ScanAlbumsView {
 	
 	@objc func fileBarButtonTapped() {
 		
+	}
+	
+	@objc func cancelBarButtonTapped() {
+		tableView.setEditing(false, animated: true)
+		
+		onViewEvent?(.editingEnd)
+	}
+	
+	@objc func selectAllBarButtonTapped() {
+		onViewEvent?(.selectAll)
+	}
+	
+	@objc func deleteBarButtonTapped() {
+		guard let selectedIndexPaths = tableView.indexPathsForSelectedRows else { return }
+		let selectedIndexes = selectedIndexPaths.map { $0.row }
+		
+		onViewEvent?(.delete(indexes: selectedIndexes))
+	}
+	
+	@objc func startEditTableView(_ gesture: UILongPressGestureRecognizer) {
+		if gesture.state == .began && !tableView.isEditing {
+			let point = gesture.location(in: tableView)
+			guard let indexPath = tableView.indexPathForRow(at: point), let _ = tableView.cellForRow(at: indexPath) else { return }
+			let generator = UIImpactFeedbackGenerator()
+			generator.impactOccurred()
+			tableView.setEditing(true, animated: true)
+			tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+			deleteBarButton.isEnabled = true
+			
+			onViewEvent?(.editingStart)
+		}
 	}
 }
 
@@ -96,6 +159,37 @@ extension ScanAlbumsView: UITableViewDelegate, UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		onViewEvent?(.didSelectRow(index: indexPath.row))
+		print("Didselect")
+		if !tableView.isEditing {
+			onViewEvent?(.didSelectRow(index: indexPath.row))
+		} else {
+			deleteBarButton.isEnabled = tableView.indexPathsForSelectedRows?.count ?? 0 > 0
+		}
 	}
+	
+	func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+		print("Deselect")
+		if tableView.isEditing {
+			if tableView.indexPathsForSelectedRows?.count ?? 0 > 0 {
+				deleteBarButton.isEnabled = true
+			} else {
+				tableView.setEditing(false, animated: true)
+				onViewEvent?(.editingEnd)
+			}
+        }
+	}
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") {
+            _, _, complete in
+            self.swipeDeleteHandler(index: indexPath.row, complete)
+        }
+        
+        let moreAction = UIContextualAction(style: .normal, title: "More") {
+            _, _, complete in
+            self.swipeMoreHandler(index: indexPath.row, complete)
+        }
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction, moreAction])
+    }
 }

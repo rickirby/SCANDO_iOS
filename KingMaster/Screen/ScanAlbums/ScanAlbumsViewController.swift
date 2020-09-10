@@ -24,25 +24,27 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		configureLoadNavigationBar()
+		configureLoadBar()
 		configureViewEvent()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		configureNavigationBar()
+		configureBar()
 	}
 	
 	// MARK: - Private Method
 	
-	private func configureLoadNavigationBar() {
+	private func configureLoadBar() {
 		title = "Scan Albums"
 		navigationItem.rightBarButtonItems = [screenView.cameraBarButton, screenView.fileBarButton]
+		toolbarItems = [screenView.deleteBarButton]
 	}
 	
-	private func configureNavigationBar() {
+	private func configureBar() {
 		setLargeTitleDisplayMode(.always)
+		navigationController?.setToolbarHidden(true, animated: true)
 	}
 	
 	private func configureViewEvent() {
@@ -50,7 +52,30 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 			switch viewEvent {
 			case .didSelectRow(let index):
 				self?.onNavigationEvent?(.didSelectRow(index: index))
+			case .editingStart:
+				self?.configureNavigationItemForEditingState()
+				print("EDITING")
+			case .editingEnd:
+				self?.configureNavigationItemForNormalState()
+			case .selectAll:
+				print("Select All")
+			case .delete(let indexes):
+				print("Delete \(indexes)")
 			}
 		}
+	}
+	
+	private func configureNavigationItemForEditingState() {
+		navigationItem.leftBarButtonItem = screenView.cancelBarButton
+		navigationItem.rightBarButtonItems = [screenView.selectAllBarButton]
+		
+		navigationController?.setToolbarHidden(false, animated: true)
+	}
+	
+	private func configureNavigationItemForNormalState() {
+		navigationItem.leftBarButtonItem = nil
+		navigationItem.rightBarButtonItems = [screenView.cameraBarButton, screenView.fileBarButton]
+		
+		navigationController?.setToolbarHidden(true, animated: true)
 	}
 }
