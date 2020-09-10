@@ -170,4 +170,18 @@ extension ScanAlbumsView: UITableViewDelegate, UITableViewDataSource {
 			}
         }
 	}
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") {
+            _, _, complete in
+            
+        }
+        
+        let moreAction = UIContextualAction(style: .normal, title: "More") {
+            _, _, complete in
+            
+        }
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction, moreAction])
+    }
 }
