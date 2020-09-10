@@ -1,2 +1,2 @@
-github "rickibin/RB_PhotoGallery_Core_iOS" "0.0.1"
-github "rickibin/RB_Toolkit_Core_iOS" "0.0.1"
+git "git@bitbucket.org:rb-scando/rb_photogallery_core_ios.git" "0.0.1"
+git "git@bitbucket.org:rb-scando/rb_toolkit_core_ios.git" "0.0.1"
