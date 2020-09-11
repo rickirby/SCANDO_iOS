@@ -21,4 +21,8 @@ class AlertView {
         
         target.present(ac, animated: true, completion: nil)
     }
+	
+	static func createSwipeMoreActionBottomSheet(_ target: UIViewController, renameHandler: @escaping () -> Void, saveHandler: @escaping () -> Void, changeHandler: @escaping () -> Void, deleteHandler: @escaping () -> Void) {
+		
+	}
 }
