@@ -174,7 +174,9 @@ extension ScanAlbumsView {
 		
 		AlertView.createBarDeleteAlert(vc, isSingular: selectedIndexPaths.count == 1, deleteHandler: {
 			self.deleteDataFromTableView(indexes: selectedIndexes)
-			self.setTableViewEditingState(isEditing: false)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                self.setTableViewEditingState(isEditing: false)
+            }
 		}, cancelHandler: {
 			
 		})
