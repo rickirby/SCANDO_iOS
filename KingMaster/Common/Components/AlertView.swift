@@ -10,10 +10,10 @@ import UIKit
 
 class AlertView {
     
-    static func createSwipeDeleteAlert(_ target: UIViewController, deleteHanler: @escaping () -> Void, cancelHandler: @escaping () -> Void) {
+    static func createSwipeDeleteAlert(_ target: UIViewController, deleteHandler: @escaping () -> Void, cancelHandler: @escaping () -> Void) {
         let ac = UIAlertController(title: SCANDOConstant.swipeDeleteTitle, message: SCANDOConstant.swipeDeleteMessage, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: SCANDOConstant.swipeDeletePositiveAction, style: .destructive) { _ in
-            deleteHanler()
+            deleteHandler()
         })
         ac.addAction(UIAlertAction(title: SCANDOConstant.swipeDeleteNegativeAction, style: .cancel) { _ in
             cancelHandler()
@@ -41,5 +41,17 @@ class AlertView {
 		})
 		
 		target.present(ac, animated: true, completion: nil)
+	}
+	
+	static func createBarDeleteAlert(_ target: UIViewController, isSingular: Bool, deleteHandler: @escaping () -> Void, cancelHandler: @escaping () -> Void) {
+		let ac = UIAlertController(title: SCANDOConstant.barDeleteTitle, message: isSingular ? SCANDOConstant.singleBarDeleteMessage : SCANDOConstant.pluralBarDeletelMessage, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: SCANDOConstant.barDeletePositiveAction, style: .destructive) { _ in
+            deleteHandler()
+        })
+        ac.addAction(UIAlertAction(title: SCANDOConstant.barDeleteNegativeAction, style: .cancel) { _ in
+            cancelHandler()
+        })
+        
+        target.present(ac, animated: true, completion: nil)
 	}
 }

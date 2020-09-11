@@ -23,6 +23,12 @@ class ScanAlbumsView: View {
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
 	
+	// MARK: - Private Properties
+	
+	private var tableViewData = [String]()
+	
+	// MARK: - View Component
+	
 	lazy var tableView: UITableView = {
 		let gesture = UILongPressGestureRecognizer(target: self, action: #selector(startEditTableView(_:)))
 		gesture.minimumPressDuration = 0.5
@@ -63,10 +69,16 @@ class ScanAlbumsView: View {
 		}
 	}
 	
+	override func onViewDidAppear() {
+		super.onViewDidAppear()
+		
+		tableView.reloadData()
+	}
+	
 	// MARK: - Public Method
 	
-	func reloadData() {
-		tableView.reloadData()
+	func reloadData(tableData: [String]) {
+		tableViewData = tableData
 	}
 	
 	// MARK: - Private Method
@@ -88,15 +100,24 @@ class ScanAlbumsView: View {
 		tableView.dataSource = self
 		tableView.register(ScanAlbumsTableViewCell.self, forCellReuseIdentifier: "ScanAlbumsCell")
 	}
+	
+	private func setTableViewEditingState(isEditing: Bool) {
+		if isEditing {
+			tableView.setEditing(true, animated: true)
+			onViewEvent?(.editingStart)
+		} else {
+			tableView.setEditing(false, animated: true)
+			onViewEvent?(.editingEnd)
+		}
+	}
     
     private func swipeDeleteHandler(index: Int, _ complete: @escaping (Bool) -> Void) {
         print("Delete \(index)")
         guard let vc = findViewController() else { return }
         
-        AlertView.createSwipeDeleteAlert(vc, deleteHanler: {
-            print("Delete")
+        AlertView.createSwipeDeleteAlert(vc, deleteHandler: {
+			self.deleteDataFromTableView(indexes: [index])
         }, cancelHandler: {
-            print("Cancel")
             complete(true)
         })
     }
@@ -113,11 +134,17 @@ class ScanAlbumsView: View {
 			print("Change")
 		}, deleteHandler: {
 			print("Delete")
-		}) {
+		}, cancelHandler:  {
 			print("Cancel")
 			complete(true)
-		}
+		})
     }
+	
+	private func deleteDataFromTableView(indexes: [Int]) {
+		let indexPaths = indexes.map { IndexPath(row: $0, section: 0)}
+		onViewEvent?(.delete(indexes: indexes))
+		tableView.deleteRows(at: indexPaths, with: .automatic)
+	}
 	
 }
 
@@ -134,20 +161,29 @@ extension ScanAlbumsView {
 	}
 	
 	@objc func cancelBarButtonTapped() {
-		tableView.setEditing(false, animated: true)
-		
-		onViewEvent?(.editingEnd)
+		setTableViewEditingState(isEditing: false)
 	}
 	
 	@objc func selectAllBarButtonTapped() {
-		onViewEvent?(.selectAll)
+        for i in 0 ..< tableViewData.count {
+            let indexPath = IndexPath(row: i, section: 0)
+            guard let _ = tableView.cellForRow(at: indexPath) else { return }
+            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+        }
 	}
 	
 	@objc func deleteBarButtonTapped() {
-		guard let selectedIndexPaths = tableView.indexPathsForSelectedRows else { return }
+		guard let selectedIndexPaths = tableView.indexPathsForSelectedRows, let vc = findViewController() else { return }
 		let selectedIndexes = selectedIndexPaths.map { $0.row }
 		
-		onViewEvent?(.delete(indexes: selectedIndexes))
+		AlertView.createBarDeleteAlert(vc, isSingular: selectedIndexPaths.count == 1, deleteHandler: {
+			self.deleteDataFromTableView(indexes: selectedIndexes)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                self.setTableViewEditingState(isEditing: false)
+            }
+		}, cancelHandler: {
+			
+		})
 	}
 	
 	@objc func startEditTableView(_ gesture: UILongPressGestureRecognizer) {
@@ -156,11 +192,8 @@ extension ScanAlbumsView {
 			guard let indexPath = tableView.indexPathForRow(at: point), let _ = tableView.cellForRow(at: indexPath) else { return }
 			let generator = UIImpactFeedbackGenerator()
 			generator.impactOccurred()
-			tableView.setEditing(true, animated: true)
+			setTableViewEditingState(isEditing: true)
 			tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-			deleteBarButton.isEnabled = true
-			
-			onViewEvent?(.editingStart)
 		}
 	}
 }
@@ -168,14 +201,14 @@ extension ScanAlbumsView {
 extension ScanAlbumsView: UITableViewDelegate, UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 4
+		return tableViewData.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: "ScanAlbumsCell", for: indexPath) as? ScanAlbumsTableViewCell else {
 			return UITableViewCell()
 		}
-		cell.configureCell(image: #imageLiteral(resourceName: "ICON"), document: "Scando", date: "11/11/20", number: 3)
+		cell.configureCell(image: #imageLiteral(resourceName: "ICON"), document: tableViewData[indexPath.row], date: "11/11/20", number: 3)
 		
 		return cell
 	}
@@ -184,20 +217,13 @@ extension ScanAlbumsView: UITableViewDelegate, UITableViewDataSource {
 		print("Didselect")
 		if !tableView.isEditing {
 			onViewEvent?(.didSelectRow(index: indexPath.row))
-		} else {
-			deleteBarButton.isEnabled = tableView.indexPathsForSelectedRows?.count ?? 0 > 0
 		}
 	}
 	
 	func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
 		print("Deselect")
-		if tableView.isEditing {
-			if tableView.indexPathsForSelectedRows?.count ?? 0 > 0 {
-				deleteBarButton.isEnabled = true
-			} else {
-				tableView.setEditing(false, animated: true)
-				onViewEvent?(.editingEnd)
-			}
+		if tableView.isEditing && tableView.indexPathsForSelectedRows?.count ?? 0 == 0 {
+			setTableViewEditingState(isEditing: false)
         }
 	}
     

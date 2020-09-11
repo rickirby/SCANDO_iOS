@@ -19,6 +19,9 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
 	
+	// MARK: - Only for Mocking, Remove then
+	var dummyData = ["Cell 0", "Cell 1", "Cell 2", "Cell 3", "Cell 4"]
+	
 	// MARK: - Life Cycle
 	
 	override func viewDidLoad() {
@@ -32,6 +35,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		super.viewWillAppear(animated)
 		
 		configureBar()
+		screenView.reloadData(tableData: dummyData)
 	}
 	
 	// MARK: - Private Method
@@ -60,7 +64,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 			case .selectAll:
 				print("Select All")
 			case .delete(let indexes):
-				print("Delete \(indexes)")
+				self?.deleteData(indexes: indexes)
 			}
 		}
 	}
@@ -77,5 +81,20 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		navigationItem.rightBarButtonItems = [screenView.cameraBarButton, screenView.fileBarButton]
 		
 		navigationController?.setToolbarHidden(true, animated: true)
+	}
+	
+	private func deleteData(indexes: [Int]) {
+		var itemsToDelete = [String]()
+		for i in indexes {
+			itemsToDelete.append(dummyData[i])
+		}
+		
+		for item in itemsToDelete {
+			if let index = dummyData.firstIndex(of: item) {
+				dummyData.remove(at: index)
+			}
+		}
+		
+		screenView.reloadData(tableData: dummyData)
 	}
 }
