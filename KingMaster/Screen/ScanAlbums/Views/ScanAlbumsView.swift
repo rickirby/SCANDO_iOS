@@ -119,10 +119,10 @@ class ScanAlbumsView: View {
 			print("Change")
 		}, deleteHandler: {
 			print("Delete")
-		}) {
+		}, cancelHandler:  {
 			print("Cancel")
 			complete(true)
-		}
+		})
     }
 	
 	private func deleteDataFromTableView(indexes: [Int]) {
@@ -156,10 +156,16 @@ extension ScanAlbumsView {
 	}
 	
 	@objc func deleteBarButtonTapped() {
-		guard let selectedIndexPaths = tableView.indexPathsForSelectedRows else { return }
+		guard let selectedIndexPaths = tableView.indexPathsForSelectedRows, let vc = findViewController() else { return }
 		let selectedIndexes = selectedIndexPaths.map { $0.row }
 		
-		deleteDataFromTableView(indexes: selectedIndexes)
+		AlertView.createBarDeleteAlert(vc, isSingular: selectedIndexPaths.count == 1, deleteHandler: {
+			self.deleteDataFromTableView(indexes: selectedIndexes)
+			self.tableView.setEditing(false, animated: true)
+			self.onViewEvent?(.editingEnd)
+		}, cancelHandler: {
+			
+		})
 	}
 	
 	@objc func startEditTableView(_ gesture: UILongPressGestureRecognizer) {
