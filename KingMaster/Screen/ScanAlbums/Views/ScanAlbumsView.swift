@@ -52,8 +52,6 @@ class ScanAlbumsView: View {
 	
 	lazy var selectAllBarButton = UIBarButtonItem(title: "Select All", style: .plain, target: self, action: #selector(selectAllBarButtonTapped))
 	
-	lazy var deselectAllBarButton = UIBarButtonItem(title: "Deselect All", style: .plain, target: self, action: #selector(selectAllBarButtonTapped))
-	
 	lazy var deleteBarButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteBarButtonTapped))
 	
 	// MARK: - Life Cycle
@@ -159,10 +157,6 @@ extension ScanAlbumsView {
 	}
 	
 	@objc func selectAllBarButtonTapped() {
-		onViewEvent?(.selectAll)
-	}
-	
-	@objc func deselectAllBarButtonTapped() {
 		onViewEvent?(.selectAll)
 	}
 	
