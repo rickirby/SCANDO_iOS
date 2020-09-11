@@ -161,9 +161,7 @@ extension ScanAlbumsView {
 	}
 	
 	@objc func cancelBarButtonTapped() {
-		tableView.setEditing(false, animated: true)
-		
-		onViewEvent?(.editingEnd)
+		setTableViewEditingState(isEditing: false)
 	}
 	
 	@objc func selectAllBarButtonTapped() {
@@ -176,8 +174,7 @@ extension ScanAlbumsView {
 		
 		AlertView.createBarDeleteAlert(vc, isSingular: selectedIndexPaths.count == 1, deleteHandler: {
 			self.deleteDataFromTableView(indexes: selectedIndexes)
-			self.tableView.setEditing(false, animated: true)
-			self.onViewEvent?(.editingEnd)
+			self.setTableViewEditingState(isEditing: false)
 		}, cancelHandler: {
 			
 		})
@@ -189,11 +186,9 @@ extension ScanAlbumsView {
 			guard let indexPath = tableView.indexPathForRow(at: point), let _ = tableView.cellForRow(at: indexPath) else { return }
 			let generator = UIImpactFeedbackGenerator()
 			generator.impactOccurred()
-			tableView.setEditing(true, animated: true)
+			setTableViewEditingState(isEditing: true)
 			tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
 			deleteBarButton.isEnabled = true
-			
-			onViewEvent?(.editingStart)
 		}
 	}
 }
@@ -228,8 +223,7 @@ extension ScanAlbumsView: UITableViewDelegate, UITableViewDataSource {
 			if tableView.indexPathsForSelectedRows?.count ?? 0 > 0 {
 				deleteBarButton.isEnabled = true
 			} else {
-				tableView.setEditing(false, animated: true)
-				onViewEvent?(.editingEnd)
+				setTableViewEditingState(isEditing: false)
 			}
         }
 	}
