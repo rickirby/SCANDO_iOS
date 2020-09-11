@@ -95,7 +95,7 @@ class ScanAlbumsView: View {
         
         AlertView.createSwipeDeleteAlert(vc, deleteHanler: {
 			self.onViewEvent?(.delete(indexes: [index]))
-			
+			self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .left)
 			DispatchQueue.main.async {
 				self.tableView.reloadData()
 			}
