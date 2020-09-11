@@ -10,4 +10,7 @@ import UIKit
 
 class SCANDOConstant {
     
+    static let swipeDeleteAlert: String = "Are you sure you want to delete the scanned documents album?"
+    static let singleSelectedDeleteAlert: String = "Are you sure you want to delete the selected scanned document album?"
+    static let pluralSelectedDeletelAlert: String = "Are you sure you want to delete the selected scanned document albums?"
 }
