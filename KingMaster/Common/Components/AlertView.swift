@@ -10,7 +10,15 @@ import UIKit
 
 class AlertView {
     
-    static func createSwipeDeleteAlert(_ target: UIViewController, deleteHanler: () -> Void, cancelHandler: () -> Void) {
+    static func createSwipeDeleteAlert(_ target: UIViewController, deleteHanler: @escaping () -> Void, cancelHandler: @escaping () -> Void) {
+        let ac = UIAlertController(title: SCANDOConstant.swipeDeleteTitle, message: SCANDOConstant.swipeDeleteAlert, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: SCANDOConstant.swipeDeletePositiveAction, style: .destructive) { _ in
+            deleteHanler()
+        })
+        ac.addAction(UIAlertAction(title: SCANDOConstant.swipeDeleteNegativeAction, style: .cancel) { _ in
+            cancelHandler()
+        })
         
+        target.present(ac, animated: true, completion: nil)
     }
 }
