@@ -15,8 +15,11 @@ class SCANDOConstant {
     static let swipeDeletePositiveAction: String = "Delete"
     static let swipeDeleteNegativeAction: String = "Cancel"
     
-    static let singleSelectedDeleteAlert: String = "Are you sure you want to delete the selected scanned document album?"
-    static let pluralSelectedDeletelAlert: String = "Are you sure you want to delete the selected scanned document albums?"
+	static let barDeleteTitle: String = "Delete Document"
+    static let singleBarDeleteMessage: String = "Are you sure you want to delete the selected scanned document album?"
+    static let pluralBarDeletelMessage: String = "Are you sure you want to delete the selected scanned document albums?"
+	static let barDeletePositiveAction: String = "Delete"
+	static let barDeleteNegativeAction: String = "Cancel"
 	
 	static let swipeMoreRenameAction: String = "Rename"
 	static let swipeMoreSaveAction: String = "Save to Photos"

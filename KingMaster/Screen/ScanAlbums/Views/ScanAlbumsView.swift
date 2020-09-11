@@ -100,7 +100,7 @@ class ScanAlbumsView: View {
         print("Delete \(index)")
         guard let vc = findViewController() else { return }
         
-        AlertView.createSwipeDeleteAlert(vc, deleteHanler: {
+        AlertView.createSwipeDeleteAlert(vc, deleteHandler: {
 			self.deleteDataFromTableView(indexes: [index])
         }, cancelHandler: {
             complete(true)
@@ -159,7 +159,7 @@ extension ScanAlbumsView {
 		guard let selectedIndexPaths = tableView.indexPathsForSelectedRows else { return }
 		let selectedIndexes = selectedIndexPaths.map { $0.row }
 		
-		onViewEvent?(.delete(indexes: selectedIndexes))
+		deleteDataFromTableView(indexes: selectedIndexes)
 	}
 	
 	@objc func startEditTableView(_ gesture: UILongPressGestureRecognizer) {
