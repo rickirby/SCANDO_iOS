@@ -100,6 +100,16 @@ class ScanAlbumsView: View {
 		tableView.dataSource = self
 		tableView.register(ScanAlbumsTableViewCell.self, forCellReuseIdentifier: "ScanAlbumsCell")
 	}
+	
+	private func setTableViewEditingState(isEditing: Bool) {
+		if isEditing {
+			tableView.setEditing(true, animated: true)
+			onViewEvent?(.editingStart)
+		} else {
+			tableView.setEditing(false, animated: true)
+			onViewEvent?(.editingEnd)
+		}
+	}
     
     private func swipeDeleteHandler(index: Int, _ complete: @escaping (Bool) -> Void) {
         print("Delete \(index)")
