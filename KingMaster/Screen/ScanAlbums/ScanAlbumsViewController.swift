@@ -63,7 +63,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 			case .selectAll:
 				print("Select All")
 			case .delete(let indexes):
-				deleteData(indexes: indexes)
+				self?.deleteData(indexes: indexes)
 			}
 		}
 	}
