@@ -64,6 +64,12 @@ class ScanAlbumsView: View {
 		}
 	}
 	
+	override func onViewDidAppear() {
+		super.onViewDidAppear()
+		
+		tableView.reloadData()
+	}
+	
 	// MARK: - Public Method
 	
 	func reloadData(tableData: [String]) {
@@ -95,11 +101,8 @@ class ScanAlbumsView: View {
         guard let vc = findViewController() else { return }
         
         AlertView.createSwipeDeleteAlert(vc, deleteHanler: {
-			self.onViewEvent?(.delete(indexes: [index]))
-			self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
-			
+			self.deleteDataFromTableView(indexes: [index])
         }, cancelHandler: {
-            print("Cancel")
             complete(true)
         })
     }
@@ -121,6 +124,12 @@ class ScanAlbumsView: View {
 			complete(true)
 		}
     }
+	
+	private func deleteDataFromTableView(indexes: [Int]) {
+		let indexPaths = indexes.map { IndexPath(row: $0, section: 0)}
+		onViewEvent?(.delete(indexes: indexes))
+		tableView.deleteRows(at: indexPaths, with: .automatic)
+	}
 	
 }
 
