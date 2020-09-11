@@ -89,12 +89,34 @@ class ScanAlbumsView: View {
 		tableView.register(ScanAlbumsTableViewCell.self, forCellReuseIdentifier: "ScanAlbumsCell")
 	}
     
-    private func swipeDeleteHandler(index: Int, _ complete: (Bool) -> Void) {
+    private func swipeDeleteHandler(index: Int, _ complete: @escaping (Bool) -> Void) {
         print("Delete \(index)")
+        guard let vc = findViewController() else { return }
+        
+        AlertView.createSwipeDeleteAlert(vc, deleteHanler: {
+            print("Delete")
+        }, cancelHandler: {
+            print("Cancel")
+            complete(true)
+        })
     }
     
-    private func swipeMoreHandler(index: Int, _ complete: (Bool) -> Void) {
+    private func swipeMoreHandler(index: Int, _ complete: @escaping (Bool) -> Void) {
         print("More \(index)")
+		guard let vc = findViewController() else { return }
+		
+		AlertView.createSwipeMoreSheet(vc, renameHandler: {
+			print("Rename")
+		}, saveHandler: {
+			print("Save")
+		}, changeHandler: {
+			print("Change")
+		}, deleteHandler: {
+			print("Delete")
+		}) {
+			print("Cancel")
+			complete(true)
+		}
     }
 	
 }
