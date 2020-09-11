@@ -23,7 +23,7 @@ class AlertView {
     }
 	
 	static func createSwipeMoreSheet(_ target: UIViewController, renameHandler: @escaping () -> Void, saveHandler: @escaping () -> Void, changeHandler: @escaping () -> Void, deleteHandler: @escaping () -> Void, cancelHandler: @escaping () -> Void) {
-		let ac = UIAlertController(title: SCANDOConstant.swipeMoreTitle, message: nil, preferredStyle: .actionSheet)
+		let ac = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 		ac.addAction(UIAlertAction(title: SCANDOConstant.swipeMoreRenameAction, style: .default) { _ in
 			renameHandler()
 		})

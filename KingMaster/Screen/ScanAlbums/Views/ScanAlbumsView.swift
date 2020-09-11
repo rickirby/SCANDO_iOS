@@ -103,6 +103,20 @@ class ScanAlbumsView: View {
     
     private func swipeMoreHandler(index: Int, _ complete: @escaping (Bool) -> Void) {
         print("More \(index)")
+		guard let vc = findViewController() else { return }
+		
+		AlertView.createSwipeMoreSheet(vc, renameHandler: {
+			print("Rename")
+		}, saveHandler: {
+			print("Save")
+		}, changeHandler: {
+			print("Change")
+		}, deleteHandler: {
+			print("Delete")
+		}) {
+			print("Cancel")
+			complete(true)
+		}
     }
 	
 }

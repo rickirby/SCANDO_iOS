@@ -18,7 +18,6 @@ class SCANDOConstant {
     static let singleSelectedDeleteAlert: String = "Are you sure you want to delete the selected scanned document album?"
     static let pluralSelectedDeletelAlert: String = "Are you sure you want to delete the selected scanned document albums?"
 	
-	static let swipeMoreTitle: String = "More Action"
 	static let swipeMoreRenameAction: String = "Rename"
 	static let swipeMoreSaveAction: String = "Save to Photos"
 	static let swipeMoreChangeAction: String = "Change Cover Page"
