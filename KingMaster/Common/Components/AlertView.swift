@@ -10,4 +10,7 @@ import UIKit
 
 class AlertView {
     
+    static func createSwipeDeleteAlert(_ target: UIViewController, deleteHanler: () -> Void, cancelHandler: () -> Void) {
+        
+    }
 }
