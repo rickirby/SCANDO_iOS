@@ -83,6 +83,15 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	}
 	
 	private func deleteData(indexes: [Int]) {
+		var itemsToDelete = [String]()
+		for i in indexes {
+			itemsToDelete.append(dummyData[i])
+		}
 		
+		for item in itemsToDelete {
+			if let index = dummyData.firstIndex(of: item) {
+				dummyData.remove(at: index)
+			}
+		}
 	}
 }
