@@ -19,6 +19,9 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
 	
+	// MARK: - Only for Mocking, Remove then
+	var dummyData = ["Cell 0", "Cell 1", "Cell 2", "Cell 3", "Cell 4"]
+	
 	// MARK: - Life Cycle
 	
 	override func viewDidLoad() {
