@@ -94,7 +94,11 @@ class ScanAlbumsView: View {
         guard let vc = findViewController() else { return }
         
         AlertView.createSwipeDeleteAlert(vc, deleteHanler: {
-            print("Delete")
+			self.onViewEvent?(.delete(indexes: [index]))
+			
+			DispatchQueue.main.async {
+				self.tableView.reloadData()
+			}
         }, cancelHandler: {
             print("Cancel")
             complete(true)
