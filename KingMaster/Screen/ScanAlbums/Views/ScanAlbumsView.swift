@@ -188,7 +188,6 @@ extension ScanAlbumsView {
 			generator.impactOccurred()
 			setTableViewEditingState(isEditing: true)
 			tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-			deleteBarButton.isEnabled = true
 		}
 	}
 }
@@ -212,19 +211,13 @@ extension ScanAlbumsView: UITableViewDelegate, UITableViewDataSource {
 		print("Didselect")
 		if !tableView.isEditing {
 			onViewEvent?(.didSelectRow(index: indexPath.row))
-		} else {
-			deleteBarButton.isEnabled = tableView.indexPathsForSelectedRows?.count ?? 0 > 0
 		}
 	}
 	
 	func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
 		print("Deselect")
-		if tableView.isEditing {
-			if tableView.indexPathsForSelectedRows?.count ?? 0 > 0 {
-				deleteBarButton.isEnabled = true
-			} else {
-				setTableViewEditingState(isEditing: false)
-			}
+		if tableView.isEditing && tableView.indexPathsForSelectedRows?.count ?? 0 == 0 {
+			setTableViewEditingState(isEditing: false)
         }
 	}
     
