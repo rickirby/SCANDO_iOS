@@ -22,7 +22,12 @@ class ScanAlbumsView: View {
 	}
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
-	var tableViewData = [String]()
+	
+	// MARK: - Private Properties
+	
+	private var tableViewData = [String]()
+	
+	// MARK: - View Component
 	
 	lazy var tableView: UITableView = {
 		let gesture = UILongPressGestureRecognizer(target: self, action: #selector(startEditTableView(_:)))
