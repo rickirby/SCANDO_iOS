@@ -63,7 +63,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 			case .selectAll:
 				print("Select All")
 			case .delete(let indexes):
-				print("Delete \(indexes)")
+				deleteData(indexes: indexes)
 			}
 		}
 	}
@@ -80,5 +80,9 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		navigationItem.rightBarButtonItems = [screenView.cameraBarButton, screenView.fileBarButton]
 		
 		navigationController?.setToolbarHidden(true, animated: true)
+	}
+	
+	private func deleteData(indexes: [Int]) {
+		
 	}
 }
