@@ -35,6 +35,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		super.viewWillAppear(animated)
 		
 		configureBar()
+		screenView.reloadData(tableData: dummyData)
 	}
 	
 	// MARK: - Private Method
@@ -93,5 +94,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 				dummyData.remove(at: index)
 			}
 		}
+		
+		screenView.reloadData(tableData: dummyData)
 	}
 }

@@ -22,6 +22,7 @@ class ScanAlbumsView: View {
 	}
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
+	var tableViewData = [String]()
 	
 	lazy var tableView: UITableView = {
 		let gesture = UILongPressGestureRecognizer(target: self, action: #selector(startEditTableView(_:)))
@@ -65,8 +66,8 @@ class ScanAlbumsView: View {
 	
 	// MARK: - Public Method
 	
-	func reloadData() {
-		tableView.reloadData()
+	func reloadData(tableData: [String]) {
+		tableViewData = tableData
 	}
 	
 	// MARK: - Private Method
@@ -95,10 +96,8 @@ class ScanAlbumsView: View {
         
         AlertView.createSwipeDeleteAlert(vc, deleteHanler: {
 			self.onViewEvent?(.delete(indexes: [index]))
-			self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .left)
-			DispatchQueue.main.async {
-				self.tableView.reloadData()
-			}
+			self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+			
         }, cancelHandler: {
             print("Cancel")
             complete(true)
@@ -172,14 +171,14 @@ extension ScanAlbumsView {
 extension ScanAlbumsView: UITableViewDelegate, UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 4
+		return tableViewData.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: "ScanAlbumsCell", for: indexPath) as? ScanAlbumsTableViewCell else {
 			return UITableViewCell()
 		}
-		cell.configureCell(image: #imageLiteral(resourceName: "ICON"), document: "Scando", date: "11/11/20", number: 3)
+		cell.configureCell(image: #imageLiteral(resourceName: "ICON"), document: tableViewData[indexPath.row], date: "11/11/20", number: 3)
 		
 		return cell
 	}
