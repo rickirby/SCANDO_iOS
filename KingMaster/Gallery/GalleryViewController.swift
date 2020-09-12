@@ -13,3 +13,10 @@ class GalleryViewController: RBPhotosGalleryViewController {
     
     var dummyData: [UIImage] = [#imageLiteral(resourceName: "ICON"), #imageLiteral(resourceName: "ICON"), #imageLiteral(resourceName: "ICON")]
 }
+
+extension GalleryViewController: RBPhotosGalleryViewDelegate, RBPhotosGalleryViewDataSource {
+    
+    func photosGalleryImages() -> [UIImage] {
+        return dummyData
+    }
+}
