@@ -6,4 +6,10 @@
 //  Copyright © 2020 Ricki Bin Yamin. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import RBPhotosGallery
+
+class GalleryViewController: RBPhotosGalleryViewController {
+    
+    var dummyData: [UIImage] = [#imageLiteral(resourceName: "ICON"), #imageLiteral(resourceName: "ICON"), #imageLiteral(resourceName: "ICON")]
+}
