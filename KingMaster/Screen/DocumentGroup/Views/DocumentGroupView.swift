@@ -12,7 +12,15 @@ import RBToolkit
 class DocumentGroupView: View {
 	
 	// MARK: - Public Properties
+    
+    enum ViewEvent {
+        case didSelectRow(index: Int)
+    }
+    
+    var onViewEvent: ((ViewEvent) -> Void)?
 	
+    // MARK: - View Component
+    
 	lazy var collectionView: UICollectionView = {
 		
 		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
