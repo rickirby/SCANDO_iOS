@@ -11,6 +11,14 @@ import RBToolkit
 
 class DocumentGroupViewController: ViewController<DocumentGroupView> {
 	
+    // MARK: - Public Properties
+    
+    enum NavigationEvent {
+        case didSelectRow(index: Int)
+    }
+    
+    var onNavigationEvent: ((NavigationEvent) -> Void)?
+    
 	// MARK: - Life Cycle
 	
 	override func viewDidLoad() {
