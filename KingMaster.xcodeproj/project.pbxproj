@@ -110,6 +110,7 @@
 				0901C69C25038A320051FF16 /* SceneDelegate.swift */,
 				09C8ADB1250653FF004BA0F7 /* AppCoordinator.swift */,
 				097A18A525046CED0044D5FB /* Screen */,
+				7206EAED250C6D8200A3DA4A /* Gallery */,
 				09C8ADA9250650E7004BA0F7 /* Common */,
 				0901C6A625038A340051FF16 /* Assets.xcassets */,
 				0901C6A825038A340051FF16 /* LaunchScreen.storyboard */,
@@ -201,6 +202,13 @@
 				09C8ADAD25065154004BA0F7 /* Router.swift */,
 			);
 			path = Flow;
+			sourceTree = "<group>";
+		};
+		7206EAED250C6D8200A3DA4A /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Gallery;
 			sourceTree = "<group>";
 		};
 		DCE0E72B250AFA1B00971B22 /* Extension */ = {
