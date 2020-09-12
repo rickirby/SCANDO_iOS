@@ -95,5 +95,7 @@ extension DocumentGroupView: UICollectionViewDelegate, UICollectionViewDataSourc
 		return cell
 	}
 	
-	
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        onViewEvent?(.didSelectRow(index: indexPath.row))
+    }
 }
