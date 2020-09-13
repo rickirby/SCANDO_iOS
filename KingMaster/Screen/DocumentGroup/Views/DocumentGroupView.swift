@@ -12,7 +12,15 @@ import RBToolkit
 class DocumentGroupView: View {
 	
 	// MARK: - Public Properties
+    
+    enum ViewEvent {
+        case didSelectRow(index: Int)
+    }
+    
+    var onViewEvent: ((ViewEvent) -> Void)?
 	
+    // MARK: - View Component
+    
 	lazy var collectionView: UICollectionView = {
 		
 		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -87,5 +95,7 @@ extension DocumentGroupView: UICollectionViewDelegate, UICollectionViewDataSourc
 		return cell
 	}
 	
-	
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        onViewEvent?(.didSelectRow(index: indexPath.row))
+    }
 }
