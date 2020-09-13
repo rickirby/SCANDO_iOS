@@ -43,4 +43,13 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 		setLargeTitleDisplayMode(.never)
 		navigationController?.interactivePopGestureRecognizer?.isEnabled = true
 	}
+    
+    private func configureViewEvent() {
+        screenView.onViewEvent = { [weak self] (viewEvent: DocumentGroupView.ViewEvent) in
+            switch viewEvent {
+            case .didSelectRow(let index):
+                self?.onNavigationEvent?(.didSelectRow(index: index))
+            }
+        }
+    }
 }
