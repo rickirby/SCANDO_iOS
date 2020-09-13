@@ -38,6 +38,7 @@ class DocumentGroupCoordinator: Coordinator {
             case .didSelectRow(index: let index):
                 self?.galleryCoordinator = GalleryCoordinator(navigationController: self?.rootViewController as? UINavigationController ?? UINavigationController())
                 self?.galleryCoordinator?.start()
+                print("Document Group Coordinator")
             }
         }
 		
