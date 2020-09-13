@@ -31,6 +31,7 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 		super.viewWillAppear(animated)
 		
 		configureNavigationBar()
+        configureViewEvent()
 	}
 	
 	// MARK: - Private Methods
