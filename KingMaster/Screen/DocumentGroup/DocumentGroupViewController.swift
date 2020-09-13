@@ -11,6 +11,14 @@ import RBToolkit
 
 class DocumentGroupViewController: ViewController<DocumentGroupView> {
 	
+    // MARK: - Public Properties
+    
+    enum NavigationEvent {
+        case didSelectRow(index: Int)
+    }
+    
+    var onNavigationEvent: ((NavigationEvent) -> Void)?
+    
 	// MARK: - Life Cycle
 	
 	override func viewDidLoad() {
@@ -23,6 +31,7 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 		super.viewWillAppear(animated)
 		
 		configureNavigationBar()
+        configureViewEvent()
 	}
 	
 	// MARK: - Private Methods
@@ -35,4 +44,13 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 		setLargeTitleDisplayMode(.never)
 		navigationController?.interactivePopGestureRecognizer?.isEnabled = true
 	}
+    
+    private func configureViewEvent() {
+        screenView.onViewEvent = { [weak self] (viewEvent: DocumentGroupView.ViewEvent) in
+            switch viewEvent {
+            case .didSelectRow(let index):
+                self?.onNavigationEvent?(.didSelectRow(index: index))
+            }
+        }
+    }
 }
