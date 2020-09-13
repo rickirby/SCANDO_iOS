@@ -50,7 +50,6 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
             switch viewEvent {
             case .didSelectRow(let index):
                 self?.onNavigationEvent?(.didSelectRow(index: index))
-                print("Document Group VC Select")
             }
         }
     }
