@@ -19,7 +19,7 @@ class DocumentGroupCoordinator: Coordinator {
 	}
 	
 	private weak var navigationController: UINavigationController?
-    private var galleryCoordinator: GalleryCoordinator?
+	private var galleryCoordinator: GalleryCoordinator?
 	
 	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
@@ -33,13 +33,13 @@ class DocumentGroupCoordinator: Coordinator {
 	
 	private func makeDocumentGroupViewController() -> UIViewController {
 		let vc = DocumentGroupViewController()
-        vc.onNavigationEvent = { [weak self] (navigationEvent: DocumentGroupViewController.NavigationEvent) in
-            switch navigationEvent {
-            case .didSelectRow(index: let index):
-                self?.galleryCoordinator = GalleryCoordinator(navigationController: self?.rootViewController as? UINavigationController ?? UINavigationController())
-                self?.galleryCoordinator?.start()
-            }
-        }
+		vc.onNavigationEvent = { [weak self] (navigationEvent: DocumentGroupViewController.NavigationEvent) in
+			switch navigationEvent {
+			case .didSelectRow(index: let index):
+				self?.galleryCoordinator = GalleryCoordinator(navigationController: self?.rootViewController as? UINavigationController ?? UINavigationController())
+				self?.galleryCoordinator?.start()
+			}
+		}
 		
 		return vc
 	}

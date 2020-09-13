@@ -110,20 +110,20 @@ class ScanAlbumsView: View {
 			onViewEvent?(.editingEnd)
 		}
 	}
-    
-    private func swipeDeleteHandler(index: Int, _ complete: @escaping (Bool) -> Void) {
-        print("Delete \(index)")
-        guard let vc = findViewController() else { return }
-        
-        AlertView.createSwipeDeleteAlert(vc, deleteHandler: {
+	
+	private func swipeDeleteHandler(index: Int, _ complete: @escaping (Bool) -> Void) {
+		print("Delete \(index)")
+		guard let vc = findViewController() else { return }
+		
+		AlertView.createSwipeDeleteAlert(vc, deleteHandler: {
 			self.deleteDataFromTableView(indexes: [index])
-        }, cancelHandler: {
-            complete(true)
-        })
-    }
-    
-    private func swipeMoreHandler(index: Int, _ complete: @escaping (Bool) -> Void) {
-        print("More \(index)")
+		}, cancelHandler: {
+			complete(true)
+		})
+	}
+	
+	private func swipeMoreHandler(index: Int, _ complete: @escaping (Bool) -> Void) {
+		print("More \(index)")
 		guard let vc = findViewController() else { return }
 		
 		AlertView.createSwipeMoreSheet(vc, renameHandler: {
@@ -138,7 +138,7 @@ class ScanAlbumsView: View {
 			print("Cancel")
 			complete(true)
 		})
-    }
+	}
 	
 	private func deleteDataFromTableView(indexes: [Int]) {
 		let indexPaths = indexes.map { IndexPath(row: $0, section: 0)}
@@ -165,11 +165,11 @@ extension ScanAlbumsView {
 	}
 	
 	@objc func selectAllBarButtonTapped() {
-        for i in 0 ..< tableViewData.count {
-            let indexPath = IndexPath(row: i, section: 0)
-            guard let _ = tableView.cellForRow(at: indexPath) else { return }
-            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-        }
+		for i in 0 ..< tableViewData.count {
+			let indexPath = IndexPath(row: i, section: 0)
+			guard let _ = tableView.cellForRow(at: indexPath) else { return }
+			tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+		}
 	}
 	
 	@objc func deleteBarButtonTapped() {
@@ -178,9 +178,9 @@ extension ScanAlbumsView {
 		
 		AlertView.createBarDeleteAlert(vc, isSingular: selectedIndexPaths.count == 1, deleteHandler: {
 			self.deleteDataFromTableView(indexes: selectedIndexes)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
-                self.setTableViewEditingState(isEditing: false)
-            }
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+				self.setTableViewEditingState(isEditing: false)
+			}
 		}, cancelHandler: {
 			
 		})
@@ -224,20 +224,20 @@ extension ScanAlbumsView: UITableViewDelegate, UITableViewDataSource {
 		print("Deselect")
 		if tableView.isEditing && tableView.indexPathsForSelectedRows?.count ?? 0 == 0 {
 			setTableViewEditingState(isEditing: false)
-        }
+		}
 	}
-    
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") {
-            _, _, complete in
-            self.swipeDeleteHandler(index: indexPath.row, complete)
-        }
-        
-        let moreAction = UIContextualAction(style: .normal, title: "More") {
-            _, _, complete in
-            self.swipeMoreHandler(index: indexPath.row, complete)
-        }
-        
-        return UISwipeActionsConfiguration(actions: [deleteAction, moreAction])
-    }
+	
+	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+		let deleteAction = UIContextualAction(style: .destructive, title: "Delete") {
+			_, _, complete in
+			self.swipeDeleteHandler(index: indexPath.row, complete)
+		}
+		
+		let moreAction = UIContextualAction(style: .normal, title: "More") {
+			_, _, complete in
+			self.swipeMoreHandler(index: indexPath.row, complete)
+		}
+		
+		return UISwipeActionsConfiguration(actions: [deleteAction, moreAction])
+	}
 }

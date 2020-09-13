@@ -14,14 +14,14 @@ class DocumentGroupCollectionViewCell: UICollectionViewCell {
 	// MARK: - Private Properties
 	
 	private lazy var imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .secondarySystemFill
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        
-        return imageView
-    }()
+		let imageView = UIImageView()
+		imageView.translatesAutoresizingMaskIntoConstraints = false
+		imageView.backgroundColor = .secondarySystemFill
+		imageView.contentMode = .scaleAspectFill
+		imageView.clipsToBounds = true
+		
+		return imageView
+	}()
 	
 	// MARK: - Life Cycle
 	
@@ -42,9 +42,9 @@ class DocumentGroupCollectionViewCell: UICollectionViewCell {
 		
 		NSLayoutConstraint.activate([
 			imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-            imageView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+			imageView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+			imageView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+			imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 		])
 	}
 	
