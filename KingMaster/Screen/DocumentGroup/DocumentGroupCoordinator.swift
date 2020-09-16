@@ -20,6 +20,8 @@ class DocumentGroupCoordinator: Coordinator {
 	
 	private weak var navigationController: UINavigationController?
 	private var galleryCoordinator: GalleryCoordinator?
+	private var cameraCoordinator: CameraCoordinator?
+	private var scanImagePickerCoordinator: ScanImagePickerCoordinator?
 	
 	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
@@ -35,12 +37,30 @@ class DocumentGroupCoordinator: Coordinator {
 		let vc = DocumentGroupViewController()
 		vc.onNavigationEvent = { [weak self] (navigationEvent: DocumentGroupViewController.NavigationEvent) in
 			switch navigationEvent {
+			case .didTapCamera:
+				self?.openCamera()
+			case .didTapPicker:
+				self?.openScanImagePicker()
 			case .didSelectRow(index: let index):
-				self?.galleryCoordinator = GalleryCoordinator(navigationController: self?.rootViewController as? UINavigationController ?? UINavigationController())
-				self?.galleryCoordinator?.start()
+				self?.openGallery(index: index)
 			}
 		}
 		
 		return vc
+	}
+	
+	private func openCamera() {
+		cameraCoordinator = CameraCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		cameraCoordinator?.start()
+	}
+	
+	private func openScanImagePicker() {
+		scanImagePickerCoordinator = ScanImagePickerCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		scanImagePickerCoordinator?.start()
+	}
+	
+	private func openGallery(index: Int) {
+		galleryCoordinator = GalleryCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		galleryCoordinator?.start()
 	}
 }

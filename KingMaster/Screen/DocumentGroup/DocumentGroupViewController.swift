@@ -14,6 +14,8 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 	// MARK: - Public Properties
 	
 	enum NavigationEvent {
+		case didTapCamera
+		case didTapPicker
 		case didSelectRow(index: Int)
 	}
 	
@@ -24,23 +26,24 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		configureLoadNavigationBar()
+		configureLoadBar()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		configureNavigationBar()
+		configureBar()
 		configureViewEvent()
 	}
 	
 	// MARK: - Private Methods
 	
-	private func configureLoadNavigationBar() {
+	private func configureLoadBar() {
 		title = "Documents"
+		navigationItem.rightBarButtonItems = [screenView.cameraBarButton, screenView.fileBarButton]
 	}
 	
-	private func configureNavigationBar() {
+	private func configureBar() {
 		setLargeTitleDisplayMode(.never)
 		navigationController?.interactivePopGestureRecognizer?.isEnabled = true
 	}
@@ -48,6 +51,10 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 	private func configureViewEvent() {
 		screenView.onViewEvent = { [weak self] (viewEvent: DocumentGroupView.ViewEvent) in
 			switch viewEvent {
+			case .didTapCamera:
+				self?.onNavigationEvent?(.didTapCamera)
+			case .didTapPicker:
+				self?.onNavigationEvent?(.didTapPicker)
 			case .didSelectRow(let index):
 				self?.onNavigationEvent?(.didSelectRow(index: index))
 			}
