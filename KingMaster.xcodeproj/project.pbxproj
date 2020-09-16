@@ -33,6 +33,7 @@
 		DC972BBE25123F9800A6C43B /* RBCameraDocScan.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DC972BC12512454F00A6C43B /* CameraCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC972BC02512454F00A6C43B /* CameraCoordinator.swift */; };
 		DC972BC4251258C400A6C43B /* ScanImagePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC972BC3251258C400A6C43B /* ScanImagePickerCoordinator.swift */; };
+		DCB1B5E52512DC9D00B1630C /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB1B5E42512DC9D00B1630C /* GalleryView.swift */; };
 		DCE0E72D250AFA3400971B22 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0E72C250AFA3400971B22 /* UIView+Extension.swift */; };
 		DCE0E731250AFB5F00971B22 /* SCANDOConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0E730250AFB5F00971B22 /* SCANDOConstant.swift */; };
 		DCE0E733250AFE2300971B22 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0E732250AFE2300971B22 /* AlertView.swift */; };
@@ -80,6 +81,7 @@
 		DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBCameraDocScan.framework; path = Carthage/Build/iOS/RBCameraDocScan.framework; sourceTree = "<group>"; };
 		DC972BC02512454F00A6C43B /* CameraCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCoordinator.swift; sourceTree = "<group>"; };
 		DC972BC3251258C400A6C43B /* ScanImagePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanImagePickerCoordinator.swift; sourceTree = "<group>"; };
+		DCB1B5E42512DC9D00B1630C /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		DCE0E72C250AFA3400971B22 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		DCE0E730250AFB5F00971B22 /* SCANDOConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCANDOConstant.swift; sourceTree = "<group>"; };
 		DCE0E732250AFE2300971B22 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
@@ -215,9 +217,9 @@
 		7206EAED250C6D8200A3DA4A /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
-				DCB1B5E32512DC6A00B1630C /* Views */,
 				7206EAF0250C73F200A3DA4A /* GalleryCoordinator.swift */,
 				7206EAEE250C704B00A3DA4A /* GalleryViewController.swift */,
+				DCB1B5E32512DC6A00B1630C /* Views */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";
@@ -241,6 +243,7 @@
 		DCB1B5E32512DC6A00B1630C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DCB1B5E42512DC9D00B1630C /* GalleryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				092E85D5250659B300A01F60 /* DocumentGroupCoordinator.swift in Sources */,
 				0901C69D25038A320051FF16 /* SceneDelegate.swift in Sources */,
 				7206EAEF250C704B00A3DA4A /* GalleryViewController.swift in Sources */,
+				DCB1B5E52512DC9D00B1630C /* GalleryView.swift in Sources */,
 				0922627625053E0B00BDDB90 /* DocumentGroupCollectionViewCell.swift in Sources */,
 				DCE0E733250AFE2300971B22 /* AlertView.swift in Sources */,
 			);
