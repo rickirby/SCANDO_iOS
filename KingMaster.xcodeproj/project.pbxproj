@@ -29,6 +29,9 @@
 		09C8ADB2250653FF004BA0F7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADB1250653FF004BA0F7 /* AppCoordinator.swift */; };
 		7206EAEF250C704B00A3DA4A /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7206EAEE250C704B00A3DA4A /* GalleryViewController.swift */; };
 		7206EAF1250C73F200A3DA4A /* GalleryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7206EAF0250C73F200A3DA4A /* GalleryCoordinator.swift */; };
+		DC972BBD25123F9800A6C43B /* RBCameraDocScan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */; };
+		DC972BBE25123F9800A6C43B /* RBCameraDocScan.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DC972BC12512454F00A6C43B /* CameraCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC972BC02512454F00A6C43B /* CameraCoordinator.swift */; };
 		DCE0E72D250AFA3400971B22 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0E72C250AFA3400971B22 /* UIView+Extension.swift */; };
 		DCE0E731250AFB5F00971B22 /* SCANDOConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0E730250AFB5F00971B22 /* SCANDOConstant.swift */; };
 		DCE0E733250AFE2300971B22 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0E732250AFE2300971B22 /* AlertView.swift */; };
@@ -43,6 +46,7 @@
 			files = (
 				099AB2022503E6C600B76522 /* RBPhotosGallery.framework in Embed Frameworks */,
 				099AB2042503E6C600B76522 /* RBToolkit.framework in Embed Frameworks */,
+				DC972BBE25123F9800A6C43B /* RBCameraDocScan.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,6 +76,8 @@
 		09C8ADB1250653FF004BA0F7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		7206EAEE250C704B00A3DA4A /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		7206EAF0250C73F200A3DA4A /* GalleryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCoordinator.swift; sourceTree = "<group>"; };
+		DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBCameraDocScan.framework; path = Carthage/Build/iOS/RBCameraDocScan.framework; sourceTree = "<group>"; };
+		DC972BC02512454F00A6C43B /* CameraCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCoordinator.swift; sourceTree = "<group>"; };
 		DCE0E72C250AFA3400971B22 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		DCE0E730250AFB5F00971B22 /* SCANDOConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCANDOConstant.swift; sourceTree = "<group>"; };
 		DCE0E732250AFE2300971B22 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
@@ -84,6 +90,7 @@
 			files = (
 				099AB2012503E6C600B76522 /* RBPhotosGallery.framework in Frameworks */,
 				099AB2032503E6C600B76522 /* RBToolkit.framework in Frameworks */,
+				DC972BBD25123F9800A6C43B /* RBCameraDocScan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +162,7 @@
 			children = (
 				097A18A625046D540044D5FB /* ScanAlbums */,
 				0922627725053E1600BDDB90 /* DocumentGroup */,
+				DC972BBF2512453A00A6C43B /* Camera */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -182,6 +190,7 @@
 		099AB1FE2503E6C500B76522 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */,
 				099AB1FF2503E6C500B76522 /* RBPhotosGallery.framework */,
 				099AB2002503E6C600B76522 /* RBToolkit.framework */,
 			);
@@ -215,6 +224,14 @@
 				7206EAEE250C704B00A3DA4A /* GalleryViewController.swift */,
 			);
 			path = Gallery;
+			sourceTree = "<group>";
+		};
+		DC972BBF2512453A00A6C43B /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				DC972BC02512454F00A6C43B /* CameraCoordinator.swift */,
+			);
+			path = Camera;
 			sourceTree = "<group>";
 		};
 		DCE0E72B250AFA1B00971B22 /* Extension */ = {
@@ -323,6 +340,7 @@
 				0922627525053E0B00BDDB90 /* DocumentGroupViewController.swift in Sources */,
 				0922627425053E0B00BDDB90 /* DocumentGroupView.swift in Sources */,
 				09195CDA2504C429006CC8A4 /* ScanAlbumsTableViewCell.swift in Sources */,
+				DC972BC12512454F00A6C43B /* CameraCoordinator.swift in Sources */,
 				09C8ADB0250652BC004BA0F7 /* ScanAlbumsCoordinator.swift in Sources */,
 				0901C69B25038A320051FF16 /* AppDelegate.swift in Sources */,
 				097A18AC25046FD70044D5FB /* ScanAlbumsView.swift in Sources */,

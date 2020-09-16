@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RBCameraDocScan
 
 class ScanAlbumsCoordinator: Coordinator {
 	
@@ -16,6 +17,7 @@ class ScanAlbumsCoordinator: Coordinator {
 	
 	private let navigationController: UINavigationController = UINavigationController()
 	private var documentGroupCoordinator: DocumentGroupCoordinator?
+	private var cameraCoordinator: CameraCoordinator?
 	
 	func start() {
 		let vc = makeViewController()
@@ -27,13 +29,28 @@ class ScanAlbumsCoordinator: Coordinator {
 		let vc = ScanAlbumsViewController()
 		vc.onNavigationEvent = { [weak self] (navigationEvent: ScanAlbumsViewController.NavigationEvent) in
 			switch navigationEvent {
+			case .didTapCamera:
+				self?.openCamera()
+			case .didTapPicker:
+				print("Tap Picker")
 			case .didSelectRow(let index):
-				self?.documentGroupCoordinator = DocumentGroupCoordinator(navigationController: self?.rootViewController as? UINavigationController ?? UINavigationController())
-				self?.documentGroupCoordinator?.start()
+				self?.openDocumentGroup(index: index)
 			}
 		}
 		
 		return vc
 	}
 	
+	private func openCamera() {
+		cameraCoordinator = CameraCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		cameraCoordinator?.start()
+	}
+	
+	private func openDocumentGroup(index: Int) {
+		documentGroupCoordinator = DocumentGroupCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		documentGroupCoordinator?.start()
+	}
+	
 }
+
+

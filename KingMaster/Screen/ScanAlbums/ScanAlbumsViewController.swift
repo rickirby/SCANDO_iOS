@@ -14,6 +14,8 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	// MARK: - Public Properties
 	
 	enum NavigationEvent {
+		case didTapCamera
+		case didTapPicker
 		case didSelectRow(index: Int)
 	}
 	
@@ -54,6 +56,10 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	private func configureViewEvent() {
 		screenView.onViewEvent = { [weak self] (viewEvent: ScanAlbumsView.ViewEvent) in
 			switch viewEvent {
+			case .didTapCamera:
+				self?.onNavigationEvent?(.didTapCamera)
+			case .didTapPicker:
+				self?.onNavigationEvent?(.didTapPicker)
 			case .didSelectRow(let index):
 				self?.onNavigationEvent?(.didSelectRow(index: index))
 			case .editingStart:

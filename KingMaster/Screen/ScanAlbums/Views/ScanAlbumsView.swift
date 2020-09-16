@@ -14,6 +14,8 @@ class ScanAlbumsView: View {
 	// MARK: - Public Properties
 	
 	enum ViewEvent {
+		case didTapCamera
+		case didTapPicker
 		case didSelectRow(index: Int)
 		case editingStart
 		case editingEnd
@@ -153,11 +155,11 @@ extension ScanAlbumsView {
 	// MARK: - @Objc Target
 	
 	@objc func cameraBarButtonTapped() {
-		
+		onViewEvent?(.didTapCamera)
 	}
 	
 	@objc func fileBarButtonTapped() {
-		
+		onViewEvent?(.didTapPicker)
 	}
 	
 	@objc func cancelBarButtonTapped() {
