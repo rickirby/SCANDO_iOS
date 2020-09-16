@@ -215,6 +215,7 @@
 		7206EAED250C6D8200A3DA4A /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
+				DCB1B5E32512DC6A00B1630C /* Views */,
 				7206EAF0250C73F200A3DA4A /* GalleryCoordinator.swift */,
 				7206EAEE250C704B00A3DA4A /* GalleryViewController.swift */,
 			);
@@ -235,6 +236,13 @@
 				DC972BC3251258C400A6C43B /* ScanImagePickerCoordinator.swift */,
 			);
 			path = ScanImagePicker;
+			sourceTree = "<group>";
+		};
+		DCB1B5E32512DC6A00B1630C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		DCE0E72B250AFA1B00971B22 /* Extension */ = {
