@@ -26,23 +26,24 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		configureLoadNavigationBar()
+		configureLoadBar()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		configureNavigationBar()
+		configureBar()
 		configureViewEvent()
 	}
 	
 	// MARK: - Private Methods
 	
-	private func configureLoadNavigationBar() {
+	private func configureLoadBar() {
 		title = "Documents"
+		navigationItem.rightBarButtonItems = [screenView.cameraBarButton, screenView.fileBarButton]
 	}
 	
-	private func configureNavigationBar() {
+	private func configureBar() {
 		setLargeTitleDisplayMode(.never)
 		navigationController?.interactivePopGestureRecognizer?.isEnabled = true
 	}
