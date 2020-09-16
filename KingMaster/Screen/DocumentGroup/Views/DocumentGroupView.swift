@@ -14,6 +14,8 @@ class DocumentGroupView: View {
 	// MARK: - Public Properties
 	
 	enum ViewEvent {
+		case didTapCamera
+		case didTapPicker
 		case didSelectRow(index: Int)
 	}
 	
@@ -30,6 +32,10 @@ class DocumentGroupView: View {
 		
 		return collectionView
 	}()
+	
+	lazy var cameraBarButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(cameraBarButtonTapped))
+	
+	lazy var fileBarButton = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(fileBarButtonTapped))
 	
 	// MARK: - Life Cycle
 	
@@ -78,6 +84,19 @@ class DocumentGroupView: View {
 		
 		collectionView.setCollectionViewLayout(layout, animated: true)
 		collectionView.contentInset = UIEdgeInsets(top: contentInset, left: contentInset, bottom: contentInset, right: contentInset)
+	}
+}
+
+extension DocumentGroupView {
+	
+	// MARK: - @Objc Target
+	
+	@objc func cameraBarButtonTapped() {
+		onViewEvent?(.didTapCamera)
+	}
+	
+	@objc func fileBarButtonTapped() {
+		onViewEvent?(.didTapPicker)
 	}
 }
 
