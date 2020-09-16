@@ -47,14 +47,14 @@ class ScanAlbumsCoordinator: Coordinator {
 		cameraCoordinator?.start()
 	}
 	
-	private func openDocumentGroup(index: Int) {
-		documentGroupCoordinator = DocumentGroupCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
-		documentGroupCoordinator?.start()
-	}
-	
 	private func openScanImagePicker() {
 		scanImagePickerCoordinator = ScanImagePickerCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
 		scanImagePickerCoordinator?.start()
+	}
+	
+	private func openDocumentGroup(index: Int) {
+		documentGroupCoordinator = DocumentGroupCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		documentGroupCoordinator?.start()
 	}
 	
 }
