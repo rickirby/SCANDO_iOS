@@ -133,13 +133,6 @@
 			path = KingMaster;
 			sourceTree = "<group>";
 		};
-		09195CDB2504C5B1006CC8A4 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		0922627725053E1600BDDB90 /* DocumentGroup */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,7 +168,6 @@
 			children = (
 				09C8ADAF250652BC004BA0F7 /* ScanAlbumsCoordinator.swift */,
 				097A18A725046E660044D5FB /* ScanAlbumsViewController.swift */,
-				09195CDB2504C5B1006CC8A4 /* Models */,
 				097A18AA25046F980044D5FB /* Views */,
 			);
 			path = ScanAlbums;
