@@ -20,6 +20,7 @@ class CameraCoordinator: Coordinator {
 	}
 	
 	private weak var navigationController: UINavigationController?
+	private var scanImagePickerCoordinator: ScanImagePickerCoordinator?
 	
 	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
@@ -37,6 +38,11 @@ class CameraCoordinator: Coordinator {
 		
 		return vc
 	}
+	
+	private func openScanImagePicker() {
+		scanImagePickerCoordinator = ScanImagePickerCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		scanImagePickerCoordinator?.start()
+	}
 }
 
 extension CameraCoordinator: RBCameraViewControllerDelegate {
@@ -49,6 +55,6 @@ extension CameraCoordinator: RBCameraViewControllerDelegate {
 	}
 	
 	func didTapImagePick(_ target: UIViewController) {
-		
+		openScanImagePicker()
 	}
 }
