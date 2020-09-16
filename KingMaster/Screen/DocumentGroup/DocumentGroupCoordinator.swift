@@ -42,8 +42,7 @@ class DocumentGroupCoordinator: Coordinator {
 			case .didTapPicker:
 				self?.openScanImagePicker()
 			case .didSelectRow(index: let index):
-				self?.galleryCoordinator = GalleryCoordinator(navigationController: self?.rootViewController as? UINavigationController ?? UINavigationController())
-				self?.galleryCoordinator?.start()
+				self?.openGallery(index: index)
 			}
 		}
 		
@@ -58,5 +57,10 @@ class DocumentGroupCoordinator: Coordinator {
 	private func openScanImagePicker() {
 		scanImagePickerCoordinator = ScanImagePickerCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
 		scanImagePickerCoordinator?.start()
+	}
+	
+	private func openGallery(index: Int) {
+		galleryCoordinator = GalleryCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		galleryCoordinator?.start()
 	}
 }
