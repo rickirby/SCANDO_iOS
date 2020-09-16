@@ -28,7 +28,7 @@ class ScanImagePickerCoordinator: Coordinator {
 	func start() {
 		let vc = makeViewController()
 		
-		Router.shared.push(vc, on: self)
+		Router.shared.present(vc, on: self.rootViewController)
 	}
 	
 	private func makeViewController() -> UIViewController {
