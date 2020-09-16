@@ -35,6 +35,10 @@ class DocumentGroupCoordinator: Coordinator {
 		let vc = DocumentGroupViewController()
 		vc.onNavigationEvent = { [weak self] (navigationEvent: DocumentGroupViewController.NavigationEvent) in
 			switch navigationEvent {
+			case .didTapCamera:
+				print("Camera")
+			case .didTapPicker:
+				print("Picker")
 			case .didSelectRow(index: let index):
 				self?.galleryCoordinator = GalleryCoordinator(navigationController: self?.rootViewController as? UINavigationController ?? UINavigationController())
 				self?.galleryCoordinator?.start()
