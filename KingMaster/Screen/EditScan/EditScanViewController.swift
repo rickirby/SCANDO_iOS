@@ -66,13 +66,6 @@ extension EditScanViewController {
 		screenView.quadView.drawQuadrilateral(quad: transformedQuad, animated: false)
 	}
 	
-	private func adjustQuadViewConstraints() {
-		guard let image = image else { return }
-		let frame = AVMakeRect(aspectRatio: image.size, insideRect: screenView.capturedImageView.bounds)
-		screenView.quadViewWidthConstraint.constant = frame.size.width
-		screenView.quadViewHeightConstraint.constant = frame.size.height
-	}
-	
 	private func defaultQuad(forImage image: UIImage) -> Quadrilateral {
 		let topLeft = CGPoint(x: image.size.width / 3.0, y: image.size.height / 3.0)
 		let topRight = CGPoint(x: 2.0 * image.size.width / 3.0, y: image.size.height / 3.0)

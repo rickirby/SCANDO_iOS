@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 import RBToolkit
 import RBCameraDocScan
 
@@ -65,6 +66,12 @@ class EditScanView: View {
 		configureView()
 	}
 	
+	override func onViewDidLayoutSubviews() {
+		super.onViewDidLayoutSubviews()
+		
+		adjustQuadViewConstraints()
+	}
+	
 	// MARK: - Private Method
 	
 	private func configureView() {
@@ -88,6 +95,13 @@ class EditScanView: View {
 			activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 			activityIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor)
 		])
+	}
+	
+	private func adjustQuadViewConstraints() {
+		guard let image = image else { return }
+		let frame = AVMakeRect(aspectRatio: image.size, insideRect: capturedImageView.bounds)
+		quadViewWidthConstraint.constant = frame.size.width
+		quadViewHeightConstraint.constant = frame.size.height
 	}
 }
 
