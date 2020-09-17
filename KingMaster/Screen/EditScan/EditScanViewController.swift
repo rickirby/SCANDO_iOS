@@ -36,4 +36,8 @@ class EditScanViewController: ViewController<EditScanView> {
 		navigationItem.rightBarButtonItems = [screenView.nextBarButton]
 		toolbarItems = [screenView.allAreaBarButton, spacer, screenView.downloadBarButton]
 	}
+	
+	private func configureZoomGesture() {
+		
+	}
 }
