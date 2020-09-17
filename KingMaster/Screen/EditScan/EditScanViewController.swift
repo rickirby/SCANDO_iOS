@@ -8,7 +8,17 @@
 
 import UIKit
 import RBToolkit
+import RBCameraDocScan
 
 class EditScanViewController: ViewController<EditScanView> {
+	
+	// MARK: - Private Properties
+	
+	private var image: UIImage?
+	private var quad: Quadrilateral?
+	private var recentQuad: Quadrilateral?
+	
+	private var zoomGestureController: ZoomGestureController!
+	
 	
 }
