@@ -10,6 +10,18 @@ import UIKit
 
 class GalleryView: UIView {
 	
+	// MARK: - Public Properties
+	
+	enum ViewEvent {
+		case didTapEdit
+		case didTapDownload
+		case didTapDelete
+	}
+	
+	var onViewEvent: ((ViewEvent) -> Void)?
+	
+	// MARK: - View Component
+	
 	lazy var editBarButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editBarButtonTapped))
 	
 	lazy var downloadBarButton = UIBarButtonItem(image: UIImage(named: "SaveButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(downloadBarButtonTapped))
