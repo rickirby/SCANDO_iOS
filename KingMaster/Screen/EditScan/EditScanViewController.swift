@@ -20,5 +20,20 @@ class EditScanViewController: ViewController<EditScanView> {
 	
 	private var zoomGestureController: ZoomGestureController!
 	
+	// MARK: - Life Cycle
 	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		configureLoadBar()
+	}
+	
+	// MARK: - Private Methods
+	
+	private func configureLoadBar() {
+		title = "Edit Document Points"
+		let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+		navigationItem.rightBarButtonItems = [screenView.nextBarButton]
+		toolbarItems = [screenView.allAreaBarButton, spacer, screenView.downloadBarButton]
+	}
 }
