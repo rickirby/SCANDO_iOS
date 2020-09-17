@@ -12,6 +12,8 @@ import RBCameraDocScan
 
 class EditScanView: View {
 	
+	// MARK: - View Components
+	
 	var quadViewWidthConstraint = NSLayoutConstraint()
 	var quadViewHeightConstraint = NSLayoutConstraint()
 	
@@ -40,4 +42,10 @@ class EditScanView: View {
 		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
 		return activityIndicator
 	}()
+	
+	// MARK: - Life Cycle
+	
+	override func setViews() {
+		super.setViews()
+	}
 }
