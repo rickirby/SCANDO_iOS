@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 import RBToolkit
 import RBCameraDocScan
 
@@ -41,7 +42,54 @@ class EditScanViewController: ViewController<EditScanView> {
 		toolbarItems = [screenView.allAreaBarButton, spacer, screenView.downloadBarButton]
 	}
 	
+	private func loadData() {
+		guard let data = passedData?() else { return }
+		image = data.image
+		quad = data.quad
+	}
+	
 	private func configureZoomGesture() {
 		
+	}
+}
+
+extension EditScanViewController {
+	private func displayQuad() {
+		let imageSize = (image ?? UIImage()).size
+		let imageFrame = CGRect(origin: screenView.quadView.frame.origin, size: CGSize(width: screenView.quadViewWidthConstraint.constant, height: screenView.quadViewHeightConstraint.constant))
+		
+		let scaleTransform = CGAffineTransform.scaleTransform(forSize: imageSize, aspectFillInSize: imageFrame.size)
+		let transforms = [scaleTransform]
+		let transformedQuad = quad!.applyTransforms(transforms)
+		
+		screenView.quadView.drawQuadrilateral(quad: transformedQuad, animated: false)
+	}
+	
+	private func adjustQuadViewConstraints() {
+		let frame = AVMakeRect(aspectRatio: image.size, insideRect: screenView.capturedImageView.bounds)
+		screenView.quadViewWidthConstraint.constant = frame.size.width
+		screenView.quadViewHeightConstraint.constant = frame.size.height
+	}
+	
+	private func defaultQuad(forImage image: UIImage) -> Quadrilateral {
+		let topLeft = CGPoint(x: image.size.width / 3.0, y: image.size.height / 3.0)
+		let topRight = CGPoint(x: 2.0 * image.size.width / 3.0, y: image.size.height / 3.0)
+		let bottomRight = CGPoint(x: 2.0 * image.size.width / 3.0, y: 2.0 * image.size.height / 3.0)
+		let bottomLeft = CGPoint(x: image.size.width / 3.0, y: 2.0 * image.size.height / 3.0)
+		
+		let quad = Quadrilateral(topLeft: topLeft, topRight: topRight, bottomRight: bottomRight, bottomLeft: bottomLeft)
+		
+		return quad
+	}
+	
+	private func allFrameQuad(forImage image: UIImage) -> Quadrilateral {
+		let topLeft = CGPoint(x: 0, y: 0)
+		let topRight = CGPoint(x: image.size.width, y: 0)
+		let bottomRight = CGPoint(x: image.size.width, y: image.size.height)
+		let bottomLeft = CGPoint(x: 0, y: image.size.height)
+		
+		let quad = Quadrilateral(topLeft: topLeft, topRight: topRight, bottomRight: bottomRight, bottomLeft: bottomLeft)
+		
+		return quad
 	}
 }
