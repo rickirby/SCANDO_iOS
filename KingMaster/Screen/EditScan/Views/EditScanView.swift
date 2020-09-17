@@ -76,3 +76,20 @@ class EditScanView: View {
 		])
 	}
 }
+
+extension EditScanView {
+	
+	// MARK: - @Objc Target
+	
+	@objc func nextBarButtonTapped() {
+		
+	}
+	
+	@objc func allAreaBarButtonTapped() {
+		
+	}
+	
+	@objc func downloadBarButtonTapped() {
+		
+	}
+}
