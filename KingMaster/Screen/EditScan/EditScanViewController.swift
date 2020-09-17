@@ -22,17 +22,25 @@ class EditScanViewController: ViewController<EditScanView> {
 	private var quad: Quadrilateral?
 	private var recentQuad: Quadrilateral?
 	
-	private var zoomGestureController: ZoomGestureController!
+	private var zoomGestureController: ZoomGestureController?
 	
 	// MARK: - Life Cycle
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		loadData()
 		configureLoadBar()
+		configureZoomGesture()
 	}
 	
 	// MARK: - Private Methods
+	
+	private func loadData() {
+		guard let data = passedData?() else { return }
+		image = data.image
+		quad = data.quad
+	}
 	
 	private func configureLoadBar() {
 		title = "Edit Document Points"
@@ -41,14 +49,12 @@ class EditScanViewController: ViewController<EditScanView> {
 		toolbarItems = [screenView.allAreaBarButton, spacer, screenView.downloadBarButton]
 	}
 	
-	private func loadData() {
-		guard let data = passedData?() else { return }
-		image = data.image
-		quad = data.quad
-	}
-	
 	private func configureZoomGesture() {
-		
+		guard let image = image else { return }
+		zoomGestureController = ZoomGestureController(image: image, quadView: screenView.quadView)
+		let touchDown = UILongPressGestureRecognizer(target: zoomGestureController, action: #selector(zoomGestureController?.handle(pan:)))
+		touchDown.minimumPressDuration = 0
+		screenView.addGestureRecognizer(touchDown)
 	}
 }
 
