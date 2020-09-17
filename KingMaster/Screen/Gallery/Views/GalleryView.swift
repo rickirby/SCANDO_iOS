@@ -10,6 +10,12 @@ import UIKit
 
 class GalleryView: UIView {
 	
+	lazy var editBarButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editBarButtonTapped))
+	
+	lazy var downloadBarButton = UIBarButtonItem(image: UIImage(named: "SaveButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(downloadBarButtonTapped))
+	
+	lazy var deleteBarButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteBarButtonTapped))
+	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		setViews()
@@ -20,6 +26,23 @@ class GalleryView: UIView {
 	}
 	
 	func setViews() {
+		
+	}
+}
+
+extension GalleryView {
+	
+	// MARK: - @Objc Target
+	
+	@objc func editBarButtonTapped() {
+		
+	}
+	
+	@objc func downloadBarButtonTapped() {
+		
+	}
+	
+	@objc func deleteBarButtonTapped() {
 		
 	}
 }
