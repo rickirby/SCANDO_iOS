@@ -12,6 +12,14 @@ import RBCameraDocScan
 
 class EditScanView: View {
 	
+	// MARK: - Public Properties
+	
+	var image: UIImage? {
+		didSet {
+			capturedImageView.image = image
+		}
+	}
+	
 	// MARK: - View Components
 	
 	var quadViewWidthConstraint = NSLayoutConstraint()
