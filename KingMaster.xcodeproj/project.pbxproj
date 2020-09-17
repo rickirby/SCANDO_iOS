@@ -161,6 +161,7 @@
 				DC972BBF2512453A00A6C43B /* Camera */,
 				DC972BC2251258AD00A6C43B /* ScanImagePicker */,
 				7206EAED250C6D8200A3DA4A /* Gallery */,
+				DC75E59725138C3200186F30 /* EditScan */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -222,6 +223,21 @@
 				DCB1B5E32512DC6A00B1630C /* Views */,
 			);
 			path = Gallery;
+			sourceTree = "<group>";
+		};
+		DC75E59725138C3200186F30 /* EditScan */ = {
+			isa = PBXGroup;
+			children = (
+				DC75E59825138C4E00186F30 /* Views */,
+			);
+			path = EditScan;
+			sourceTree = "<group>";
+		};
+		DC75E59825138C4E00186F30 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		DC972BBF2512453A00A6C43B /* Camera */ = {
