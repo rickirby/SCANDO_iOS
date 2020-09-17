@@ -15,15 +15,39 @@ class GalleryViewController: RBPhotosGalleryViewController {
 	
 	// MARK: - Private Properties
 	
-	private var screenView: GalleryView {
-		return view as! GalleryView
-	}
+	private var screenView = GalleryView()
 	
 	// MARK: - Life Cycle
 	
 	public override func loadView() {
 		super.loadView()
-		view = GalleryView()
+		view.addSubview(screenView)
+	}
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		configureLoadBar()
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		configureBar()
+	}
+	
+	// MARK: - Private Methods
+	
+	private func configureLoadBar() {
+		let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+		navigationItem.rightBarButtonItem = screenView.editBarButton
+		toolbarItems = [screenView.deleteBarButton, spacer, screenView.downloadBarButton]
+	}
+	
+	private func configureBar() {
+		setLargeTitleDisplayMode(.never)
+		navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+		navigationController?.setToolbarHidden(false, animated: true)
 	}
 }
 
