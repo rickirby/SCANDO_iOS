@@ -40,6 +40,12 @@ class EditScanViewController: ViewController<EditScanView> {
 		configureBar()
 	}
 	
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+		
+		displayQuad()
+	}
+	
 	// MARK: - Private Methods
 	
 	private func loadData() {
