@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AVFoundation
 import RBToolkit
 import RBCameraDocScan
 
@@ -54,6 +53,9 @@ class EditScanViewController: ViewController<EditScanView> {
 }
 
 extension EditScanViewController {
+	
+	// MARK: - Quad Processing
+	
 	private func displayQuad() {
 		guard let image = image, let quad = quad else { return }
 		let imageSize = image.size
