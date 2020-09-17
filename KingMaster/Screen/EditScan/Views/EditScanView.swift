@@ -43,6 +43,12 @@ class EditScanView: View {
 		return activityIndicator
 	}()
 	
+	lazy var nextBarButton = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextBarButtonTapped))
+	
+	lazy var allAreaBarButton = UIBarButtonItem(image: UIImage(named: "AllButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(allAreaBarButtonTapped))
+	
+	lazy var downloadBarButton = UIBarButtonItem(image: UIImage(named: "SaveButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(downloadBarButtonTapped))
+	
 	// MARK: - Life Cycle
 	
 	override func setViews() {
