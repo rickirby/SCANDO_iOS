@@ -12,6 +12,10 @@ import RBCameraDocScan
 
 class EditScanViewController: ViewController<EditScanView> {
 	
+	// MARK: - Public Properties
+	
+	var passedData: (() -> EditScanData)?
+	
 	// MARK: - Private Properties
 	
 	private var image: UIImage?
