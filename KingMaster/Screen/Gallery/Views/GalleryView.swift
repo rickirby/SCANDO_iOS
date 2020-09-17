@@ -47,14 +47,14 @@ extension GalleryView {
 	// MARK: - @Objc Target
 	
 	@objc func editBarButtonTapped() {
-		
+		onViewEvent?(.didTapEdit)
 	}
 	
 	@objc func downloadBarButtonTapped() {
-		
+		onViewEvent?(.didTapDownload)
 	}
 	
 	@objc func deleteBarButtonTapped() {
-		
+		onViewEvent?(.didTapDelete)
 	}
 }
