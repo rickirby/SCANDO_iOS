@@ -52,7 +52,16 @@ class GalleryViewController: RBPhotosGalleryViewController {
 	}
 	
 	private func configureViewEvent() {
-		
+		screenView.onViewEvent = { [weak self] (viewEvent: GalleryView.ViewEvent) in
+			switch viewEvent {
+			case .didTapEdit:
+				print("Tap Edit")
+			case .didTapDownload:
+				print("Tap Download")
+			case .didTapDelete:
+				print("Tap Delete")
+			}
+		}
 	}
 }
 
