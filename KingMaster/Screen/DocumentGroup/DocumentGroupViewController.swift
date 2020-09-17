@@ -46,6 +46,7 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 	private func configureBar() {
 		setLargeTitleDisplayMode(.never)
 		navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+		navigationController?.setToolbarHidden(true, animated: true)
 	}
 	
 	private func configureViewEvent() {
