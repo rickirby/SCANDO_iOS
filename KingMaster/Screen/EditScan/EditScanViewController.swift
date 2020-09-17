@@ -34,6 +34,12 @@ class EditScanViewController: ViewController<EditScanView> {
 		configureZoomGesture()
 	}
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		configureBar()
+	}
+	
 	// MARK: - Private Methods
 	
 	private func loadData() {
@@ -48,6 +54,12 @@ class EditScanViewController: ViewController<EditScanView> {
 		let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 		navigationItem.rightBarButtonItems = [screenView.nextBarButton]
 		toolbarItems = [screenView.allAreaBarButton, spacer, screenView.downloadBarButton]
+	}
+	
+	private func configureBar() {
+		navigationController?.setToolbarHidden(false, animated: true)
+		navigationController?.setNavigationBarHidden(false, animated: true)
+		navigationController?.interactivePopGestureRecognizer?.isEnabled = false
 	}
 	
 	private func configureZoomGesture() {
