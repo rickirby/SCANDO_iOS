@@ -28,6 +28,7 @@ class GalleryViewController: RBPhotosGalleryViewController {
 		super.viewDidLoad()
 		
 		configureLoadBar()
+		configureViewEvent()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +49,10 @@ class GalleryViewController: RBPhotosGalleryViewController {
 		setLargeTitleDisplayMode(.never)
 		navigationController?.interactivePopGestureRecognizer?.isEnabled = true
 		navigationController?.setToolbarHidden(false, animated: true)
+	}
+	
+	private func configureViewEvent() {
+		
 	}
 }
 
