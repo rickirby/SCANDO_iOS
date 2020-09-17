@@ -55,17 +55,19 @@ class EditScanViewController: ViewController<EditScanView> {
 
 extension EditScanViewController {
 	private func displayQuad() {
-		let imageSize = (image ?? UIImage()).size
+		guard let image = image, let quad = quad else { return }
+		let imageSize = image.size
 		let imageFrame = CGRect(origin: screenView.quadView.frame.origin, size: CGSize(width: screenView.quadViewWidthConstraint.constant, height: screenView.quadViewHeightConstraint.constant))
 		
 		let scaleTransform = CGAffineTransform.scaleTransform(forSize: imageSize, aspectFillInSize: imageFrame.size)
 		let transforms = [scaleTransform]
-		let transformedQuad = quad!.applyTransforms(transforms)
+		let transformedQuad = quad.applyTransforms(transforms)
 		
 		screenView.quadView.drawQuadrilateral(quad: transformedQuad, animated: false)
 	}
 	
 	private func adjustQuadViewConstraints() {
+		guard let image = image else { return }
 		let frame = AVMakeRect(aspectRatio: image.size, insideRect: screenView.capturedImageView.bounds)
 		screenView.quadViewWidthConstraint.constant = frame.size.width
 		screenView.quadViewHeightConstraint.constant = frame.size.height
