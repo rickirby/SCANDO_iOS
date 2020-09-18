@@ -32,6 +32,7 @@ class EditScanViewController: ViewController<EditScanView> {
 		
 		loadData()
 		configureLoadBar()
+		configureViewEvent()
 		configureZoomGesture()
 	}
 	
