@@ -49,6 +49,28 @@ class PreviewView: View {
 		configureView()
 	}
 	
+	// MARK: - Public Method
+	
+	func startLoading() {
+		if Thread.isMainThread {
+			activityIndicator.startAnimating()
+		} else {
+			DispatchQueue.main.async {
+				self.activityIndicator.startAnimating()
+			}
+		}
+	}
+	
+	func stopLoading() {
+		if Thread.isMainThread {
+			activityIndicator.stopAnimating()
+		} else {
+			DispatchQueue.main.async {
+				self.activityIndicator.stopAnimating()
+			}
+		}
+	}
+	
 	// MARK: - Private Methods
 	
 	func configureView() {
