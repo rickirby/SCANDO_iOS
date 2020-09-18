@@ -19,7 +19,7 @@ class PreviewCoordinator: Coordinator {
 		return navigationController
 	}
 	
-//	var passedData: (() -> PreviewDataData)?
+	var passedData: (() -> PreviewData)?
 	
 	private weak var navigationController: UINavigationController?
 	
