@@ -68,6 +68,10 @@ class EditScanViewController: ViewController<EditScanView> {
 		navigationController?.interactivePopGestureRecognizer?.isEnabled = false
 	}
 	
+	private func configureViewEvent() {
+		
+	}
+	
 	private func configureZoomGesture() {
 		guard let image = image else { return }
 		zoomGestureController = ZoomGestureController(image: image, quadView: screenView.quadView)
