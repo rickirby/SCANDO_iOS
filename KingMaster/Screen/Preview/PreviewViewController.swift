@@ -8,7 +8,18 @@
 
 import UIKit
 import RBToolkit
+import RBCameraDocScan
 
 class PreviewViewController: ViewController<PreviewView> {
+	
+	// MARK: - Public Properties
+	
+	var passedData: (() -> PreviewCoordinator.PreviewData)?
+	
+	// MARK: - Private Properties
+	
+	private var image: UIImage?
+	private var quad: Quadrilateral?
+	private var rotationAngle = Measurement<UnitAngle>(value: 0, unit: .degrees)
 	
 }
