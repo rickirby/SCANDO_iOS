@@ -30,8 +30,8 @@ class EditScanViewController: ViewController<EditScanView> {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		loadData()
 		configureLoadBar()
+		loadData()
 		configureViewEvent()
 		configureZoomGesture()
 	}
