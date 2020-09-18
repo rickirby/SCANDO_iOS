@@ -109,6 +109,27 @@ class EditScanView: View {
 		quadViewWidthConstraint.constant = frame.size.width
 		quadViewHeightConstraint.constant = frame.size.height
 	}
+	
+	private func startLoading() {
+		if Thread.isMainThread {
+			activityIndicator.startAnimating()
+		} else {
+			DispatchQueue.main.async {
+				self.activityIndicator.startAnimating()
+			}
+		}
+	}
+	
+	private func stopLoading() {
+		if Thread.isMainThread {
+			activityIndicator.stopAnimating()
+		} else {
+			DispatchQueue.main.async {
+				self.activityIndicator.stopAnimating()
+			}
+		}
+	}
+	
 }
 
 extension EditScanView {
