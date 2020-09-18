@@ -33,6 +33,7 @@
 		DC4CD0032514FB51000A84BC /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4CD0022514FB51000A84BC /* PreviewView.swift */; };
 		DC4CD0052514FB78000A84BC /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4CD0042514FB78000A84BC /* PreviewViewController.swift */; };
 		DC7129912515736A00ACCB2B /* PreviewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7129902515736A00ACCB2B /* PreviewCoordinator.swift */; };
+		DC7129942515743200ACCB2B /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7129932515743200ACCB2B /* PreviewData.swift */; };
 		DC75E59A25138C9400186F30 /* EditScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75E59925138C9400186F30 /* EditScanView.swift */; };
 		DC75E59C25138CBD00186F30 /* EditScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75E59B25138CBD00186F30 /* EditScanViewController.swift */; };
 		DC75E59F2513AA4700186F30 /* EditScanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75E59E2513AA4700186F30 /* EditScanData.swift */; };
@@ -89,6 +90,7 @@
 		DC4CD0022514FB51000A84BC /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		DC4CD0042514FB78000A84BC /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		DC7129902515736A00ACCB2B /* PreviewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCoordinator.swift; sourceTree = "<group>"; };
+		DC7129932515743200ACCB2B /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		DC75E59925138C9400186F30 /* EditScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScanView.swift; sourceTree = "<group>"; };
 		DC75E59B25138CBD00186F30 /* EditScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScanViewController.swift; sourceTree = "<group>"; };
 		DC75E59E2513AA4700186F30 /* EditScanData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScanData.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 			children = (
 				DC7129902515736A00ACCB2B /* PreviewCoordinator.swift */,
 				DC4CD0042514FB78000A84BC /* PreviewViewController.swift */,
+				DC7129922515741B00ACCB2B /* Models */,
 				DC4CD0012514FB1F000A84BC /* Views */,
 			);
 			path = Preview;
@@ -256,6 +259,14 @@
 				DC4CD0022514FB51000A84BC /* PreviewView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		DC7129922515741B00ACCB2B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DC7129932515743200ACCB2B /* PreviewData.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		DC75E59725138C3200186F30 /* EditScan */ = {
@@ -424,6 +435,7 @@
 				09C8ADB0250652BC004BA0F7 /* ScanAlbumsCoordinator.swift in Sources */,
 				0901C69B25038A320051FF16 /* AppDelegate.swift in Sources */,
 				097A18AC25046FD70044D5FB /* ScanAlbumsView.swift in Sources */,
+				DC7129942515743200ACCB2B /* PreviewData.swift in Sources */,
 				DC75E59C25138CBD00186F30 /* EditScanViewController.swift in Sources */,
 				092E85D5250659B300A01F60 /* DocumentGroupCoordinator.swift in Sources */,
 				0901C69D25038A320051FF16 /* SceneDelegate.swift in Sources */,
