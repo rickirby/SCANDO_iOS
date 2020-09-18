@@ -26,4 +26,8 @@ class SCANDOConstant {
 	static let swipeMoreChangeAction: String = "Change Cover Page"
 	static let swipeMoreDeleteAction: String = "Delete"
 	static let swipeMoreCancelAction: String = "Cancel"
+	
+	static let saveSuccessTitle: String = "Saved!"
+	static let saveSuccessMessage: String = "The original image has been saved to your Photos"
+	static let saveErrorTitle: String = "Save Error!"
 }

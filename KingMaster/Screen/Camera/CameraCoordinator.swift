@@ -21,6 +21,7 @@ class CameraCoordinator: Coordinator {
 	
 	private weak var navigationController: UINavigationController?
 	private var scanImagePickerCoordinator: ScanImagePickerCoordinator?
+	private var editScanCoordinator: EditScanCoordinator?
 	
 	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
@@ -43,11 +44,19 @@ class CameraCoordinator: Coordinator {
 		scanImagePickerCoordinator = ScanImagePickerCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
 		scanImagePickerCoordinator?.start()
 	}
+	
+	private func openEditScan(image: UIImage, quad: Quadrilateral?) {
+		editScanCoordinator = EditScanCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		editScanCoordinator?.passedData = {
+			return EditScanViewController.EditScanData(image: image, quad: quad)
+		}
+		editScanCoordinator?.start()
+	}
 }
 
 extension CameraCoordinator: RBCameraViewControllerDelegate {
 	func gotCapturedPicture(_ target: UIViewController, image: UIImage, quad: Quadrilateral?) {
-		
+		openEditScan(image: image, quad: quad)
 	}
 	
 	func didTapCancel(_ target: UIViewController) {

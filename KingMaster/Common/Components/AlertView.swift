@@ -54,4 +54,11 @@ class AlertView {
 		
 		target.present(ac, animated: true, completion: nil)
 	}
+	
+	static func createSaveImageAlert(_ target: UIViewController, didFinishSavingWithError error: Error?) {
+		let ac = UIAlertController(title: error == nil ? SCANDOConstant.saveSuccessTitle : SCANDOConstant.saveErrorTitle, message: error == nil ? SCANDOConstant.saveSuccessMessage : error?.localizedDescription, preferredStyle: .alert)
+		ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+		
+		target.present(ac, animated: true, completion: nil)
+	}
 }

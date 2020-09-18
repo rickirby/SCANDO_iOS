@@ -29,6 +29,10 @@
 		09C8ADB2250653FF004BA0F7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADB1250653FF004BA0F7 /* AppCoordinator.swift */; };
 		7206EAEF250C704B00A3DA4A /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7206EAEE250C704B00A3DA4A /* GalleryViewController.swift */; };
 		7206EAF1250C73F200A3DA4A /* GalleryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7206EAF0250C73F200A3DA4A /* GalleryCoordinator.swift */; };
+		DC39BC7A2514AF590067DF71 /* EditScanCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39BC792514AF580067DF71 /* EditScanCoordinator.swift */; };
+		DC75E59A25138C9400186F30 /* EditScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75E59925138C9400186F30 /* EditScanView.swift */; };
+		DC75E59C25138CBD00186F30 /* EditScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75E59B25138CBD00186F30 /* EditScanViewController.swift */; };
+		DC75E59F2513AA4700186F30 /* EditScanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75E59E2513AA4700186F30 /* EditScanData.swift */; };
 		DC972BBD25123F9800A6C43B /* RBCameraDocScan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */; };
 		DC972BBE25123F9800A6C43B /* RBCameraDocScan.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DC972BC12512454F00A6C43B /* CameraCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC972BC02512454F00A6C43B /* CameraCoordinator.swift */; };
@@ -78,6 +82,10 @@
 		09C8ADB1250653FF004BA0F7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		7206EAEE250C704B00A3DA4A /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		7206EAF0250C73F200A3DA4A /* GalleryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCoordinator.swift; sourceTree = "<group>"; };
+		DC39BC792514AF580067DF71 /* EditScanCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScanCoordinator.swift; sourceTree = "<group>"; };
+		DC75E59925138C9400186F30 /* EditScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScanView.swift; sourceTree = "<group>"; };
+		DC75E59B25138CBD00186F30 /* EditScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScanViewController.swift; sourceTree = "<group>"; };
+		DC75E59E2513AA4700186F30 /* EditScanData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScanData.swift; sourceTree = "<group>"; };
 		DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBCameraDocScan.framework; path = Carthage/Build/iOS/RBCameraDocScan.framework; sourceTree = "<group>"; };
 		DC972BC02512454F00A6C43B /* CameraCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCoordinator.swift; sourceTree = "<group>"; };
 		DC972BC3251258C400A6C43B /* ScanImagePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanImagePickerCoordinator.swift; sourceTree = "<group>"; };
@@ -161,6 +169,7 @@
 				DC972BBF2512453A00A6C43B /* Camera */,
 				DC972BC2251258AD00A6C43B /* ScanImagePicker */,
 				7206EAED250C6D8200A3DA4A /* Gallery */,
+				DC75E59725138C3200186F30 /* EditScan */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -222,6 +231,33 @@
 				DCB1B5E32512DC6A00B1630C /* Views */,
 			);
 			path = Gallery;
+			sourceTree = "<group>";
+		};
+		DC75E59725138C3200186F30 /* EditScan */ = {
+			isa = PBXGroup;
+			children = (
+				DC39BC792514AF580067DF71 /* EditScanCoordinator.swift */,
+				DC75E59B25138CBD00186F30 /* EditScanViewController.swift */,
+				DC75E59D2513AA2900186F30 /* Models */,
+				DC75E59825138C4E00186F30 /* Views */,
+			);
+			path = EditScan;
+			sourceTree = "<group>";
+		};
+		DC75E59825138C4E00186F30 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DC75E59925138C9400186F30 /* EditScanView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DC75E59D2513AA2900186F30 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DC75E59E2513AA4700186F30 /* EditScanData.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		DC972BBF2512453A00A6C43B /* Camera */ = {
@@ -349,21 +385,25 @@
 				7206EAF1250C73F200A3DA4A /* GalleryCoordinator.swift in Sources */,
 				09C8ADB2250653FF004BA0F7 /* AppCoordinator.swift in Sources */,
 				DCE0E72D250AFA3400971B22 /* UIView+Extension.swift in Sources */,
+				DC75E59A25138C9400186F30 /* EditScanView.swift in Sources */,
 				0901C6A525038A320051FF16 /* KingMaster.xcdatamodeld in Sources */,
 				09C8ADAC2506511F004BA0F7 /* Coordinator.swift in Sources */,
 				DC972BC4251258C400A6C43B /* ScanImagePickerCoordinator.swift in Sources */,
 				0922627525053E0B00BDDB90 /* DocumentGroupViewController.swift in Sources */,
+				DC39BC7A2514AF590067DF71 /* EditScanCoordinator.swift in Sources */,
 				0922627425053E0B00BDDB90 /* DocumentGroupView.swift in Sources */,
 				09195CDA2504C429006CC8A4 /* ScanAlbumsTableViewCell.swift in Sources */,
 				DC972BC12512454F00A6C43B /* CameraCoordinator.swift in Sources */,
 				09C8ADB0250652BC004BA0F7 /* ScanAlbumsCoordinator.swift in Sources */,
 				0901C69B25038A320051FF16 /* AppDelegate.swift in Sources */,
 				097A18AC25046FD70044D5FB /* ScanAlbumsView.swift in Sources */,
+				DC75E59C25138CBD00186F30 /* EditScanViewController.swift in Sources */,
 				092E85D5250659B300A01F60 /* DocumentGroupCoordinator.swift in Sources */,
 				0901C69D25038A320051FF16 /* SceneDelegate.swift in Sources */,
 				7206EAEF250C704B00A3DA4A /* GalleryViewController.swift in Sources */,
 				DCB1B5E52512DC9D00B1630C /* GalleryView.swift in Sources */,
 				0922627625053E0B00BDDB90 /* DocumentGroupCollectionViewCell.swift in Sources */,
+				DC75E59F2513AA4700186F30 /* EditScanData.swift in Sources */,
 				DCE0E733250AFE2300971B22 /* AlertView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

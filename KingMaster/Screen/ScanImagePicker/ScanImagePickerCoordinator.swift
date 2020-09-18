@@ -20,6 +20,7 @@ class ScanImagePickerCoordinator: Coordinator {
 	}
 	
 	private weak var navigationController: UINavigationController?
+	private var editScanCoordinator: EditScanCoordinator?
 	
 	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
@@ -33,7 +34,24 @@ class ScanImagePickerCoordinator: Coordinator {
 	
 	private func makeViewController() -> UIViewController {
 		let vc = RBScanImagePickerController()
+		vc.scanDelegate = self
 		
 		return vc
 	}
+	
+	private func openEditScan(image: UIImage, quad: Quadrilateral?) {
+		editScanCoordinator = EditScanCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		editScanCoordinator?.passedData = {
+			return EditScanViewController.EditScanData(image: image, quad: quad)
+		}
+		editScanCoordinator?.start()
+	}
+}
+
+extension ScanImagePickerCoordinator: RBScanImagePickerControllerDelegate {
+	
+	func gotPicture(image: UIImage, quad: Quadrilateral?) {
+		openEditScan(image: image, quad: quad)
+	}
+	
 }
