@@ -86,6 +86,28 @@ class EditScanView: View {
 		adjustQuadViewConstraints()
 	}
 	
+	// MARK: - Public Method
+	
+	func startLoading() {
+		if Thread.isMainThread {
+			activityIndicator.startAnimating()
+		} else {
+			DispatchQueue.main.async {
+				self.activityIndicator.startAnimating()
+			}
+		}
+	}
+	
+	func stopLoading() {
+		if Thread.isMainThread {
+			activityIndicator.stopAnimating()
+		} else {
+			DispatchQueue.main.async {
+				self.activityIndicator.stopAnimating()
+			}
+		}
+	}
+	
 	// MARK: - Private Method
 	
 	private func configureView() {
@@ -116,26 +138,6 @@ class EditScanView: View {
 		let frame = AVMakeRect(aspectRatio: image.size, insideRect: capturedImageView.bounds)
 		quadViewWidthConstraint.constant = frame.size.width
 		quadViewHeightConstraint.constant = frame.size.height
-	}
-	
-	private func startLoading() {
-		if Thread.isMainThread {
-			activityIndicator.startAnimating()
-		} else {
-			DispatchQueue.main.async {
-				self.activityIndicator.startAnimating()
-			}
-		}
-	}
-	
-	private func stopLoading() {
-		if Thread.isMainThread {
-			activityIndicator.stopAnimating()
-		} else {
-			DispatchQueue.main.async {
-				self.activityIndicator.stopAnimating()
-			}
-		}
 	}
 	
 }
