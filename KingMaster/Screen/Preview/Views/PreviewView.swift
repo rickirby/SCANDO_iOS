@@ -12,3 +12,29 @@ import RBToolkit
 class PreviewView: View {
 	
 }
+
+extension PreviewView {
+	
+	// MARK: - @Objc Target
+	
+	@objc func doneBarButtonTapped() {
+		
+	}
+	
+	@objc func downloadBarButtonTapped() {
+		
+	}
+	
+	@objc func rotateRightBarButtonTapped() {
+		
+	}
+	
+	@objc func rotateLeftBarButtonTapped() {
+		
+	}
+	
+	@objc func translateBarButtonTapped() {
+		
+	}
+	
+}
