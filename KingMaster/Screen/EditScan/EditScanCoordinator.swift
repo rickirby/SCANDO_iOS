@@ -18,7 +18,7 @@ class EditScanCoordinator: Coordinator {
 		return navigationController
 	}
 	
-	var passedData: (() -> EditScanViewController.EditScanData)?
+	var passedData: (() -> EditScanData)?
 	
 	private weak var navigationController: UINavigationController?
 	

@@ -14,7 +14,7 @@ class EditScanViewController: ViewController<EditScanView> {
 	
 	// MARK: - Public Properties
 	
-	var passedData: (() -> EditScanData)?
+	var passedData: (() -> EditScanCoordinator.EditScanData)?
 	
 	// MARK: - Private Properties
 	

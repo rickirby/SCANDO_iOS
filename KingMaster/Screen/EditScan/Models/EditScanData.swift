@@ -9,7 +9,7 @@
 import UIKit
 import RBCameraDocScan
 
-extension EditScanViewController {
+extension EditScanCoordinator {
 	
 	struct EditScanData {
 		var image: UIImage

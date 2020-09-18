@@ -48,7 +48,7 @@ class CameraCoordinator: Coordinator {
 	private func openEditScan(image: UIImage, quad: Quadrilateral?) {
 		editScanCoordinator = EditScanCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
 		editScanCoordinator?.passedData = {
-			return EditScanViewController.EditScanData(image: image, quad: quad)
+			return EditScanCoordinator.EditScanData(image: image, quad: quad)
 		}
 		editScanCoordinator?.start()
 	}
