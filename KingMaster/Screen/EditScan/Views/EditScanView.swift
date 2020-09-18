@@ -145,14 +145,14 @@ extension EditScanView {
 	// MARK: - @Objc Target
 	
 	@objc func nextBarButtonTapped() {
-		
+		onViewEvent?(.didTapNext)
 	}
 	
 	@objc func allAreaBarButtonTapped() {
-		
+		onViewEvent?(.didTapAll)
 	}
 	
 	@objc func downloadBarButtonTapped() {
-		
+		onViewEvent?(.didTapDownload)
 	}
 }
