@@ -13,6 +13,24 @@ class PreviewView: View {
 	
 	// MARK: - View Components
 	
+	lazy var previewImageView: UIImageView = {
+		let imageView = UIImageView()
+		imageView.translatesAutoresizingMaskIntoConstraints = false
+		imageView.clipsToBounds = true
+		imageView.contentMode = .scaleAspectFit
+		
+		return imageView
+	}()
+	
+	lazy var activityIndicator: UIActivityIndicatorView = {
+		let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+		activityIndicator.color = .white
+		activityIndicator.hidesWhenStopped = true
+		
+		return activityIndicator
+	}()
+	
 	lazy var doneBarButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneBarButtonTapped))
 	
 	lazy var downloadBarButton = UIBarButtonItem(image: UIImage(named: "SaveButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(downloadBarButtonTapped))
