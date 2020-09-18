@@ -98,8 +98,7 @@ class EditScanViewController: ViewController<EditScanView> {
 			recentQuad = screenView.quadView.quad?.scale(screenView.quadView.bounds.size, image.size)
 			quad = allFrameQuad(forImage: image)
 			displayQuad()
-		}
-		else {
+		} else {
 			quad = recentQuad
 			displayQuad()
 		}
