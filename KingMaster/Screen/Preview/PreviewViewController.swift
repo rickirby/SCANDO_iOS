@@ -37,6 +37,13 @@ class PreviewViewController: ViewController<PreviewView> {
 		guard let data = passedData?() else { return }
 		image = data.image
 		quad = data.quad
+		
+		screenView.startLoading()
+		
+		DispatchQueue.global(qos: .userInitiated).async {
+			self.processedImage = PerspectiveTransformer.applyTransform(to: data.image, withQuad: data.quad)
+			self.screenView.stopLoading()
+		}
 	}
 	
 }
