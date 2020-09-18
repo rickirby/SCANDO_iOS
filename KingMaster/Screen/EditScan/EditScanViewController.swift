@@ -21,6 +21,7 @@ class EditScanViewController: ViewController<EditScanView> {
 	private var image: UIImage?
 	private var quad: Quadrilateral?
 	private var recentQuad: Quadrilateral?
+	private var isAllQuad: Bool = false
 	
 	private var zoomGestureController: ZoomGestureController?
 	
@@ -69,7 +70,16 @@ class EditScanViewController: ViewController<EditScanView> {
 	}
 	
 	private func configureViewEvent() {
-		
+		screenView.onViewEvent = { [weak self] (viewEvent: EditScanView.ViewEvent) in
+			switch viewEvent {
+			case .didTapNext:
+				print("Next")
+			case .didTapAll:
+				toggleAllAreaQuad()
+			case .didTapDownload:
+				print("Download")
+			}
+		}
 	}
 	
 	private func configureZoomGesture() {
@@ -78,6 +88,21 @@ class EditScanViewController: ViewController<EditScanView> {
 		let touchDown = UILongPressGestureRecognizer(target: zoomGestureController, action: #selector(zoomGestureController?.handle(pan:)))
 		touchDown.minimumPressDuration = 0
 		screenView.addGestureRecognizer(touchDown)
+	}
+	
+	private func toggleAllAreaQuad() {
+		isAllQuad.toggle()
+		
+		if isAllQuad {
+			guard let image = image else { return }
+			recentQuad = screenView.quadView.quad?.scale(screenView.quadView.bounds.size, image.size)
+			quad = allFrameQuad(forImage: image)
+			displayQuad()
+		}
+		else {
+			quad = recentQuad
+			displayQuad()
+		}
 	}
 }
 
