@@ -69,7 +69,7 @@ class EditScanView: View {
 	override func onViewDidDisappear() {
 		super.onViewDidDisappear()
 		
-		activityIndicator.stopAnimating()
+		stopLoading()
 	}
 	
 	override func onViewDidLayoutSubviews() {
