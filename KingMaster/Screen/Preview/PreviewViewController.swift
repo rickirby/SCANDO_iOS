@@ -28,6 +28,7 @@ class PreviewViewController: ViewController<PreviewView> {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		loadData()
 	}
 	
 	// MARK: - Private Methods
