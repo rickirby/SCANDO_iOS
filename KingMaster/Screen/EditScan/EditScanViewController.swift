@@ -77,7 +77,7 @@ class EditScanViewController: ViewController<EditScanView> {
 			case .didTapAll:
 				self?.toggleAllAreaQuad()
 			case .didTapDownload:
-				print("Download")
+				self?.saveImage()
 			}
 		}
 	}
@@ -103,6 +103,20 @@ class EditScanViewController: ViewController<EditScanView> {
 			displayQuad()
 		}
 	}
+	
+	private func saveImage() {
+		guard let image = image else { return }
+		screenView.startLoading()
+		
+		DispatchQueue.global(qos: .userInitiated).async {
+			UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
+		}
+	}
+	
+	@objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+		screenView.stopLoading()
+		screenView.showSaveAlert(error: error)
+    }
 }
 
 extension EditScanViewController {

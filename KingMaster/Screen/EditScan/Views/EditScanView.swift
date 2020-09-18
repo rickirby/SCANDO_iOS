@@ -108,6 +108,12 @@ class EditScanView: View {
 		}
 	}
 	
+	func showSaveAlert(error: Error?) {
+		guard let vc = findViewController() else { return }
+		
+		AlertView.createSaveImageAlert(vc, didFinishSavingWithError: error)
+	}
+	
 	// MARK: - Private Method
 	
 	private func configureView() {
