@@ -11,6 +11,17 @@ import RBToolkit
 
 class PreviewView: View {
 	
+	// MARK: - View Components
+	
+	lazy var doneBarButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneBarButtonTapped))
+	
+	lazy var downloadBarButton = UIBarButtonItem(image: UIImage(named: "SaveButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(downloadBarButtonTapped))
+	
+	lazy var rotateRightBarButton = UIBarButtonItem(image: UIImage(named: "RotateRightButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(rotateRightBarButtonTapped))
+	
+	lazy var rotateLeftBarButton = UIBarButtonItem(image: UIImage(named: "RotateLeftButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(rotateLeftBarButtonTapped))
+	
+	lazy var translateBarButton = UIBarButtonItem(image: UIImage(named: "FilterButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(translateBarButtonTapped))
 }
 
 extension PreviewView {
