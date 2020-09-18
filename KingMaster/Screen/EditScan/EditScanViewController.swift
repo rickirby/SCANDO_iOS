@@ -75,7 +75,7 @@ class EditScanViewController: ViewController<EditScanView> {
 			case .didTapNext:
 				print("Next")
 			case .didTapAll:
-				toggleAllAreaQuad()
+				self?.toggleAllAreaQuad()
 			case .didTapDownload:
 				print("Download")
 			}
