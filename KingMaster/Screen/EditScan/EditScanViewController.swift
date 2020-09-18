@@ -64,6 +64,7 @@ class EditScanViewController: ViewController<EditScanView> {
 	}
 	
 	private func configureBar() {
+		setLargeTitleDisplayMode(.never)
 		navigationController?.setToolbarHidden(false, animated: true)
 		navigationController?.setNavigationBarHidden(false, animated: true)
 		navigationController?.interactivePopGestureRecognizer?.isEnabled = false
