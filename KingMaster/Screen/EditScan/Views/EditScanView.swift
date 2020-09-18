@@ -15,6 +15,14 @@ class EditScanView: View {
 	
 	// MARK: - Public Properties
 	
+	enum ViewEvent {
+		case didTapNext
+		case didTapAll
+		case didTapDownload
+	}
+	
+	var onViewEvent: ((ViewEvent) -> Void)?
+	
 	var image: UIImage? {
 		didSet {
 			capturedImageView.image = image
