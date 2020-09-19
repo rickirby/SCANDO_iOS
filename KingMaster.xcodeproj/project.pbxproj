@@ -349,14 +349,6 @@
 		DCC5226D2516526300FF7024 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				DCC5227E25165A0200FF7024 /* CoreDataModels */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
-		DCC5227E25165A0200FF7024 /* CoreDataModels */ = {
-			isa = PBXGroup;
-			children = (
 				DCC5226E251652A500FF7024 /* DocumentGroup+CoreDataClass.swift */,
 				DCC5226F251652A500FF7024 /* DocumentGroup+CoreDataProperties.swift */,
 				DCC52270251652A500FF7024 /* Document+CoreDataClass.swift */,
@@ -366,7 +358,7 @@
 				DCC52274251652A500FF7024 /* DocumentImage+CoreDataClass.swift */,
 				DCC52275251652A500FF7024 /* DocumentImage+CoreDataProperties.swift */,
 			);
-			path = CoreDataModels;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		DCE0E72B250AFA1B00971B22 /* Extension */ = {
