@@ -32,6 +32,12 @@ class PreviewViewController: ViewController<PreviewView> {
 		loadData()
 	}
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		configureBar()
+	}
+	
 	// MARK: - Private Methods
 	
 	private func loadData() {
@@ -52,6 +58,11 @@ class PreviewViewController: ViewController<PreviewView> {
 		let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 		navigationItem.rightBarButtonItems = [screenView.doneBarButton]
 		toolbarItems = [screenView.translateBarButton, spacer, screenView.rotateLeftBarButton, spacer, screenView.rotateRightBarButton, spacer, screenView.downloadBarButton]
+	}
+	
+	private func configureBar() {
+		navigationController?.setToolbarHidden(false, animated: true)
+		navigationController?.interactivePopGestureRecognizer?.isEnabled = false
 	}
 	
 }
