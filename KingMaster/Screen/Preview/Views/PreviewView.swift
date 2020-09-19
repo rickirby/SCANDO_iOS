@@ -82,7 +82,7 @@ class PreviewView: View {
 	func showSaveAlert(error: Error?) {
 		guard let vc = findViewController() else { return }
 		
-		AlertView.createSaveImageAlert(vc, didFinishSavingWithError: error)
+		AlertView.createSaveImageAlert(vc, isOriginalImage: false, didFinishSavingWithError: error)
 	}
 	
 	// MARK: - Private Methods
