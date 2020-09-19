@@ -17,7 +17,7 @@ extension DocumentImage {
         return NSFetchRequest<DocumentImage>(entityName: "DocumentImage")
     }
 
-    @NSManaged public var originalImage: Data?
+    @NSManaged public var originalImage: Data
     @NSManaged public var owner: Document?
 
 }

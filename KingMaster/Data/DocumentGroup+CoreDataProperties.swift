@@ -17,9 +17,9 @@ extension DocumentGroup {
         return NSFetchRequest<DocumentGroup>(entityName: "DocumentGroup")
     }
 
-    @NSManaged public var date: Date?
-    @NSManaged public var name: String?
-    @NSManaged public var documents: NSSet?
+    @NSManaged public var date: Date
+    @NSManaged public var name: String
+    @NSManaged public var documents: NSSet
 
 }
 

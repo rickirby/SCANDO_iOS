@@ -17,10 +17,10 @@ extension Document {
         return NSFetchRequest<Document>(entityName: "Document")
     }
 
-    @NSManaged public var date: Date?
+    @NSManaged public var date: Date
     @NSManaged public var rotationAngle: Double
     @NSManaged public var owner: DocumentGroup?
-    @NSManaged public var image: DocumentImage?
-    @NSManaged public var quad: QuadPoint?
+    @NSManaged public var image: DocumentImage
+    @NSManaged public var quad: QuadPoint
 
 }
