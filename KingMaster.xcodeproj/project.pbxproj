@@ -37,6 +37,7 @@
 		DC215A2125166321006D409A /* DocumentImage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1925166321006D409A /* DocumentImage+CoreDataProperties.swift */; };
 		DC215A2225166321006D409A /* DocumentGroup+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1A25166321006D409A /* DocumentGroup+CoreDataClass.swift */; };
 		DC215A2325166321006D409A /* DocumentGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1B25166321006D409A /* DocumentGroup+CoreDataProperties.swift */; };
+		DC215A262516640E006D409A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A252516640E006D409A /* DataManager.swift */; };
 		DC39BC7A2514AF590067DF71 /* EditScanCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39BC792514AF580067DF71 /* EditScanCoordinator.swift */; };
 		DC4CD0032514FB51000A84BC /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4CD0022514FB51000A84BC /* PreviewView.swift */; };
 		DC4CD0052514FB78000A84BC /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4CD0042514FB78000A84BC /* PreviewViewController.swift */; };
@@ -102,6 +103,7 @@
 		DC215A1925166321006D409A /* DocumentImage+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentImage+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DC215A1A25166321006D409A /* DocumentGroup+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentGroup+CoreDataClass.swift"; sourceTree = "<group>"; };
 		DC215A1B25166321006D409A /* DocumentGroup+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentGroup+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DC215A252516640E006D409A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		DC39BC792514AF580067DF71 /* EditScanCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScanCoordinator.swift; sourceTree = "<group>"; };
 		DC4CD0022514FB51000A84BC /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		DC4CD0042514FB78000A84BC /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 		DC215A032516618A006D409A /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				DC215A252516640E006D409A /* DataManager.swift */,
 				DC215A24251663EB006D409A /* CoreDataModels */,
 			);
 			path = Data;
@@ -500,6 +503,7 @@
 				DC215A1E25166321006D409A /* Document+CoreDataClass.swift in Sources */,
 				DC75E59F2513AA4700186F30 /* EditScanData.swift in Sources */,
 				DC215A2225166321006D409A /* DocumentGroup+CoreDataClass.swift in Sources */,
+				DC215A262516640E006D409A /* DataManager.swift in Sources */,
 				DCE0E733250AFE2300971B22 /* AlertView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
