@@ -30,6 +30,7 @@ class PreviewViewController: ViewController<PreviewView> {
 		
 		configureLoadBar()
 		loadData()
+		configureViewEvent()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
