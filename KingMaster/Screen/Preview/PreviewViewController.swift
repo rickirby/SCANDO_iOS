@@ -89,7 +89,7 @@ class PreviewViewController: ViewController<PreviewView> {
 	}
 	
 	private func saveImage() {
-		guard let image = image else { return }
+		guard let image = processedImage else { return }
 		screenView.startLoading()
 		
 		DispatchQueue.global(qos: .userInitiated).async {
