@@ -65,6 +65,19 @@ class PreviewViewController: ViewController<PreviewView> {
 		navigationController?.interactivePopGestureRecognizer?.isEnabled = false
 	}
 	
+	private func configureViewEvent() {
+		screenView.onViewEvent = { [weak self] (viewEvent: PreviewView.ViewEvent) in
+			switch viewEvent {
+			case .didTapRotateLeft:
+				self?.rotateLeft()
+			case .didTapRotateRight:
+				self?.rotateRight()
+			case .didTapDownload:
+				self?.saveImage()
+			}
+		}
+	}
+	
 	private func reloadImage() {
 		guard let processedImage = processedImage else { return }
 		screenView.reloadImage(withImage: processedImage, angle: rotationAngle)

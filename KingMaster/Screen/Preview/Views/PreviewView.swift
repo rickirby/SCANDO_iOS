@@ -11,6 +11,16 @@ import RBToolkit
 
 class PreviewView: View {
 	
+	// MARK: - Public Properties
+	
+	enum ViewEvent {
+		case didTapRotateLeft
+		case didTapRotateRight
+		case didTapDownload
+	}
+	
+	var onViewEvent: ((ViewEvent) -> Void)?
+	
 	// MARK: - View Components
 	
 	lazy var previewImageView: UIImageView = {
