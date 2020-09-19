@@ -3,13 +3,18 @@
     <entity name="Document" representedClassName="Document" syncable="YES" codeGenerationType="class">
         <attribute name="date" attributeType="Date" defaultDateTimeInterval="622218540" usesScalarValueType="NO"/>
         <attribute name="rotationAngle" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="image" maxCount="1" deletionRule="Cascade" destinationEntity="DocumentImage" inverseName="owner" inverseEntity="DocumentImage"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DocumentGroup" inverseName="documents" inverseEntity="DocumentGroup"/>
+        <relationship name="quad" maxCount="1" deletionRule="Cascade" destinationEntity="QuadPoint" inverseName="owner" inverseEntity="QuadPoint"/>
     </entity>
     <entity name="DocumentGroup" representedClassName="DocumentGroup" syncable="YES" codeGenerationType="class">
         <attribute name="date" attributeType="Date" defaultDateTimeInterval="622218540" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String" defaultValueString=""/>
+        <relationship name="documents" toMany="YES" deletionRule="Cascade" destinationEntity="Document" inverseName="owner" inverseEntity="Document"/>
     </entity>
     <entity name="DocumentImage" representedClassName="DocumentImage" syncable="YES" codeGenerationType="class">
         <attribute name="originalImage" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Document" inverseName="image" inverseEntity="Document"/>
     </entity>
     <entity name="QuadPoint" representedClassName="QuadPoint" syncable="YES" codeGenerationType="class">
         <attribute name="bottomLeftX" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -20,11 +25,12 @@
         <attribute name="topLeftY" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="topRightX" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="topRightY" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Document" inverseName="quad" inverseEntity="Document"/>
     </entity>
     <elements>
-        <element name="DocumentGroup" positionX="-63" positionY="-18" width="128" height="73"/>
-        <element name="Document" positionX="-54" positionY="9" width="128" height="73"/>
-        <element name="DocumentImage" positionX="-36" positionY="27" width="128" height="58"/>
-        <element name="QuadPoint" positionX="-18" positionY="36" width="128" height="163"/>
+        <element name="DocumentGroup" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="Document" positionX="-54" positionY="9" width="128" height="118"/>
+        <element name="DocumentImage" positionX="-36" positionY="27" width="128" height="73"/>
+        <element name="QuadPoint" positionX="-18" positionY="36" width="128" height="178"/>
     </elements>
 </model>
