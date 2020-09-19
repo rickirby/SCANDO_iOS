@@ -14,6 +14,12 @@ class EditScanViewController: ViewController<EditScanView> {
 	
 	// MARK: - Public Properties
 	
+	enum NavigationEvent {
+		case didTapDone(image: UIImage, quad: Quadrilateral)
+	}
+	
+	var onNavigationEvent: ((NavigationEvent) -> Void)?
+	
 	var passedData: (() -> EditScanCoordinator.EditScanData)?
 	
 	// MARK: - Private Properties
@@ -75,7 +81,8 @@ class EditScanViewController: ViewController<EditScanView> {
 		screenView.onViewEvent = { [weak self] (viewEvent: EditScanView.ViewEvent) in
 			switch viewEvent {
 			case .didTapNext:
-				print("Next")
+				guard let image = self?.image, let quad = self?.quad else { return }
+				self?.onNavigationEvent?(.didTapDone(image: image, quad: quad))
 			case .didTapAll:
 				self?.toggleAllAreaQuad()
 			case .didTapDownload:

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RBCameraDocScan
 
 class EditScanCoordinator: Coordinator {
 	
@@ -21,6 +22,7 @@ class EditScanCoordinator: Coordinator {
 	var passedData: (() -> EditScanData)?
 	
 	private weak var navigationController: UINavigationController?
+	private var previewCoordinator: PreviewCoordinator?
 	
 	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
@@ -32,10 +34,26 @@ class EditScanCoordinator: Coordinator {
 		Router.shared.push(vc, on: self)
 	}
 	
-	func makeEditScanViewController() -> UIViewController {
+	private func makeEditScanViewController() -> UIViewController {
 		let vc = EditScanViewController()
 		vc.passedData = passedData
+		vc.onNavigationEvent = { [weak self] (navigationEvent: EditScanViewController.NavigationEvent) in
+			switch navigationEvent {
+				
+			case .didTapDone(let image, let quad):
+				self?.openPreview(image: image, quad: quad)
+			}
+		}
 		
 		return vc
+	}
+	
+	private func openPreview(image: UIImage, quad: Quadrilateral) {
+		previewCoordinator = PreviewCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		previewCoordinator?.passedData = {
+			return PreviewCoordinator.PreviewData(image: image, quad: quad)
+		}
+		
+		previewCoordinator?.start()
 	}
 }
