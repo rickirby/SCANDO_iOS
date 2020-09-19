@@ -14,6 +14,12 @@ class EditScanViewController: ViewController<EditScanView> {
 	
 	// MARK: - Public Properties
 	
+	enum NavigationEvent {
+		case didTapDone(image: UIImage, quad: Quadrilateral)
+	}
+	
+	var onNavigationEvent: ((NavigationEvent) -> Void)?
+	
 	var passedData: (() -> EditScanCoordinator.EditScanData)?
 	
 	// MARK: - Private Properties
@@ -30,8 +36,8 @@ class EditScanViewController: ViewController<EditScanView> {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		loadData()
 		configureLoadBar()
+		loadData()
 		configureViewEvent()
 		configureZoomGesture()
 	}
@@ -52,7 +58,7 @@ class EditScanViewController: ViewController<EditScanView> {
 	
 	private func loadData() {
 		guard let data = passedData?() else { return }
-		image = data.image
+		image = data.isRotateImage ? data.image.applyingPortraitOrientation() : data.image
 		quad = data.quad ?? defaultQuad(forImage: data.image)
 		screenView.image = data.image
 	}
@@ -75,7 +81,8 @@ class EditScanViewController: ViewController<EditScanView> {
 		screenView.onViewEvent = { [weak self] (viewEvent: EditScanView.ViewEvent) in
 			switch viewEvent {
 			case .didTapNext:
-				print("Next")
+				guard let image = self?.image, let quad = self?.quad else { return }
+				self?.onNavigationEvent?(.didTapDone(image: image, quad: quad))
 			case .didTapAll:
 				self?.toggleAllAreaQuad()
 			case .didTapDownload:
@@ -87,9 +94,11 @@ class EditScanViewController: ViewController<EditScanView> {
 	private func configureZoomGesture() {
 		guard let image = image else { return }
 		zoomGestureController = ZoomGestureController(image: image, quadView: screenView.quadView)
-		let touchDown = UILongPressGestureRecognizer(target: zoomGestureController, action: #selector(zoomGestureController?.handle(pan:)))
-		touchDown.minimumPressDuration = 0
-		screenView.addGestureRecognizer(touchDown)
+		zoomGestureController?.configure(on: screenView)
+		zoomGestureController?.onUpdateQuad = { newQuad in
+			self.quad = newQuad
+			self.isAllQuad = false
+		}
 	}
 	
 	private func toggleAllAreaQuad() {
