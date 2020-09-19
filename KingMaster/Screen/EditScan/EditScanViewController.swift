@@ -93,10 +93,8 @@ class EditScanViewController: ViewController<EditScanView> {
 	
 	private func configureZoomGesture() {
 		guard let image = image else { return }
-		zoomGestureController = ZoomGestureController(image: image, quadView: screenView.quadView)
-		let touchDown = UILongPressGestureRecognizer(target: zoomGestureController, action: #selector(zoomGestureController?.handle(pan:)))
-		touchDown.minimumPressDuration = 0
-		screenView.addGestureRecognizer(touchDown)
+		zoomGestureController = ZoomGestureController(image: image, quad: quad, quadView: screenView.quadView)
+		zoomGestureController?.configure(on: screenView)
 	}
 	
 	private func toggleAllAreaQuad() {
