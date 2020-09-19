@@ -28,6 +28,7 @@ class PreviewViewController: ViewController<PreviewView> {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		configureLoadBar()
 		loadData()
 	}
 	
@@ -44,6 +45,13 @@ class PreviewViewController: ViewController<PreviewView> {
 			self.processedImage = PerspectiveTransformer.applyTransform(to: data.image, withQuad: data.quad)
 			self.screenView.stopLoading()
 		}
+	}
+	
+	private func configureLoadBar() {
+		title = "Preview"
+		let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+		navigationItem.rightBarButtonItems = [screenView.doneBarButton]
+		toolbarItems = [screenView.translateBarButton, spacer, screenView.rotateLeftBarButton, spacer, screenView.rotateRightBarButton, spacer, screenView.downloadBarButton]
 	}
 	
 }
