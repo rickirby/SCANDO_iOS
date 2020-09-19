@@ -49,7 +49,9 @@ class PreviewViewController: ViewController<PreviewView> {
 		
 		DispatchQueue.global(qos: .userInitiated).async {
 			self.processedImage = PerspectiveTransformer.applyTransform(to: data.image, withQuad: data.quad)
-			self.reloadImage()
+			ThreadManager.executeOnMain {
+				self.reloadImage()
+			}
 		}
 	}
 	

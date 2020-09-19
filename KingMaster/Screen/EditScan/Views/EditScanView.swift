@@ -89,22 +89,14 @@ class EditScanView: View {
 	// MARK: - Public Method
 	
 	func startLoading() {
-		if Thread.isMainThread {
-			activityIndicator.startAnimating()
-		} else {
-			DispatchQueue.main.async {
-				self.activityIndicator.startAnimating()
-			}
+		ThreadManager.executeOnMain {
+			self.activityIndicator.startAnimating()
 		}
 	}
 	
 	func stopLoading() {
-		if Thread.isMainThread {
-			activityIndicator.stopAnimating()
-		} else {
-			DispatchQueue.main.async {
-				self.activityIndicator.stopAnimating()
-			}
+		ThreadManager.executeOnMain {
+			self.activityIndicator.stopAnimating()
 		}
 	}
 	
