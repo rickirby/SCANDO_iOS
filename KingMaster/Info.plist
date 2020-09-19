@@ -21,9 +21,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>The apps need to access your camera to capture the document that will be scanned</string>
+	<string>The app needs access your camera to capture the document that will be scanned</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>The apps needs access to save the photo in your photo library</string>
+	<string>The app needs access to save image in your photo library</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
