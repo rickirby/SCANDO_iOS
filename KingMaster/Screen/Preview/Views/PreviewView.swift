@@ -14,6 +14,7 @@ class PreviewView: View {
 	// MARK: - Public Properties
 	
 	enum ViewEvent {
+		case didTapDone
 		case didTapRotateLeft
 		case didTapRotateRight
 		case didTapDownload
@@ -107,19 +108,19 @@ extension PreviewView {
 	// MARK: - @Objc Target
 	
 	@objc func doneBarButtonTapped() {
-		
+		onViewEvent?(.didTapDone)
 	}
 	
 	@objc func downloadBarButtonTapped() {
-		
+		onViewEvent?(.didTapDownload)
 	}
 	
 	@objc func rotateRightBarButtonTapped() {
-		
+		onViewEvent?(.didTapRotateRight)
 	}
 	
 	@objc func rotateLeftBarButtonTapped() {
-		
+		onViewEvent?(.didTapRotateLeft)
 	}
 	
 	@objc func translateBarButtonTapped() {

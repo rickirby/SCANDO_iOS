@@ -71,6 +71,8 @@ class PreviewViewController: ViewController<PreviewView> {
 	private func configureViewEvent() {
 		screenView.onViewEvent = { [weak self] (viewEvent: PreviewView.ViewEvent) in
 			switch viewEvent {
+			case .didTapDone:
+				print("Done")
 			case .didTapRotateLeft:
 				self?.rotateLeft()
 			case .didTapRotateRight:
