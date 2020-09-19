@@ -93,8 +93,12 @@ class EditScanViewController: ViewController<EditScanView> {
 	
 	private func configureZoomGesture() {
 		guard let image = image else { return }
-		zoomGestureController = ZoomGestureController(image: image, quad: quad, quadView: screenView.quadView)
+		zoomGestureController = ZoomGestureController(image: image, quadView: screenView.quadView)
 		zoomGestureController?.configure(on: screenView)
+		zoomGestureController?.onUpdateQuad = { newQuad in
+			self.quad = newQuad
+			self.isAllQuad = false
+		}
 	}
 	
 	private func toggleAllAreaQuad() {
