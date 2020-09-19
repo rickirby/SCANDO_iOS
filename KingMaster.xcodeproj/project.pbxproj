@@ -43,6 +43,14 @@
 		DC972BC4251258C400A6C43B /* ScanImagePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC972BC3251258C400A6C43B /* ScanImagePickerCoordinator.swift */; };
 		DCAC3ED725158F6B00F5DD59 /* ThreadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAC3ED625158F6B00F5DD59 /* ThreadManager.swift */; };
 		DCB1B5E52512DC9D00B1630C /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB1B5E42512DC9D00B1630C /* GalleryView.swift */; };
+		DCC52276251652A500FF7024 /* DocumentGroup+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC5226E251652A500FF7024 /* DocumentGroup+CoreDataClass.swift */; };
+		DCC52277251652A500FF7024 /* DocumentGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC5226F251652A500FF7024 /* DocumentGroup+CoreDataProperties.swift */; };
+		DCC52278251652A500FF7024 /* Document+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC52270251652A500FF7024 /* Document+CoreDataClass.swift */; };
+		DCC52279251652A500FF7024 /* Document+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC52271251652A500FF7024 /* Document+CoreDataProperties.swift */; };
+		DCC5227A251652A500FF7024 /* QuadPoint+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC52272251652A500FF7024 /* QuadPoint+CoreDataClass.swift */; };
+		DCC5227B251652A500FF7024 /* QuadPoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC52273251652A500FF7024 /* QuadPoint+CoreDataProperties.swift */; };
+		DCC5227C251652A500FF7024 /* DocumentImage+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC52274251652A500FF7024 /* DocumentImage+CoreDataClass.swift */; };
+		DCC5227D251652A500FF7024 /* DocumentImage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC52275251652A500FF7024 /* DocumentImage+CoreDataProperties.swift */; };
 		DCE0E731250AFB5F00971B22 /* SCANDOConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0E730250AFB5F00971B22 /* SCANDOConstant.swift */; };
 		DCE0E733250AFE2300971B22 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0E732250AFE2300971B22 /* AlertView.swift */; };
 /* End PBXBuildFile section */
@@ -99,6 +107,14 @@
 		DC972BC3251258C400A6C43B /* ScanImagePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanImagePickerCoordinator.swift; sourceTree = "<group>"; };
 		DCAC3ED625158F6B00F5DD59 /* ThreadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadManager.swift; sourceTree = "<group>"; };
 		DCB1B5E42512DC9D00B1630C /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
+		DCC5226E251652A500FF7024 /* DocumentGroup+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentGroup+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DCC5226F251652A500FF7024 /* DocumentGroup+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentGroup+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DCC52270251652A500FF7024 /* Document+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Document+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DCC52271251652A500FF7024 /* Document+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Document+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DCC52272251652A500FF7024 /* QuadPoint+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuadPoint+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DCC52273251652A500FF7024 /* QuadPoint+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuadPoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DCC52274251652A500FF7024 /* DocumentImage+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentImage+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DCC52275251652A500FF7024 /* DocumentImage+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentImage+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DCE0E730250AFB5F00971B22 /* SCANDOConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCANDOConstant.swift; sourceTree = "<group>"; };
 		DCE0E732250AFE2300971B22 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,6 +156,7 @@
 				0901C69A25038A320051FF16 /* AppDelegate.swift */,
 				0901C69C25038A320051FF16 /* SceneDelegate.swift */,
 				09C8ADB1250653FF004BA0F7 /* AppCoordinator.swift */,
+				DCC5226D2516526300FF7024 /* Data */,
 				097A18A525046CED0044D5FB /* Screen */,
 				09C8ADA9250650E7004BA0F7 /* Common */,
 				0901C6A625038A340051FF16 /* Assets.xcassets */,
@@ -329,6 +346,21 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		DCC5226D2516526300FF7024 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				DCC5226E251652A500FF7024 /* DocumentGroup+CoreDataClass.swift */,
+				DCC5226F251652A500FF7024 /* DocumentGroup+CoreDataProperties.swift */,
+				DCC52270251652A500FF7024 /* Document+CoreDataClass.swift */,
+				DCC52271251652A500FF7024 /* Document+CoreDataProperties.swift */,
+				DCC52272251652A500FF7024 /* QuadPoint+CoreDataClass.swift */,
+				DCC52273251652A500FF7024 /* QuadPoint+CoreDataProperties.swift */,
+				DCC52274251652A500FF7024 /* DocumentImage+CoreDataClass.swift */,
+				DCC52275251652A500FF7024 /* DocumentImage+CoreDataProperties.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		DCE0E72B250AFA1B00971B22 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -423,14 +455,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCC52279251652A500FF7024 /* Document+CoreDataProperties.swift in Sources */,
 				09C8ADAE25065154004BA0F7 /* Router.swift in Sources */,
 				DCE0E731250AFB5F00971B22 /* SCANDOConstant.swift in Sources */,
 				097A18A825046E660044D5FB /* ScanAlbumsViewController.swift in Sources */,
 				7206EAF1250C73F200A3DA4A /* GalleryCoordinator.swift in Sources */,
+				DCC5227C251652A500FF7024 /* DocumentImage+CoreDataClass.swift in Sources */,
+				DCC5227D251652A500FF7024 /* DocumentImage+CoreDataProperties.swift in Sources */,
 				09C8ADB2250653FF004BA0F7 /* AppCoordinator.swift in Sources */,
 				DCAC3ED725158F6B00F5DD59 /* ThreadManager.swift in Sources */,
 				DC75E59A25138C9400186F30 /* EditScanView.swift in Sources */,
 				0901C6A525038A320051FF16 /* KingMaster.xcdatamodeld in Sources */,
+				DCC52277251652A500FF7024 /* DocumentGroup+CoreDataProperties.swift in Sources */,
 				09C8ADAC2506511F004BA0F7 /* Coordinator.swift in Sources */,
 				DC972BC4251258C400A6C43B /* ScanImagePickerCoordinator.swift in Sources */,
 				0922627525053E0B00BDDB90 /* DocumentGroupViewController.swift in Sources */,
@@ -438,19 +474,23 @@
 				DC4CD0032514FB51000A84BC /* PreviewView.swift in Sources */,
 				DC39BC7A2514AF590067DF71 /* EditScanCoordinator.swift in Sources */,
 				0922627425053E0B00BDDB90 /* DocumentGroupView.swift in Sources */,
+				DCC52276251652A500FF7024 /* DocumentGroup+CoreDataClass.swift in Sources */,
 				09195CDA2504C429006CC8A4 /* ScanAlbumsTableViewCell.swift in Sources */,
 				DC972BC12512454F00A6C43B /* CameraCoordinator.swift in Sources */,
 				09C8ADB0250652BC004BA0F7 /* ScanAlbumsCoordinator.swift in Sources */,
 				0901C69B25038A320051FF16 /* AppDelegate.swift in Sources */,
 				097A18AC25046FD70044D5FB /* ScanAlbumsView.swift in Sources */,
 				DC7129942515743200ACCB2B /* PreviewData.swift in Sources */,
+				DCC5227A251652A500FF7024 /* QuadPoint+CoreDataClass.swift in Sources */,
 				DC75E59C25138CBD00186F30 /* EditScanViewController.swift in Sources */,
 				092E85D5250659B300A01F60 /* DocumentGroupCoordinator.swift in Sources */,
 				0901C69D25038A320051FF16 /* SceneDelegate.swift in Sources */,
 				7206EAEF250C704B00A3DA4A /* GalleryViewController.swift in Sources */,
+				DCC5227B251652A500FF7024 /* QuadPoint+CoreDataProperties.swift in Sources */,
 				DC4CD0052514FB78000A84BC /* PreviewViewController.swift in Sources */,
 				DCB1B5E52512DC9D00B1630C /* GalleryView.swift in Sources */,
 				0922627625053E0B00BDDB90 /* DocumentGroupCollectionViewCell.swift in Sources */,
+				DCC52278251652A500FF7024 /* Document+CoreDataClass.swift in Sources */,
 				DC75E59F2513AA4700186F30 /* EditScanData.swift in Sources */,
 				DCE0E733250AFE2300971B22 /* AlertView.swift in Sources */,
 			);
