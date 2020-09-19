@@ -156,7 +156,7 @@
 				0901C69A25038A320051FF16 /* AppDelegate.swift */,
 				0901C69C25038A320051FF16 /* SceneDelegate.swift */,
 				09C8ADB1250653FF004BA0F7 /* AppCoordinator.swift */,
-				DC215A032516618A006D409A /* Datas */,
+				DC215A032516618A006D409A /* Data */,
 				097A18A525046CED0044D5FB /* Screen */,
 				09C8ADA9250650E7004BA0F7 /* Common */,
 				0901C6A625038A340051FF16 /* Assets.xcassets */,
@@ -260,7 +260,15 @@
 			path = Gallery;
 			sourceTree = "<group>";
 		};
-		DC215A032516618A006D409A /* Datas */ = {
+		DC215A032516618A006D409A /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				DC215A24251663EB006D409A /* CoreDataModels */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		DC215A24251663EB006D409A /* CoreDataModels */ = {
 			isa = PBXGroup;
 			children = (
 				DC215A1425166321006D409A /* QuadPoint+CoreDataClass.swift */,
@@ -272,7 +280,7 @@
 				DC215A1A25166321006D409A /* DocumentGroup+CoreDataClass.swift */,
 				DC215A1B25166321006D409A /* DocumentGroup+CoreDataProperties.swift */,
 			);
-			path = Datas;
+			path = CoreDataModels;
 			sourceTree = "<group>";
 		};
 		DC4CD0002514FB08000A84BC /* Preview */ = {
