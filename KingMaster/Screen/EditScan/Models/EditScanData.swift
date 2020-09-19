@@ -14,7 +14,7 @@ extension EditScanCoordinator {
 	struct EditScanData {
 		var image: UIImage
 		var quad: Quadrilateral?
-		var isRotateImage: Bool = true
+		var isRotateImage: Bool = false
 	}
 	
 }

@@ -58,7 +58,7 @@ class EditScanViewController: ViewController<EditScanView> {
 	
 	private func loadData() {
 		guard let data = passedData?() else { return }
-		image = data.image
+		image = data.isRotateImage ? data.image.applyingPortraitOrientation() : data.image
 		quad = data.quad ?? defaultQuad(forImage: data.image)
 		screenView.image = data.image
 	}
@@ -94,9 +94,11 @@ class EditScanViewController: ViewController<EditScanView> {
 	private func configureZoomGesture() {
 		guard let image = image else { return }
 		zoomGestureController = ZoomGestureController(image: image, quadView: screenView.quadView)
-		let touchDown = UILongPressGestureRecognizer(target: zoomGestureController, action: #selector(zoomGestureController?.handle(pan:)))
-		touchDown.minimumPressDuration = 0
-		screenView.addGestureRecognizer(touchDown)
+		zoomGestureController?.configure(on: screenView)
+		zoomGestureController?.onUpdateQuad = { newQuad in
+			self.quad = newQuad
+			self.isAllQuad = false
+		}
 	}
 	
 	private func toggleAllAreaQuad() {
