@@ -79,9 +79,31 @@ class PreviewViewController: ViewController<PreviewView> {
 		}
 	}
 	
-	@objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+	@objc private func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
 		screenView.stopLoading()
 		screenView.showSaveAlert(error: error)
-    }
+	}
+	
+	private func rotateRight() {
+		screenView.startLoading()
+		rotationAngle.value += 90
+		
+		if rotationAngle.value == 360 {
+			rotationAngle.value = 0
+		}
+		
+		reloadImage()
+	}
+	
+	private func rotateLeft() {
+		screenView.startLoading()
+		rotationAngle.value -= 90
+		
+		if rotationAngle.value < 0 {
+			rotationAngle.value += 360
+		}
+		
+		reloadImage()
+	}
 	
 }
