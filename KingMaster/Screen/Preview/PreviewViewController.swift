@@ -49,7 +49,7 @@ class PreviewViewController: ViewController<PreviewView> {
 		
 		DispatchQueue.global(qos: .userInitiated).async {
 			self.processedImage = PerspectiveTransformer.applyTransform(to: data.image, withQuad: data.quad)
-			self.screenView.reloadImage(withImage: self.processedImage ?? UIImage(), angle: self.rotationAngle)
+			self.reloadImage()
 		}
 	}
 	
@@ -63,6 +63,11 @@ class PreviewViewController: ViewController<PreviewView> {
 	private func configureBar() {
 		navigationController?.setToolbarHidden(false, animated: true)
 		navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+	}
+	
+	private func reloadImage() {
+		guard let processedImage = processedImage else { return }
+		screenView.reloadImage(withImage: processedImage, angle: rotationAngle)
 	}
 	
 }
