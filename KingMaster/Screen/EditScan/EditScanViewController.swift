@@ -58,7 +58,7 @@ class EditScanViewController: ViewController<EditScanView> {
 	
 	private func loadData() {
 		guard let data = passedData?() else { return }
-		image = data.image
+		image = data.isRotateImage ? data.image.applyingPortraitOrientation() : data.image
 		quad = data.quad ?? defaultQuad(forImage: data.image)
 		screenView.image = data.image
 	}
