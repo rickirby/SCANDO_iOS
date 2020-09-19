@@ -35,7 +35,7 @@ class PreviewCoordinator: Coordinator {
 	
 	func makePreviewViewController() -> UIViewController {
 		let vc = PreviewViewController()
-//		vc.passedData = passedData
+		vc.passedData = passedData
 		
 		return vc
 	}
