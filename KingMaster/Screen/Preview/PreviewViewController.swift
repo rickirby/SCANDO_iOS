@@ -65,7 +65,7 @@ class PreviewViewController: ViewController<PreviewView> {
 	
 	private func configureBar() {
 		navigationController?.setToolbarHidden(false, animated: true)
-		navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+		navigationController?.interactivePopGestureRecognizer?.isEnabled = true
 	}
 	
 	private func configureViewEvent() {
