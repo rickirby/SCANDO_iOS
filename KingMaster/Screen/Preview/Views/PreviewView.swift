@@ -71,11 +71,15 @@ class PreviewView: View {
 		}
 	}
 	
-	// MARK: - Public Methods
-	
 	func reloadImage(withImage image: UIImage, angle: Measurement<UnitAngle>) {
 		previewImageView.image = image.rotated(by: angle)
 		stopLoading()
+	}
+	
+	func showSaveAlert(error: Error?) {
+		guard let vc = findViewController() else { return }
+		
+		AlertView.createSaveImageAlert(vc, didFinishSavingWithError: error)
 	}
 	
 	// MARK: - Private Methods
