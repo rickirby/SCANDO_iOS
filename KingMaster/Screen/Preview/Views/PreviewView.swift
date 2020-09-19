@@ -74,8 +74,8 @@ class PreviewView: View {
 		}
 	}
 	
-	func reloadImage(withImage image: UIImage, angle: Measurement<UnitAngle>) {
-		previewImageView.image = image.rotated(by: angle)
+	func reloadImage(withImage image: UIImage) {
+		previewImageView.image = image
 		stopLoading()
 	}
 	

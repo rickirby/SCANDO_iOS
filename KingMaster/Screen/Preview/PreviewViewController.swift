@@ -85,7 +85,7 @@ class PreviewViewController: ViewController<PreviewView> {
 	
 	private func reloadImage() {
 		guard let processedImage = processedImage else { return }
-		screenView.reloadImage(withImage: processedImage, angle: rotationAngle)
+		screenView.reloadImage(withImage: processedImage)
 	}
 	
 	private func saveImage() {
@@ -110,6 +110,8 @@ class PreviewViewController: ViewController<PreviewView> {
 			rotationAngle.value = 0
 		}
 		
+		processedImage = processedImage?.rotated(by: Measurement<UnitAngle>(value: 90, unit: .degrees))
+		
 		reloadImage()
 	}
 	
@@ -120,6 +122,8 @@ class PreviewViewController: ViewController<PreviewView> {
 		if rotationAngle.value < 0 {
 			rotationAngle.value += 360
 		}
+		
+		processedImage = processedImage?.rotated(by: Measurement<UnitAngle>(value: -90, unit: .degrees))
 		
 		reloadImage()
 	}
