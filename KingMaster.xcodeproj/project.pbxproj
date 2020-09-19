@@ -140,7 +140,7 @@
 				0901C69A25038A320051FF16 /* AppDelegate.swift */,
 				0901C69C25038A320051FF16 /* SceneDelegate.swift */,
 				09C8ADB1250653FF004BA0F7 /* AppCoordinator.swift */,
-				DCC5226D2516526300FF7024 /* Data */,
+				DC215A032516618A006D409A /* Datas */,
 				097A18A525046CED0044D5FB /* Screen */,
 				09C8ADA9250650E7004BA0F7 /* Common */,
 				0901C6A625038A340051FF16 /* Assets.xcassets */,
@@ -244,6 +244,13 @@
 			path = Gallery;
 			sourceTree = "<group>";
 		};
+		DC215A032516618A006D409A /* Datas */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Datas;
+			sourceTree = "<group>";
+		};
 		DC4CD0002514FB08000A84BC /* Preview */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,13 +335,6 @@
 				DCB1B5E42512DC9D00B1630C /* GalleryView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		DCC5226D2516526300FF7024 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Data;
 			sourceTree = "<group>";
 		};
 		DCE0E72B250AFA1B00971B22 /* Extension */ = {
