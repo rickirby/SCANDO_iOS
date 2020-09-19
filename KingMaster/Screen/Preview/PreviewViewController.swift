@@ -49,7 +49,7 @@ class PreviewViewController: ViewController<PreviewView> {
 		
 		DispatchQueue.global(qos: .userInitiated).async {
 			self.processedImage = PerspectiveTransformer.applyTransform(to: data.image, withQuad: data.quad)
-			self.screenView.stopLoading()
+			self.screenView.reloadImage(withImage: self.processedImage ?? UIImage(), angle: self.rotationAngle)
 		}
 	}
 	
