@@ -74,6 +74,9 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 				print("Select All")
 			case .delete(let indexes):
 				self?.deleteData(indexes: indexes)
+			case .rename(let index, let newName):
+				guard let object = self?.model.fetchedResultsController.object(at: IndexPath(row: index, section: 0)), !newName.isEmpty else { return }
+				self?.model.updateName(documentGroupToUpdate: object, newName: newName)
 			}
 		}
 	}

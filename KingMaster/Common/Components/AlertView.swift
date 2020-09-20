@@ -62,17 +62,20 @@ class AlertView {
 		target.present(ac, animated: true, completion: nil)
 	}
 	
-	static func createRenameAlert(_ target: UIViewController, currentName: String, positiveHandler: @escaping () -> Void, negativeHandler: @escaping () -> Void) {
+	static func createRenameAlert(_ target: UIViewController, currentName: String, positiveHandler: @escaping (String) -> Void, negativeHandler: @escaping () -> Void) {
 		let ac = UIAlertController(title: SCANDOConstant.renameTitle, message: currentName, preferredStyle: .alert)
 		ac.addTextField { (textField) in
 			textField.placeholder = "New Name"
 			textField.autocapitalizationType = .words
 		}
 		ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-			positiveHandler()
+			guard let newName = ac.textFields?[0].text else { return }
+			positiveHandler(newName)
 		}))
 		ac.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { _ in
 			negativeHandler()
 		}))
+		
+		target.present(ac, animated: true, completion: nil)
 	}
 }

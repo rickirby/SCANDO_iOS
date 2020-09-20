@@ -21,6 +21,7 @@ class ScanAlbumsView: View {
 		case editingEnd
 		case selectAll
 		case delete(indexes: [Int])
+		case rename(index: Int, newName: String)
 	}
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
@@ -113,16 +114,26 @@ class ScanAlbumsView: View {
 		guard let vc = findViewController() else { return }
 		
 		AlertView.createSwipeMoreSheet(vc, renameHandler: {
-			print("Rename")
+			self.renameHandler(index: index, complete)
 		}, saveHandler: {
 			print("Save")
 		}, changeHandler: {
 			print("Change")
 		}, deleteHandler: {
 			print("Delete")
-		}, cancelHandler:  {
-			print("Cancel")
+		}, cancelHandler: {
 			complete(true)
+		})
+	}
+	
+	private func renameHandler(index: Int, _ complete: @escaping (Bool) -> Void) {
+		guard let vc = findViewController(), let object = viewDataSupply?()[index] else { return }
+		
+		complete(true)
+		
+		AlertView.createRenameAlert(vc, currentName: object.name, positiveHandler: { newName in
+			self.onViewEvent?(.rename(index: index, newName: newName))
+		}, negativeHandler: {
 		})
 	}
 }
