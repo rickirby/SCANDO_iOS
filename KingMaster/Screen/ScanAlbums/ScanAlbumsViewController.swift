@@ -98,14 +98,13 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 			case .endUpdates:
 				self.screenView.tableView.endUpdates()
 			case .insertData(let newIndexPath):
-				self.screenView.tableView.insertRows(at: [newIndexPath], with: .fade)
+				self.screenView.tableView.insertRows(at: [newIndexPath], with: .automatic)
 			case .deleteData(let indexPath):
 				self.screenView.tableView.deleteRows(at: [indexPath], with: .automatic)
 			case .updateData(let indexPath):
-				self.screenView.tableView.reloadRows(at: [indexPath], with: .fade)
+				self.screenView.tableView.reloadRows(at: [indexPath], with: .automatic)
 			case .moveData(let indexPath, let newIndexPath):
 				self.screenView.tableView.moveRow(at: indexPath, to: newIndexPath)
-				self.screenView.tableView.reloadRows(at: [newIndexPath], with: .fade)
 			}
 		}
 	}

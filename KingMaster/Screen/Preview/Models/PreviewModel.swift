@@ -16,7 +16,7 @@ class PreviewModel: NSObject {
 		super.init()
 	}
 	
-	func addNewGroupedPage(name: String, originalImage image: UIImage, quad: Quadrilateral, rotationAngle: Double, date: Date) {
+	func addNewDocumentGroup(name: String, originalImage image: UIImage, quad: Quadrilateral, rotationAngle: Double, date: Date) {
 		
 		let managedObjectContext = DataManager.shared.persistentContainer.viewContext
 		
@@ -50,6 +50,41 @@ class PreviewModel: NSObject {
 		do {
 			try managedObjectContext.save()
 			print("Saving \(Date())")
+		} catch let error as NSError {
+			print("Could not save \(error), \(error.userInfo)")
+		}
+	}
+	
+	func addDocumentToDocumentGroup(documentGroup: DocumentGroup, originalImage image: UIImage, quad: Quadrilateral, rotationAngle: Double, date: Date) {
+		
+		let managedObjectContext = DataManager.shared.persistentContainer.viewContext
+		
+		if let imageData = image.jpegData(compressionQuality: 0.7) {
+			let quadPoint = QuadPoint(context: managedObjectContext)
+			quadPoint.topLeftX = Double(quad.topLeft.x)
+			quadPoint.topLeftY = Double(quad.topLeft.y)
+			quadPoint.topRightX = Double(quad.topRight.x)
+			quadPoint.topRightY = Double(quad.topRight.y)
+			quadPoint.bottomLeftX = Double(quad.bottomLeft.x)
+			quadPoint.bottomLeftY = Double(quad.bottomLeft.y)
+			quadPoint.bottomRightX = Double(quad.bottomRight.x)
+			quadPoint.bottomRightY = Double(quad.bottomRight.y)
+			
+			let image = DocumentImage(context: managedObjectContext)
+			image.originalImage = imageData
+			
+			let document = Document(context: managedObjectContext)
+			document.image = image
+			document.quad = quadPoint
+			document.date = date
+			document.rotationAngle = rotationAngle
+			
+			documentGroup.addToDocuments(document)
+			documentGroup.date = date
+		}
+		
+		do {
+			try managedObjectContext.save()
 		} catch let error as NSError {
 			print("Could not save \(error), \(error.userInfo)")
 		}

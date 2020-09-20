@@ -133,7 +133,11 @@ class PreviewViewController: ViewController<PreviewView> {
 	
 	private func finishImage() {
 		guard let image = image, let quad = quad else { return }
-		model.addNewGroupedPage(name: "Scando Document", originalImage: image, quad: quad, rotationAngle: rotationAngle.value, date: Date())
+		if let documentGroup = passedData?().documentGroup {
+			model.addDocumentToDocumentGroup(documentGroup: documentGroup, originalImage: image, quad: quad, rotationAngle: rotationAngle.value, date: Date())
+		} else {
+			model.addNewDocumentGroup(name: "Scando Document", originalImage: image, quad: quad, rotationAngle: rotationAngle.value, date: Date())
+		}
 	}
 	
 }
