@@ -53,6 +53,17 @@ class ScanAlbumsModel: NSObject {
 		}
 	}
 	
+	func deleteData(documentGroupToDelete documentGroup: DocumentGroup) {
+		let managedObjectContext = DataManager.shared.persistentContainer.viewContext
+		
+		managedObjectContext.delete(documentGroup)
+		do {
+			try managedObjectContext.save()
+		} catch let error as NSError {
+			print("Could not save \(error), \(error.userInfo)")
+		}
+	}
+	
 }
 
 extension ScanAlbumsModel: NSFetchedResultsControllerDelegate {
