@@ -35,6 +35,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		
 		configureLoadBar()
 		configureViewEvent()
+		configureModel()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
