@@ -24,8 +24,6 @@ class ScanAlbumsModel: NSObject {
 	
 	var onModelEvent: ((ModelEvent) -> Void)?
 	
-	// MARK: - Private Properties
-	
 	lazy var fetchedResultsController: NSFetchedResultsController<DocumentGroup> = {
 		let managedContext = DataManager.shared.persistentContainer.viewContext
 		let fetchRequest = NSFetchRequest<DocumentGroup>(entityName: "DocumentGroup")
