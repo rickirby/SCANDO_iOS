@@ -1,0 +1,57 @@
+//
+//  PreviewModel.swift
+//  KingMaster
+//
+//  Created by Ricki Private on 20/09/20.
+//  Copyright © 2020 Ricki Bin Yamin. All rights reserved.
+//
+
+import UIKit
+import CoreData
+import RBCameraDocScan
+
+class PreviewModel: NSObject {
+	
+	override init() {
+		super.init()
+	}
+	
+	func addNewGroupedPage(name: String, originalImage image: UIImage, quad: Quadrilateral, rotationAngle: Double, date: Date) {
+		
+		let managedObjectContext = DataManager.shared.persistentContainer.viewContext
+		
+		let documentGroup = DocumentGroup(context: managedObjectContext)
+		documentGroup.name = name
+		documentGroup.date = date
+		
+		if let imageData = image.jpegData(compressionQuality: 0.7) {
+			let quadPoint = QuadPoint(context: managedObjectContext)
+			quadPoint.topLeftX = Double(quad.topLeft.x)
+			quadPoint.topLeftY = Double(quad.topLeft.y)
+			quadPoint.topRightX = Double(quad.topRight.x)
+			quadPoint.topRightY = Double(quad.topRight.y)
+			quadPoint.bottomLeftX = Double(quad.bottomLeft.x)
+			quadPoint.bottomLeftY = Double(quad.bottomLeft.y)
+			quadPoint.bottomRightX = Double(quad.bottomRight.x)
+			quadPoint.bottomRightY = Double(quad.bottomRight.y)
+			
+			let image = DocumentImage(context: managedObjectContext)
+			image.originalImage = imageData
+			
+			let document = Document(context: managedObjectContext)
+			document.image = image
+			document.quad = quadPoint
+			document.date = date
+			document.rotationAngle = rotationAngle
+			
+			documentGroup.documents = NSSet.init(array: [document])
+		}
+		
+		do {
+			try managedObjectContext.save()
+			print("Saving \(Date())")
+		} catch let error as NSError {
+			print("Could not save \(error), \(error.userInfo)")
+		}
+	}
+}
