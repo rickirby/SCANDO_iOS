@@ -18,6 +18,8 @@ class PreviewViewController: ViewController<PreviewView> {
 	
 	// MARK: - Private Properties
 	
+	private let model = PreviewModel()
+	
 	private var image: UIImage?
 	private var processedImage: UIImage?
 	private var quad: Quadrilateral?
@@ -72,7 +74,7 @@ class PreviewViewController: ViewController<PreviewView> {
 		screenView.onViewEvent = { [weak self] (viewEvent: PreviewView.ViewEvent) in
 			switch viewEvent {
 			case .didTapDone:
-				print("Done")
+				self?.finishImage()
 			case .didTapRotateLeft:
 				self?.rotateLeft()
 			case .didTapRotateRight:
@@ -95,6 +97,11 @@ class PreviewViewController: ViewController<PreviewView> {
 		DispatchQueue.global(qos: .userInitiated).async {
 			UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
 		}
+	}
+	
+	private func finishImage() {
+		guard let image = processedImage, let quad = quad else { return }
+		model.addNewGroupedPage(name: "Scando Document", originalImage: image, quad: quad, rotationAngle: rotationAngle.value, date: Date())
 	}
 	
 	@objc private func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
