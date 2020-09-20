@@ -24,8 +24,7 @@ class ScanAlbumsView: View {
 	}
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
-	
-	var tableViewData = [DocumentGroup]()
+	var viewDataSupply: (() -> [DocumentGroup])?
 	
 	// MARK: - View Component
 	
@@ -159,11 +158,11 @@ extension ScanAlbumsView {
 	}
 	
 	@objc func selectAllBarButtonTapped() {
-		for i in 0 ..< tableViewData.count {
-			let indexPath = IndexPath(row: i, section: 0)
-			guard let _ = tableView.cellForRow(at: indexPath) else { return }
-			tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-		}
+//		for i in 0 ..< tableViewData.count {
+//			let indexPath = IndexPath(row: i, section: 0)
+//			guard let _ = tableView.cellForRow(at: indexPath) else { return }
+//			tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+//		}
 	}
 	
 	@objc func deleteBarButtonTapped() {
@@ -195,15 +194,18 @@ extension ScanAlbumsView {
 extension ScanAlbumsView: UITableViewDelegate, UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return tableViewData.count
+		guard let object = viewDataSupply?() else {
+			return 0
+		}
+		
+		return object.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		guard let cell = tableView.dequeueReusableCell(withIdentifier: "ScanAlbumsCell", for: indexPath) as? ScanAlbumsTableViewCell else {
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: "ScanAlbumsCell", for: indexPath) as? ScanAlbumsTableViewCell, let object = viewDataSupply?()[indexPath.row] else {
 			return UITableViewCell()
 		}
 		
-		let object = tableViewData[indexPath.row]
 		let thumbnail = generateThumbnail(from: object)
 		
 		cell.configureCell(image: thumbnail, name: object.name, date: SCANDODateFormatter.shared.string(from: object.date), numberOfPages: object.documents.count)

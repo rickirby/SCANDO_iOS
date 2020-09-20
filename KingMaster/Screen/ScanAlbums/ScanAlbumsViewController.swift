@@ -35,6 +35,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		
 		configureLoadBar()
 		configureViewEvent()
+		configureViewData()
 		configureModel()
 	}
 	
@@ -42,7 +43,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		super.viewWillAppear(animated)
 		
 		configureBar()
-		reloadData()
+		model.fetchData()
 	}
 	
 	// MARK: - Private Method
@@ -79,6 +80,15 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		}
 	}
 	
+	private func configureViewData() {
+		screenView.viewDataSupply = {
+			guard let fetchedObjects = self.model.fetchedResultsController.fetchedObjects else {
+				return []
+			}
+			return fetchedObjects
+		}
+	}
+	
 	private func configureModel() {
 		model.onModelEvent = { (modelEvent: ScanAlbumsModel.ModelEvent) in
 			switch modelEvent {
@@ -111,12 +121,6 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		navigationItem.rightBarButtonItems = [screenView.cameraBarButton, screenView.fileBarButton]
 		
 		navigationController?.setToolbarHidden(true, animated: true)
-	}
-	
-	private func reloadData() {
-		model.fetchData()
-		guard let fetchedObjects = model.fetchedResultsController.fetchedObjects else { return }
-		screenView.tableViewData = fetchedObjects
 	}
 	
 	private func deleteData(indexes: [Int]) {
