@@ -19,7 +19,6 @@ class ScanAlbumsTableViewCell: UITableViewCell {
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		imageView.contentMode = .scaleAspectFill
 		imageView.clipsToBounds = true
-		imageView.backgroundColor = .darkGray
 		
 		return imageView
 	}()
@@ -113,6 +112,7 @@ class ScanAlbumsTableViewCell: UITableViewCell {
 		documentLabel.text = object.name
 		dateLabel.text = SCANDODateFormatter.shared.string(from: object.date)
 		numberLabel.text = "\(object.documents.count) " + (object.documents.count > 1 ? "pages" : "page")
-		generateThumbnail(from: object)
+		//		generateThumbnail(from: object)
+		previewImageView.startShimmering()
 	}
 }
