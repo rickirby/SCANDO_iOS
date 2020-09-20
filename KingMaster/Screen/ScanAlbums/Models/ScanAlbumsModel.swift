@@ -64,6 +64,17 @@ class ScanAlbumsModel: NSObject {
 		}
 	}
 	
+	func updateName(documentGroupToUpdate documentGroup: DocumentGroup, newName: String) {
+		let managedObjectContext = DataManager.shared.persistentContainer.viewContext
+		
+		documentGroup.name = newName
+		do {
+			try managedObjectContext.save()
+		} catch let error as NSError {
+			print("Could not save \(error), \(error.userInfo)")
+		}
+	}
+	
 }
 
 extension ScanAlbumsModel: NSFetchedResultsControllerDelegate {
