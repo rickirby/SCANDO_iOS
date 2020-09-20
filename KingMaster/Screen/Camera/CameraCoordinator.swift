@@ -52,6 +52,7 @@ class CameraCoordinator: Coordinator {
 		editScanCoordinator?.passedData = {
 			return EditScanCoordinator.EditScanData(image: image, quad: quad, isRotateImage: true, documentGroup: self.passedData?().documentGroup)
 		}
+		
 		editScanCoordinator?.start()
 	}
 }

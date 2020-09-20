@@ -99,11 +99,6 @@ class PreviewViewController: ViewController<PreviewView> {
 		}
 	}
 	
-	private func finishImage() {
-		guard let image = image, let quad = quad else { return }
-		model.addNewGroupedPage(name: "Scando Document", originalImage: image, quad: quad, rotationAngle: rotationAngle.value, date: Date())
-	}
-	
 	@objc private func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
 		screenView.stopLoading()
 		screenView.showSaveAlert(error: error)
@@ -133,6 +128,12 @@ class PreviewViewController: ViewController<PreviewView> {
 		processedImage = processedImage?.rotated(by: Measurement<UnitAngle>(value: -90, unit: .degrees))
 		
 		reloadImage()
+	}
+	
+	
+	private func finishImage() {
+		guard let image = image, let quad = quad else { return }
+		model.addNewGroupedPage(name: "Scando Document", originalImage: image, quad: quad, rotationAngle: rotationAngle.value, date: Date())
 	}
 	
 }
