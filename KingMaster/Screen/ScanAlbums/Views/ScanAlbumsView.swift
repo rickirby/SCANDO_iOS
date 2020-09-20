@@ -151,11 +151,11 @@ extension ScanAlbumsView {
 	}
 	
 	@objc func selectAllBarButtonTapped() {
-//		for i in 0 ..< tableViewData.count {
-//			let indexPath = IndexPath(row: i, section: 0)
-//			guard let _ = tableView.cellForRow(at: indexPath) else { return }
-//			tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-//		}
+		for i in 0 ..< (viewDataSupply?().count ?? 0) {
+			let indexPath = IndexPath(row: i, section: 0)
+			guard let _ = tableView.cellForRow(at: indexPath) else { return }
+			tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+		}
 	}
 	
 	@objc func deleteBarButtonTapped() {
