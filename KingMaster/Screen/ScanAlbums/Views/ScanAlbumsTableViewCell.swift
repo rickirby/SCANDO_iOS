@@ -100,6 +100,7 @@ class ScanAlbumsTableViewCell: UITableViewCell {
 			let processedImage = PerspectiveTransformer.applyTransform(to: originalImage, withQuad: quad)
 			
 			ThreadManager.executeOnMain {
+				self.previewImageView.stopShimmering()
 				self.previewImageView.image = processedImage
 			}
 		}
@@ -112,7 +113,7 @@ class ScanAlbumsTableViewCell: UITableViewCell {
 		documentLabel.text = object.name
 		dateLabel.text = SCANDODateFormatter.shared.string(from: object.date)
 		numberLabel.text = "\(object.documents.count) " + (object.documents.count > 1 ? "pages" : "page")
-		//		generateThumbnail(from: object)
 		previewImageView.startShimmering()
+		generateThumbnail(from: object)
 	}
 }
