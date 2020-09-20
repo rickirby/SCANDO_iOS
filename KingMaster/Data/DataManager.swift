@@ -15,9 +15,7 @@ class DataManager {
 	
 	static let shared: DataManager = DataManager()
 	
-	// MARK: - Private Properties
-	
-	private lazy var persistentContainer: NSPersistentContainer = {
+	lazy var persistentContainer: NSPersistentContainer = {
 		let container = NSPersistentContainer(name: "KingMaster")
 		container.loadPersistentStores { (_, error) in
 			if let error = error as NSError? {
@@ -27,4 +25,16 @@ class DataManager {
 		
 		return container
 	}()
+	
+	func saveContext() {
+        let context = DataManager.shared.persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
 }
