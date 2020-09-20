@@ -196,6 +196,9 @@ extension ScanAlbumsView: UITableViewDelegate, UITableViewDataSource {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: "ScanAlbumsCell", for: indexPath) as? ScanAlbumsTableViewCell else {
 			return UITableViewCell()
 		}
+		let object = tableViewData[indexPath.row]
+		
+		cell.configureCell(image: #imageLiteral(resourceName: "ICON"), name: object.name, date: "", numberOfPages: object.documents.count)
 //		cell.configureCell(image: #imageLiteral(resourceName: "ICON"), document: tableViewData[indexPath.row], date: "11/11/20", number: 3)
 		
 		return cell

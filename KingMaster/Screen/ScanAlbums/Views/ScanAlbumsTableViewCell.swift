@@ -89,10 +89,10 @@ class ScanAlbumsTableViewCell: UITableViewCell {
 	
 	// MARK: - Public Method
 	
-	func configureCell(image: UIImage, document: String, date: String, number: Int) {
+	func configureCell(image: UIImage, name: String, date: String, numberOfPages: Int) {
 		previewImageView.image = image
-		documentLabel.text = document
+		documentLabel.text = name
 		dateLabel.text = date
-		numberLabel.text = number > 1 ? "\(number) pages" : "\(number) page"
+		numberLabel.text = numberOfPages > 1 ? "\(numberOfPages) pages" : "\(numberOfPages) page"
 	}
 }
