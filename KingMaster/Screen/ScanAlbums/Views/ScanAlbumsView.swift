@@ -196,9 +196,7 @@ extension ScanAlbumsView: UITableViewDelegate, UITableViewDataSource {
 			return UITableViewCell()
 		}
 		
-		let thumbnail = generateThumbnail(from: object)
-		
-		cell.configureCell(image: thumbnail, name: object.name, date: SCANDODateFormatter.shared.string(from: object.date), numberOfPages: object.documents.count)
+		cell.configure(with: object)
 		
 		return cell
 	}
