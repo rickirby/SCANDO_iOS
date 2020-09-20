@@ -25,7 +25,7 @@ class ScanAlbumsView: View {
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
 	
-	var tableViewData = [String]()
+	var tableViewData = [DocumentGroup]()
 	
 	// MARK: - View Component
 	
@@ -196,7 +196,7 @@ extension ScanAlbumsView: UITableViewDelegate, UITableViewDataSource {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: "ScanAlbumsCell", for: indexPath) as? ScanAlbumsTableViewCell else {
 			return UITableViewCell()
 		}
-		cell.configureCell(image: #imageLiteral(resourceName: "ICON"), document: tableViewData[indexPath.row], date: "11/11/20", number: 3)
+//		cell.configureCell(image: #imageLiteral(resourceName: "ICON"), document: tableViewData[indexPath.row], date: "11/11/20", number: 3)
 		
 		return cell
 	}

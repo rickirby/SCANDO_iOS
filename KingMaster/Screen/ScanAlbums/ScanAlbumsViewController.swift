@@ -42,7 +42,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		
 		configureBar()
 		model.fetchData()
-		screenView.tableViewData = dummyData
+//		screenView.tableViewData = dummyData
 	}
 	
 	// MARK: - Private Method
@@ -94,6 +94,12 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		navigationController?.setToolbarHidden(true, animated: true)
 	}
 	
+	private func reloadData() {
+		model.fetchData()
+		guard let fetchedObjects = model.fetchedResultsController.fetchedObjects else { return }
+		screenView.tableViewData = fetchedObjects
+	}
+	
 	private func deleteData(indexes: [Int]) {
 		var itemsToDelete = [String]()
 		for i in indexes {
@@ -106,6 +112,6 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 			}
 		}
 		
-		screenView.tableViewData = dummyData
+//		screenView.tableViewData = dummyData
 	}
 }
