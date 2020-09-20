@@ -8,6 +8,7 @@
 
 import UIKit
 import RBToolkit
+import RBCameraDocScan
 
 class ScanAlbumsTableViewCell: UITableViewCell {
 	
@@ -18,6 +19,7 @@ class ScanAlbumsTableViewCell: UITableViewCell {
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		imageView.contentMode = .scaleAspectFill
 		imageView.clipsToBounds = true
+		imageView.backgroundColor = .darkGray
 		
 		return imageView
 	}()
@@ -87,6 +89,24 @@ class ScanAlbumsTableViewCell: UITableViewCell {
 		])
 	}
 	
+	private func generateThumbnail(from object: DocumentGroup) {
+		
+		DispatchQueue.global(qos: .userInitiated).async {
+			guard let firstDocument = (object.documents.allObjects as? [Document])?.first, let originalImage = UIImage(data: firstDocument.image.originalImage) else {
+				return
+			}
+			
+			let quad = Quadrilateral(topLeft: CGPoint(x: firstDocument.quad.topLeftX, y: firstDocument.quad.topLeftY), topRight: CGPoint(x: firstDocument.quad.topRightX, y: firstDocument.quad.topRightY), bottomRight: CGPoint(x: firstDocument.quad.bottomRightX, y: firstDocument.quad.bottomRightY), bottomLeft: CGPoint(x: firstDocument.quad.bottomLeftX, y: firstDocument.quad.bottomLeftY))
+			
+			let processedImage = PerspectiveTransformer.applyTransform(to: originalImage, withQuad: quad)
+			
+			ThreadManager.executeOnMain {
+				self.previewImageView.image = processedImage
+			}
+		}
+		
+	}
+	
 	// MARK: - Public Method
 	
 	func configureCell(image: UIImage?, name: String, date: String, numberOfPages: Int) {
@@ -94,5 +114,12 @@ class ScanAlbumsTableViewCell: UITableViewCell {
 		documentLabel.text = name
 		dateLabel.text = date
 		numberLabel.text = numberOfPages > 1 ? "\(numberOfPages) pages" : "\(numberOfPages) page"
+	}
+	
+	func configure(with object: DocumentGroup) {
+		documentLabel.text = object.name
+		dateLabel.text = SCANDODateFormatter.shared.string(from: object.date)
+		numberLabel.text = "\(object.documents.count) " + (object.documents.count > 1 ? "pages" : "page")
+		generateThumbnail(from: object)
 	}
 }
