@@ -187,11 +187,8 @@ extension ScanAlbumsView {
 extension ScanAlbumsView: UITableViewDelegate, UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		guard let object = viewDataSupply?() else {
-			return 0
-		}
 		
-		return object.count
+		return viewDataSupply?().count ?? 0
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
