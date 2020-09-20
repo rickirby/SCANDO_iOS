@@ -41,6 +41,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		super.viewWillAppear(animated)
 		
 		configureBar()
+		model.fetchData()
 		screenView.reloadData(tableData: dummyData)
 	}
 	
