@@ -16,10 +16,10 @@ class ScanAlbumsModel: NSObject {
 	enum ModelEvent {
 		case beginUpdates
 		case endUpdates
-		case insertData
-		case deleteData
-		case updateData
-		case moveData
+		case insertData(newIndexPath: IndexPath)
+		case deleteData(indexPath: IndexPath)
+		case updateData(indexPath: IndexPath)
+		case moveData(indexPath: IndexPath, newIndexPath: IndexPath)
 	}
 	
 	var onModelEvent: ((ModelEvent) -> Void)?
