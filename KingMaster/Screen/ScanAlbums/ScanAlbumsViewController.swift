@@ -79,6 +79,26 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		}
 	}
 	
+	private func configureModel() {
+		model.onModelEvent = { (modelEvent: ScanAlbumsModel.ModelEvent) in
+			switch modelEvent {
+			case .beginUpdates:
+				self.screenView.tableView.beginUpdates()
+			case .endUpdates:
+				self.screenView.tableView.endUpdates()
+			case .insertData(let newIndexPath):
+				self.screenView.tableView.insertRows(at: [newIndexPath], with: .fade)
+			case .deleteData(let indexPath):
+				self.screenView.tableView.deleteRows(at: [indexPath], with: .left)
+			case .updateData(let indexPath):
+				self.screenView.tableView.reloadRows(at: [indexPath], with: .fade)
+			case .moveData(let indexPath, let newIndexPath):
+				self.screenView.tableView.moveRow(at: indexPath, to: newIndexPath)
+				self.screenView.tableView.reloadRows(at: [newIndexPath], with: .fade)
+			}
+		}
+	}
+	
 	private func configureNavigationItemForEditingState() {
 		navigationItem.leftBarButtonItem = screenView.cancelBarButton
 		navigationItem.rightBarButtonItems = [screenView.selectAllBarButton]
