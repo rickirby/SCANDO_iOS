@@ -42,6 +42,17 @@ class ScanAlbumsModel: NSObject {
 		
 		fetchedResultsController.delegate = self
 	}
+	
+	// MARK: - Public Method
+	
+	func fetchData() {
+		do {
+			try fetchedResultsController.performFetch()
+		} catch {
+			fatalError(error.localizedDescription)
+		}
+	}
+	
 }
 
 extension ScanAlbumsModel: NSFetchedResultsControllerDelegate {
