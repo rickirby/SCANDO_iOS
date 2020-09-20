@@ -99,11 +99,10 @@ class ScanAlbumsView: View {
 	}
 	
 	private func swipeDeleteHandler(index: Int, _ complete: @escaping (Bool) -> Void) {
-		print("Delete \(index)")
 		guard let vc = findViewController() else { return }
 		
 		AlertView.createSwipeDeleteAlert(vc, deleteHandler: {
-			self.deleteDataFromTableView(indexes: [index])
+			self.onViewEvent?(.delete(indexes: [index]))
 		}, cancelHandler: {
 			complete(true)
 		})
@@ -125,12 +124,6 @@ class ScanAlbumsView: View {
 			print("Cancel")
 			complete(true)
 		})
-	}
-	
-	private func deleteDataFromTableView(indexes: [Int]) {
-		let indexPaths = indexes.map { IndexPath(row: $0, section: 0)}
-		onViewEvent?(.delete(indexes: indexes))
-		tableView.deleteRows(at: indexPaths, with: .automatic)
 	}
 	
 	private func generateThumbnail(from object: DocumentGroup) -> UIImage? {
@@ -169,8 +162,8 @@ extension ScanAlbumsView {
 		guard let selectedIndexPaths = tableView.indexPathsForSelectedRows, let vc = findViewController() else { return }
 		let selectedIndexes = selectedIndexPaths.map { $0.row }
 		
-		AlertView.createBarDeleteAlert(vc, isSingular: selectedIndexPaths.count == 1, deleteHandler: {
-			self.deleteDataFromTableView(indexes: selectedIndexes)
+		AlertView.createBarDeleteAlert(vc, isSingular: selectedIndexes.count == 1, deleteHandler: {
+			self.onViewEvent?(.delete(indexes: selectedIndexes))
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
 				self.setTableViewEditingState(isEditing: false)
 			}

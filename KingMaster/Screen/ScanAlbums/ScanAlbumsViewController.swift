@@ -124,17 +124,13 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	}
 	
 	private func deleteData(indexes: [Int]) {
-		var itemsToDelete = [String]()
+		var itemsToDelete = [DocumentGroup]()
 		for i in indexes {
-			itemsToDelete.append(dummyData[i])
+			itemsToDelete.append(model.fetchedResultsController.object(at: IndexPath(row: i, section: 0)))
 		}
 		
 		for item in itemsToDelete {
-			if let index = dummyData.firstIndex(of: item) {
-				dummyData.remove(at: index)
-			}
+			model.deleteData(documentGroupToDelete: item)
 		}
-		
-//		screenView.tableViewData = dummyData
 	}
 }
