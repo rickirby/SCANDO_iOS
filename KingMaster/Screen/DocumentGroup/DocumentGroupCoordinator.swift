@@ -18,6 +18,8 @@ class DocumentGroupCoordinator: Coordinator {
 		return navigationController
 	}
 	
+	var passedData: (() -> DocumentGroup)?
+	
 	private weak var navigationController: UINavigationController?
 	private var galleryCoordinator: GalleryCoordinator?
 	private var cameraCoordinator: CameraCoordinator?
@@ -35,6 +37,7 @@ class DocumentGroupCoordinator: Coordinator {
 	
 	private func makeDocumentGroupViewController() -> UIViewController {
 		let vc = DocumentGroupViewController()
+		vc.passedData = passedData
 		vc.onNavigationEvent = { [weak self] (navigationEvent: DocumentGroupViewController.NavigationEvent) in
 			switch navigationEvent {
 			case .didTapCamera:

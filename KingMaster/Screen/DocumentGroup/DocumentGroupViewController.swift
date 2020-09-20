@@ -20,6 +20,7 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 	}
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
+	var passedData: (() -> DocumentGroup)?
 	
 	// MARK: - Life Cycle
 	

@@ -16,7 +16,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	enum NavigationEvent {
 		case didTapCamera
 		case didTapPicker
-		case didSelectRow(index: Int)
+		case didSelectRow(object: DocumentGroup)
 	}
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
@@ -64,7 +64,8 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 			case .didTapPicker:
 				self?.onNavigationEvent?(.didTapPicker)
 			case .didSelectRow(let index):
-				self?.onNavigationEvent?(.didSelectRow(index: index))
+				guard let object = self?.model.fetchedResultsController.object(at: IndexPath(row: index, section: 0)) else { return }
+				self?.onNavigationEvent?(.didSelectRow(object: object))
 			case .editingStart:
 				self?.configureNavigationItemForEditingState()
 			case .editingEnd:
