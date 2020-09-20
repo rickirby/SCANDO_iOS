@@ -28,13 +28,14 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 		super.viewDidLoad()
 		
 		configureLoadBar()
+		configureViewEvent()
+		configureViewData()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
 		configureBar()
-		configureViewEvent()
 	}
 	
 	// MARK: - Private Methods
@@ -60,6 +61,16 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 			case .didSelectRow(let index):
 				self?.onNavigationEvent?(.didSelectRow(index: index))
 			}
+		}
+	}
+	
+	private func configureViewData() {
+		screenView.viewDataSupply = {
+			guard let documentGroup = self.passedData?(), let documents = documentGroup.documents.allObjects as? [Document] else {
+				return []
+			}
+			
+			return documents
 		}
 	}
 }

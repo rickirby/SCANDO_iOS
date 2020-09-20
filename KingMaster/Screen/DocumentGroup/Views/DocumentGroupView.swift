@@ -20,6 +20,7 @@ class DocumentGroupView: View {
 	}
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
+	var viewDataSupply: (() -> [Document])?
 	
 	// MARK: - View Component
 	
@@ -102,14 +103,15 @@ extension DocumentGroupView {
 
 extension DocumentGroupView: UICollectionViewDelegate, UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 4
+		return viewDataSupply?().count ?? 0
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DocumentGroupCell", for: indexPath) as? DocumentGroupCollectionViewCell else {
+		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DocumentGroupCell", for: indexPath) as? DocumentGroupCollectionViewCell, let object = viewDataSupply?()[indexPath.row] else {
 			return UICollectionViewCell()
 		}
-		cell.configureCell(image: #imageLiteral(resourceName: "ICON"))
+		
+		cell.configure(with: object)
 		
 		return cell
 	}
