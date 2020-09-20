@@ -65,7 +65,7 @@ class ScanAlbumsTableViewCell: UITableViewCell {
 	
 	// MARK: - Private Method
 	
-	func configureView() {
+	private func configureView() {
 		backgroundColor = .systemBackground
 		accessoryType = .disclosureIndicator
 		
@@ -108,13 +108,6 @@ class ScanAlbumsTableViewCell: UITableViewCell {
 	}
 	
 	// MARK: - Public Method
-	
-	func configureCell(image: UIImage?, name: String, date: String, numberOfPages: Int) {
-		previewImageView.image = image
-		documentLabel.text = name
-		dateLabel.text = date
-		numberLabel.text = numberOfPages > 1 ? "\(numberOfPages) pages" : "\(numberOfPages) page"
-	}
 	
 	func configure(with object: DocumentGroup) {
 		documentLabel.text = object.name

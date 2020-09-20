@@ -125,13 +125,6 @@ class ScanAlbumsView: View {
 			complete(true)
 		})
 	}
-	
-	private func generateThumbnail(from object: DocumentGroup) -> UIImage? {
-		guard let thumbnailData = (object.documents.allObjects as? [Document])?.first?.image.originalImage else {
-			return #imageLiteral(resourceName: "ICON")
-		}
-		return UIImage(data: thumbnailData)
-	}
 }
 
 extension ScanAlbumsView {
