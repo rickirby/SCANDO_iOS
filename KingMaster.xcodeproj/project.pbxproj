@@ -46,6 +46,7 @@
 		DC75E59A25138C9400186F30 /* EditScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75E59925138C9400186F30 /* EditScanView.swift */; };
 		DC75E59C25138CBD00186F30 /* EditScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75E59B25138CBD00186F30 /* EditScanViewController.swift */; };
 		DC75E59F2513AA4700186F30 /* EditScanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75E59E2513AA4700186F30 /* EditScanData.swift */; };
+		DC82CC952517058900403550 /* SCANDODateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC82CC942517058900403550 /* SCANDODateFormatter.swift */; };
 		DC972BBD25123F9800A6C43B /* RBCameraDocScan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */; };
 		DC972BBE25123F9800A6C43B /* RBCameraDocScan.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DC972BC12512454F00A6C43B /* CameraCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC972BC02512454F00A6C43B /* CameraCoordinator.swift */; };
@@ -113,6 +114,7 @@
 		DC75E59925138C9400186F30 /* EditScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScanView.swift; sourceTree = "<group>"; };
 		DC75E59B25138CBD00186F30 /* EditScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScanViewController.swift; sourceTree = "<group>"; };
 		DC75E59E2513AA4700186F30 /* EditScanData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScanData.swift; sourceTree = "<group>"; };
+		DC82CC942517058900403550 /* SCANDODateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCANDODateFormatter.swift; sourceTree = "<group>"; };
 		DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBCameraDocScan.framework; path = Carthage/Build/iOS/RBCameraDocScan.framework; sourceTree = "<group>"; };
 		DC972BC02512454F00A6C43B /* CameraCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCoordinator.swift; sourceTree = "<group>"; };
 		DC972BC3251258C400A6C43B /* ScanImagePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanImagePickerCoordinator.swift; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 			isa = PBXGroup;
 			children = (
 				DCE0E732250AFE2300971B22 /* AlertView.swift */,
+				DC82CC942517058900403550 /* SCANDODateFormatter.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC215A1F25166321006D409A /* Document+CoreDataProperties.swift in Sources */,
+				DC82CC952517058900403550 /* SCANDODateFormatter.swift in Sources */,
 				09C8ADAE25065154004BA0F7 /* Router.swift in Sources */,
 				DC215A1D25166321006D409A /* QuadPoint+CoreDataProperties.swift in Sources */,
 				DCE0E731250AFB5F00971B22 /* SCANDOConstant.swift in Sources */,
