@@ -24,7 +24,6 @@ class ScanAlbumsView: View {
 	}
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
-	var viewDataSupply: ((IndexPath) -> DocumentGroup)?
 	
 	// MARK: - Private Properties
 	
