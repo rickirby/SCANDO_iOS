@@ -6,4 +6,19 @@
 //  Copyright © 2020 Ricki Bin Yamin. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import CoreData
+
+class ScanAlbumsModel {
+	
+	// MARK: - Public Properties
+	
+	enum ModelEvent {
+		case insertData
+		case deleteData
+		case updateData
+		case moveData
+	}
+	
+	var onModelEvent: ((ModelEvent) -> Void)?
+}
