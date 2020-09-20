@@ -24,6 +24,7 @@ class ScanAlbumsView: View {
 	}
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
+	var viewDataSupply: ((IndexPath) -> DocumentGroup)?
 	
 	// MARK: - Private Properties
 	
@@ -69,12 +70,6 @@ class ScanAlbumsView: View {
 		if let indexPath = tableView.indexPathForSelectedRow {
 			tableView.deselectRow(at: indexPath, animated: true)
 		}
-	}
-	
-	override func onViewDidAppear() {
-		super.onViewDidAppear()
-		
-		tableView.reloadData()
 	}
 	
 	// MARK: - Public Method
