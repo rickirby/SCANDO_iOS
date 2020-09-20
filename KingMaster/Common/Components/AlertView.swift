@@ -72,7 +72,7 @@ class AlertView {
 			guard let newName = ac.textFields?[0].text else { return }
 			positiveHandler(newName)
 		}))
-		ac.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { _ in
+		ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
 			negativeHandler()
 		}))
 		
