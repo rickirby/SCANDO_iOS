@@ -55,6 +55,7 @@
 		DCAC3ED725158F6B00F5DD59 /* ThreadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAC3ED625158F6B00F5DD59 /* ThreadManager.swift */; };
 		DCB1B5E52512DC9D00B1630C /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB1B5E42512DC9D00B1630C /* GalleryView.swift */; };
 		DCB6893D25179D97001AD049 /* UIView+Shimmering.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6893C25179D97001AD049 /* UIView+Shimmering.swift */; };
+		DCB689402517AD29001AD049 /* CameraData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6893F2517AD29001AD049 /* CameraData.swift */; };
 		DCE0E731250AFB5F00971B22 /* SCANDOConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0E730250AFB5F00971B22 /* SCANDOConstant.swift */; };
 		DCE0E733250AFE2300971B22 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0E732250AFE2300971B22 /* AlertView.swift */; };
 		DCE922912516E4CB00A30804 /* ScanAlbumsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE922902516E4CB00A30804 /* ScanAlbumsModel.swift */; };
@@ -124,6 +125,7 @@
 		DCAC3ED625158F6B00F5DD59 /* ThreadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadManager.swift; sourceTree = "<group>"; };
 		DCB1B5E42512DC9D00B1630C /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		DCB6893C25179D97001AD049 /* UIView+Shimmering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView+Shimmering.swift"; path = "KingMaster/Screen/Preview/Models/UIView+Shimmering.swift"; sourceTree = SOURCE_ROOT; };
+		DCB6893F2517AD29001AD049 /* CameraData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraData.swift; sourceTree = "<group>"; };
 		DCE0E730250AFB5F00971B22 /* SCANDOConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCANDOConstant.swift; sourceTree = "<group>"; };
 		DCE0E732250AFE2300971B22 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		DCE922902516E4CB00A30804 /* ScanAlbumsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAlbumsModel.swift; sourceTree = "<group>"; };
@@ -354,6 +356,7 @@
 			isa = PBXGroup;
 			children = (
 				DC972BC02512454F00A6C43B /* CameraCoordinator.swift */,
+				DCB6893E2517AD1C001AD049 /* Models */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -380,6 +383,14 @@
 				DCB1B5E42512DC9D00B1630C /* GalleryView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		DCB6893E2517AD1C001AD049 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DCB6893F2517AD29001AD049 /* CameraData.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		DCE0E72B250AFA1B00971B22 /* Extension */ = {
@@ -508,6 +519,7 @@
 				DC215A1C25166321006D409A /* QuadPoint+CoreDataClass.swift in Sources */,
 				DC7129912515736A00ACCB2B /* PreviewCoordinator.swift in Sources */,
 				DC4CD0032514FB51000A84BC /* PreviewView.swift in Sources */,
+				DCB689402517AD29001AD049 /* CameraData.swift in Sources */,
 				DC215A2325166321006D409A /* DocumentGroup+CoreDataProperties.swift in Sources */,
 				DC39BC7A2514AF590067DF71 /* EditScanCoordinator.swift in Sources */,
 				0922627425053E0B00BDDB90 /* DocumentGroupView.swift in Sources */,
