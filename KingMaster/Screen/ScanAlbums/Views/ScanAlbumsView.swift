@@ -25,9 +25,7 @@ class ScanAlbumsView: View {
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
 	
-	// MARK: - Private Properties
-	
-	private var tableViewData = [String]()
+	var tableViewData = [String]()
 	
 	// MARK: - View Component
 	
@@ -69,12 +67,6 @@ class ScanAlbumsView: View {
 		if let indexPath = tableView.indexPathForSelectedRow {
 			tableView.deselectRow(at: indexPath, animated: true)
 		}
-	}
-	
-	// MARK: - Public Method
-	
-	func reloadData(tableData: [String]) {
-		tableViewData = tableData
 	}
 	
 	// MARK: - Private Method

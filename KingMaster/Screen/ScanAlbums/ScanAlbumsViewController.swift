@@ -42,7 +42,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		
 		configureBar()
 		model.fetchData()
-		screenView.reloadData(tableData: dummyData)
+		screenView.tableViewData = dummyData
 	}
 	
 	// MARK: - Private Method
@@ -106,6 +106,6 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 			}
 		}
 		
-		screenView.reloadData(tableData: dummyData)
+		screenView.tableViewData = dummyData
 	}
 }
