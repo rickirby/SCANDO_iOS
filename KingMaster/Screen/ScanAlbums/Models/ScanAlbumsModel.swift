@@ -58,14 +58,30 @@ class ScanAlbumsModel: NSObject {
 extension ScanAlbumsModel: NSFetchedResultsControllerDelegate {
 	
 	func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-		
+		onModelEvent?(.beginUpdates)
 	}
 	
 	func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
 		
+		switch type {
+		case .insert:
+			guard let newIndexPath = newIndexPath else { return }
+			onModelEvent?(.insertData(newIndexPath: newIndexPath))
+		case .delete:
+			guard let indexPath = indexPath else { return }
+			onModelEvent?(.deleteData(indexPath: indexPath))
+		case .move:
+			guard let indexPath = indexPath, let newIndexPath = newIndexPath else { return }
+			onModelEvent?(.moveData(indexPath: indexPath, newIndexPath: newIndexPath))
+		case .update:
+			guard let indexPath = indexPath else { return }
+			onModelEvent?(.updateData(indexPath: indexPath))
+		@unknown default:
+			fatalError()
+		}
 	}
 	
 	func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-		
+		onModelEvent?(.endUpdates)
 	}
 }
