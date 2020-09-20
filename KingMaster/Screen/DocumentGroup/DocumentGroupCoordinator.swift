@@ -54,6 +54,9 @@ class DocumentGroupCoordinator: Coordinator {
 	
 	private func openCamera() {
 		cameraCoordinator = CameraCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		cameraCoordinator?.passedData = {
+			return CameraCoordinator.CameraData(documentGroup: self.passedData?())
+		}
 		cameraCoordinator?.start()
 	}
 	

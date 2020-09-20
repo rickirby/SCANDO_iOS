@@ -19,6 +19,8 @@ class CameraCoordinator: Coordinator {
 		return navigationController
 	}
 	
+	var passedData: (() -> CameraData)?
+	
 	private weak var navigationController: UINavigationController?
 	private var scanImagePickerCoordinator: ScanImagePickerCoordinator?
 	private var editScanCoordinator: EditScanCoordinator?
@@ -48,7 +50,7 @@ class CameraCoordinator: Coordinator {
 	private func openEditScan(image: UIImage, quad: Quadrilateral?) {
 		editScanCoordinator = EditScanCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
 		editScanCoordinator?.passedData = {
-			return EditScanCoordinator.EditScanData(image: image, quad: quad, isRotateImage: true)
+			return EditScanCoordinator.EditScanData(image: image, quad: quad, isRotateImage: true, documentGroup: self.passedData?().documentGroup)
 		}
 		editScanCoordinator?.start()
 	}

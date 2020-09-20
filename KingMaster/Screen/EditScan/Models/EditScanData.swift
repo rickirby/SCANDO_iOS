@@ -15,6 +15,7 @@ extension EditScanCoordinator {
 		var image: UIImage
 		var quad: Quadrilateral?
 		var isRotateImage: Bool = false
+		var documentGroup: DocumentGroup?
 	}
 	
 }
