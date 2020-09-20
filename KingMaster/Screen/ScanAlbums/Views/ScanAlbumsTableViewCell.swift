@@ -89,7 +89,7 @@ class ScanAlbumsTableViewCell: UITableViewCell {
 	
 	// MARK: - Public Method
 	
-	func configureCell(image: UIImage, name: String, date: String, numberOfPages: Int) {
+	func configureCell(image: UIImage?, name: String, date: String, numberOfPages: Int) {
 		previewImageView.image = image
 		documentLabel.text = name
 		dateLabel.text = date

@@ -134,6 +134,12 @@ class ScanAlbumsView: View {
 		tableView.deleteRows(at: indexPaths, with: .automatic)
 	}
 	
+	private func generateThumbnail(from object: DocumentGroup) -> UIImage? {
+		guard let thumbnailData = (object.documents.allObjects as? [Document])?.first?.image.originalImage else {
+			return #imageLiteral(resourceName: "ICON")
+		}
+		return UIImage(data: thumbnailData)
+	}
 }
 
 extension ScanAlbumsView {
@@ -196,10 +202,11 @@ extension ScanAlbumsView: UITableViewDelegate, UITableViewDataSource {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: "ScanAlbumsCell", for: indexPath) as? ScanAlbumsTableViewCell else {
 			return UITableViewCell()
 		}
-		let object = tableViewData[indexPath.row]
 		
-		cell.configureCell(image: #imageLiteral(resourceName: "ICON"), name: object.name, date: "", numberOfPages: object.documents.count)
-//		cell.configureCell(image: #imageLiteral(resourceName: "ICON"), document: tableViewData[indexPath.row], date: "11/11/20", number: 3)
+		let object = tableViewData[indexPath.row]
+		let thumbnail = generateThumbnail(from: object)
+		
+		cell.configureCell(image: thumbnail, name: object.name, date: SCANDODateFormatter.shared.string(from: object.date), numberOfPages: object.documents.count)
 		
 		return cell
 	}
