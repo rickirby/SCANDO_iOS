@@ -16,7 +16,7 @@ class PreviewModel: NSObject {
 		super.init()
 	}
 	
-	func addNewDocumentGroup(name: String, originalImage image: UIImage, quad: Quadrilateral, rotationAngle: Double, date: Date) {
+	func addNewDocumentGroup(name: String, originalImage image: UIImage, thumbnailImage: UIImage, quad: Quadrilateral, rotationAngle: Double, date: Date) {
 		
 		let managedObjectContext = DataManager.shared.persistentContainer.viewContext
 		
@@ -24,7 +24,7 @@ class PreviewModel: NSObject {
 		documentGroup.name = name
 		documentGroup.date = date
 		
-		if let imageData = image.jpegData(compressionQuality: 0.7) {
+		if let imageData = image.jpegData(compressionQuality: 0.7), let thumbnailData = thumbnailImage.jpegData(compressionQuality: 0.7) {
 			let quadPoint = QuadPoint(context: managedObjectContext)
 			quadPoint.topLeftX = Double(quad.topLeft.x)
 			quadPoint.topLeftY = Double(quad.topLeft.y)
@@ -40,6 +40,7 @@ class PreviewModel: NSObject {
 			
 			let document = Document(context: managedObjectContext)
 			document.image = image
+			document.thumbnail = thumbnailData
 			document.quad = quadPoint
 			document.date = date
 			document.rotationAngle = rotationAngle
@@ -55,11 +56,11 @@ class PreviewModel: NSObject {
 		}
 	}
 	
-	func addDocumentToDocumentGroup(documentGroup: DocumentGroup, originalImage image: UIImage, quad: Quadrilateral, rotationAngle: Double, date: Date) {
+	func addDocumentToDocumentGroup(documentGroup: DocumentGroup, originalImage image: UIImage, thumbnailImage: UIImage, quad: Quadrilateral, rotationAngle: Double, date: Date) {
 		
 		let managedObjectContext = DataManager.shared.persistentContainer.viewContext
 		
-		if let imageData = image.jpegData(compressionQuality: 0.7) {
+		if let imageData = image.jpegData(compressionQuality: 0.7), let thumbnailData = thumbnailImage.jpegData(compressionQuality: 0.7) {
 			let quadPoint = QuadPoint(context: managedObjectContext)
 			quadPoint.topLeftX = Double(quad.topLeft.x)
 			quadPoint.topLeftY = Double(quad.topLeft.y)
@@ -75,6 +76,7 @@ class PreviewModel: NSObject {
 			
 			let document = Document(context: managedObjectContext)
 			document.image = image
+			document.thumbnail = thumbnailData
 			document.quad = quadPoint
 			document.date = date
 			document.rotationAngle = rotationAngle
