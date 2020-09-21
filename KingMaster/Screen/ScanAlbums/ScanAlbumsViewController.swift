@@ -35,13 +35,13 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		configureViewEvent()
 		configureViewData()
 		configureModel()
+		model.fetchData()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
 		configureBar()
-		model.fetchData()
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
