@@ -139,7 +139,7 @@ class PreviewViewController: ViewController<PreviewView> {
 	private func finishImage() {
 		screenView.startLoading()
 		DispatchQueue.global(qos: .userInitiated).async {
-			guard let image = self.image, let processedImage = self.processedImage, let thumbnailImage = processedImage.createThumbnail(withSize: CGSize(width: processedImage.size.width / 10, height: processedImage.size.height / 10)), let quad = self.quad else { return }
+			guard let image = self.image, let processedImage = self.processedImage, let thumbnailImage = processedImage.createThumbnail(withSize: CGSize(width: processedImage.size.width / 15, height: processedImage.size.height / 15)), let quad = self.quad else { return }
 			if let documentGroup = self.passedData?().documentGroup {
 				self.model.addDocumentToDocumentGroup(documentGroup: documentGroup, originalImage: image, thumbnailImage: thumbnailImage, quad: quad, rotationAngle: self.rotationAngle.value, date: Date())
 			} else {
