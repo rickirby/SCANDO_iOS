@@ -36,6 +36,12 @@ class PreviewCoordinator: Coordinator {
 	func makePreviewViewController() -> UIViewController {
 		let vc = PreviewViewController()
 		vc.passedData = passedData
+		vc.onNavigationEvent = { [weak self] (navigationEvent: PreviewViewController.NavigationEvent) in
+			switch navigationEvent {
+			case .didFinish:
+				Router.shared.popToRootViewController(on: self!)
+			}
+		}
 		
 		return vc
 	}

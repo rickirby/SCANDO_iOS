@@ -14,6 +14,11 @@ class PreviewViewController: ViewController<PreviewView> {
 	
 	// MARK: - Public Properties
 	
+	enum NavigationEvent {
+		case didFinish
+	}
+	
+	var onNavigationEvent: ((NavigationEvent) -> Void)?
 	var passedData: (() -> PreviewCoordinator.PreviewData)?
 	
 	// MARK: - Private Properties
@@ -138,6 +143,8 @@ class PreviewViewController: ViewController<PreviewView> {
 		} else {
 			model.addNewDocumentGroup(name: "Scando Document", originalImage: image, quad: quad, rotationAngle: rotationAngle.value, date: Date())
 		}
+		
+		onNavigationEvent?(.didFinish)
 	}
 	
 }
