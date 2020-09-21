@@ -43,16 +43,19 @@ class ScanAlbumsCoordinator: Coordinator {
 	}
 	
 	private func openCamera() {
+		cameraCoordinator = nil
 		cameraCoordinator = CameraCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
 		cameraCoordinator?.start()
 	}
 	
 	private func openScanImagePicker() {
+		scanImagePickerCoordinator = nil
 		scanImagePickerCoordinator = ScanImagePickerCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
 		scanImagePickerCoordinator?.start()
 	}
 	
 	private func openDocumentGroup(object: DocumentGroup) {
+		documentGroupCoordinator = nil
 		documentGroupCoordinator = DocumentGroupCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
 		documentGroupCoordinator?.passedData = {
 			return object
