@@ -8,6 +8,7 @@
 
 import UIKit
 import RBToolkit
+import RBCameraDocScan
 
 class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	
@@ -67,7 +68,8 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		screenView.onViewEvent = { [weak self] (viewEvent: ScanAlbumsView.ViewEvent) in
 			switch viewEvent {
 			case .didTapCamera:
-				self?.onNavigationEvent?(.didTapCamera)
+//				self?.onNavigationEvent?(.didTapCamera)
+				self?.addNewDocumentGroup(name: "HALO", originalImage: #imageLiteral(resourceName: "mock"), thumbnailImage: #imageLiteral(resourceName: "mock"), quad: self!.defaultQuad(forImage: #imageLiteral(resourceName: "mock")), rotationAngle: 0, date: Date())
 			case .didTapPicker:
 				self?.onNavigationEvent?(.didTapPicker)
 			case .didSelectRow(let index):
@@ -147,6 +149,57 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		if shouldDidSelectRow {
 			shouldDidSelectRow = false
 			screenView.tableView.delegate?.tableView?(self.screenView.tableView, didSelectRowAt: IndexPath(row: 0, section: 0))
+		}
+	}
+	
+	private func defaultQuad(forImage image: UIImage) -> Quadrilateral {
+		let topLeft = CGPoint(x: image.size.width / 3.0, y: image.size.height / 3.0)
+		let topRight = CGPoint(x: 2.0 * image.size.width / 3.0, y: image.size.height / 3.0)
+		let bottomRight = CGPoint(x: 2.0 * image.size.width / 3.0, y: 2.0 * image.size.height / 3.0)
+		let bottomLeft = CGPoint(x: image.size.width / 3.0, y: 2.0 * image.size.height / 3.0)
+		
+		let quad = Quadrilateral(topLeft: topLeft, topRight: topRight, bottomRight: bottomRight, bottomLeft: bottomLeft)
+		
+		return quad
+	}
+	
+	func addNewDocumentGroup(name: String, originalImage image: UIImage, thumbnailImage: UIImage, quad: Quadrilateral, rotationAngle: Double, date: Date) {
+		
+		let managedObjectContext = DataManager.shared.persistentContainer.viewContext
+		
+		let documentGroup = DocumentGroup(context: managedObjectContext)
+		documentGroup.name = name
+		documentGroup.date = date
+		
+		if let imageData = image.jpegData(compressionQuality: 0.7), let thumbnailData = thumbnailImage.jpegData(compressionQuality: 0.7) {
+			let quadPoint = QuadPoint(context: managedObjectContext)
+			quadPoint.topLeftX = Double(quad.topLeft.x)
+			quadPoint.topLeftY = Double(quad.topLeft.y)
+			quadPoint.topRightX = Double(quad.topRight.x)
+			quadPoint.topRightY = Double(quad.topRight.y)
+			quadPoint.bottomLeftX = Double(quad.bottomLeft.x)
+			quadPoint.bottomLeftY = Double(quad.bottomLeft.y)
+			quadPoint.bottomRightX = Double(quad.bottomRight.x)
+			quadPoint.bottomRightY = Double(quad.bottomRight.y)
+			
+			let image = DocumentImage(context: managedObjectContext)
+			image.originalImage = imageData
+			
+			let document = Document(context: managedObjectContext)
+			document.image = image
+			document.thumbnail = thumbnailData
+			document.quad = quadPoint
+			document.date = date
+			document.rotationAngle = rotationAngle
+			
+			documentGroup.documents = NSSet.init(array: [document])
+		}
+		
+		do {
+			try managedObjectContext.save()
+			print("Saving \(Date())")
+		} catch let error as NSError {
+			print("Could not save \(error), \(error.userInfo)")
 		}
 	}
 }
