@@ -55,15 +55,11 @@ class DocumentGroupCollectionViewCell: UICollectionViewCell {
 		imageView.startShimmering()
 		
 		DispatchQueue.global(qos: .userInitiated).async {
-			guard let originalImage = UIImage(data: object.image.originalImage) else { return }
-			
-			let quad = Quadrilateral(topLeft: CGPoint(x: object.quad.topLeftX, y: object.quad.topLeftY), topRight: CGPoint(x: object.quad.topRightX, y: object.quad.topRightY), bottomRight: CGPoint(x: object.quad.bottomRightX, y: object.quad.bottomRightY), bottomLeft: CGPoint(x: object.quad.bottomLeftX, y: object.quad.bottomLeftY))
-			
-			let processedImage = PerspectiveTransformer.applyTransform(to: originalImage, withQuad: quad).rotated(by: Measurement<UnitAngle>(value: object.rotationAngle, unit: .degrees))
+			guard let thumbnailImage = UIImage(data: object.thumbnail) else { return }
 			
 			ThreadManager.executeOnMain {
 				self.imageView.stopShimmering()
-				self.imageView.image = processedImage
+				self.imageView.image = thumbnailImage
 			}
 		}
 	}
