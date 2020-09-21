@@ -91,17 +91,13 @@ class ScanAlbumsTableViewCell: UITableViewCell {
 	private func generateThumbnail(from object: DocumentGroup) {
 		
 		DispatchQueue.global(qos: .userInitiated).async {
-			guard let firstDocument = (object.documents.allObjects as? [Document])?.first, let originalImage = UIImage(data: firstDocument.image.originalImage) else {
+			guard let firstDocument = (object.documents.allObjects as? [Document])?.first, let thumbnailImage = UIImage(data: firstDocument.thumbnail) else {
 				return
 			}
 			
-			let quad = Quadrilateral(topLeft: CGPoint(x: firstDocument.quad.topLeftX, y: firstDocument.quad.topLeftY), topRight: CGPoint(x: firstDocument.quad.topRightX, y: firstDocument.quad.topRightY), bottomRight: CGPoint(x: firstDocument.quad.bottomRightX, y: firstDocument.quad.bottomRightY), bottomLeft: CGPoint(x: firstDocument.quad.bottomLeftX, y: firstDocument.quad.bottomLeftY))
-			
-			let processedImage = PerspectiveTransformer.applyTransform(to: originalImage, withQuad: quad)
-			
 			ThreadManager.executeOnMain {
 				self.previewImageView.stopShimmering()
-				self.previewImageView.image = processedImage
+				self.previewImageView.image = thumbnailImage
 			}
 		}
 		
