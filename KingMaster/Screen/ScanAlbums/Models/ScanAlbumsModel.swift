@@ -30,7 +30,7 @@ class ScanAlbumsModel: NSObject {
 		let sort = NSSortDescriptor(key: "date", ascending: false)
 		fetchRequest.sortDescriptors = [sort]
 		
-		let fetchedResultsController = NSFetchedResultsController<DocumentGroup>(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+		let fetchedResultsController = NSFetchedResultsController<DocumentGroup>(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: "rootCache")
 		
 		return fetchedResultsController
 	}()
