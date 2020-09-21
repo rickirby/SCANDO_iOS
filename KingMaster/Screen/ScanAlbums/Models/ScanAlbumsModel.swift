@@ -30,7 +30,7 @@ class ScanAlbumsModel: NSObject {
 		let sort = NSSortDescriptor(key: "date", ascending: false)
 		fetchRequest.sortDescriptors = [sort]
 		
-		let fetchedResultsController = NSFetchedResultsController<DocumentGroup>(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+		let fetchedResultsController = NSFetchedResultsController<DocumentGroup>(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: "rootCache")
 		
 		return fetchedResultsController
 	}()
@@ -53,10 +53,13 @@ class ScanAlbumsModel: NSObject {
 		}
 	}
 	
-	func deleteData(documentGroupToDelete documentGroup: DocumentGroup) {
+	func deleteData(documentGroupsToDelete documentGroups: [DocumentGroup]) {
 		let managedObjectContext = DataManager.shared.persistentContainer.viewContext
 		
-		managedObjectContext.delete(documentGroup)
+		for documentGroup in documentGroups {
+			managedObjectContext.delete(documentGroup)
+		}
+		
 		do {
 			try managedObjectContext.save()
 		} catch let error as NSError {

@@ -2,7 +2,7 @@
 //  Document+CoreDataProperties.swift
 //  KingMaster
 //
-//  Created by Ricki Private on 19/09/20.
+//  Created by Ricki Private on 21/09/20.
 //  Copyright © 2020 Ricki Bin Yamin. All rights reserved.
 //
 //
@@ -19,6 +19,7 @@ extension Document {
 
     @NSManaged public var date: Date
     @NSManaged public var rotationAngle: Double
+    @NSManaged public var thumbnail: Data
     @NSManaged public var image: DocumentImage
     @NSManaged public var owner: DocumentGroup?
     @NSManaged public var quad: QuadPoint

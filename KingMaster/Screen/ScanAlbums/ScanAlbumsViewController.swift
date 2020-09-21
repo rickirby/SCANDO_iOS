@@ -35,13 +35,13 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		configureViewEvent()
 		configureViewData()
 		configureModel()
+		model.fetchData()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
 		configureBar()
-		model.fetchData()
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -140,9 +140,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 			itemsToDelete.append(model.fetchedResultsController.object(at: IndexPath(row: i, section: 0)))
 		}
 		
-		for item in itemsToDelete {
-			model.deleteData(documentGroupToDelete: item)
-		}
+		model.deleteData(documentGroupsToDelete: itemsToDelete)
 	}
 	
 	private func triggerDidSelectRow() {
