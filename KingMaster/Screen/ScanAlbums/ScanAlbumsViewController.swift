@@ -140,9 +140,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 			itemsToDelete.append(model.fetchedResultsController.object(at: IndexPath(row: i, section: 0)))
 		}
 		
-		for item in itemsToDelete {
-			model.deleteData(documentGroupToDelete: item)
-		}
+		model.deleteData(documentGroupsToDelete: itemsToDelete)
 	}
 	
 	private func triggerDidSelectRow() {
