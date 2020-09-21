@@ -105,6 +105,9 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 				self.screenView.tableView.reloadRows(at: [indexPath], with: .automatic)
 			case .moveData(let indexPath, let newIndexPath):
 				self.screenView.tableView.moveRow(at: indexPath, to: newIndexPath)
+				DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+					self.screenView.tableView.reloadRows(at: [newIndexPath], with: .automatic)
+				}
 			}
 		}
 	}
