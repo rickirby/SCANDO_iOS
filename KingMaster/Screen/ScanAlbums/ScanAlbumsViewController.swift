@@ -23,7 +23,8 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	
 	// MARK: - Private Properties
 	
-	let model = ScanAlbumsModel()
+	private let model = ScanAlbumsModel()
+	private var shouldDidSelectRow = false
 	
 	// MARK: - Life Cycle
 	
@@ -41,6 +42,12 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		
 		configureBar()
 		model.fetchData()
+	}
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		
+		triggerDidSelectRow()
 	}
 	
 	// MARK: - Private Method
@@ -99,7 +106,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 				self.screenView.tableView.endUpdates()
 			case .insertData(let newIndexPath):
 				self.screenView.tableView.insertRows(at: [newIndexPath], with: .automatic)
-				self.screenView.tableView.delegate?.tableView?(self.screenView.tableView, didSelectRowAt: IndexPath(row: 0, section: 0))
+				self.shouldDidSelectRow = true
 			case .deleteData(let indexPath):
 				self.screenView.tableView.deleteRows(at: [indexPath], with: .automatic)
 			case .updateData(let indexPath):
@@ -135,6 +142,13 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		
 		for item in itemsToDelete {
 			model.deleteData(documentGroupToDelete: item)
+		}
+	}
+	
+	private func triggerDidSelectRow() {
+		if shouldDidSelectRow {
+			shouldDidSelectRow = false
+			screenView.tableView.delegate?.tableView?(self.screenView.tableView, didSelectRowAt: IndexPath(row: 0, section: 0))
 		}
 	}
 }

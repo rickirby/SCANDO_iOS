@@ -137,14 +137,22 @@ class PreviewViewController: ViewController<PreviewView> {
 	
 	
 	private func finishImage() {
-		guard let image = image, let quad = quad else { return }
-		if let documentGroup = passedData?().documentGroup {
-			model.addDocumentToDocumentGroup(documentGroup: documentGroup, originalImage: image, quad: quad, rotationAngle: rotationAngle.value, date: Date())
-		} else {
-			model.addNewDocumentGroup(name: "Scando Document", originalImage: image, quad: quad, rotationAngle: rotationAngle.value, date: Date())
+		screenView.startLoading()
+		DispatchQueue.global(qos: .userInitiated).async {
+			guard let image = self.image, let quad = self.quad else { return }
+			if let documentGroup = self.passedData?().documentGroup {
+				self.model.addDocumentToDocumentGroup(documentGroup: documentGroup, originalImage: image, quad: quad, rotationAngle: self.rotationAngle.value, date: Date())
+			} else {
+				self.model.addNewDocumentGroup(name: "Scando Document", originalImage: image, quad: quad, rotationAngle: self.rotationAngle.value, date: Date())
+			}
+			
+			ThreadManager.executeOnMain {
+				self.screenView.stopLoading()
+				self.onNavigationEvent?(.didFinish)
+			}
 		}
 		
-		onNavigationEvent?(.didFinish)
+		
 	}
 	
 }
