@@ -99,6 +99,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 				self.screenView.tableView.endUpdates()
 			case .insertData(let newIndexPath):
 				self.screenView.tableView.insertRows(at: [newIndexPath], with: .automatic)
+				self.screenView.tableView.delegate?.tableView?(self.screenView.tableView, didSelectRowAt: IndexPath(row: 0, section: 0))
 			case .deleteData(let indexPath):
 				self.screenView.tableView.deleteRows(at: [indexPath], with: .automatic)
 			case .updateData(let indexPath):
