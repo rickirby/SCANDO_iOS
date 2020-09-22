@@ -11,7 +11,7 @@ import RBPhotosGallery
 
 class GalleryViewController: RBPhotosGalleryViewController {
 	
-	var dummyData: [UIImage] = [#imageLiteral(resourceName: "ICON"), #imageLiteral(resourceName: "ICON"), #imageLiteral(resourceName: "ICON")]
+	var galleryViewData: [Document] = []
 	
 	var passedData: (() -> GalleryCoordinator.GalleryData)?
 	
@@ -31,6 +31,7 @@ class GalleryViewController: RBPhotosGalleryViewController {
 		
 		configureLoadBar()
 		configureViewEvent()
+		prepareData()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -65,11 +66,30 @@ class GalleryViewController: RBPhotosGalleryViewController {
 			}
 		}
 	}
+	
+	private func prepareData() {
+		screenView.startLoading()
+		
+		DispatchQueue.global(qos: .userInitiated).async {
+			guard let data = self.passedData?(), let documents = data.documentGroup.documents.allObjects as? [Document] else { return }
+			let sortedDocument = documents.sorted {
+				$0.date.compare($1.date) == .orderedAscending
+			}
+			
+			self.galleryViewData = sortedDocument
+			
+			ThreadManager.executeOnMain {
+				self.screenView.stopLoading()
+				self.reloadPhotosData()
+				self.scrollToPhotos(index: data.selectedIndex, animated: false)
+			}
+		}
+	}
 }
 
 extension GalleryViewController: RBPhotosGalleryViewDelegate, RBPhotosGalleryViewDataSource {
 	
 	func photosGalleryImages() -> [UIImage] {
-		return dummyData
+		return galleryViewData.map { (UIImage(data: $0.image.originalImage) ?? #imageLiteral(resourceName: "ICON")) }
 	}
 }
