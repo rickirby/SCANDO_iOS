@@ -86,8 +86,11 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 			guard let documentGroup = self.passedData?(), let documents = documentGroup.documents.allObjects as? [Document] else {
 				return []
 			}
+			let sortedDocuments = documents.sorted {
+				$0.date.compare($1.date) == .orderedAscending
+			}
 			
-			return documents
+			return sortedDocuments
 		}
 	}
 }
