@@ -91,8 +91,14 @@ class ScanAlbumsTableViewCell: UITableViewCell {
 	private func generateThumbnail(from object: DocumentGroup) {
 		
 		DispatchQueue.global(qos: .userInitiated).async {
-			guard let firstDocument = (object.documents.allObjects as? [Document])?.first, let thumbnailImage = UIImage(data: firstDocument.thumbnail) else {
-				return
+			
+			guard let documents = object.documents.allObjects as? [Document] else { return }
+			let sortedDocument = documents.sorted {
+				$0.date.compare($1.date) == .orderedAscending
+			}
+			var thumbnailImage = #imageLiteral(resourceName: "ICON")
+			if let lastDocument = sortedDocument.last, let thumbnail = UIImage(data: lastDocument.thumbnail) {
+				thumbnailImage = thumbnail
 			}
 			
 			ThreadManager.executeOnMain {
