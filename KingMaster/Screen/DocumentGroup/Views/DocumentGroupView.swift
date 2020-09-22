@@ -53,6 +53,15 @@ class DocumentGroupView: View {
 		configureCollectionViewLayout()
 	}
 	
+	
+	// MARK: - Public Method
+	
+	func scrollToEnd() {
+		guard let count = viewDataSupply?().count else { return }
+		
+		collectionView.scrollToItem(at: IndexPath(row: count - 1, section: 0), at: .centeredVertically, animated: true)
+	}
+	
 	// MARK: - Private Method
 	
 	private func configureView() {

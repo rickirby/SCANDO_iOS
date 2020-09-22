@@ -21,6 +21,7 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
 	var passedData: (() -> DocumentGroup)?
+	var shouldScrollToEnd = false
 	
 	// MARK: - Life Cycle
 	
@@ -42,7 +43,16 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 	// MARK: - Public Methods
 	
 	func reloadData() {
-		screenView.collectionView.reloadData()
+		
+		if shouldScrollToEnd {
+			screenView.collectionView.reloadData()
+			shouldScrollToEnd = false
+			
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+				self.screenView.scrollToEnd()
+			}
+		}
+		
 	}
 	
 	// MARK: - Private Methods
