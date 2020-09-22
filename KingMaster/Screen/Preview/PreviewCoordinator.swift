@@ -38,8 +38,14 @@ class PreviewCoordinator: Coordinator {
 		vc.passedData = passedData
 		vc.onNavigationEvent = { [weak self] (navigationEvent: PreviewViewController.NavigationEvent) in
 			switch navigationEvent {
-			case .didFinish:
-				Router.shared.popToRootViewController(on: self!)
+			case .didFinish(let newGroup):
+				if newGroup {
+					Router.shared.popToRootViewController(on: self!)
+				} else {
+					guard let nav = self?.rootViewController as? UINavigationController, let vc = nav.viewControllers[1] as? DocumentGroupViewController else { return }
+					nav.popToViewController(vc, animated: true)
+				}
+				
 			}
 		}
 		

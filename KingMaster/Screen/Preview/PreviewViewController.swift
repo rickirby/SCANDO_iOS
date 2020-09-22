@@ -15,7 +15,7 @@ class PreviewViewController: ViewController<PreviewView> {
 	// MARK: - Public Properties
 	
 	enum NavigationEvent {
-		case didFinish
+		case didFinish(newGroup: Bool)
 	}
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
@@ -148,7 +148,7 @@ class PreviewViewController: ViewController<PreviewView> {
 			
 			ThreadManager.executeOnMain {
 				self.screenView.stopLoading()
-				self.onNavigationEvent?(.didFinish)
+				self.onNavigationEvent?(.didFinish(newGroup: self.passedData?() == nil))
 			}
 		}
 		
