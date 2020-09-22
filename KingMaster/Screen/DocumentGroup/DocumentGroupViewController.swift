@@ -8,6 +8,7 @@
 
 import UIKit
 import RBToolkit
+import RBCameraDocScan
 
 class DocumentGroupViewController: ViewController<DocumentGroupView> {
 	
@@ -22,6 +23,11 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
 	var passedData: (() -> DocumentGroup)?
 	var shouldReloadAndScroll = false
+	
+	// MARK: - Private Properties
+	
+	private var hasPreparedGalleryData = false
+	private var galleryImagesData: [UIImage] = []
 	
 	// MARK: - Life Cycle
 	
@@ -91,6 +97,30 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 			}
 			
 			return sortedDocuments
+		}
+	}
+	
+	private func prepareGalleryData() {
+		DispatchQueue.global(qos: .utility).async {
+			guard let documentGroup = self.passedData?(), let documents = documentGroup.documents.allObjects as? [Document] else { return }
+			
+			let sortedDocuments = documents.sorted {
+				$0.date.compare($1.date) == .orderedAscending
+			}
+			
+			self.galleryImagesData = sortedDocuments.map {
+				
+				guard let originalImage = UIImage(data: $0.image.originalImage) else {
+					return #imageLiteral(resourceName: "ICON")
+				}
+				
+				let quad = Quadrilateral(topLeft: CGPoint(x: $0.quad.topLeftX, y: $0.quad.topLeftY), topRight: CGPoint(x: $0.quad.topRightX, y: $0.quad.topRightY), bottomRight: CGPoint(x: $0.quad.bottomRightX, y: $0.quad.bottomRightY), bottomLeft: CGPoint(x: $0.quad.bottomLeftX, y: $0.quad.bottomLeftY))
+				let processedImage = PerspectiveTransformer.applyTransform(to: originalImage, withQuad: quad)
+				
+				return processedImage
+			}
+			
+			self.hasPreparedGalleryData = true
 		}
 	}
 }
