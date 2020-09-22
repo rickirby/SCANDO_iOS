@@ -22,11 +22,21 @@ class GalleryView: UIView {
 	
 	// MARK: - View Component
 	
+	lazy var activityIndicator: UIActivityIndicatorView = {
+		let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+		activityIndicator.color = .white
+		activityIndicator.hidesWhenStopped = true
+		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+		return activityIndicator
+	}()
+	
 	lazy var editBarButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editBarButtonTapped))
 	
 	lazy var downloadBarButton = UIBarButtonItem(image: UIImage(named: "SaveButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(downloadBarButtonTapped))
 	
 	lazy var deleteBarButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteBarButtonTapped))
+	
+	// MARK: - Life Cycle
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -38,7 +48,26 @@ class GalleryView: UIView {
 	}
 	
 	func setViews() {
+		addAllSubviews(views: [activityIndicator])
 		
+		NSLayoutConstraint.activate([
+			activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+			activityIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+		])
+	}
+	
+	// MARK: - Public Method
+	
+	func startLoading() {
+		ThreadManager.executeOnMain {
+			self.activityIndicator.startAnimating()
+		}
+	}
+	
+	func stopLoading() {
+		ThreadManager.executeOnMain {
+			self.activityIndicator.stopAnimating()
+		}
 	}
 }
 
