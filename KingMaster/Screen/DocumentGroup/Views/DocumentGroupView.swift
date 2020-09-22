@@ -22,6 +22,10 @@ class DocumentGroupView: View {
 	var onViewEvent: ((ViewEvent) -> Void)?
 	var viewDataSupply: (() -> [Document])?
 	
+	// MARK: - Private Properties
+	
+	var collectionViewData: [UIImage?] = []
+	
 	// MARK: - View Component
 	
 	lazy var collectionView: UICollectionView = {
@@ -32,6 +36,14 @@ class DocumentGroupView: View {
 		collectionView.contentInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
 		
 		return collectionView
+	}()
+	
+	lazy var activityIndicator: UIActivityIndicatorView = {
+		let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+		activityIndicator.color = .white
+		activityIndicator.hidesWhenStopped = true
+		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+		return activityIndicator
 	}()
 	
 	lazy var cameraBarButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(cameraBarButtonTapped))
@@ -45,6 +57,12 @@ class DocumentGroupView: View {
 		
 		configureView()
 		configureCollectionView()
+	}
+	
+	override func onViewWillAppear() {
+		super.onViewWillAppear()
+		
+		prepareDataSupply()
 	}
 	
 	override func onViewWillLayoutSubviews() {
@@ -65,13 +83,16 @@ class DocumentGroupView: View {
 	// MARK: - Private Method
 	
 	private func configureView() {
-		addAllSubviews(views: [collectionView])
+		addAllSubviews(views: [collectionView, activityIndicator])
 		
 		NSLayoutConstraint.activate([
 			collectionView.topAnchor.constraint(equalTo: self.topAnchor),
 			collectionView.leftAnchor.constraint(equalTo: self.leftAnchor),
 			collectionView.rightAnchor.constraint(equalTo: self.rightAnchor),
-			collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+			collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+			
+			activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+			activityIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor)
 		])
 	}
 	
@@ -95,6 +116,21 @@ class DocumentGroupView: View {
 		collectionView.setCollectionViewLayout(layout, animated: true)
 		collectionView.contentInset = UIEdgeInsets(top: contentInset, left: contentInset, bottom: contentInset, right: contentInset)
 	}
+	
+	private func prepareDataSupply() {
+		activityIndicator.startAnimating()
+		
+		DispatchQueue.global(qos: .userInitiated).async {
+			guard let data = self.viewDataSupply?() else { return }
+			
+			self.collectionViewData = data.map { UIImage(data: $0.image.originalImage) }
+			
+			ThreadManager.executeOnMain {
+				self.activityIndicator.stopAnimating()
+				self.collectionView.reloadData()
+			}
+		}
+	}
 }
 
 extension DocumentGroupView {
@@ -112,15 +148,15 @@ extension DocumentGroupView {
 
 extension DocumentGroupView: UICollectionViewDelegate, UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return viewDataSupply?().count ?? 0
+		return collectionViewData.count
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DocumentGroupCell", for: indexPath) as? DocumentGroupCollectionViewCell, let object = viewDataSupply?()[indexPath.row] else {
+		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DocumentGroupCell", for: indexPath) as? DocumentGroupCollectionViewCell else {
 			return UICollectionViewCell()
 		}
 		
-		cell.configure(with: object)
+		cell.configure(with: collectionViewData[indexPath.row])
 		
 		return cell
 	}
