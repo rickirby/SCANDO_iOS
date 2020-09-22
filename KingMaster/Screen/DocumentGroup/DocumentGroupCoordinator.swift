@@ -73,6 +73,10 @@ class DocumentGroupCoordinator: Coordinator {
 	private func openGallery(index: Int) {
 		galleryCoordinator = nil
 		galleryCoordinator = GalleryCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		guard let documentGroup = passedData?() else { return }
+		galleryCoordinator?.passedData = {
+			return GalleryCoordinator.GalleryData(documentGroup: documentGroup, selectedIndex: index)
+		}
 		galleryCoordinator?.start()
 	}
 }

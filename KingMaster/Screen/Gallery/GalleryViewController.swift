@@ -13,6 +13,8 @@ class GalleryViewController: RBPhotosGalleryViewController {
 	
 	var dummyData: [UIImage] = [#imageLiteral(resourceName: "ICON"), #imageLiteral(resourceName: "ICON"), #imageLiteral(resourceName: "ICON")]
 	
+	var passedData: (() -> GalleryCoordinator.GalleryData)?
+	
 	// MARK: - Private Properties
 	
 	private var screenView = GalleryView()

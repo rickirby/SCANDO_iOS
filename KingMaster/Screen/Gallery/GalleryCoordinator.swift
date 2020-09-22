@@ -18,6 +18,8 @@ class GalleryCoordinator: Coordinator {
 		return navigationController
 	}
 	
+	var passedData: (() -> GalleryData)?
+	
 	private weak var navigationController: UINavigationController?
 	
 	init(navigationController: UINavigationController) {
@@ -32,6 +34,7 @@ class GalleryCoordinator: Coordinator {
 	
 	func makeGalleryViewController() -> UIViewController {
 		let vc = GalleryViewController()
+		vc.passedData = passedData
 		
 		return vc
 	}
