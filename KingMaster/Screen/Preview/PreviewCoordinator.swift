@@ -43,7 +43,7 @@ class PreviewCoordinator: Coordinator {
 					Router.shared.popToRootViewController(on: self!)
 				} else {
 					guard let nav = self?.rootViewController as? UINavigationController, let vc = nav.viewControllers[1] as? DocumentGroupViewController else { return }
-					vc.shouldScrollToEnd = true
+					vc.shouldReloadAndScroll = true
 					nav.popToViewController(vc, animated: true)
 				}
 				
