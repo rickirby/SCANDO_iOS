@@ -38,6 +38,12 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 		configureBar()
 	}
 	
+	// MARK: - Public Methods
+	
+	func reloadData() {
+		screenView.collectionView.reloadData()
+	}
+	
 	// MARK: - Private Methods
 	
 	private func configureLoadBar() {
