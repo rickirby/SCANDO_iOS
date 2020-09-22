@@ -62,7 +62,7 @@ class DocumentGroupView: View {
 	override func onViewWillAppear() {
 		super.onViewWillAppear()
 		
-		prepareDataSupply()
+//		prepareDataSupply()
 	}
 	
 	override func onViewWillLayoutSubviews() {
@@ -110,6 +110,7 @@ class DocumentGroupView: View {
 		
 		let layout = UICollectionViewFlowLayout()
 		layout.scrollDirection = .vertical
+		layout.estimatedItemSize = CGSize(width: cellSize, height: cellSize)
 		layout.itemSize = CGSize(width: cellSize, height: cellSize)
 		layout.minimumLineSpacing = self.bounds.width - 2 * (cellSize + contentInset)
 		
@@ -148,15 +149,15 @@ extension DocumentGroupView {
 
 extension DocumentGroupView: UICollectionViewDelegate, UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return collectionViewData.count
+		return viewDataSupply?().count ?? 0
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DocumentGroupCell", for: indexPath) as? DocumentGroupCollectionViewCell else {
+		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DocumentGroupCell", for: indexPath) as? DocumentGroupCollectionViewCell, let object = viewDataSupply?()[indexPath.row] else {
 			return UICollectionViewCell()
 		}
 		
-		cell.configure(with: collectionViewData[indexPath.row])
+		cell.configure(with: object)
 		
 		return cell
 	}
