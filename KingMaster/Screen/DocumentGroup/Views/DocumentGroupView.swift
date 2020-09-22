@@ -48,14 +48,6 @@ class DocumentGroupView: View {
 		return collectionView
 	}()
 	
-	lazy var activityIndicator: UIActivityIndicatorView = {
-		let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
-		activityIndicator.color = .white
-		activityIndicator.hidesWhenStopped = true
-		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-		return activityIndicator
-	}()
-	
 	lazy var cameraBarButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(cameraBarButtonTapped))
 	
 	lazy var fileBarButton = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(fileBarButtonTapped))
@@ -69,19 +61,6 @@ class DocumentGroupView: View {
 		configureCollectionView()
 	}
 	
-	override func onViewWillAppear() {
-		super.onViewWillAppear()
-		
-//		prepareDataSupply()
-	}
-	
-	override func onViewWillLayoutSubviews() {
-		super.onViewWillLayoutSubviews()
-		
-//		configureCollectionViewLayout()
-	}
-	
-	
 	// MARK: - Public Method
 	
 	func scrollToEnd() {
@@ -93,16 +72,13 @@ class DocumentGroupView: View {
 	// MARK: - Private Method
 	
 	private func configureView() {
-		addAllSubviews(views: [collectionView, activityIndicator])
+		addAllSubviews(views: [collectionView])
 		
 		NSLayoutConstraint.activate([
 			collectionView.topAnchor.constraint(equalTo: self.topAnchor),
 			collectionView.leftAnchor.constraint(equalTo: self.leftAnchor),
 			collectionView.rightAnchor.constraint(equalTo: self.rightAnchor),
-			collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-			
-			activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-			activityIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+			collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
 		])
 	}
 	
@@ -112,36 +88,7 @@ class DocumentGroupView: View {
 		
 		collectionView.register(DocumentGroupCollectionViewCell.self, forCellWithReuseIdentifier: "DocumentGroupCell")
 	}
-	
-	private func configureCollectionViewLayout() {
-		let cellSpacing: CGFloat = 10
-		let contentInset: CGFloat = 20
-		let cellSize = (self.bounds.width - 2 * contentInset) / 2 - cellSpacing
-		
-		let layout = UICollectionViewFlowLayout()
-		layout.scrollDirection = .vertical
-		layout.estimatedItemSize = CGSize(width: cellSize, height: cellSize)
-		layout.itemSize = CGSize(width: cellSize, height: cellSize)
-		layout.minimumLineSpacing = self.bounds.width - 2 * (cellSize + contentInset)
-		
-		collectionView.setCollectionViewLayout(layout, animated: false)
-		collectionView.contentInset = UIEdgeInsets(top: contentInset, left: contentInset, bottom: contentInset, right: contentInset)
-	}
-	
-	private func prepareDataSupply() {
-		activityIndicator.startAnimating()
-		
-		DispatchQueue.global(qos: .userInitiated).async {
-			guard let data = self.viewDataSupply?() else { return }
-			
-			self.collectionViewData = data.map { UIImage(data: $0.image.originalImage) }
-			
-			ThreadManager.executeOnMain {
-				self.activityIndicator.stopAnimating()
-				self.collectionView.reloadData()
-			}
-		}
-	}
+
 }
 
 extension DocumentGroupView {
