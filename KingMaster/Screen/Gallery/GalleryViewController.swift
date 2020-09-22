@@ -8,10 +8,12 @@
 
 import UIKit
 import RBPhotosGallery
+import RBCameraDocScan
 
 class GalleryViewController: RBPhotosGalleryViewController {
 	
-	var galleryViewData: [Document] = []
+	var galleryViewDocumentsData: [Document] = []
+	var galleryViewImagesData: [UIImage] = []
 	
 	var passedData: (() -> GalleryCoordinator.GalleryData)?
 	
@@ -76,7 +78,18 @@ class GalleryViewController: RBPhotosGalleryViewController {
 				$0.date.compare($1.date) == .orderedAscending
 			}
 			
-			self.galleryViewData = sortedDocument
+			self.galleryViewDocumentsData = sortedDocument
+			self.galleryViewImagesData = sortedDocument.map {
+				
+				guard let originalImage = UIImage(data: $0.image.originalImage) else {
+					return #imageLiteral(resourceName: "ICON")
+				}
+				
+				let quad = Quadrilateral(topLeft: CGPoint(x: $0.quad.topLeftX, y: $0.quad.topLeftY), topRight: CGPoint(x: $0.quad.topRightX, y: $0.quad.topRightY), bottomRight: CGPoint(x: $0.quad.bottomRightX, y: $0.quad.bottomRightY), bottomLeft: CGPoint(x: $0.quad.bottomLeftX, y: $0.quad.bottomLeftY))
+				let processedImage = PerspectiveTransformer.applyTransform(to: originalImage, withQuad: quad)
+				
+				return processedImage
+			}
 			
 			ThreadManager.executeOnMain {
 				self.screenView.stopLoading()
@@ -90,6 +103,6 @@ class GalleryViewController: RBPhotosGalleryViewController {
 extension GalleryViewController: RBPhotosGalleryViewDelegate, RBPhotosGalleryViewDataSource {
 	
 	func photosGalleryImages() -> [UIImage] {
-		return galleryViewData.map { (UIImage(data: $0.image.originalImage) ?? #imageLiteral(resourceName: "ICON")) }
+		return galleryViewImagesData
 	}
 }
