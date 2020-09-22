@@ -16,6 +16,7 @@ class GalleryViewController: RBPhotosGalleryViewController {
 	var galleryViewImagesData: [UIImage] = []
 	
 	var passedData: (() -> GalleryCoordinator.GalleryData)?
+	var prePeparedData: (() -> [UIImage])?
 	
 	// MARK: - Private Properties
 	
@@ -77,29 +78,48 @@ class GalleryViewController: RBPhotosGalleryViewController {
 	private func prepareData() {
 		screenView.startLoading()
 		
-		DispatchQueue.global(qos: .userInitiated).async {
-			guard let data = self.passedData?(), let documents = data.documentGroup.documents.allObjects as? [Document] else { return }
-			let sortedDocument = documents.sorted {
-				$0.date.compare($1.date) == .orderedAscending
-			}
-			
-			self.galleryViewDocumentsData = sortedDocument
-			self.galleryViewImagesData = sortedDocument.map {
-				
-				guard let originalImage = UIImage(data: $0.image.originalImage) else {
-					return #imageLiteral(resourceName: "ICON")
-				}
-				
-				let quad = Quadrilateral(topLeft: CGPoint(x: $0.quad.topLeftX, y: $0.quad.topLeftY), topRight: CGPoint(x: $0.quad.topRightX, y: $0.quad.topRightY), bottomRight: CGPoint(x: $0.quad.bottomRightX, y: $0.quad.bottomRightY), bottomLeft: CGPoint(x: $0.quad.bottomLeftX, y: $0.quad.bottomLeftY))
-				let processedImage = PerspectiveTransformer.applyTransform(to: originalImage, withQuad: quad)
-				
-				return processedImage
-			}
-			
-			ThreadManager.executeOnMain {
-				self.screenView.stopLoading()
+		if let prePreparedImages = self.prePeparedData?() {
+			guard let data = self.passedData?() else { return }
+			DispatchQueue.main.async {
+				self.galleryViewImagesData = prePreparedImages
 				self.reloadPhotosData()
 				self.scrollToPhotos(index: data.selectedIndex, animated: false)
+				self.screenView.stopLoading()
+			}
+			
+			DispatchQueue.global(qos: .userInitiated).async {
+				guard let data = self.passedData?(), let documents = data.documentGroup.documents.allObjects as? [Document] else { return }
+				let sortedDocument = documents.sorted {
+					$0.date.compare($1.date) == .orderedAscending
+				}
+				
+				self.galleryViewDocumentsData = sortedDocument
+			}
+		} else {
+			DispatchQueue.global(qos: .userInitiated).async {
+				guard let data = self.passedData?(), let documents = data.documentGroup.documents.allObjects as? [Document] else { return }
+				let sortedDocument = documents.sorted {
+					$0.date.compare($1.date) == .orderedAscending
+				}
+				
+				self.galleryViewDocumentsData = sortedDocument
+				self.galleryViewImagesData = sortedDocument.map {
+					
+					guard let originalImage = UIImage(data: $0.image.originalImage) else {
+						return #imageLiteral(resourceName: "ICON")
+					}
+					
+					let quad = Quadrilateral(topLeft: CGPoint(x: $0.quad.topLeftX, y: $0.quad.topLeftY), topRight: CGPoint(x: $0.quad.topRightX, y: $0.quad.topRightY), bottomRight: CGPoint(x: $0.quad.bottomRightX, y: $0.quad.bottomRightY), bottomLeft: CGPoint(x: $0.quad.bottomLeftX, y: $0.quad.bottomLeftY))
+					let processedImage = PerspectiveTransformer.applyTransform(to: originalImage, withQuad: quad)
+					
+					return processedImage
+				}
+				
+				ThreadManager.executeOnMain {
+					self.screenView.stopLoading()
+					self.reloadPhotosData()
+					self.scrollToPhotos(index: data.selectedIndex, animated: false)
+				}
 			}
 		}
 	}

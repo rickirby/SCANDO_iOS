@@ -19,6 +19,7 @@ class GalleryCoordinator: Coordinator {
 	}
 	
 	var passedData: (() -> GalleryData)?
+	var preparedData: (() -> [UIImage])?
 	
 	private weak var navigationController: UINavigationController?
 	
@@ -35,6 +36,7 @@ class GalleryCoordinator: Coordinator {
 	func makeGalleryViewController() -> UIViewController {
 		let vc = GalleryViewController()
 		vc.passedData = passedData
+		vc.prePeparedData = preparedData
 		
 		return vc
 	}
