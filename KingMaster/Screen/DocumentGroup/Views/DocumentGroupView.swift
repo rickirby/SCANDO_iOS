@@ -113,7 +113,7 @@ class DocumentGroupView: View {
 		layout.itemSize = CGSize(width: cellSize, height: cellSize)
 		layout.minimumLineSpacing = self.bounds.width - 2 * (cellSize + contentInset)
 		
-		collectionView.setCollectionViewLayout(layout, animated: true)
+		collectionView.setCollectionViewLayout(layout, animated: false)
 		collectionView.contentInset = UIEdgeInsets(top: contentInset, left: contentInset, bottom: contentInset, right: contentInset)
 	}
 	
