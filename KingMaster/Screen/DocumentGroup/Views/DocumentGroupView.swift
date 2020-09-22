@@ -29,11 +29,15 @@ class DocumentGroupView: View {
 	// MARK: - View Component
 	
 	lazy var collectionView: UICollectionView = {
+		let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.itemSize = CGSize(width: CGFloat(170).makeDynamicW() < 175 ? CGFloat(170).makeDynamicW() : 170, height: CGFloat(170).makeDynamicW() < 175 ? CGFloat(170).makeDynamicW() : 170)
+        layout.minimumLineSpacing = 20
+        layout.sectionInset = UIEdgeInsets(top: CGFloat(20).makeDynamicH(), left: CGFloat(20).makeDynamicW(), bottom: CGFloat(20).makeDynamicH(), right: CGFloat(20).makeDynamicW())
 		
-		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
 		collectionView.translatesAutoresizingMaskIntoConstraints = false
 		collectionView.backgroundColor = .systemBackground
-		collectionView.contentInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
 		
 		return collectionView
 	}()
@@ -68,7 +72,7 @@ class DocumentGroupView: View {
 	override func onViewWillLayoutSubviews() {
 		super.onViewWillLayoutSubviews()
 		
-		configureCollectionViewLayout()
+//		configureCollectionViewLayout()
 	}
 	
 	
