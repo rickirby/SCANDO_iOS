@@ -19,6 +19,8 @@ class ScanImagePickerCoordinator: Coordinator {
 		return navigationController
 	}
 	
+	var passedData: (() -> ScanImagePickerData)?
+	
 	private weak var navigationController: UINavigationController?
 	private var editScanCoordinator: EditScanCoordinator?
 	
@@ -43,8 +45,9 @@ class ScanImagePickerCoordinator: Coordinator {
 		editScanCoordinator = nil
 		editScanCoordinator = EditScanCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
 		editScanCoordinator?.passedData = {
-			return EditScanCoordinator.EditScanData(image: image, quad: quad)
+			return EditScanCoordinator.EditScanData(image: image, quad: quad, isRotateImage: false, documentGroup: self.passedData?().documentGroup)
 		}
+		
 		editScanCoordinator?.start()
 	}
 }
