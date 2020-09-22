@@ -36,6 +36,7 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 		super.viewWillAppear(animated)
 		
 		configureBar()
+		reloadData()
 	}
 	
 	// MARK: - Public Methods
