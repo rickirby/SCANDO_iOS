@@ -54,7 +54,7 @@ class EditScanView: View {
 	
 	lazy var activityIndicator: UIActivityIndicatorView = {
 		let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
-		activityIndicator.color = .white
+		activityIndicator.color = .gray
 		activityIndicator.hidesWhenStopped = true
 		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
 		return activityIndicator

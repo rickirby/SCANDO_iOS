@@ -25,7 +25,12 @@ class GalleryViewController: RBPhotosGalleryViewController {
 	
 	public override func loadView() {
 		super.loadView()
-		view.addSubview(screenView)
+		view.addSubview(screenView.activityIndicator)
+		
+		NSLayoutConstraint.activate([
+			screenView.activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			screenView.activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+		])
 	}
 	
 	override func viewDidLoad() {

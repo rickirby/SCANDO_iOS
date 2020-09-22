@@ -24,7 +24,7 @@ class GalleryView: UIView {
 	
 	lazy var activityIndicator: UIActivityIndicatorView = {
 		let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
-		activityIndicator.color = .white
+		activityIndicator.color = .gray
 		activityIndicator.hidesWhenStopped = true
 		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
 		return activityIndicator
@@ -48,12 +48,6 @@ class GalleryView: UIView {
 	}
 	
 	func setViews() {
-		addAllSubviews(views: [activityIndicator])
-		
-		NSLayoutConstraint.activate([
-			activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-			activityIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor)
-		])
 	}
 	
 	// MARK: - Public Method
