@@ -39,7 +39,7 @@ class GalleryViewController: RBPhotosGalleryViewController {
 		
 		configureLoadBar()
 		configureViewEvent()
-		prepareData()
+		loadData()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -75,7 +75,7 @@ class GalleryViewController: RBPhotosGalleryViewController {
 		}
 	}
 	
-	private func prepareData() {
+	private func loadData() {
 		screenView.startLoading()
 		
 		if let prePreparedImages = self.prePeparedData?() {
