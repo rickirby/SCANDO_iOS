@@ -38,11 +38,6 @@ class GalleryCache {
 		return true
 	}
 	
-	static func handleMoveCacheToTop(from index: Int) {
-		removeCache(for: index)
-		slideDownCache(before: index)
-	}
-	
 	// used if a row removed
 	static func slideUpCache(after index: Int) {
 		cacheData = cacheData.map {
