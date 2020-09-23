@@ -32,6 +32,7 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 		configureLoadBar()
 		configureViewEvent()
 		configureViewData()
+		configureObserver()
 		prepareGalleryData()
 	}
 	
@@ -120,5 +121,19 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 				GalleryCache.cacheData.append(GalleryCache.GalleryCacheModel(index: index, images: galleryImagesData, sortedDocuments: sortedDocuments))
 			}
 		}
+	}
+	
+	private func configureObserver() {
+		NotificationCenter.default.addObserver(self, selector: #selector(didFinishAddNewDocument), name: NSNotification.Name("didFinishAddNewDocument"), object: nil)
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(didFinishEditDocument), name: NSNotification.Name("didFinishEditDocument"), object: nil)
+	}
+	
+	@objc func didFinishAddNewDocument() {
+		
+	}
+	
+	@objc func didFinishEditDocument() {
+		
 	}
 }
