@@ -40,7 +40,7 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 		super.viewWillAppear(animated)
 		
 		configureBar()
-		checkIfShouldReloadAndScroll()
+//		checkIfShouldReloadAndScroll()
 	}
 	
 	// MARK: - Public Methods
@@ -130,7 +130,12 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 	}
 	
 	@objc func didFinishAddNewDocument() {
+		screenView.collectionView.reloadData()
+//		shouldReloadAndScroll = false
 		
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+			self.screenView.scrollToEnd()
+		}
 	}
 	
 	@objc func didFinishEditDocument() {
