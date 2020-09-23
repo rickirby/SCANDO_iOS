@@ -35,6 +35,14 @@ class GalleryCoordinator: Coordinator {
 	func makeGalleryViewController() -> UIViewController {
 		let vc = GalleryViewController()
 		vc.passedData = passedData
+		vc.onNavigationEvent = { [weak self] (navigationEvent: GalleryViewController.NavigationEvent) in
+			switch navigationEvent {
+			case .didDeleteImage:
+				Router.shared.popViewController(on: self!)
+			case .didTapEdit:
+				print("Tap Edit")
+			}
+		}
 		
 		return vc
 	}

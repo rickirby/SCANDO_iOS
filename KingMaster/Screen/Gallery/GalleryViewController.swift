@@ -12,6 +12,15 @@ import RBCameraDocScan
 
 class GalleryViewController: RBPhotosGalleryViewController {
 	
+	// MARK: - Public Properties
+	
+	enum NavigationEvent {
+		case didDeleteImage
+		case didTapEdit
+	}
+	
+	var onNavigationEvent: ((NavigationEvent) -> Void)?
+	
 	var galleryViewDocumentsData: [Document] = []
 	var galleryViewImagesData: [UIImage] = []
 	
@@ -140,6 +149,7 @@ class GalleryViewController: RBPhotosGalleryViewController {
 		screenView.showDeleteAlert(on: self, deleteHandler: {
 			let documentToDelete = self.galleryViewDocumentsData[self.currentPageIndex]
 			self.model.deleteData(documentToDelete: documentToDelete)
+			self.onNavigationEvent?(.didDeleteImage)
 		}, cancelHandler: {
 			
 		})
