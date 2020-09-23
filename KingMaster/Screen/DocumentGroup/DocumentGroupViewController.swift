@@ -118,6 +118,14 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 		DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
 			self.screenView.scrollToEnd()
 		}
+		
+		if let passedData = self.passedData?() {
+			self.passedData = {
+				return DocumentGroupCoordinator.DocumentGroupData(index: 0, documentGroup: passedData.documentGroup)
+			}
+			
+			prepareGalleryData()
+		}
 	}
 	
 	@objc func didFinishEditDocument() {
