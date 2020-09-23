@@ -10,7 +10,7 @@ import UIKit
 
 class GalleryCache {
 	
-	struct GalleryCacheModel {
+	struct GalleryCacheModel: Equatable {
 		let index: Int
 		var images: [UIImage]
 		var sortedDocuments: [Document]
@@ -25,5 +25,16 @@ class GalleryCache {
 		}
 		
 		return cache
+	}
+	
+	static func removeCache(for index: Int) -> Bool {
+		
+		guard let cache = cacheData.first(where: {$0.index == index}), let indexToDelete = cacheData.firstIndex(of: cache), indexToDelete < cacheData.count else {
+			return false
+		}
+		
+		cacheData.remove(at: indexToDelete)
+		
+		return true
 	}
 }
