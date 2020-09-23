@@ -64,9 +64,7 @@ class GalleryView: UIView {
 		}
 	}
 	
-	func showSaveAlert(error: Error?) {
-		guard let vc = findViewController() else { return }
-		
+	func showSaveAlert(on vc: UIViewController, error: Error?) {
 		AlertView.createSaveImageAlert(vc, didFinishSavingWithError: error)
 	}
 }

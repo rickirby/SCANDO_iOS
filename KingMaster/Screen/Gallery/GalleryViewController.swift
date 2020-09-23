@@ -132,7 +132,7 @@ class GalleryViewController: RBPhotosGalleryViewController {
 	
 	@objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
 		screenView.stopLoading()
-		screenView.showSaveAlert(error: error)
+		screenView.showSaveAlert(on: self, error: error)
     }
 }
 
