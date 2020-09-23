@@ -110,11 +110,9 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 		DispatchQueue.global(qos: .utility).async {
 			guard let documentGroup = self.passedData?().documentGroup, let index = self.passedData?().index, let documents = documentGroup.documents.allObjects as? [Document] else { return }
 			
-			guard let cache = GalleryCache.getCache(for: index), !cache.isImagesReady else { return }
-			
 			let isImageReady = GalleryCache.getCache(for: index)?.isImagesReady
 			
-			if isImageReady == nil || !(isImageReady ?? false) {
+			if !(isImageReady ?? false) {
 				let sortedDocuments = documents.sorted {
 					$0.date.compare($1.date) == .orderedAscending
 				}
