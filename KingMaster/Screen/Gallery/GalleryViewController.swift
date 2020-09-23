@@ -146,9 +146,11 @@ class GalleryViewController: RBPhotosGalleryViewController {
     }
 	
 	private func deleteImage() {
+		guard let indexOfDocumentGroup = passedData?().indexOfDocumentGroup else { return }
 		screenView.showDeleteAlert(on: self, deleteHandler: {
 			let documentToDelete = self.galleryViewDocumentsData[self.currentPageIndex]
 			self.model.deleteData(documentToDelete: documentToDelete)
+			GalleryCache.removeCache(for: indexOfDocumentGroup)
 			self.onNavigationEvent?(.didDeleteImage)
 		}, cancelHandler: {
 			

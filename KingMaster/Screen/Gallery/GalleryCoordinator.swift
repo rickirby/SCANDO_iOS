@@ -38,6 +38,7 @@ class GalleryCoordinator: Coordinator {
 		vc.onNavigationEvent = { [weak self] (navigationEvent: GalleryViewController.NavigationEvent) in
 			switch navigationEvent {
 			case .didDeleteImage:
+				NotificationCenter.default.post(name: NSNotification.Name("didFinishDeleteDocument"), object: nil)
 				Router.shared.popViewController(on: self!)
 			case .didTapEdit:
 				print("Tap Edit")

@@ -110,6 +110,8 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 		NotificationCenter.default.addObserver(self, selector: #selector(didFinishAddNewDocument), name: NSNotification.Name("didFinishAddNewDocument"), object: nil)
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(didFinishEditDocument), name: NSNotification.Name("didFinishEditDocument"), object: nil)
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(didFinishDeleteDocument), name: NSNotification.Name("didFinishDeleteDocument"), object: nil)
 	}
 	
 	@objc func didFinishAddNewDocument() {
@@ -126,6 +128,12 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 			
 			prepareGalleryData()
 		}
+	}
+	
+	@objc func didFinishDeleteDocument() {
+		screenView.collectionView.reloadData()
+		
+		prepareGalleryData()
 	}
 	
 	@objc func didFinishEditDocument() {
