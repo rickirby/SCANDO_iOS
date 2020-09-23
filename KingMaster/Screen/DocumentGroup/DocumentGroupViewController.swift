@@ -108,25 +108,31 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 	
 	private func prepareGalleryData() {
 		DispatchQueue.global(qos: .utility).async {
-			guard let documentGroup = self.passedData?().documentGroup, let documents = documentGroup.documents.allObjects as? [Document] else { return }
+			guard let documentGroup = self.passedData?().documentGroup, let index = self.passedData?().index, let documents = documentGroup.documents.allObjects as? [Document] else { return }
 			
-			let sortedDocuments = documents.sorted {
-				$0.date.compare($1.date) == .orderedAscending
-			}
+			guard let cache = GalleryCache.getCache(for: index), !cache.isImagesReady else { return }
 			
-			self.galleryImagesData = sortedDocuments.map {
-				
-				guard let originalImage = UIImage(data: $0.image.originalImage) else {
-					return #imageLiteral(resourceName: "ICON")
+			let isImageReady = GalleryCache.getCache(for: index)?.isImagesReady
+			
+			if isImageReady == nil || !(isImageReady ?? false) {
+				let sortedDocuments = documents.sorted {
+					$0.date.compare($1.date) == .orderedAscending
 				}
 				
-				let quad = Quadrilateral(topLeft: CGPoint(x: $0.quad.topLeftX, y: $0.quad.topLeftY), topRight: CGPoint(x: $0.quad.topRightX, y: $0.quad.topRightY), bottomRight: CGPoint(x: $0.quad.bottomRightX, y: $0.quad.bottomRightY), bottomLeft: CGPoint(x: $0.quad.bottomLeftX, y: $0.quad.bottomLeftY))
-				let processedImage = PerspectiveTransformer.applyTransform(to: originalImage, withQuad: quad)
+				let galleryImagesData: [UIImage] = sortedDocuments.map {
+					
+					guard let originalImage = UIImage(data: $0.image.originalImage) else {
+						return #imageLiteral(resourceName: "ICON")
+					}
+					
+					let quad = Quadrilateral(topLeft: CGPoint(x: $0.quad.topLeftX, y: $0.quad.topLeftY), topRight: CGPoint(x: $0.quad.topRightX, y: $0.quad.topRightY), bottomRight: CGPoint(x: $0.quad.bottomRightX, y: $0.quad.bottomRightY), bottomLeft: CGPoint(x: $0.quad.bottomLeftX, y: $0.quad.bottomLeftY))
+					let processedImage = PerspectiveTransformer.applyTransform(to: originalImage, withQuad: quad)
+					
+					return processedImage
+				}
 				
-				return processedImage
+				GalleryCache.cacheData.append(GalleryCache.GalleryCacheModel(index: index, images: galleryImagesData, sortedDocuments: sortedDocuments, isImagesReady: true, isSortedDocumentsReady: true))
 			}
-			
-			self.hasPreparedGalleryData = true
 		}
 	}
 }
