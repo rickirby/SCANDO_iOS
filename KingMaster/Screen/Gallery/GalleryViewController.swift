@@ -131,6 +131,11 @@ class GalleryViewController: RBPhotosGalleryViewController {
 		}
 	}
 	
+	@objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+		screenView.stopLoading()
+		screenView.showSaveAlert(on: self, error: error)
+    }
+	
 	private func deleteImage() {
 		screenView.showDeleteAlert(on: self, deleteHandler: {
 			let documentToDelete = self.galleryViewDocumentsData[self.currentPageIndex]
@@ -139,11 +144,6 @@ class GalleryViewController: RBPhotosGalleryViewController {
 			
 		})
 	}
-	
-	@objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-		screenView.stopLoading()
-		screenView.showSaveAlert(on: self, error: error)
-    }
 }
 
 extension GalleryViewController: RBPhotosGalleryViewDelegate, RBPhotosGalleryViewDataSource {
