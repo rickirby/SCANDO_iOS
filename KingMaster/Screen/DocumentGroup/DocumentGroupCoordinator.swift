@@ -18,7 +18,7 @@ class DocumentGroupCoordinator: Coordinator {
 		return navigationController
 	}
 	
-	var passedData: (() -> DocumentGroup)?
+	var passedData: (() -> DocumentGroupData)?
 	
 	private weak var navigationController: UINavigationController?
 	private var galleryCoordinator: GalleryCoordinator?
@@ -58,7 +58,7 @@ class DocumentGroupCoordinator: Coordinator {
 		cameraCoordinator = nil
 		cameraCoordinator = CameraCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
 		cameraCoordinator?.passedData = {
-			return CameraCoordinator.CameraData(documentGroup: self.passedData?())
+			return CameraCoordinator.CameraData(documentGroup: self.passedData?().documentGroup)
 		}
 		cameraCoordinator?.start()
 	}
@@ -67,7 +67,7 @@ class DocumentGroupCoordinator: Coordinator {
 		scanImagePickerCoordinator = nil
 		scanImagePickerCoordinator = ScanImagePickerCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
 		scanImagePickerCoordinator?.passedData = {
-			return ScanImagePickerCoordinator.ScanImagePickerData(documentGroup: self.passedData?())
+			return ScanImagePickerCoordinator.ScanImagePickerData(documentGroup: self.passedData?().documentGroup)
 		}
 		scanImagePickerCoordinator?.start()
 	}
@@ -75,7 +75,7 @@ class DocumentGroupCoordinator: Coordinator {
 	private func openGallery(index: Int, preparedData: [UIImage]) {
 		galleryCoordinator = nil
 		galleryCoordinator = GalleryCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
-		guard let documentGroup = passedData?() else { return }
+		guard let documentGroup = passedData?().documentGroup else { return }
 		galleryCoordinator?.passedData = {
 			return GalleryCoordinator.GalleryData(documentGroup: documentGroup, selectedIndex: index)
 		}

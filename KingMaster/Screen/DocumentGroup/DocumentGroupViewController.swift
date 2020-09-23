@@ -22,7 +22,7 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 	}
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
-	var passedData: (() -> DocumentGroup)?
+	var passedData: (() -> DocumentGroupCoordinator.DocumentGroupData)?
 	var shouldReloadAndScroll = false
 	
 	// MARK: - Private Properties
@@ -95,7 +95,7 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 	
 	private func configureViewData() {
 		screenView.viewDataSupply = {
-			guard let documentGroup = self.passedData?(), let documents = documentGroup.documents.allObjects as? [Document] else {
+			guard let documentGroup = self.passedData?().documentGroup, let documents = documentGroup.documents.allObjects as? [Document] else {
 				return []
 			}
 			let sortedDocuments = documents.sorted {
@@ -108,7 +108,7 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 	
 	private func prepareGalleryData() {
 		DispatchQueue.global(qos: .utility).async {
-			guard let documentGroup = self.passedData?(), let documents = documentGroup.documents.allObjects as? [Document] else { return }
+			guard let documentGroup = self.passedData?().documentGroup, let documents = documentGroup.documents.allObjects as? [Document] else { return }
 			
 			let sortedDocuments = documents.sorted {
 				$0.date.compare($1.date) == .orderedAscending
