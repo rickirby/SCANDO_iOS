@@ -67,7 +67,7 @@ class GalleryViewController: RBPhotosGalleryViewController {
 			case .didTapEdit:
 				print("Tap Edit")
 			case .didTapDownload:
-				print("Tap Download")
+				self?.saveImage()
 			case .didTapDelete:
 				print("Tap Delete")
 			}
@@ -119,6 +119,21 @@ class GalleryViewController: RBPhotosGalleryViewController {
 			}
 		}
 	}
+	
+	private func saveImage() {
+		screenView.startLoading()
+		
+		let image = galleryViewImagesData[currentPageIndex]
+		
+		DispatchQueue.global(qos: .userInitiated).async {
+			UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
+		}
+	}
+	
+	@objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+		screenView.stopLoading()
+		screenView.showSaveAlert(error: error)
+    }
 }
 
 extension GalleryViewController: RBPhotosGalleryViewDelegate, RBPhotosGalleryViewDataSource {

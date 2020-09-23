@@ -63,6 +63,12 @@ class GalleryView: UIView {
 			self.activityIndicator.stopAnimating()
 		}
 	}
+	
+	func showSaveAlert(error: Error?) {
+		guard let vc = findViewController() else { return }
+		
+		AlertView.createSaveImageAlert(vc, didFinishSavingWithError: error)
+	}
 }
 
 extension GalleryView {
