@@ -12,6 +12,7 @@ extension GalleryCoordinator {
 	
 	struct GalleryData {
 		let documentGroup: DocumentGroup
+		let indexOfDocumentGroup: Int
 		let selectedIndex: Int
 	}
 }

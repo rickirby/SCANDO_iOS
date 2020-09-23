@@ -78,23 +78,18 @@ class GalleryViewController: RBPhotosGalleryViewController {
 	private func loadData() {
 		screenView.startLoading()
 		
-		if let prePreparedImages = self.prePeparedData?() {
+		if let indexOfDocumentGroup = self.passedData?().indexOfDocumentGroup, let cache = GalleryCache.getCache(for: indexOfDocumentGroup) {
 			guard let data = self.passedData?() else { return }
+			
+			self.galleryViewDocumentsData = cache.sortedDocuments
+			
 			DispatchQueue.main.async {
-				self.galleryViewImagesData = prePreparedImages
+				self.galleryViewImagesData = cache.images
 				self.reloadPhotosData()
 				self.scrollToPhotos(index: data.selectedIndex, animated: false)
 				self.screenView.stopLoading()
 			}
 			
-			DispatchQueue.global(qos: .userInitiated).async {
-				guard let data = self.passedData?(), let documents = data.documentGroup.documents.allObjects as? [Document] else { return }
-				let sortedDocument = documents.sorted {
-					$0.date.compare($1.date) == .orderedAscending
-				}
-				
-				self.galleryViewDocumentsData = sortedDocument
-			}
 		} else {
 			DispatchQueue.global(qos: .userInitiated).async {
 				guard let data = self.passedData?(), let documents = data.documentGroup.documents.allObjects as? [Document] else { return }
@@ -114,6 +109,8 @@ class GalleryViewController: RBPhotosGalleryViewController {
 					
 					return processedImage
 				}
+				
+				GalleryCache.cacheData.append(GalleryCache.GalleryCacheModel(index: data.indexOfDocumentGroup, images: self.galleryViewImagesData, sortedDocuments: self.galleryViewDocumentsData, isImagesReady: true, isSortedDocumentsReady: true))
 				
 				ThreadManager.executeOnMain {
 					self.screenView.stopLoading()

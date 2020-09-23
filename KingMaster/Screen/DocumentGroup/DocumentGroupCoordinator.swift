@@ -75,9 +75,9 @@ class DocumentGroupCoordinator: Coordinator {
 	private func openGallery(index: Int, preparedData: [UIImage]) {
 		galleryCoordinator = nil
 		galleryCoordinator = GalleryCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
-		guard let documentGroup = passedData?().documentGroup else { return }
+		guard let documentGroup = passedData?().documentGroup, let indexOfDocumentGroup = passedData?().index else { return }
 		galleryCoordinator?.passedData = {
-			return GalleryCoordinator.GalleryData(documentGroup: documentGroup, selectedIndex: index)
+			return GalleryCoordinator.GalleryData(documentGroup: documentGroup, indexOfDocumentGroup: indexOfDocumentGroup, selectedIndex: index)
 		}
 		if preparedData.count > 0 {
 			galleryCoordinator?.preparedData = {
