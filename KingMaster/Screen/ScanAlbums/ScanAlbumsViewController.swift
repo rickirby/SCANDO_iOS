@@ -35,6 +35,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		configureViewEvent()
 		configureViewData()
 		configureModel()
+		configureObserver()
 		model.fetchData()
 	}
 	
@@ -47,7 +48,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		
-		triggerDidSelectRow()
+//		triggerDidSelectRow()
 	}
 	
 	// MARK: - Private Method
@@ -106,7 +107,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 				self.screenView.tableView.endUpdates()
 			case .insertData(let newIndexPath):
 				self.screenView.tableView.insertRows(at: [newIndexPath], with: .automatic)
-				self.shouldDidSelectRow = true
+//				self.shouldDidSelectRow = true
 			case .deleteData(let indexPath):
 				self.screenView.tableView.deleteRows(at: [indexPath], with: .automatic)
 			case .updateData(let indexPath):
@@ -118,6 +119,14 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 				}
 			}
 		}
+	}
+	
+	private func configureObserver() {
+		NotificationCenter.default.addObserver(self, selector: #selector(didFinishAddNewDocumentGroup), name: NSNotification.Name("didFinishAddNewDocumentGroup"), object: nil)
+	}
+	
+	@objc func didFinishAddNewDocumentGroup() {
+		screenView.tableView.delegate?.tableView?(self.screenView.tableView, didSelectRowAt: IndexPath(row: 0, section: 0))
 	}
 	
 	private func configureNavigationItemForEditingState() {

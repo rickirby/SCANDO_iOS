@@ -41,6 +41,9 @@ class PreviewCoordinator: Coordinator {
 			case .didFinish(let newGroup):
 				if newGroup {
 					Router.shared.popToRootViewController(on: self!)
+					DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+						NotificationCenter.default.post(name: NSNotification.Name("didFinishAddNewDocumentGroup"), object: nil)
+					}
 				} else {
 					guard let nav = self?.rootViewController as? UINavigationController, let vc = nav.viewControllers[1] as? DocumentGroupViewController else { return }
 //					vc.shouldReloadAndScroll = true
