@@ -109,7 +109,7 @@ class GalleryViewController: RBPhotosGalleryViewController {
 					return processedImage
 				}
 				
-				GalleryCache.cacheData.append(GalleryCache.GalleryCacheModel(index: data.indexOfDocumentGroup, images: self.galleryViewImagesData, sortedDocuments: self.galleryViewDocumentsData, isImagesReady: true, isSortedDocumentsReady: true))
+				GalleryCache.cacheData.append(GalleryCache.GalleryCacheModel(index: data.indexOfDocumentGroup, images: self.galleryViewImagesData, sortedDocuments: self.galleryViewDocumentsData))
 				
 				ThreadManager.executeOnMain {
 					self.screenView.stopLoading()

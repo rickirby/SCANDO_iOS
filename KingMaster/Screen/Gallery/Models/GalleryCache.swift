@@ -14,8 +14,6 @@ class GalleryCache {
 		let index: Int
 		var images: [UIImage]
 		var sortedDocuments: [Document]
-		var isImagesReady = false
-		var isSortedDocumentsReady = false
 	}
 	
 	static var cacheData: [GalleryCacheModel] = []

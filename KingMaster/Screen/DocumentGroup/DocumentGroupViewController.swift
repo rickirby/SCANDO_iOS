@@ -100,9 +100,7 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 		DispatchQueue.global(qos: .utility).async {
 			guard let documentGroup = self.passedData?().documentGroup, let index = self.passedData?().index, let documents = documentGroup.documents.allObjects as? [Document] else { return }
 			
-			let isImageReady = GalleryCache.getCache(for: index)?.isImagesReady
-			
-			if !(isImageReady ?? false) {
+			if GalleryCache.getCache(for: index) == nil {
 				let sortedDocuments = documents.sorted {
 					$0.date.compare($1.date) == .orderedAscending
 				}
@@ -119,7 +117,7 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 					return processedImage
 				}
 				
-				GalleryCache.cacheData.append(GalleryCache.GalleryCacheModel(index: index, images: galleryImagesData, sortedDocuments: sortedDocuments, isImagesReady: true, isSortedDocumentsReady: true))
+				GalleryCache.cacheData.append(GalleryCache.GalleryCacheModel(index: index, images: galleryImagesData, sortedDocuments: sortedDocuments))
 			}
 		}
 	}
