@@ -70,7 +70,7 @@ class GalleryViewController: RBPhotosGalleryViewController {
 			case .didTapDownload:
 				self?.saveImage()
 			case .didTapDelete:
-				print("Tap Delete")
+				self?.deleteImage()
 			}
 		}
 	}
