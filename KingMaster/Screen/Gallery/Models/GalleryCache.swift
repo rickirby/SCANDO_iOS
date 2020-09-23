@@ -37,4 +37,37 @@ class GalleryCache {
 		
 		return true
 	}
+	
+	static func handleMoveCacheToTop(from index: Int) {
+		removeCache(for: index)
+		slideDownCache(before: index)
+	}
+	
+	// used if a row removed
+	static func slideUpCache(after index: Int) {
+		cacheData = cacheData.map {
+			if $0.index > index {
+				return GalleryCacheModel(index: $0.index - 1, images: $0.images, sortedDocuments: $0.sortedDocuments)
+			}
+			
+			return $0
+		}
+	}
+	
+	// used if a row inserted at the top (new data)
+	static func slideDownAllCache() {
+		cacheData = cacheData.map {
+			return GalleryCacheModel(index: $0.index + 1, images: $0.images, sortedDocuments: $0.sortedDocuments)
+		}
+	}
+	
+	static func slideDownCache(before index: Int) {
+		cacheData = cacheData.map {
+			if $0.index < index {
+				return GalleryCacheModel(index: $0.index + 1, images: $0.images, sortedDocuments: $0.sortedDocuments)
+			}
+			
+			return $0
+		}
+	}
 }
