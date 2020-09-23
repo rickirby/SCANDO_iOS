@@ -16,7 +16,6 @@ class GalleryViewController: RBPhotosGalleryViewController {
 	var galleryViewImagesData: [UIImage] = []
 	
 	var passedData: (() -> GalleryCoordinator.GalleryData)?
-	var prePeparedData: (() -> [UIImage])?
 	
 	// MARK: - Private Properties
 	

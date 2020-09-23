@@ -18,17 +18,11 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 		case didTapCamera
 		case didTapPicker
 		case didSelectRow(index: Int)
-		case didSelectRowWithPreparedData(index: Int, preparedData: [UIImage])
 	}
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
 	var passedData: (() -> DocumentGroupCoordinator.DocumentGroupData)?
 	var shouldReloadAndScroll = false
-	
-	// MARK: - Private Properties
-	
-	private var hasPreparedGalleryData = false
-	private var galleryImagesData: [UIImage] = []
 	
 	// MARK: - Life Cycle
 	
@@ -84,11 +78,7 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 			case .didTapPicker:
 				self?.onNavigationEvent?(.didTapPicker)
 			case .didSelectRow(let index):
-				if self?.hasPreparedGalleryData ?? false {
-					self?.onNavigationEvent?(.didSelectRowWithPreparedData(index: index, preparedData: self?.galleryImagesData ?? []))
-				} else {
-					self?.onNavigationEvent?(.didSelectRow(index: index))
-				}
+				self?.onNavigationEvent?(.didSelectRow(index: index))
 			}
 		}
 	}
