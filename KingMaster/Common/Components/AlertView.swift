@@ -55,6 +55,18 @@ class AlertView {
 		target.present(ac, animated: true, completion: nil)
 	}
 	
+	static func createGalleryDeleteAlert(_ target: UIViewController, deleteHandler: @escaping () -> Void, cancelHandler: @escaping () -> Void) {
+		let ac = UIAlertController(title: SCANDOConstant.galleryDeleteTitle, message: SCANDOConstant.galleryDeleteMessage, preferredStyle: .alert)
+		ac.addAction(UIAlertAction(title: SCANDOConstant.galleryDeletePositiveAction, style: .destructive) { _ in
+			deleteHandler()
+		})
+		ac.addAction(UIAlertAction(title: SCANDOConstant.galleryDeleteNegativeAction, style: .cancel) { _ in
+			cancelHandler()
+		})
+		
+		target.present(ac, animated: true, completion: nil)
+	}
+	
 	static func createSaveImageAlert(_ target: UIViewController, isOriginalImage: Bool = false, didFinishSavingWithError error: Error?) {
 		let ac = UIAlertController(title: error == nil ? SCANDOConstant.saveSuccessTitle : SCANDOConstant.saveErrorTitle, message: error == nil ? (isOriginalImage ? SCANDOConstant.saveOriginalSuccessMessage : SCANDOConstant.saveProcessedSuccessMessage) : error?.localizedDescription, preferredStyle: .alert)
 		ac.addAction(UIAlertAction(title: SCANDOConstant.saveAction, style: .default, handler: nil))
