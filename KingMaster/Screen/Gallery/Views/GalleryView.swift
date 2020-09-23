@@ -67,6 +67,10 @@ class GalleryView: UIView {
 	func showSaveAlert(on vc: UIViewController, error: Error?) {
 		AlertView.createSaveImageAlert(vc, didFinishSavingWithError: error)
 	}
+	
+	func showDeleteAlert(on vc: UIViewController, deleteHandler: @escaping () -> Void, cancelHandler: @escaping () -> Void) {
+		AlertView.createGalleryDeleteAlert(vc, deleteHandler: deleteHandler, cancelHandler: cancelHandler)
+	}
 }
 
 extension GalleryView {

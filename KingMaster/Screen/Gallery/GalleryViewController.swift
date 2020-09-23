@@ -20,6 +20,7 @@ class GalleryViewController: RBPhotosGalleryViewController {
 	// MARK: - Private Properties
 	
 	private var screenView = GalleryView()
+	private let model = GalleryModel()
 	
 	// MARK: - Life Cycle
 	
@@ -128,6 +129,15 @@ class GalleryViewController: RBPhotosGalleryViewController {
 		DispatchQueue.global(qos: .userInitiated).async {
 			UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
 		}
+	}
+	
+	private func deleteImage() {
+		screenView.showDeleteAlert(on: self, deleteHandler: {
+			let documentToDelete = self.galleryViewDocumentsData[self.currentPageIndex]
+			self.model.deleteData(documentToDelete: documentToDelete)
+		}, cancelHandler: {
+			
+		})
 	}
 	
 	@objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
