@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RBCameraDocScan
 
 class GalleryCoordinator: Coordinator {
 	
@@ -21,6 +22,7 @@ class GalleryCoordinator: Coordinator {
 	var passedData: (() -> GalleryData)?
 	
 	private weak var navigationController: UINavigationController?
+	private var editScanCoordinator: EditScanCoordinator?
 	
 	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
@@ -46,5 +48,15 @@ class GalleryCoordinator: Coordinator {
 		}
 		
 		return vc
+	}
+	
+	private func openEditScan(image: UIImage, quad: Quadrilateral?) {
+		editScanCoordinator = nil
+		editScanCoordinator = EditScanCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		editScanCoordinator?.passedData = {
+			return EditScanCoordinator.EditScanData(image: image, quad: quad, isRotateImage: true, documentGroup: self.passedData?().documentGroup)
+		}
+		
+		editScanCoordinator?.start()
 	}
 }
