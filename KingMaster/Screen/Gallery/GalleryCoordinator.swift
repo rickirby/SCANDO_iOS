@@ -42,8 +42,8 @@ class GalleryCoordinator: Coordinator {
 			case .didDeleteImage:
 				NotificationCenter.default.post(name: NSNotification.Name("didFinishDeleteDocument"), object: nil)
 				Router.shared.popViewController(on: self!)
-			case .didTapEdit:
-				print("Tap Edit")
+			case .didTapEdit(let image, let quad):
+				self?.openEditScan(image: image, quad: quad)
 			}
 		}
 		
