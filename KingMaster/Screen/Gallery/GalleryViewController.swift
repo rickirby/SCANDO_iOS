@@ -158,8 +158,9 @@ class GalleryViewController: RBPhotosGalleryViewController {
 	}
 	
 	private func editImage() {
-		let image = galleryViewImagesData[currentPageIndex]
+		
 		let document = galleryViewDocumentsData[currentPageIndex]
+		guard let image = UIImage(data: document.image.originalImage) else { return }
 		let quad = Quadrilateral(topLeft: CGPoint(x: document.quad.topLeftX, y: document.quad.topLeftY), topRight: CGPoint(x: document.quad.topRightX, y: document.quad.topRightY), bottomRight: CGPoint(x: document.quad.bottomRightX, y: document.quad.bottomRightY), bottomLeft: CGPoint(x: document.quad.bottomLeftX, y: document.quad.bottomLeftY))
 		onNavigationEvent?(.didTapEdit(image: image, quad: quad))
 		
