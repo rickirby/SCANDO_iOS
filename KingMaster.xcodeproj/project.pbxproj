@@ -64,6 +64,7 @@
 		DCE0E733250AFE2300971B22 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0E732250AFE2300971B22 /* AlertView.swift */; };
 		DCE922912516E4CB00A30804 /* ScanAlbumsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE922902516E4CB00A30804 /* ScanAlbumsModel.swift */; };
 		DCEBA927251B86C100932A0E /* GalleryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEBA926251B86C100932A0E /* GalleryModel.swift */; };
+		DCFC8620251CC37500739664 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFC861F251CC37500739664 /* UIImage+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -139,6 +140,7 @@
 		DCE0E732250AFE2300971B22 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		DCE922902516E4CB00A30804 /* ScanAlbumsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAlbumsModel.swift; sourceTree = "<group>"; };
 		DCEBA926251B86C100932A0E /* GalleryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryModel.swift; sourceTree = "<group>"; };
+		DCFC861F251CC37500739664 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIImage+Extension.swift"; path = "KingMaster/Screen/Gallery/Models/UIImage+Extension.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -436,6 +438,7 @@
 			isa = PBXGroup;
 			children = (
 				DCB6893C25179D97001AD049 /* UIView+Shimmering.swift */,
+				DCFC861F251CC37500739664 /* UIImage+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 				DC82E08E251ACCC800FB9CA7 /* GalleryCache.swift in Sources */,
 				DC972BC4251258C400A6C43B /* ScanImagePickerCoordinator.swift in Sources */,
 				0922627525053E0B00BDDB90 /* DocumentGroupViewController.swift in Sources */,
+				DCFC8620251CC37500739664 /* UIImage+Extension.swift in Sources */,
 				DCB3CE4E251A5A4400D4EDFB /* GalleryData.swift in Sources */,
 				DC215A2025166321006D409A /* DocumentImage+CoreDataClass.swift in Sources */,
 				DC215A2125166321006D409A /* DocumentImage+CoreDataProperties.swift in Sources */,

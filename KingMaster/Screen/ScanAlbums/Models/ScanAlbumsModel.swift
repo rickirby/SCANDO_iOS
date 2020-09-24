@@ -106,6 +106,7 @@ extension ScanAlbumsModel: NSFetchedResultsControllerDelegate {
 		case .update:
 			guard let indexPath = indexPath else { return }
 			onModelEvent?(.updateData(indexPath: indexPath))
+			GalleryCache.removeCache(for: indexPath.row)
 		@unknown default:
 			fatalError()
 		}

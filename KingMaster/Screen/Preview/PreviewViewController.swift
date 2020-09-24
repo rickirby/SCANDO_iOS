@@ -141,7 +141,7 @@ class PreviewViewController: ViewController<PreviewView> {
 		DispatchQueue.global(qos: .userInitiated).async {
 			var newGroup = true
 			var newDocument = true
-			guard let image = self.image, let processedImage = self.processedImage, let thumbnailImage = processedImage.createThumbnail(withSize: CGSize(width: processedImage.size.width / 15, height: processedImage.size.height / 15)), let quad = self.quad, let passedData = self.passedData?() else { return }
+			guard let image = self.image, let processedImage = self.processedImage, let thumbnailImage = processedImage.defaultThumbnail(), let quad = self.quad, let passedData = self.passedData?() else { return }
 			if let documentGroup = passedData.documentGroup {
 				if let currentDocument = passedData.currentDocument {
 					self.model.updateDocument(documentGroup: documentGroup, currentDocument: currentDocument, newQuadrilateral: quad, newRotationAngle: self.rotationAngle.value, newThumbnailImage: thumbnailImage)
