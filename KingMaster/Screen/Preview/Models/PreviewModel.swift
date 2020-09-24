@@ -91,4 +91,42 @@ class PreviewModel: NSObject {
 			print("Could not save \(error), \(error.userInfo)")
 		}
 	}
+	
+	func updateDocument(documentGroup: DocumentGroup, currentDocument: Document, newQuadrilateral: Quadrilateral?, newRotationAngle: Double?) {
+        
+        let managedObjectContext = DataManager.shared.persistentContainer.viewContext
+        var isChanged = false
+        
+        if let quad = newQuadrilateral {
+            let quadPoint = QuadPoint(context: managedObjectContext)
+            quadPoint.topLeftX = Double(quad.topLeft.x)
+            quadPoint.topLeftY = Double(quad.topLeft.y)
+            quadPoint.topRightX = Double(quad.topRight.x)
+            quadPoint.topRightY = Double(quad.topRight.y)
+            quadPoint.bottomLeftX = Double(quad.bottomLeft.x)
+            quadPoint.bottomLeftY = Double(quad.bottomLeft.y)
+            quadPoint.bottomRightX = Double(quad.bottomRight.x)
+            quadPoint.bottomRightY = Double(quad.bottomRight.y)
+            
+            currentDocument.quad = quadPoint
+            isChanged = true
+        }
+        
+        if let rotationAngle = newRotationAngle {
+            currentDocument.rotationAngle = rotationAngle
+            isChanged = true
+        }
+        
+        if isChanged {
+            let date = Date()
+            documentGroup.date = date
+            currentDocument.date = date
+            
+            do {
+                try managedObjectContext.save()
+            } catch let error as NSError {
+                print("Could not save \(error), \(error.userInfo)")
+            }
+        }
+    }
 }
