@@ -137,6 +137,19 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 	}
 	
 	@objc func didFinishEditDocument() {
+		screenView.collectionView.reloadData()
 		
+		if let passedData = self.passedData?() {
+			self.passedData = {
+				return DocumentGroupCoordinator.DocumentGroupData(index: 0, documentGroup: passedData.documentGroup)
+			}
+			
+			let endDocumentIndex = passedData.documentGroup.documents.count - 1
+			
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+				self.screenView.scrollToEnd()
+				self.screenView.collectionView.delegate?.collectionView?(self.screenView.collectionView, didSelectItemAt: IndexPath(row: endDocumentIndex, section: 0))
+			}
+		}
 	}
 }

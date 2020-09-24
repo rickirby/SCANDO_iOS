@@ -46,11 +46,15 @@ class PreviewCoordinator: Coordinator {
 					}
 				} else {
 					guard let nav = self?.rootViewController as? UINavigationController, let vc = nav.viewControllers[1] as? DocumentGroupViewController else { return }
-//					vc.shouldReloadAndScroll = true
-					NotificationCenter.default.post(name: NSNotification.Name("didFinishAddNewDocument"), object: nil)
+					
+					if newDocument {
+						NotificationCenter.default.post(name: NSNotification.Name("didFinishAddNewDocument"), object: nil)
+					} else {
+						NotificationCenter.default.post(name: NSNotification.Name("didFinishEditDocument"), object: nil)
+					}
+					
 					nav.popToViewController(vc, animated: true)
 				}
-				
 			}
 		}
 		
