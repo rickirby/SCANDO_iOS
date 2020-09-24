@@ -49,10 +49,11 @@ class EditScanCoordinator: Coordinator {
 	}
 	
 	private func openPreview(image: UIImage, quad: Quadrilateral) {
+		guard let passedData = passedData?() else { return }
 		previewCoordinator = nil
 		previewCoordinator = PreviewCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
 		previewCoordinator?.passedData = {
-			return PreviewCoordinator.PreviewData(image: image, quad: quad, documentGroup: self.passedData?().documentGroup)
+			return PreviewCoordinator.PreviewData(image: image, quad: quad, isEditExistingDocument: passedData.isEditExistingDocument, documentGroup: passedData.documentGroup)
 		}
 		
 		previewCoordinator?.start()

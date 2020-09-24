@@ -14,6 +14,7 @@ extension PreviewCoordinator {
 	struct PreviewData {
 		var image: UIImage
 		var quad: Quadrilateral
+		var isEditExistingDocument: Bool = false
 		var documentGroup: DocumentGroup?
 	}
 }

@@ -140,9 +140,14 @@ class PreviewViewController: ViewController<PreviewView> {
 		screenView.startLoading()
 		DispatchQueue.global(qos: .userInitiated).async {
 			var newGroup = true
-			guard let image = self.image, let processedImage = self.processedImage, let thumbnailImage = processedImage.createThumbnail(withSize: CGSize(width: processedImage.size.width / 15, height: processedImage.size.height / 15)), let quad = self.quad else { return }
-			if let documentGroup = self.passedData?().documentGroup {
-				self.model.addDocumentToDocumentGroup(documentGroup: documentGroup, originalImage: image, thumbnailImage: thumbnailImage, quad: quad, rotationAngle: self.rotationAngle.value, date: Date())
+			guard let image = self.image, let processedImage = self.processedImage, let thumbnailImage = processedImage.createThumbnail(withSize: CGSize(width: processedImage.size.width / 15, height: processedImage.size.height / 15)), let quad = self.quad, let passedData = self.passedData?() else { return }
+			if let documentGroup = passedData.documentGroup {
+				if passedData.isEditExistingDocument {
+					// here calling model.updateDocument
+				} else {
+					self.model.addDocumentToDocumentGroup(documentGroup: documentGroup, originalImage: image, thumbnailImage: thumbnailImage, quad: quad, rotationAngle: self.rotationAngle.value, date: Date())
+				}
+				
 				newGroup = false
 			} else {
 				self.model.addNewDocumentGroup(name: "Scando Document", originalImage: image, thumbnailImage: thumbnailImage, quad: quad, rotationAngle: self.rotationAngle.value, date: Date())
