@@ -15,7 +15,7 @@ class PreviewViewController: ViewController<PreviewView> {
 	// MARK: - Public Properties
 	
 	enum NavigationEvent {
-		case didFinish(newGroup: Bool)
+		case didFinish(newGroup: Bool, newDocument: Bool)
 	}
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
@@ -140,10 +140,13 @@ class PreviewViewController: ViewController<PreviewView> {
 		screenView.startLoading()
 		DispatchQueue.global(qos: .userInitiated).async {
 			var newGroup = true
+			var newDocument = true
 			guard let image = self.image, let processedImage = self.processedImage, let thumbnailImage = processedImage.createThumbnail(withSize: CGSize(width: processedImage.size.width / 15, height: processedImage.size.height / 15)), let quad = self.quad, let passedData = self.passedData?() else { return }
 			if let documentGroup = passedData.documentGroup {
-				if passedData.isEditExistingDocument {
-					// here calling model.updateDocument
+				if let currentDocument = passedData.currentDocument {
+					self.model.updateDocument(documentGroup: documentGroup, currentDocument: currentDocument, newQuadrilateral: quad, newRotationAngle: self.rotationAngle.value, newThumbnailImage: thumbnailImage)
+					
+					newDocument = false
 				} else {
 					self.model.addDocumentToDocumentGroup(documentGroup: documentGroup, originalImage: image, thumbnailImage: thumbnailImage, quad: quad, rotationAngle: self.rotationAngle.value, date: Date())
 				}
@@ -155,7 +158,7 @@ class PreviewViewController: ViewController<PreviewView> {
 			
 			ThreadManager.executeOnMain {
 				self.screenView.stopLoading()
-				self.onNavigationEvent?(.didFinish(newGroup: newGroup))
+				self.onNavigationEvent?(.didFinish(newGroup: newGroup, newDocument: newDocument))
 			}
 		}
 		

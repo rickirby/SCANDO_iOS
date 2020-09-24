@@ -42,19 +42,19 @@ class GalleryCoordinator: Coordinator {
 			case .didDeleteImage:
 				NotificationCenter.default.post(name: NSNotification.Name("didFinishDeleteDocument"), object: nil)
 				Router.shared.popViewController(on: self!)
-			case .didTapEdit(let image, let quad):
-				self?.openEditScan(image: image, quad: quad)
+			case .didTapEdit(let image, let quad, let currentDocument):
+				self?.openEditScan(image: image, quad: quad, currentDocument: currentDocument)
 			}
 		}
 		
 		return vc
 	}
 	
-	private func openEditScan(image: UIImage, quad: Quadrilateral?) {
+	private func openEditScan(image: UIImage, quad: Quadrilateral?, currentDocument: Document) {
 		editScanCoordinator = nil
 		editScanCoordinator = EditScanCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
 		editScanCoordinator?.passedData = {
-			return EditScanCoordinator.EditScanData(image: image, quad: quad, isRotateImage: false, isEditExistingDocument: true, documentGroup: self.passedData?().documentGroup)
+			return EditScanCoordinator.EditScanData(image: image, quad: quad, isRotateImage: false, documentGroup: self.passedData?().documentGroup, currentDocument: currentDocument)
 		}
 		
 		editScanCoordinator?.start()

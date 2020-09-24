@@ -92,7 +92,7 @@ class PreviewModel: NSObject {
 		}
 	}
 	
-	func updateDocument(documentGroup: DocumentGroup, currentDocument: Document, newQuadrilateral: Quadrilateral?, newRotationAngle: Double?) {
+	func updateDocument(documentGroup: DocumentGroup, currentDocument: Document, newQuadrilateral: Quadrilateral?, newRotationAngle: Double?, newThumbnailImage: UIImage) {
         
         let managedObjectContext = DataManager.shared.persistentContainer.viewContext
         var isChanged = false
@@ -121,6 +121,10 @@ class PreviewModel: NSObject {
             let date = Date()
             documentGroup.date = date
             currentDocument.date = date
+			
+			if let thumbnailData = newThumbnailImage.jpegData(compressionQuality: 0.7) {
+				currentDocument.thumbnail = thumbnailData
+			}
             
             do {
                 try managedObjectContext.save()

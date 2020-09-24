@@ -53,7 +53,7 @@ class EditScanCoordinator: Coordinator {
 		previewCoordinator = nil
 		previewCoordinator = PreviewCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
 		previewCoordinator?.passedData = {
-			return PreviewCoordinator.PreviewData(image: image, quad: quad, isEditExistingDocument: passedData.isEditExistingDocument, documentGroup: passedData.documentGroup)
+			return PreviewCoordinator.PreviewData(image: image, quad: quad, documentGroup: passedData.documentGroup, currentDocument: passedData.currentDocument)
 		}
 		
 		previewCoordinator?.start()

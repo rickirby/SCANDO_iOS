@@ -16,7 +16,7 @@ class GalleryViewController: RBPhotosGalleryViewController {
 	
 	enum NavigationEvent {
 		case didDeleteImage
-		case didTapEdit(image: UIImage, quad: Quadrilateral)
+		case didTapEdit(image: UIImage, quad: Quadrilateral, currentDocument: Document)
 	}
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
@@ -162,7 +162,7 @@ class GalleryViewController: RBPhotosGalleryViewController {
 		let document = galleryViewDocumentsData[currentPageIndex]
 		guard let image = UIImage(data: document.image.originalImage) else { return }
 		let quad = Quadrilateral(topLeft: CGPoint(x: document.quad.topLeftX, y: document.quad.topLeftY), topRight: CGPoint(x: document.quad.topRightX, y: document.quad.topRightY), bottomRight: CGPoint(x: document.quad.bottomRightX, y: document.quad.bottomRightY), bottomLeft: CGPoint(x: document.quad.bottomLeftX, y: document.quad.bottomLeftY))
-		onNavigationEvent?(.didTapEdit(image: image, quad: quad))
+		onNavigationEvent?(.didTapEdit(image: image, quad: quad, currentDocument: document))
 		
 	}
 }

@@ -38,7 +38,7 @@ class PreviewCoordinator: Coordinator {
 		vc.passedData = passedData
 		vc.onNavigationEvent = { [weak self] (navigationEvent: PreviewViewController.NavigationEvent) in
 			switch navigationEvent {
-			case .didFinish(let newGroup):
+			case .didFinish(let newGroup, let newDocument):
 				if newGroup {
 					Router.shared.popToRootViewController(on: self!)
 					DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
