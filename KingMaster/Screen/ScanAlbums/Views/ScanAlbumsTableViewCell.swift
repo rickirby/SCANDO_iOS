@@ -90,7 +90,7 @@ class ScanAlbumsTableViewCell: UITableViewCell {
 	
 	private func generateThumbnail(from object: DocumentGroup) {
 		
-		DispatchQueue.global(qos: .userInitiated).async {
+		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
 			
 			guard let documents = object.documents.allObjects as? [Document] else { return }
 			let sortedDocument = documents.sorted {
@@ -102,8 +102,8 @@ class ScanAlbumsTableViewCell: UITableViewCell {
 			}
 			
 			ThreadManager.executeOnMain {
-				self.previewImageView.stopShimmering()
-				self.previewImageView.image = thumbnailImage
+				self?.previewImageView.stopShimmering()
+				self?.previewImageView.image = thumbnailImage
 			}
 		}
 		

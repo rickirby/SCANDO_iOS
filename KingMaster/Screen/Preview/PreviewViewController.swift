@@ -55,10 +55,10 @@ class PreviewViewController: ViewController<PreviewView> {
 		
 		screenView.startLoading()
 		
-		DispatchQueue.global(qos: .userInitiated).async {
-			self.processedImage = PerspectiveTransformer.applyTransform(to: data.image, withQuad: data.quad)
+		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+			self?.processedImage = PerspectiveTransformer.applyTransform(to: data.image, withQuad: data.quad)
 			ThreadManager.executeOnMain {
-				self.reloadImage()
+				self?.reloadImage()
 			}
 		}
 	}
@@ -99,8 +99,8 @@ class PreviewViewController: ViewController<PreviewView> {
 		guard let image = processedImage else { return }
 		screenView.startLoading()
 		
-		DispatchQueue.global(qos: .userInitiated).async {
-			UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
+		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+			UIImageWriteToSavedPhotosAlbum(image, self, #selector(self?.image(_:didFinishSavingWithError:contextInfo:)), nil)
 		}
 	}
 	
@@ -138,27 +138,27 @@ class PreviewViewController: ViewController<PreviewView> {
 	
 	private func finishImage() {
 		screenView.startLoading()
-		DispatchQueue.global(qos: .userInitiated).async {
+		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
 			var newGroup = true
 			var newDocument = true
-			guard let image = self.image, let processedImage = self.processedImage, let thumbnailImage = processedImage.defaultThumbnail(), let quad = self.quad, let passedData = self.passedData?() else { return }
+			guard let image = self?.image, let processedImage = self?.processedImage, let thumbnailImage = processedImage.defaultThumbnail(), let quad = self?.quad, let passedData = self?.passedData?() else { return }
 			if let documentGroup = passedData.documentGroup {
 				if let currentDocument = passedData.currentDocument {
-					self.model.updateDocument(documentGroup: documentGroup, currentDocument: currentDocument, newQuadrilateral: quad, newRotationAngle: self.rotationAngle.value, newThumbnailImage: thumbnailImage)
+					self?.model.updateDocument(documentGroup: documentGroup, currentDocument: currentDocument, newQuadrilateral: quad, newRotationAngle: self!.rotationAngle.value, newThumbnailImage: thumbnailImage)
 					
 					newDocument = false
 				} else {
-					self.model.addDocumentToDocumentGroup(documentGroup: documentGroup, originalImage: image, thumbnailImage: thumbnailImage, quad: quad, rotationAngle: self.rotationAngle.value, date: Date())
+					self?.model.addDocumentToDocumentGroup(documentGroup: documentGroup, originalImage: image, thumbnailImage: thumbnailImage, quad: quad, rotationAngle: self!.rotationAngle.value, date: Date())
 				}
 				
 				newGroup = false
 			} else {
-				self.model.addNewDocumentGroup(name: "Scando Document", originalImage: image, thumbnailImage: thumbnailImage, quad: quad, rotationAngle: self.rotationAngle.value, date: Date())
+				self?.model.addNewDocumentGroup(name: "Scando Document", originalImage: image, thumbnailImage: thumbnailImage, quad: quad, rotationAngle: self!.rotationAngle.value, date: Date())
 			}
 			
 			ThreadManager.executeOnMain {
-				self.screenView.stopLoading()
-				self.onNavigationEvent?(.didFinish(newGroup: newGroup, newDocument: newDocument))
+				self?.screenView.stopLoading()
+				self?.onNavigationEvent?(.didFinish(newGroup: newGroup, newDocument: newDocument))
 			}
 		}
 		

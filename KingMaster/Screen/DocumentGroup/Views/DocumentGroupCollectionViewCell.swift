@@ -54,12 +54,12 @@ class DocumentGroupCollectionViewCell: UICollectionViewCell {
 	func configure(with object: Document) {
 		imageView.startShimmering()
 		
-		DispatchQueue.global(qos: .userInitiated).async {
+		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
 			guard let thumbnailImage = UIImage(data: object.thumbnail) else { return }
 			
 			ThreadManager.executeOnMain {
-				self.imageView.stopShimmering()
-				self.imageView.image = thumbnailImage
+				self?.imageView.stopShimmering()
+				self?.imageView.image = thumbnailImage
 			}
 		}
 	}

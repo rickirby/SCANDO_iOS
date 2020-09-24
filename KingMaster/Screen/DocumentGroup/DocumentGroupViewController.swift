@@ -89,8 +89,8 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 	}
 	
 	private func prepareGalleryData() {
-		DispatchQueue.global(qos: .utility).async {
-			guard let documentGroup = self.passedData?().documentGroup, let index = self.passedData?().index, let documents = documentGroup.documents.allObjects as? [Document] else { return }
+		DispatchQueue.global(qos: .utility).async { [weak self] in
+			guard let documentGroup = self?.passedData?().documentGroup, let index = self?.passedData?().index, let documents = documentGroup.documents.allObjects as? [Document] else { return }
 			
 			if GalleryCache.getCache(for: index) == nil {
 				let sortedDocuments = documents.sorted {
@@ -133,8 +133,8 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 	@objc func didFinishAddNewDocument() {
 		screenView.collectionView.reloadData()
 		
-		DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-			self.screenView.scrollToEnd()
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+			self?.screenView.scrollToEnd()
 		}
 		
 		if let passedData = self.passedData?() {
@@ -179,9 +179,9 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 			
 			let endDocumentIndex = passedData.documentGroup.documents.count - 1
 			
-			DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-				self.screenView.scrollToEnd()
-				self.screenView.collectionView.delegate?.collectionView?(self.screenView.collectionView, didSelectItemAt: IndexPath(row: endDocumentIndex, section: 0))
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+				self?.screenView.scrollToEnd()
+				self?.screenView.collectionView.delegate?.collectionView?(self!.screenView.collectionView, didSelectItemAt: IndexPath(row: endDocumentIndex, section: 0))
 			}
 		}
 	}

@@ -92,22 +92,22 @@ class GalleryViewController: RBPhotosGalleryViewController {
 			
 			self.galleryViewDocumentsData = cache.sortedDocuments
 			
-			DispatchQueue.main.async {
-				self.galleryViewImagesData = cache.images
-				self.reloadPhotosData()
-				self.scrollToPhotos(index: data.selectedIndex, animated: false)
-				self.screenView.stopLoading()
+			DispatchQueue.main.async { [weak self] in
+				self?.galleryViewImagesData = cache.images
+				self?.reloadPhotosData()
+				self?.scrollToPhotos(index: data.selectedIndex, animated: false)
+				self?.screenView.stopLoading()
 			}
 			
 		} else {
-			DispatchQueue.global(qos: .userInitiated).async {
-				guard let data = self.passedData?(), let documents = data.documentGroup.documents.allObjects as? [Document] else { return }
+			DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+				guard let data = self?.passedData?(), let documents = data.documentGroup.documents.allObjects as? [Document] else { return }
 				let sortedDocument = documents.sorted {
 					$0.date.compare($1.date) == .orderedAscending
 				}
 				
-				self.galleryViewDocumentsData = sortedDocument
-				self.galleryViewImagesData = sortedDocument.map {
+				self?.galleryViewDocumentsData = sortedDocument
+				self?.galleryViewImagesData = sortedDocument.map {
 					
 					guard let originalImage = UIImage(data: $0.image.originalImage) else {
 						return #imageLiteral(resourceName: "ICON")
@@ -119,12 +119,12 @@ class GalleryViewController: RBPhotosGalleryViewController {
 					return processedImage
 				}
 				
-				GalleryCache.cacheData.append(GalleryCache.GalleryCacheModel(index: data.indexOfDocumentGroup, images: self.galleryViewImagesData, sortedDocuments: self.galleryViewDocumentsData))
+				GalleryCache.cacheData.append(GalleryCache.GalleryCacheModel(index: data.indexOfDocumentGroup, images: self!.galleryViewImagesData, sortedDocuments: self!.galleryViewDocumentsData))
 				
 				ThreadManager.executeOnMain {
-					self.screenView.stopLoading()
-					self.reloadPhotosData()
-					self.scrollToPhotos(index: data.selectedIndex, animated: false)
+					self?.screenView.stopLoading()
+					self?.reloadPhotosData()
+					self?.scrollToPhotos(index: data.selectedIndex, animated: false)
 				}
 			}
 		}
@@ -135,8 +135,8 @@ class GalleryViewController: RBPhotosGalleryViewController {
 		
 		let image = galleryViewImagesData[currentPageIndex]
 		
-		DispatchQueue.global(qos: .userInitiated).async {
-			UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
+		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+			UIImageWriteToSavedPhotosAlbum(image, self, #selector(self?.image(_:didFinishSavingWithError:contextInfo:)), nil)
 		}
 	}
 	
