@@ -41,6 +41,13 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 		configureBar()
 	}
 	
+	override func willMove(toParent parent: UIViewController?) {
+		super.willMove(toParent: parent)
+		if parent == nil {
+			removeObserver()
+		}
+	}
+	
 	// MARK: - Private Methods
 	
 	private func configureLoadBar() {
@@ -113,6 +120,14 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 		NotificationCenter.default.addObserver(self, selector: #selector(didFinishEditDocument), name: NSNotification.Name("didFinishEditDocument"), object: nil)
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(didFinishDeleteDocument), name: NSNotification.Name("didFinishDeleteDocument"), object: nil)
+	}
+	
+	private func removeObserver() {
+		NotificationCenter.default.removeObserver(self, name: NSNotification.Name("didFinishAddNewDocument"), object: nil)
+		
+		NotificationCenter.default.removeObserver(self, name: NSNotification.Name("didFinishEditDocument"), object: nil)
+		
+		NotificationCenter.default.removeObserver(self, name: NSNotification.Name("didFinishDeleteDocument"), object: nil)
 	}
 	
 	@objc func didFinishAddNewDocument() {
