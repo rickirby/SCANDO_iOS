@@ -17,7 +17,7 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 	enum NavigationEvent {
 		case didTapCamera
 		case didTapPicker
-		case didSelectRow(index: Int)
+		case didSelectRow(index: Int, indexOfDocumentGroup: Int)
 	}
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
@@ -62,7 +62,8 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 			case .didTapPicker:
 				self?.onNavigationEvent?(.didTapPicker)
 			case .didSelectRow(let index):
-				self?.onNavigationEvent?(.didSelectRow(index: index))
+				guard let indexOfDocumentGroup = self?.passedData?().index else { return }
+				self?.onNavigationEvent?(.didSelectRow(index: index, indexOfDocumentGroup: indexOfDocumentGroup))
 			}
 		}
 	}
@@ -122,6 +123,12 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 		}
 		
 		if let passedData = self.passedData?() {
+			
+			GalleryCache.removeCache(for: passedData.index)
+			if passedData.index > 0 {
+				GalleryCache.slideDownCache(before: passedData.index)
+			}
+			
 			self.passedData = {
 				return DocumentGroupCoordinator.DocumentGroupData(index: 0, documentGroup: passedData.documentGroup)
 			}
@@ -133,13 +140,24 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 	@objc func didFinishDeleteDocument() {
 		screenView.collectionView.reloadData()
 		
-		prepareGalleryData()
+		if let passedData = self.passedData?() {
+			
+			GalleryCache.removeCache(for: passedData.index)
+			
+			prepareGalleryData()
+		}
 	}
 	
 	@objc func didFinishEditDocument() {
 		screenView.collectionView.reloadData()
 		
 		if let passedData = self.passedData?() {
+			
+			GalleryCache.removeCache(for: passedData.index)
+			if passedData.index > 0 {
+				GalleryCache.slideDownCache(before: passedData.index)
+			}
+			
 			self.passedData = {
 				return DocumentGroupCoordinator.DocumentGroupData(index: 0, documentGroup: passedData.documentGroup)
 			}

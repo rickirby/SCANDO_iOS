@@ -92,21 +92,19 @@ extension ScanAlbumsModel: NSFetchedResultsControllerDelegate {
 		case .insert:
 			guard let newIndexPath = newIndexPath else { return }
 			onModelEvent?(.insertData(newIndexPath: newIndexPath))
-			GalleryCache.slideDownAllCache()
+			
 		case .delete:
 			guard let indexPath = indexPath else { return }
 			onModelEvent?(.deleteData(indexPath: indexPath))
-			GalleryCache.removeCache(for: indexPath.row)
-			GalleryCache.slideUpCache(after: indexPath.row)
+			
 		case .move:
 			guard let indexPath = indexPath, let newIndexPath = newIndexPath else { return }
 			onModelEvent?(.moveData(indexPath: indexPath, newIndexPath: newIndexPath))
-			GalleryCache.removeCache(for: indexPath.row)
-			GalleryCache.slideDownCache(before: indexPath.row)
+			
 		case .update:
 			guard let indexPath = indexPath else { return }
 			onModelEvent?(.updateData(indexPath: indexPath))
-			GalleryCache.removeCache(for: indexPath.row)
+			
 		@unknown default:
 			fatalError()
 		}

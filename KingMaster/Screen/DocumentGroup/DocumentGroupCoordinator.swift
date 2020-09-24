@@ -44,8 +44,8 @@ class DocumentGroupCoordinator: Coordinator {
 				self?.openCamera()
 			case .didTapPicker:
 				self?.openScanImagePicker()
-			case .didSelectRow(let index):
-				self?.openGallery(index: index)
+			case .didSelectRow(let index, let indexOfDocumentGroup):
+				self?.openGallery(index: index, indexOfDocumentGroup: indexOfDocumentGroup)
 			}
 		}
 		
@@ -70,10 +70,10 @@ class DocumentGroupCoordinator: Coordinator {
 		scanImagePickerCoordinator?.start()
 	}
 	
-	private func openGallery(index: Int) {
+	private func openGallery(index: Int, indexOfDocumentGroup: Int) {
 		galleryCoordinator = nil
 		galleryCoordinator = GalleryCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
-		guard let documentGroup = passedData?().documentGroup, let indexOfDocumentGroup = passedData?().index else { return }
+		guard let documentGroup = passedData?().documentGroup else { return }
 		galleryCoordinator?.passedData = {
 			return GalleryCoordinator.GalleryData(documentGroup: documentGroup, indexOfDocumentGroup: indexOfDocumentGroup, selectedIndex: index)
 		}
