@@ -23,6 +23,8 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
 	var passedData: (() -> DocumentGroupCoordinator.DocumentGroupData)?
 	
+	
+	private var indexOfDocumentGroup = 0
 	// MARK: - Life Cycle
 	
 	override func viewDidLoad() {
@@ -33,6 +35,10 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 		configureViewData()
 		configureObserver()
 		prepareGalleryData()
+		
+		if let passedData = passedData?() {
+			indexOfDocumentGroup = passedData.index
+		}
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -124,10 +130,12 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 		
 		if let passedData = self.passedData?() {
 			
-			GalleryCache.removeCache(for: passedData.index)
+			GalleryCache.removeCache(for: self.indexOfDocumentGroup)
 			if passedData.index > 0 {
-				GalleryCache.slideDownCache(before: passedData.index)
+				GalleryCache.slideDownCache(before: self.indexOfDocumentGroup)
 			}
+			
+			self.indexOfDocumentGroup = 0
 			
 			self.passedData = {
 				return DocumentGroupCoordinator.DocumentGroupData(index: 0, documentGroup: passedData.documentGroup)
@@ -142,7 +150,7 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 		
 		if let passedData = self.passedData?() {
 			
-			GalleryCache.removeCache(for: passedData.index)
+			GalleryCache.removeCache(for: self.indexOfDocumentGroup)
 			
 			prepareGalleryData()
 		}
@@ -153,11 +161,12 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 		
 		if let passedData = self.passedData?() {
 			
-			GalleryCache.removeCache(for: passedData.index)
+			GalleryCache.removeCache(for: self.indexOfDocumentGroup)
 			if passedData.index > 0 {
 				GalleryCache.slideDownCache(before: passedData.index)
 			}
 			
+			self.indexOfDocumentGroup = 0
 			self.passedData = {
 				return DocumentGroupCoordinator.DocumentGroupData(index: 0, documentGroup: passedData.documentGroup)
 			}
