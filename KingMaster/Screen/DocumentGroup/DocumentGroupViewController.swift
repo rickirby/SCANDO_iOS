@@ -90,28 +90,25 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 	
 	private func prepareGalleryData() {
 		DispatchQueue.global(qos: .utility).async { [weak self] in
-			guard let documentGroup = self?.passedData?().documentGroup, let index = self?.passedData?().index, let documents = documentGroup.documents.allObjects as? [Document] else { return }
 			
-			if GalleryCache.getCache(for: index) == nil {
-				let sortedDocuments = documents.sorted {
-					$0.date.compare($1.date) == .orderedAscending
-				}
+			autoreleasepool {
+				guard let documentGroup = self?.passedData?().documentGroup, let index = self?.passedData?().index, let documents = documentGroup.documents.allObjects as? [Document] else { return }
 				
-				var galleryImagesData: [UIImage] = []
-				
-				for document in sortedDocuments {
-					guard let originalImage = UIImage(data: document.image.originalImage) else {
-						return
+				if GalleryCache.getCache(for: index) == nil {
+					let sortedDocuments = documents.sorted {
+						$0.date.compare($1.date) == .orderedAscending
 					}
 					
-					autoreleasepool {
-						let quad = Quadrilateral(topLeft: CGPoint(x: document.quad.topLeftX, y: document.quad.topLeftY), topRight: CGPoint(x: document.quad.topRightX, y: document.quad.topRightY), bottomRight: CGPoint(x: document.quad.bottomRightX, y: document.quad.bottomRightY), bottomLeft: CGPoint(x: document.quad.bottomLeftX, y: document.quad.bottomLeftY))
+					let galleryImagesData: [UIImage] = sortedDocuments.map {
+						guard let thumbnailImage = UIImage(data: $0.thumbnail) else {
+							return #imageLiteral(resourceName: "ICON")
+						}
 						
-						galleryImagesData.append(PerspectiveTransformer.applyTransform(to: originalImage, withQuad: quad))
+						return thumbnailImage
 					}
+					
+					GalleryCache.cacheData.append(GalleryCache.GalleryCacheModel(index: index, images: galleryImagesData, sortedDocuments: sortedDocuments))
 				}
-				
-				GalleryCache.cacheData.append(GalleryCache.GalleryCacheModel(index: index, images: galleryImagesData, sortedDocuments: sortedDocuments))
 			}
 		}
 	}
