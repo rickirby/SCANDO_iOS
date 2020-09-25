@@ -144,19 +144,19 @@ class PreviewViewController: ViewController<PreviewView> {
 		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
 			var newGroup = true
 			var newDocument = true
-			guard let image = self?.image, let processedImage = self?.processedImage, let thumbnailImage = processedImage.defaultThumbnail(), let quad = self?.quad, let passedData = self?.passedData?() else { return }
+			guard let image = self?.image, let processedImage = self?.processedImage, let quad = self?.quad, let passedData = self?.passedData?() else { return }
 			if let documentGroup = passedData.documentGroup {
 				if let currentDocument = passedData.currentDocument {
-					self?.model.updateDocument(documentGroup: documentGroup, currentDocument: currentDocument, newQuadrilateral: quad, newRotationAngle: self!.rotationAngle.value, newThumbnailImage: thumbnailImage)
+					self?.model.updateDocument(documentGroup: documentGroup, currentDocument: currentDocument, newQuadrilateral: quad, newRotationAngle: self!.rotationAngle.value, newThumbnailImage: processedImage)
 					
 					newDocument = false
 				} else {
-					self?.model.addDocumentToDocumentGroup(documentGroup: documentGroup, originalImage: image, thumbnailImage: thumbnailImage, quad: quad, rotationAngle: self!.rotationAngle.value, date: Date())
+					self?.model.addDocumentToDocumentGroup(documentGroup: documentGroup, originalImage: image, thumbnailImage: processedImage, quad: quad, rotationAngle: self!.rotationAngle.value, date: Date())
 				}
 				
 				newGroup = false
 			} else {
-				self?.model.addNewDocumentGroup(name: "Scando Document", originalImage: image, thumbnailImage: thumbnailImage, quad: quad, rotationAngle: self!.rotationAngle.value, date: Date())
+				self?.model.addNewDocumentGroup(name: "Scando Document", originalImage: image, thumbnailImage: processedImage, quad: quad, rotationAngle: self!.rotationAngle.value, date: Date())
 			}
 			
 			ThreadManager.executeOnMain {
