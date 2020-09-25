@@ -101,33 +101,31 @@ class GalleryViewController: RBPhotosGalleryViewController {
 			
 		} else {
 			DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-				guard let data = self?.passedData?(), let documents = data.documentGroup.documents.allObjects as? [Document] else { return }
-				let sortedDocument = documents.sorted {
-					$0.date.compare($1.date) == .orderedAscending
-				}
 				
-				self?.galleryViewDocumentsData = sortedDocument
-				
-				self?.galleryViewImagesData.removeAll()
-				
-				for document in sortedDocument {
-					guard let originalImage = UIImage(data: document.image.originalImage) else {
-						return
+				autoreleasepool {
+					guard let data = self?.passedData?(), let documents = data.documentGroup.documents.allObjects as? [Document] else { return }
+					let sortedDocuments = documents.sorted {
+						$0.date.compare($1.date) == .orderedAscending
 					}
 					
-					autoreleasepool {
-						let quad = Quadrilateral(topLeft: CGPoint(x: document.quad.topLeftX, y: document.quad.topLeftY), topRight: CGPoint(x: document.quad.topRightX, y: document.quad.topRightY), bottomRight: CGPoint(x: document.quad.bottomRightX, y: document.quad.bottomRightY), bottomLeft: CGPoint(x: document.quad.bottomLeftX, y: document.quad.bottomLeftY))
+					self?.galleryViewDocumentsData = sortedDocuments
+					
+					self?.galleryViewImagesData.removeAll()
+					self?.galleryViewImagesData = sortedDocuments.map {
+						guard let thumbnailImage = UIImage(data: $0.thumbnail) else {
+							return #imageLiteral(resourceName: "ICON")
+						}
 						
-						self?.galleryViewImagesData.append(PerspectiveTransformer.applyTransform(to: originalImage, withQuad: quad))
+						return thumbnailImage
 					}
-				}
-				
-				GalleryCache.cacheData.append(GalleryCache.GalleryCacheModel(index: data.indexOfDocumentGroup, images: self!.galleryViewImagesData, sortedDocuments: self!.galleryViewDocumentsData))
-				
-				ThreadManager.executeOnMain {
-					self?.screenView.stopLoading()
-					self?.reloadPhotosData()
-					self?.scrollToPhotos(index: data.selectedIndex, animated: false)
+					
+					GalleryCache.cacheData.append(GalleryCache.GalleryCacheModel(index: data.indexOfDocumentGroup, images: self!.galleryViewImagesData, sortedDocuments: self!.galleryViewDocumentsData))
+					
+					ThreadManager.executeOnMain {
+						self?.screenView.stopLoading()
+						self?.reloadPhotosData()
+						self?.scrollToPhotos(index: data.selectedIndex, animated: false)
+					}
 				}
 			}
 		}
