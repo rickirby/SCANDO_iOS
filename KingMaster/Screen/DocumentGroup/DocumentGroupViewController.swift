@@ -90,26 +90,25 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 	
 	private func prepareGalleryData() {
 		DispatchQueue.global(qos: .utility).async { [weak self] in
-			guard let documentGroup = self?.passedData?().documentGroup, let index = self?.passedData?().index, let documents = documentGroup.documents.allObjects as? [Document] else { return }
 			
-			if GalleryCache.getCache(for: index) == nil {
-				let sortedDocuments = documents.sorted {
-					$0.date.compare($1.date) == .orderedAscending
-				}
+			autoreleasepool {
+				guard let documentGroup = self?.passedData?().documentGroup, let index = self?.passedData?().index, let documents = documentGroup.documents.allObjects as? [Document] else { return }
 				
-				let galleryImagesData: [UIImage] = sortedDocuments.map {
-					
-					guard let originalImage = UIImage(data: $0.image.originalImage) else {
-						return #imageLiteral(resourceName: "ICON")
+				if GalleryCache.getCache(for: index) == nil {
+					let sortedDocuments = documents.sorted {
+						$0.date.compare($1.date) == .orderedAscending
 					}
 					
-					let quad = Quadrilateral(topLeft: CGPoint(x: $0.quad.topLeftX, y: $0.quad.topLeftY), topRight: CGPoint(x: $0.quad.topRightX, y: $0.quad.topRightY), bottomRight: CGPoint(x: $0.quad.bottomRightX, y: $0.quad.bottomRightY), bottomLeft: CGPoint(x: $0.quad.bottomLeftX, y: $0.quad.bottomLeftY))
-					let processedImage = PerspectiveTransformer.applyTransform(to: originalImage, withQuad: quad)
+					let galleryImagesData: [UIImage] = sortedDocuments.map {
+						guard let thumbnailImage = UIImage(data: $0.thumbnail) else {
+							return #imageLiteral(resourceName: "ICON")
+						}
+						
+						return thumbnailImage
+					}
 					
-					return processedImage
+					GalleryCache.cacheData.append(GalleryCache.GalleryCacheModel(index: index, images: galleryImagesData, sortedDocuments: sortedDocuments))
 				}
-				
-				GalleryCache.cacheData.append(GalleryCache.GalleryCacheModel(index: index, images: galleryImagesData, sortedDocuments: sortedDocuments))
 			}
 		}
 	}
