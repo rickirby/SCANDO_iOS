@@ -97,16 +97,18 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 					$0.date.compare($1.date) == .orderedAscending
 				}
 				
-				let galleryImagesData: [UIImage] = sortedDocuments.map {
-					
-					guard let originalImage = UIImage(data: $0.image.originalImage) else {
-						return #imageLiteral(resourceName: "ICON")
+				var galleryImagesData: [UIImage] = []
+				
+				for document in sortedDocuments {
+					guard let originalImage = UIImage(data: document.image.originalImage) else {
+						return
 					}
 					
-					let quad = Quadrilateral(topLeft: CGPoint(x: $0.quad.topLeftX, y: $0.quad.topLeftY), topRight: CGPoint(x: $0.quad.topRightX, y: $0.quad.topRightY), bottomRight: CGPoint(x: $0.quad.bottomRightX, y: $0.quad.bottomRightY), bottomLeft: CGPoint(x: $0.quad.bottomLeftX, y: $0.quad.bottomLeftY))
-					let processedImage = PerspectiveTransformer.applyTransform(to: originalImage, withQuad: quad)
-					
-					return processedImage
+					autoreleasepool {
+						let quad = Quadrilateral(topLeft: CGPoint(x: document.quad.topLeftX, y: document.quad.topLeftY), topRight: CGPoint(x: document.quad.topRightX, y: document.quad.topRightY), bottomRight: CGPoint(x: document.quad.bottomRightX, y: document.quad.bottomRightY), bottomLeft: CGPoint(x: document.quad.bottomLeftX, y: document.quad.bottomLeftY))
+						
+						galleryImagesData.append(PerspectiveTransformer.applyTransform(to: originalImage, withQuad: quad))
+					}
 				}
 				
 				GalleryCache.cacheData.append(GalleryCache.GalleryCacheModel(index: index, images: galleryImagesData, sortedDocuments: sortedDocuments))
