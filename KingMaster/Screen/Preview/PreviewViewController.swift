@@ -56,7 +56,10 @@ class PreviewViewController: ViewController<PreviewView> {
 		screenView.startLoading()
 		
 		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-			self?.processedImage = PerspectiveTransformer.applyTransform(to: data.image, withQuad: data.quad)
+			autoreleasepool {
+				self?.processedImage = PerspectiveTransformer.applyTransform(to: data.image, withQuad: data.quad)
+			}
+			
 			ThreadManager.executeOnMain {
 				self?.reloadImage()
 			}
