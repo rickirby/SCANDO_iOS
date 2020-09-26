@@ -50,6 +50,7 @@
 		DC82CC972517109E00403550 /* PreviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC82CC962517109E00403550 /* PreviewModel.swift */; };
 		DC82E08E251ACCC800FB9CA7 /* GalleryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC82E08D251ACCC800FB9CA7 /* GalleryCache.swift */; };
 		DC82E091251AD38B00FB9CA7 /* DocumentGroupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC82E090251AD38B00FB9CA7 /* DocumentGroupData.swift */; };
+		DC832C56251F4238001D54C0 /* RBCameraDocScan.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DC832C55251F4238001D54C0 /* RBCameraDocScan.bundle */; };
 		DC972BBD25123F9800A6C43B /* RBCameraDocScan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */; };
 		DC972BBE25123F9800A6C43B /* RBCameraDocScan.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DC972BC12512454F00A6C43B /* CameraCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC972BC02512454F00A6C43B /* CameraCoordinator.swift */; };
@@ -127,6 +128,7 @@
 		DC82CC962517109E00403550 /* PreviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewModel.swift; sourceTree = "<group>"; };
 		DC82E08D251ACCC800FB9CA7 /* GalleryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCache.swift; sourceTree = "<group>"; };
 		DC82E090251AD38B00FB9CA7 /* DocumentGroupData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentGroupData.swift; sourceTree = "<group>"; };
+		DC832C55251F4238001D54C0 /* RBCameraDocScan.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = RBCameraDocScan.bundle; path = Carthage/Build/iOS/RBCameraDocScan.framework/RBCameraDocScan.bundle; sourceTree = "<group>"; };
 		DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBCameraDocScan.framework; path = Carthage/Build/iOS/RBCameraDocScan.framework; sourceTree = "<group>"; };
 		DC972BC02512454F00A6C43B /* CameraCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCoordinator.swift; sourceTree = "<group>"; };
 		DC972BC3251258C400A6C43B /* ScanImagePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanImagePickerCoordinator.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 		099AB1FE2503E6C500B76522 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DC832C57251F42D3001D54C0 /* Bundles */,
 				DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */,
 				099AB1FF2503E6C500B76522 /* RBPhotosGallery.framework */,
 				099AB2002503E6C600B76522 /* RBToolkit.framework */,
@@ -372,6 +375,14 @@
 				DC82E090251AD38B00FB9CA7 /* DocumentGroupData.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		DC832C57251F42D3001D54C0 /* Bundles */ = {
+			isa = PBXGroup;
+			children = (
+				DC832C55251F4238001D54C0 /* RBCameraDocScan.bundle */,
+			);
+			name = Bundles;
 			sourceTree = "<group>";
 		};
 		DC972BBF2512453A00A6C43B /* Camera */ = {
@@ -527,6 +538,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC832C56251F4238001D54C0 /* RBCameraDocScan.bundle in Resources */,
 				0901C6AA25038A340051FF16 /* LaunchScreen.storyboard in Resources */,
 				0901C6A725038A340051FF16 /* Assets.xcassets in Resources */,
 			);
