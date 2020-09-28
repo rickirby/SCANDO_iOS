@@ -1,2 +1,3 @@
-git "git@github.com:rickibin/RB_PhotoGallery_Core_iOS.git" == 0.0.1
-git "git@github.com:rickibin/RB_Toolkit_Core_iOS.git" == 0.0.1
+git "git@bitbucket.org:rb-scando/rb_toolkit_core_ios.git"
+git "git@bitbucket.org:rb-scando/rb_photogallery_core_ios.git"
+git "git@bitbucket.org:rb-scando/rb_cameradocscan_core_ios.git"
