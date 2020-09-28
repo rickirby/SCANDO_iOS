@@ -14,9 +14,16 @@ class PreviewViewController: ViewController<PreviewView> {
 	
 	// MARK: - Public Properties
 	
+	enum NavigationEvent {
+		case didFinish(newGroup: Bool, newDocument: Bool)
+	}
+	
+	var onNavigationEvent: ((NavigationEvent) -> Void)?
 	var passedData: (() -> PreviewCoordinator.PreviewData)?
 	
 	// MARK: - Private Properties
+	
+	private let model = PreviewModel()
 	
 	private var image: UIImage?
 	private var processedImage: UIImage?
@@ -48,10 +55,13 @@ class PreviewViewController: ViewController<PreviewView> {
 		
 		screenView.startLoading()
 		
-		DispatchQueue.global(qos: .userInitiated).async {
-			self.processedImage = PerspectiveTransformer.applyTransform(to: data.image, withQuad: data.quad)
+		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+			autoreleasepool {
+				self?.processedImage = PerspectiveTransformer.applyTransform(to: data.image, withQuad: data.quad)
+			}
+			
 			ThreadManager.executeOnMain {
-				self.reloadImage()
+				self?.reloadImage()
 			}
 		}
 	}
@@ -72,7 +82,7 @@ class PreviewViewController: ViewController<PreviewView> {
 		screenView.onViewEvent = { [weak self] (viewEvent: PreviewView.ViewEvent) in
 			switch viewEvent {
 			case .didTapDone:
-				print("Done")
+				self?.finishImage()
 			case .didTapRotateLeft:
 				self?.rotateLeft()
 			case .didTapRotateRight:
@@ -92,8 +102,8 @@ class PreviewViewController: ViewController<PreviewView> {
 		guard let image = processedImage else { return }
 		screenView.startLoading()
 		
-		DispatchQueue.global(qos: .userInitiated).async {
-			UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
+		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+			UIImageWriteToSavedPhotosAlbum(image, self, #selector(self?.image(_:didFinishSavingWithError:contextInfo:)), nil)
 		}
 	}
 	
@@ -126,6 +136,36 @@ class PreviewViewController: ViewController<PreviewView> {
 		processedImage = processedImage?.rotated(by: Measurement<UnitAngle>(value: -90, unit: .degrees))
 		
 		reloadImage()
+	}
+	
+	
+	private func finishImage() {
+		screenView.startLoading()
+		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+			var newGroup = true
+			var newDocument = true
+			guard let image = self?.image, let processedImage = self?.processedImage, let quad = self?.quad, let passedData = self?.passedData?() else { return }
+			if let documentGroup = passedData.documentGroup {
+				if let currentDocument = passedData.currentDocument {
+					self?.model.updateDocument(documentGroup: documentGroup, currentDocument: currentDocument, newQuadrilateral: quad, newRotationAngle: self!.rotationAngle.value, newThumbnailImage: processedImage)
+					
+					newDocument = false
+				} else {
+					self?.model.addDocumentToDocumentGroup(documentGroup: documentGroup, originalImage: image, thumbnailImage: processedImage, quad: quad, rotationAngle: self!.rotationAngle.value, date: Date())
+				}
+				
+				newGroup = false
+			} else {
+				self?.model.addNewDocumentGroup(name: "Scando Document", originalImage: image, thumbnailImage: processedImage, quad: quad, rotationAngle: self!.rotationAngle.value, date: Date())
+			}
+			
+			ThreadManager.executeOnMain {
+				self?.screenView.stopLoading()
+				self?.onNavigationEvent?(.didFinish(newGroup: newGroup, newDocument: newDocument))
+			}
+		}
+		
+		
 	}
 	
 }

@@ -119,8 +119,8 @@ class EditScanViewController: ViewController<EditScanView> {
 		guard let image = image else { return }
 		screenView.startLoading()
 		
-		DispatchQueue.global(qos: .userInitiated).async {
-			UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
+		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+			UIImageWriteToSavedPhotosAlbum(image, self, #selector(self?.image(_:didFinishSavingWithError:contextInfo:)), nil)
 		}
 	}
 	

@@ -20,15 +20,30 @@ class DocumentGroupView: View {
 	}
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
+	var viewDataSupply: (() -> [Document])?
+	
+	// MARK: - Private Properties
+	
+	var collectionViewData: [UIImage?] = []
 	
 	// MARK: - View Component
 	
 	lazy var collectionView: UICollectionView = {
 		
-		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+		let screenWidth = UIScreen.main.bounds.width
+		let cellSpacing: CGFloat = 10
+		let contentInset: CGFloat = 20
+		let cellSize = (screenWidth - 2 * contentInset) / 2 - cellSpacing
+		
+		let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.itemSize = CGSize(width: cellSize, height: cellSize)
+        layout.minimumLineSpacing = screenWidth - 2 * (cellSize + contentInset)
+		
+		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
 		collectionView.translatesAutoresizingMaskIntoConstraints = false
 		collectionView.backgroundColor = .systemBackground
-		collectionView.contentInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
+		collectionView.contentInset = UIEdgeInsets(top: contentInset, left: contentInset, bottom: contentInset, right: contentInset)
 		
 		return collectionView
 	}()
@@ -46,10 +61,12 @@ class DocumentGroupView: View {
 		configureCollectionView()
 	}
 	
-	override func onViewWillLayoutSubviews() {
-		super.onViewWillLayoutSubviews()
+	// MARK: - Public Method
+	
+	func scrollToEnd() {
+		guard let count = viewDataSupply?().count else { return }
 		
-		configureCollectionViewLayout()
+		collectionView.scrollToItem(at: IndexPath(row: count - 1, section: 0), at: .centeredVertically, animated: true)
 	}
 	
 	// MARK: - Private Method
@@ -71,20 +88,7 @@ class DocumentGroupView: View {
 		
 		collectionView.register(DocumentGroupCollectionViewCell.self, forCellWithReuseIdentifier: "DocumentGroupCell")
 	}
-	
-	private func configureCollectionViewLayout() {
-		let cellSpacing: CGFloat = 10
-		let contentInset: CGFloat = 20
-		let cellSize = (self.bounds.width - 2 * contentInset) / 2 - cellSpacing
-		
-		let layout = UICollectionViewFlowLayout()
-		layout.scrollDirection = .vertical
-		layout.itemSize = CGSize(width: cellSize, height: cellSize)
-		layout.minimumLineSpacing = self.bounds.width - 2 * (cellSize + contentInset)
-		
-		collectionView.setCollectionViewLayout(layout, animated: true)
-		collectionView.contentInset = UIEdgeInsets(top: contentInset, left: contentInset, bottom: contentInset, right: contentInset)
-	}
+
 }
 
 extension DocumentGroupView {
@@ -102,14 +106,15 @@ extension DocumentGroupView {
 
 extension DocumentGroupView: UICollectionViewDelegate, UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 4
+		return viewDataSupply?().count ?? 0
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DocumentGroupCell", for: indexPath) as? DocumentGroupCollectionViewCell else {
+		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DocumentGroupCell", for: indexPath) as? DocumentGroupCollectionViewCell, let object = viewDataSupply?()[indexPath.row] else {
 			return UICollectionViewCell()
 		}
-		cell.configureCell(image: #imageLiteral(resourceName: "ICON"))
+		
+		cell.configure(with: object)
 		
 		return cell
 	}

@@ -16,13 +16,14 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	enum NavigationEvent {
 		case didTapCamera
 		case didTapPicker
-		case didSelectRow(index: Int)
+		case didSelectRow(index: Int, object: DocumentGroup)
 	}
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
 	
-	// MARK: - Only for Mocking, Remove then
-	var dummyData = ["Cell 0", "Cell 1", "Cell 2", "Cell 3", "Cell 4"]
+	// MARK: - Private Properties
+	
+	private let model = ScanAlbumsModel()
 	
 	// MARK: - Life Cycle
 	
@@ -31,13 +32,16 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		
 		configureLoadBar()
 		configureViewEvent()
+		configureViewData()
+		configureModel()
+		configureObserver()
+		model.fetchData()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
 		configureBar()
-		screenView.reloadData(tableData: dummyData)
 	}
 	
 	// MARK: - Private Method
@@ -61,18 +65,61 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 			case .didTapPicker:
 				self?.onNavigationEvent?(.didTapPicker)
 			case .didSelectRow(let index):
-				self?.onNavigationEvent?(.didSelectRow(index: index))
+				guard let object = self?.model.fetchedResultsController.object(at: IndexPath(row: index, section: 0)) else { return }
+				self?.onNavigationEvent?(.didSelectRow(index: index, object: object))
 			case .editingStart:
 				self?.configureNavigationItemForEditingState()
-				print("EDITING")
 			case .editingEnd:
 				self?.configureNavigationItemForNormalState()
 			case .selectAll:
 				print("Select All")
 			case .delete(let indexes):
 				self?.deleteData(indexes: indexes)
+			case .rename(let index, let newName):
+				guard let object = self?.model.fetchedResultsController.object(at: IndexPath(row: index, section: 0)), !newName.isEmpty else { return }
+				self?.model.updateName(documentGroupToUpdate: object, newName: newName)
 			}
 		}
+	}
+	
+	private func configureViewData() {
+		screenView.viewDataSupply = {
+			guard let fetchedObjects = self.model.fetchedResultsController.fetchedObjects else {
+				return []
+			}
+			return fetchedObjects
+		}
+	}
+	
+	private func configureModel() {
+		model.onModelEvent = { (modelEvent: ScanAlbumsModel.ModelEvent) in
+			switch modelEvent {
+			case .beginUpdates:
+				self.screenView.tableView.beginUpdates()
+			case .endUpdates:
+				self.screenView.tableView.endUpdates()
+			case .insertData(let newIndexPath):
+				self.screenView.tableView.insertRows(at: [newIndexPath], with: .automatic)
+			case .deleteData(let indexPath):
+				self.screenView.tableView.deleteRows(at: [indexPath], with: .automatic)
+			case .updateData(let indexPath):
+				self.screenView.tableView.reloadRows(at: [indexPath], with: .automatic)
+			case .moveData(let indexPath, let newIndexPath):
+				self.screenView.tableView.moveRow(at: indexPath, to: newIndexPath)
+				DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { [weak self] in
+					self?.screenView.tableView.reloadRows(at: [newIndexPath], with: .automatic)
+				}
+			}
+		}
+	}
+	
+	private func configureObserver() {
+		NotificationCenter.default.addObserver(self, selector: #selector(didFinishAddNewDocumentGroup), name: NSNotification.Name("didFinishAddNewDocumentGroup"), object: nil)
+	}
+	
+	@objc func didFinishAddNewDocumentGroup() {
+		GalleryCache.slideDownAllCache()
+		screenView.tableView.delegate?.tableView?(self.screenView.tableView, didSelectRowAt: IndexPath(row: 0, section: 0))
 	}
 	
 	private func configureNavigationItemForEditingState() {
@@ -90,17 +137,13 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	}
 	
 	private func deleteData(indexes: [Int]) {
-		var itemsToDelete = [String]()
+		var itemsToDelete = [DocumentGroup]()
 		for i in indexes {
-			itemsToDelete.append(dummyData[i])
+			GalleryCache.removeCache(for: i)
+			GalleryCache.slideUpCache(after: i)
+			itemsToDelete.append(model.fetchedResultsController.object(at: IndexPath(row: i, section: 0)))
 		}
 		
-		for item in itemsToDelete {
-			if let index = dummyData.firstIndex(of: item) {
-				dummyData.remove(at: index)
-			}
-		}
-		
-		screenView.reloadData(tableData: dummyData)
+		model.deleteData(documentGroupsToDelete: itemsToDelete)
 	}
 }

@@ -21,13 +21,11 @@ class ScanAlbumsView: View {
 		case editingEnd
 		case selectAll
 		case delete(indexes: [Int])
+		case rename(index: Int, newName: String)
 	}
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
-	
-	// MARK: - Private Properties
-	
-	private var tableViewData = [String]()
+	var viewDataSupply: (() -> [DocumentGroup])?
 	
 	// MARK: - View Component
 	
@@ -71,18 +69,6 @@ class ScanAlbumsView: View {
 		}
 	}
 	
-	override func onViewDidAppear() {
-		super.onViewDidAppear()
-		
-		tableView.reloadData()
-	}
-	
-	// MARK: - Public Method
-	
-	func reloadData(tableData: [String]) {
-		tableViewData = tableData
-	}
-	
 	// MARK: - Private Method
 	
 	private func configureView() {
@@ -114,11 +100,10 @@ class ScanAlbumsView: View {
 	}
 	
 	private func swipeDeleteHandler(index: Int, _ complete: @escaping (Bool) -> Void) {
-		print("Delete \(index)")
 		guard let vc = findViewController() else { return }
 		
 		AlertView.createSwipeDeleteAlert(vc, deleteHandler: {
-			self.deleteDataFromTableView(indexes: [index])
+			self.onViewEvent?(.delete(indexes: [index]))
 		}, cancelHandler: {
 			complete(true)
 		})
@@ -129,25 +114,28 @@ class ScanAlbumsView: View {
 		guard let vc = findViewController() else { return }
 		
 		AlertView.createSwipeMoreSheet(vc, renameHandler: {
-			print("Rename")
+			self.renameHandler(index: index, complete)
 		}, saveHandler: {
 			print("Save")
 		}, changeHandler: {
 			print("Change")
 		}, deleteHandler: {
 			print("Delete")
-		}, cancelHandler:  {
-			print("Cancel")
+		}, cancelHandler: {
 			complete(true)
 		})
 	}
 	
-	private func deleteDataFromTableView(indexes: [Int]) {
-		let indexPaths = indexes.map { IndexPath(row: $0, section: 0)}
-		onViewEvent?(.delete(indexes: indexes))
-		tableView.deleteRows(at: indexPaths, with: .automatic)
+	private func renameHandler(index: Int, _ complete: @escaping (Bool) -> Void) {
+		guard let vc = findViewController(), let object = viewDataSupply?()[index] else { return }
+		
+		complete(true)
+		
+		AlertView.createRenameAlert(vc, currentName: object.name, positiveHandler: { newName in
+			self.onViewEvent?(.rename(index: index, newName: newName))
+		}, negativeHandler: {
+		})
 	}
-	
 }
 
 extension ScanAlbumsView {
@@ -167,7 +155,7 @@ extension ScanAlbumsView {
 	}
 	
 	@objc func selectAllBarButtonTapped() {
-		for i in 0 ..< tableViewData.count {
+		for i in 0 ..< (viewDataSupply?().count ?? 0) {
 			let indexPath = IndexPath(row: i, section: 0)
 			guard let _ = tableView.cellForRow(at: indexPath) else { return }
 			tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
@@ -178,10 +166,10 @@ extension ScanAlbumsView {
 		guard let selectedIndexPaths = tableView.indexPathsForSelectedRows, let vc = findViewController() else { return }
 		let selectedIndexes = selectedIndexPaths.map { $0.row }
 		
-		AlertView.createBarDeleteAlert(vc, isSingular: selectedIndexPaths.count == 1, deleteHandler: {
-			self.deleteDataFromTableView(indexes: selectedIndexes)
-			DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
-				self.setTableViewEditingState(isEditing: false)
+		AlertView.createBarDeleteAlert(vc, isSingular: selectedIndexes.count == 1, deleteHandler: {
+			self.onViewEvent?(.delete(indexes: selectedIndexes))
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) { [weak self] in
+				self?.setTableViewEditingState(isEditing: false)
 			}
 		}, cancelHandler: {
 			
@@ -203,14 +191,16 @@ extension ScanAlbumsView {
 extension ScanAlbumsView: UITableViewDelegate, UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return tableViewData.count
+		
+		return viewDataSupply?().count ?? 0
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		guard let cell = tableView.dequeueReusableCell(withIdentifier: "ScanAlbumsCell", for: indexPath) as? ScanAlbumsTableViewCell else {
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: "ScanAlbumsCell", for: indexPath) as? ScanAlbumsTableViewCell, let object = viewDataSupply?()[indexPath.row] else {
 			return UITableViewCell()
 		}
-		cell.configureCell(image: #imageLiteral(resourceName: "ICON"), document: tableViewData[indexPath.row], date: "11/11/20", number: 3)
+		
+		cell.configure(with: object)
 		
 		return cell
 	}

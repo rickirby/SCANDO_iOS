@@ -8,6 +8,7 @@
 
 import UIKit
 import RBToolkit
+import RBCameraDocScan
 
 class ScanAlbumsTableViewCell: UITableViewCell {
 	
@@ -63,7 +64,7 @@ class ScanAlbumsTableViewCell: UITableViewCell {
 	
 	// MARK: - Private Method
 	
-	func configureView() {
+	private func configureView() {
 		backgroundColor = .systemBackground
 		accessoryType = .disclosureIndicator
 		
@@ -87,12 +88,34 @@ class ScanAlbumsTableViewCell: UITableViewCell {
 		])
 	}
 	
+	private func generateThumbnail(from object: DocumentGroup) {
+		
+		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+			
+			guard let documents = object.documents.allObjects as? [Document] else { return }
+			let sortedDocument = documents.sorted {
+				$0.date.compare($1.date) == .orderedAscending
+			}
+			var thumbnailImage = #imageLiteral(resourceName: "ICON")
+			if let lastDocument = sortedDocument.last, let thumbnail = UIImage(data: lastDocument.thumbnail) {
+				thumbnailImage = thumbnail
+			}
+			
+			ThreadManager.executeOnMain {
+				self?.previewImageView.stopShimmering()
+				self?.previewImageView.image = thumbnailImage
+			}
+		}
+		
+	}
+	
 	// MARK: - Public Method
 	
-	func configureCell(image: UIImage, document: String, date: String, number: Int) {
-		previewImageView.image = image
-		documentLabel.text = document
-		dateLabel.text = date
-		numberLabel.text = number > 1 ? "\(number) pages" : "\(number) page"
+	func configure(with object: DocumentGroup) {
+		documentLabel.text = object.name
+		dateLabel.text = SCANDODateFormatter.shared.string(from: object.date)
+		numberLabel.text = "\(object.documents.count) " + (object.documents.count > 1 ? "pages" : "page")
+		previewImageView.startShimmering()
+		generateThumbnail(from: object)
 	}
 }

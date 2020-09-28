@@ -55,9 +55,38 @@ class AlertView {
 		target.present(ac, animated: true, completion: nil)
 	}
 	
+	static func createGalleryDeleteAlert(_ target: UIViewController, deleteHandler: @escaping () -> Void, cancelHandler: @escaping () -> Void) {
+		let ac = UIAlertController(title: SCANDOConstant.galleryDeleteTitle, message: SCANDOConstant.galleryDeleteMessage, preferredStyle: .alert)
+		ac.addAction(UIAlertAction(title: SCANDOConstant.galleryDeletePositiveAction, style: .destructive) { _ in
+			deleteHandler()
+		})
+		ac.addAction(UIAlertAction(title: SCANDOConstant.galleryDeleteNegativeAction, style: .cancel) { _ in
+			cancelHandler()
+		})
+		
+		target.present(ac, animated: true, completion: nil)
+	}
+	
 	static func createSaveImageAlert(_ target: UIViewController, isOriginalImage: Bool = false, didFinishSavingWithError error: Error?) {
 		let ac = UIAlertController(title: error == nil ? SCANDOConstant.saveSuccessTitle : SCANDOConstant.saveErrorTitle, message: error == nil ? (isOriginalImage ? SCANDOConstant.saveOriginalSuccessMessage : SCANDOConstant.saveProcessedSuccessMessage) : error?.localizedDescription, preferredStyle: .alert)
-		ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+		ac.addAction(UIAlertAction(title: SCANDOConstant.saveAction, style: .default, handler: nil))
+		
+		target.present(ac, animated: true, completion: nil)
+	}
+	
+	static func createRenameAlert(_ target: UIViewController, currentName: String, positiveHandler: @escaping (String) -> Void, negativeHandler: @escaping () -> Void) {
+		let ac = UIAlertController(title: SCANDOConstant.renameTitle, message: currentName, preferredStyle: .alert)
+		ac.addTextField { (textField) in
+			textField.placeholder = SCANDOConstant.renamePlaceholder
+			textField.autocapitalizationType = .words
+		}
+		ac.addAction(UIAlertAction(title: SCANDOConstant.renamePositiveAction, style: .default, handler: { _ in
+			guard let newName = ac.textFields?[0].text else { return }
+			positiveHandler(newName)
+		}))
+		ac.addAction(UIAlertAction(title: SCANDOConstant.renameNegativeAction, style: .cancel, handler: { _ in
+			negativeHandler()
+		}))
 		
 		target.present(ac, animated: true, completion: nil)
 	}

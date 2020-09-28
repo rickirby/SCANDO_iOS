@@ -66,4 +66,12 @@ internal final class Router {
 		
 		nav.popViewController(animated: true)
 	}
+	
+	func popToRootViewController(on coordinator: Coordinator) {
+		guard let nav = coordinator.rootViewController as? UINavigationController else {
+			return
+		}
+		
+		nav.popToRootViewController(animated: true)
+	}
 }

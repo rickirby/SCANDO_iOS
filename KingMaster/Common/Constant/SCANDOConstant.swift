@@ -21,6 +21,11 @@ class SCANDOConstant {
 	static let barDeletePositiveAction: String = "Delete"
 	static let barDeleteNegativeAction: String = "Cancel"
 	
+	static let galleryDeleteTitle: String = "Delete Document"
+	static let galleryDeleteMessage: String = "Are you sure you want to delete displayed document?"
+	static let galleryDeletePositiveAction: String = "Delete"
+	static let galleryDeleteNegativeAction: String = "Cancel"
+	
 	static let swipeMoreRenameAction: String = "Rename"
 	static let swipeMoreSaveAction: String = "Save to Photos"
 	static let swipeMoreChangeAction: String = "Change Cover Page"
@@ -31,4 +36,10 @@ class SCANDOConstant {
 	static let saveOriginalSuccessMessage: String = "The original image has been saved to your Photos"
 	static let saveProcessedSuccessMessage: String = "The processed image has been saved to your Photos"
 	static let saveErrorTitle: String = "Save Error!"
+	static let saveAction: String = "OK"
+	
+	static let renameTitle: String = "Rename"
+	static let renamePlaceholder: String = "New Name"
+	static let renamePositiveAction: String = "OK"
+	static let renameNegativeAction: String = "Cancel"
 }

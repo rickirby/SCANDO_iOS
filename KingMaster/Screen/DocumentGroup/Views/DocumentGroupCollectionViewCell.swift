@@ -8,6 +8,7 @@
 
 import UIKit
 import RBToolkit
+import RBCameraDocScan
 
 class DocumentGroupCollectionViewCell: UICollectionViewCell {
 	
@@ -50,7 +51,20 @@ class DocumentGroupCollectionViewCell: UICollectionViewCell {
 	
 	// MARK: - Public Method
 	
-	func configureCell(image: UIImage) {
+	func configure(with object: Document) {
+		imageView.startShimmering()
+		
+		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+			guard let thumbnailImage = UIImage(data: object.thumbnail) else { return }
+			
+			ThreadManager.executeOnMain {
+				self?.imageView.stopShimmering()
+				self?.imageView.image = thumbnailImage
+			}
+		}
+	}
+	
+	func configure(with image: UIImage?) {
 		imageView.image = image
 	}
 }

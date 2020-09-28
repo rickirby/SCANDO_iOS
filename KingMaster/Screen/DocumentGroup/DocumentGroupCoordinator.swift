@@ -18,6 +18,8 @@ class DocumentGroupCoordinator: Coordinator {
 		return navigationController
 	}
 	
+	var passedData: (() -> DocumentGroupData)?
+	
 	private weak var navigationController: UINavigationController?
 	private var galleryCoordinator: GalleryCoordinator?
 	private var cameraCoordinator: CameraCoordinator?
@@ -35,14 +37,15 @@ class DocumentGroupCoordinator: Coordinator {
 	
 	private func makeDocumentGroupViewController() -> UIViewController {
 		let vc = DocumentGroupViewController()
+		vc.passedData = passedData
 		vc.onNavigationEvent = { [weak self] (navigationEvent: DocumentGroupViewController.NavigationEvent) in
 			switch navigationEvent {
 			case .didTapCamera:
 				self?.openCamera()
 			case .didTapPicker:
 				self?.openScanImagePicker()
-			case .didSelectRow(index: let index):
-				self?.openGallery(index: index)
+			case .didSelectRow(let index, let indexOfDocumentGroup):
+				self?.openGallery(index: index, indexOfDocumentGroup: indexOfDocumentGroup)
 			}
 		}
 		
@@ -50,17 +53,31 @@ class DocumentGroupCoordinator: Coordinator {
 	}
 	
 	private func openCamera() {
+		cameraCoordinator = nil
 		cameraCoordinator = CameraCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		cameraCoordinator?.passedData = {
+			return CameraCoordinator.CameraData(documentGroup: self.passedData?().documentGroup)
+		}
 		cameraCoordinator?.start()
 	}
 	
 	private func openScanImagePicker() {
+		scanImagePickerCoordinator = nil
 		scanImagePickerCoordinator = ScanImagePickerCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		scanImagePickerCoordinator?.passedData = {
+			return ScanImagePickerCoordinator.ScanImagePickerData(documentGroup: self.passedData?().documentGroup)
+		}
 		scanImagePickerCoordinator?.start()
 	}
 	
-	private func openGallery(index: Int) {
+	private func openGallery(index: Int, indexOfDocumentGroup: Int) {
+		galleryCoordinator = nil
 		galleryCoordinator = GalleryCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		guard let documentGroup = passedData?().documentGroup else { return }
+		galleryCoordinator?.passedData = {
+			return GalleryCoordinator.GalleryData(documentGroup: documentGroup, indexOfDocumentGroup: indexOfDocumentGroup, selectedIndex: index)
+		}
+		
 		galleryCoordinator?.start()
 	}
 }
