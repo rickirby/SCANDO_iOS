@@ -1,0 +1,14 @@
+# RB_KingMaster_Apps_iOS
+Main Project
+Created by Ricki Bin Yamin
+
+## This repository uses following dependency:
+- RBToolkit 0.0.2
+- RBPhotosGallery 0.0.2
+- RBCameraDocScan 0.0.2
+
+Use carthage to download listed framework above
+
+## Current Project Version
+0.0.1
+
