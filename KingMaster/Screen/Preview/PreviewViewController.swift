@@ -9,6 +9,7 @@
 import UIKit
 import RBToolkit
 import RBCameraDocScan
+import RBImageProcessor
 
 class PreviewViewController: ViewController<PreviewView> {
 	
@@ -57,7 +58,10 @@ class PreviewViewController: ViewController<PreviewView> {
 		
 		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
 			autoreleasepool {
-				self?.processedImage = PerspectiveTransformer.applyTransform(to: data.image, withQuad: data.quad)
+				let transformedImage = PerspectiveTransformer.applyTransform(to: data.image, withQuad: data.quad)
+				let colorConverter = ConvertColor(image: transformedImage)
+				
+				self?.processedImage = colorConverter.convertToHSV()
 			}
 			
 			ThreadManager.executeOnMain {
