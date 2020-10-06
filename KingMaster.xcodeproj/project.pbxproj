@@ -214,7 +214,6 @@
 		DCB3CE4D251A5A4400D4EDFB /* GalleryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryData.swift; sourceTree = "<group>"; };
 		DCB6893F2517AD29001AD049 /* CameraData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraData.swift; sourceTree = "<group>"; };
 		DCD7354E252CACF70046775E /* DEV🛠.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DEV🛠.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DCD7354F252CACF70046775E /* KingMaster copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "KingMaster copy-Info.plist"; path = "/Users/rickiprivate/Documents/Kuliah/TugasAkhir/SCANDO/rb_kingmaster_apps_ios/KingMaster copy-Info.plist"; sourceTree = "<absolute>"; };
 		DCE0E730250AFB5F00971B22 /* SCANDOConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCANDOConstant.swift; sourceTree = "<group>"; };
 		DCE0E732250AFE2300971B22 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		DCE922902516E4CB00A30804 /* ScanAlbumsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAlbumsModel.swift; sourceTree = "<group>"; };
@@ -252,7 +251,6 @@
 				0901C69925038A320051FF16 /* KingMaster */,
 				0901C69825038A320051FF16 /* Products */,
 				099AB1FE2503E6C500B76522 /* Frameworks */,
-				DCD7354F252CACF70046775E /* KingMaster copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -964,7 +962,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "KingMaster copy-Info.plist";
+				INFOPLIST_FILE = KingMaster/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -989,7 +987,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "KingMaster copy-Info.plist";
+				INFOPLIST_FILE = KingMaster/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
