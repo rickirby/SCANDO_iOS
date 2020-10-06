@@ -39,6 +39,7 @@
 		DC215A2325166321006D409A /* DocumentGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1B25166321006D409A /* DocumentGroup+CoreDataProperties.swift */; };
 		DC215A262516640E006D409A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A252516640E006D409A /* DataManager.swift */; };
 		DC39BC7A2514AF590067DF71 /* EditScanCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39BC792514AF580067DF71 /* EditScanCoordinator.swift */; };
+		DC415C6C252CA193001AD7D2 /* RBImageProcessor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC415C6B252CA193001AD7D2 /* RBImageProcessor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DC46E1452521686E000ED989 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DC46E1442521686E000ED989 /* README.md */; };
 		DC4CD0032514FB51000A84BC /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4CD0022514FB51000A84BC /* PreviewView.swift */; };
 		DC4CD0052514FB78000A84BC /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4CD0042514FB78000A84BC /* PreviewViewController.swift */; };
@@ -77,6 +78,7 @@
 				099AB2022503E6C600B76522 /* RBPhotosGallery.framework in Embed Frameworks */,
 				099AB2042503E6C600B76522 /* RBToolkit.framework in Embed Frameworks */,
 				DC972BBE25123F9800A6C43B /* RBCameraDocScan.framework in Embed Frameworks */,
+				DC415C6C252CA193001AD7D2 /* RBImageProcessor.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,6 +118,7 @@
 		DC215A1B25166321006D409A /* DocumentGroup+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentGroup+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DC215A252516640E006D409A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		DC39BC792514AF580067DF71 /* EditScanCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScanCoordinator.swift; sourceTree = "<group>"; };
+		DC415C6B252CA193001AD7D2 /* RBImageProcessor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBImageProcessor.framework; path = Carthage/Build/iOS/RBImageProcessor.framework; sourceTree = "<group>"; };
 		DC46E1442521686E000ED989 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DC4CD0022514FB51000A84BC /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		DC4CD0042514FB78000A84BC /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
@@ -250,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				DC832C57251F42D3001D54C0 /* Bundles */,
+				DC415C6B252CA193001AD7D2 /* RBImageProcessor.framework */,
 				DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */,
 				099AB1FF2503E6C500B76522 /* RBPhotosGallery.framework */,
 				099AB2002503E6C600B76522 /* RBToolkit.framework */,
