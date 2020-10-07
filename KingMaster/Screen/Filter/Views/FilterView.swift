@@ -11,6 +11,14 @@ import RBToolkit
 
 class FilterView: View {
 	
+	// MARK: - Public Properties
+	
+	enum ViewEvent {
+		case didChangeSegment(index: Int)
+	}
+	
+	var onViewEvent: ((ViewEvent) -> Void)?
+	
 	// MARK: - View Components
 	
 	lazy var segmentControl: UISegmentedControl = {
@@ -68,6 +76,6 @@ extension FilterView {
 	// MARK: - @Objc Target
 	
 	@objc func segmentControlChanged() {
-		
+		onViewEvent?(.didChangeSegment(index: segmentControl.selectedSegmentIndex))
 	}
 }
