@@ -18,6 +18,8 @@ class FilterCoordinator: Coordinator {
 		return navigationController
 	}
 	
+	var passedData: (() -> FilterData)?
+	
 	private weak var navigationController: UINavigationController?
 	
 	init(navigationController: UINavigationController) {
@@ -32,6 +34,7 @@ class FilterCoordinator: Coordinator {
 	
 	private func makeFilterViewController() -> UIViewController {
 		let vc = FilterViewController()
+		vc.passedData = passedData
 		
 		return vc
 	}
