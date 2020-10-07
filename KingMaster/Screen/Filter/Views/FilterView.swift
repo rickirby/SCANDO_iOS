@@ -28,6 +28,17 @@ class FilterView: View {
 		return segmentControl
 	}()
 	
+	lazy var processedImageView: UIImageView = {
+		let imageView = UIImageView()
+		imageView.translatesAutoresizingMaskIntoConstraints = false
+		imageView.clipsToBounds = true
+		imageView.isOpaque = true
+		imageView.backgroundColor = .systemBackground
+		imageView.contentMode = .scaleAspectFit
+		
+		return imageView
+	}()
+	
 	// MARK: - Life Cycles
 	
 	override func setViews() {
@@ -40,6 +51,15 @@ class FilterView: View {
 	
 	func configureView() {
 		backgroundColor = .systemBackground
+		
+		addAllSubviews(views: [processedImageView])
+		
+		NSLayoutConstraint.activate([
+			processedImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+			processedImageView.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor),
+			processedImageView.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor),
+			processedImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor)
+		])
 	}
 }
 
