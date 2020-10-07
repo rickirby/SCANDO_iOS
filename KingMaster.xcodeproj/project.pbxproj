@@ -62,6 +62,65 @@
 		DCB3CE4B251A4ED000D4EDFB /* ScanImagePickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB3CE4A251A4ED000D4EDFB /* ScanImagePickerData.swift */; };
 		DCB3CE4E251A5A4400D4EDFB /* GalleryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB3CE4D251A5A4400D4EDFB /* GalleryData.swift */; };
 		DCB689402517AD29001AD049 /* CameraData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6893F2517AD29001AD049 /* CameraData.swift */; };
+		DCD7350D252CACF70046775E /* Document+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1725166321006D409A /* Document+CoreDataProperties.swift */; };
+		DCD7350E252CACF70046775E /* SCANDODateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC82CC942517058900403550 /* SCANDODateFormatter.swift */; };
+		DCD7350F252CACF70046775E /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADAD25065154004BA0F7 /* Router.swift */; };
+		DCD73510252CACF70046775E /* QuadPoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1525166321006D409A /* QuadPoint+CoreDataProperties.swift */; };
+		DCD73511252CACF70046775E /* SCANDOConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0E730250AFB5F00971B22 /* SCANDOConstant.swift */; };
+		DCD73512252CACF70046775E /* ScanAlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A18A725046E660044D5FB /* ScanAlbumsViewController.swift */; };
+		DCD73513252CACF70046775E /* GalleryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7206EAF0250C73F200A3DA4A /* GalleryCoordinator.swift */; };
+		DCD73514252CACF70046775E /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADB1250653FF004BA0F7 /* AppCoordinator.swift */; };
+		DCD73515252CACF70046775E /* PreviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC82CC962517109E00403550 /* PreviewModel.swift */; };
+		DCD73516252CACF70046775E /* ThreadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAC3ED625158F6B00F5DD59 /* ThreadManager.swift */; };
+		DCD73517252CACF70046775E /* EditScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75E59925138C9400186F30 /* EditScanView.swift */; };
+		DCD73518252CACF70046775E /* KingMaster.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0901C6A325038A320051FF16 /* KingMaster.xcdatamodeld */; };
+		DCD73519252CACF70046775E /* ScanAlbumsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE922902516E4CB00A30804 /* ScanAlbumsModel.swift */; };
+		DCD7351A252CACF70046775E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADAB2506511F004BA0F7 /* Coordinator.swift */; };
+		DCD7351B252CACF70046775E /* GalleryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC82E08D251ACCC800FB9CA7 /* GalleryCache.swift */; };
+		DCD7351C252CACF70046775E /* ScanImagePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC972BC3251258C400A6C43B /* ScanImagePickerCoordinator.swift */; };
+		DCD7351D252CACF70046775E /* DocumentGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0922627225053E0B00BDDB90 /* DocumentGroupViewController.swift */; };
+		DCD7351E252CACF70046775E /* GalleryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB3CE4D251A5A4400D4EDFB /* GalleryData.swift */; };
+		DCD7351F252CACF70046775E /* DocumentImage+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1825166321006D409A /* DocumentImage+CoreDataClass.swift */; };
+		DCD73520252CACF70046775E /* DocumentImage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1925166321006D409A /* DocumentImage+CoreDataProperties.swift */; };
+		DCD73521252CACF70046775E /* QuadPoint+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1425166321006D409A /* QuadPoint+CoreDataClass.swift */; };
+		DCD73522252CACF70046775E /* PreviewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7129902515736A00ACCB2B /* PreviewCoordinator.swift */; };
+		DCD73523252CACF70046775E /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4CD0022514FB51000A84BC /* PreviewView.swift */; };
+		DCD73524252CACF70046775E /* DocumentGroupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC82E090251AD38B00FB9CA7 /* DocumentGroupData.swift */; };
+		DCD73525252CACF70046775E /* CameraData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6893F2517AD29001AD049 /* CameraData.swift */; };
+		DCD73526252CACF70046775E /* DocumentGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1B25166321006D409A /* DocumentGroup+CoreDataProperties.swift */; };
+		DCD73527252CACF70046775E /* EditScanCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39BC792514AF580067DF71 /* EditScanCoordinator.swift */; };
+		DCD73528252CACF70046775E /* DocumentGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0922627125053E0B00BDDB90 /* DocumentGroupView.swift */; };
+		DCD73529252CACF70046775E /* ScanAlbumsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09195CD92504C429006CC8A4 /* ScanAlbumsTableViewCell.swift */; };
+		DCD7352A252CACF70046775E /* CameraCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC972BC02512454F00A6C43B /* CameraCoordinator.swift */; };
+		DCD7352B252CACF70046775E /* GalleryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEBA926251B86C100932A0E /* GalleryModel.swift */; };
+		DCD7352C252CACF70046775E /* ScanAlbumsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADAF250652BC004BA0F7 /* ScanAlbumsCoordinator.swift */; };
+		DCD7352D252CACF70046775E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0901C69A25038A320051FF16 /* AppDelegate.swift */; };
+		DCD7352E252CACF70046775E /* ScanAlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A18AB25046FD70044D5FB /* ScanAlbumsView.swift */; };
+		DCD7352F252CACF70046775E /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7129932515743200ACCB2B /* PreviewData.swift */; };
+		DCD73530252CACF70046775E /* EditScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75E59B25138CBD00186F30 /* EditScanViewController.swift */; };
+		DCD73531252CACF70046775E /* DocumentGroupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E85D4250659B300A01F60 /* DocumentGroupCoordinator.swift */; };
+		DCD73532252CACF70046775E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0901C69C25038A320051FF16 /* SceneDelegate.swift */; };
+		DCD73533252CACF70046775E /* ScanImagePickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB3CE4A251A4ED000D4EDFB /* ScanImagePickerData.swift */; };
+		DCD73534252CACF70046775E /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7206EAEE250C704B00A3DA4A /* GalleryViewController.swift */; };
+		DCD73535252CACF70046775E /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4CD0042514FB78000A84BC /* PreviewViewController.swift */; };
+		DCD73536252CACF70046775E /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB1B5E42512DC9D00B1630C /* GalleryView.swift */; };
+		DCD73537252CACF70046775E /* DocumentGroupCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0922627325053E0B00BDDB90 /* DocumentGroupCollectionViewCell.swift */; };
+		DCD73538252CACF70046775E /* Document+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1625166321006D409A /* Document+CoreDataClass.swift */; };
+		DCD73539252CACF70046775E /* EditScanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75E59E2513AA4700186F30 /* EditScanData.swift */; };
+		DCD7353A252CACF70046775E /* DocumentGroup+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1A25166321006D409A /* DocumentGroup+CoreDataClass.swift */; };
+		DCD7353B252CACF70046775E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A252516640E006D409A /* DataManager.swift */; };
+		DCD7353C252CACF70046775E /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0E732250AFE2300971B22 /* AlertView.swift */; };
+		DCD7353E252CACF70046775E /* RBPhotosGallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 099AB1FF2503E6C500B76522 /* RBPhotosGallery.framework */; };
+		DCD7353F252CACF70046775E /* RBToolkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 099AB2002503E6C600B76522 /* RBToolkit.framework */; };
+		DCD73540252CACF70046775E /* RBCameraDocScan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */; };
+		DCD73542252CACF70046775E /* RBCameraDocScan.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DC832C55251F4238001D54C0 /* RBCameraDocScan.bundle */; };
+		DCD73543252CACF70046775E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0901C6A825038A340051FF16 /* LaunchScreen.storyboard */; };
+		DCD73544252CACF70046775E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DC46E1442521686E000ED989 /* README.md */; };
+		DCD73545252CACF70046775E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0901C6A625038A340051FF16 /* Assets.xcassets */; };
+		DCD73547252CACF70046775E /* RBPhotosGallery.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 099AB1FF2503E6C500B76522 /* RBPhotosGallery.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DCD73548252CACF70046775E /* RBToolkit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 099AB2002503E6C600B76522 /* RBToolkit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DCD73549252CACF70046775E /* RBCameraDocScan.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DCD7354A252CACF70046775E /* RBImageProcessor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC415C6B252CA193001AD7D2 /* RBImageProcessor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DCE0E731250AFB5F00971B22 /* SCANDOConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0E730250AFB5F00971B22 /* SCANDOConstant.swift */; };
 		DCE0E733250AFE2300971B22 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0E732250AFE2300971B22 /* AlertView.swift */; };
 		DCE922912516E4CB00A30804 /* ScanAlbumsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE922902516E4CB00A30804 /* ScanAlbumsModel.swift */; };
@@ -79,6 +138,20 @@
 				099AB2042503E6C600B76522 /* RBToolkit.framework in Embed Frameworks */,
 				DC972BBE25123F9800A6C43B /* RBCameraDocScan.framework in Embed Frameworks */,
 				DC415C6C252CA193001AD7D2 /* RBImageProcessor.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCD73546252CACF70046775E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DCD73547252CACF70046775E /* RBPhotosGallery.framework in Embed Frameworks */,
+				DCD73548252CACF70046775E /* RBToolkit.framework in Embed Frameworks */,
+				DCD73549252CACF70046775E /* RBCameraDocScan.framework in Embed Frameworks */,
+				DCD7354A252CACF70046775E /* RBImageProcessor.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,6 +213,7 @@
 		DCB3CE4A251A4ED000D4EDFB /* ScanImagePickerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanImagePickerData.swift; sourceTree = "<group>"; };
 		DCB3CE4D251A5A4400D4EDFB /* GalleryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryData.swift; sourceTree = "<group>"; };
 		DCB6893F2517AD29001AD049 /* CameraData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraData.swift; sourceTree = "<group>"; };
+		DCD7354E252CACF70046775E /* DEV🛠.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DEV🛠.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCE0E730250AFB5F00971B22 /* SCANDOConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCANDOConstant.swift; sourceTree = "<group>"; };
 		DCE0E732250AFE2300971B22 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		DCE922902516E4CB00A30804 /* ScanAlbumsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAlbumsModel.swift; sourceTree = "<group>"; };
@@ -154,6 +228,16 @@
 				099AB2012503E6C600B76522 /* RBPhotosGallery.framework in Frameworks */,
 				099AB2032503E6C600B76522 /* RBToolkit.framework in Frameworks */,
 				DC972BBD25123F9800A6C43B /* RBCameraDocScan.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCD7353D252CACF70046775E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCD7353E252CACF70046775E /* RBPhotosGallery.framework in Frameworks */,
+				DCD7353F252CACF70046775E /* RBToolkit.framework in Frameworks */,
+				DCD73540252CACF70046775E /* RBCameraDocScan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				0901C69725038A320051FF16 /* SCANDO.app */,
+				DCD7354E252CACF70046775E /* DEV🛠.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -483,9 +568,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0901C69625038A320051FF16 /* KingMaster */ = {
+		0901C69625038A320051FF16 /* Production */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0901C6AE25038A340051FF16 /* Build configuration list for PBXNativeTarget "KingMaster" */;
+			buildConfigurationList = 0901C6AE25038A340051FF16 /* Build configuration list for PBXNativeTarget "Production" */;
 			buildPhases = (
 				0901C69325038A320051FF16 /* Sources */,
 				0901C69425038A320051FF16 /* Frameworks */,
@@ -496,9 +581,27 @@
 			);
 			dependencies = (
 			);
-			name = KingMaster;
+			name = Production;
 			productName = KingMaster;
 			productReference = 0901C69725038A320051FF16 /* SCANDO.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DCD7350B252CACF70046775E /* Sandbox */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DCD7354B252CACF70046775E /* Build configuration list for PBXNativeTarget "Sandbox" */;
+			buildPhases = (
+				DCD7350C252CACF70046775E /* Sources */,
+				DCD7353D252CACF70046775E /* Frameworks */,
+				DCD73541252CACF70046775E /* Resources */,
+				DCD73546252CACF70046775E /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sandbox;
+			productName = KingMaster;
+			productReference = DCD7354E252CACF70046775E /* DEV🛠.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -529,7 +632,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0901C69625038A320051FF16 /* KingMaster */,
+				0901C69625038A320051FF16 /* Production */,
+				DCD7350B252CACF70046775E /* Sandbox */,
 			);
 		};
 /* End PBXProject section */
@@ -543,6 +647,17 @@
 				0901C6AA25038A340051FF16 /* LaunchScreen.storyboard in Resources */,
 				DC46E1452521686E000ED989 /* README.md in Resources */,
 				0901C6A725038A340051FF16 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCD73541252CACF70046775E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCD73542252CACF70046775E /* RBCameraDocScan.bundle in Resources */,
+				DCD73543252CACF70046775E /* LaunchScreen.storyboard in Resources */,
+				DCD73544252CACF70046775E /* README.md in Resources */,
+				DCD73545252CACF70046775E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,6 +716,61 @@
 				DC215A2225166321006D409A /* DocumentGroup+CoreDataClass.swift in Sources */,
 				DC215A262516640E006D409A /* DataManager.swift in Sources */,
 				DCE0E733250AFE2300971B22 /* AlertView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCD7350C252CACF70046775E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCD7350D252CACF70046775E /* Document+CoreDataProperties.swift in Sources */,
+				DCD7350E252CACF70046775E /* SCANDODateFormatter.swift in Sources */,
+				DCD7350F252CACF70046775E /* Router.swift in Sources */,
+				DCD73510252CACF70046775E /* QuadPoint+CoreDataProperties.swift in Sources */,
+				DCD73511252CACF70046775E /* SCANDOConstant.swift in Sources */,
+				DCD73512252CACF70046775E /* ScanAlbumsViewController.swift in Sources */,
+				DCD73513252CACF70046775E /* GalleryCoordinator.swift in Sources */,
+				DCD73514252CACF70046775E /* AppCoordinator.swift in Sources */,
+				DCD73515252CACF70046775E /* PreviewModel.swift in Sources */,
+				DCD73516252CACF70046775E /* ThreadManager.swift in Sources */,
+				DCD73517252CACF70046775E /* EditScanView.swift in Sources */,
+				DCD73518252CACF70046775E /* KingMaster.xcdatamodeld in Sources */,
+				DCD73519252CACF70046775E /* ScanAlbumsModel.swift in Sources */,
+				DCD7351A252CACF70046775E /* Coordinator.swift in Sources */,
+				DCD7351B252CACF70046775E /* GalleryCache.swift in Sources */,
+				DCD7351C252CACF70046775E /* ScanImagePickerCoordinator.swift in Sources */,
+				DCD7351D252CACF70046775E /* DocumentGroupViewController.swift in Sources */,
+				DCD7351E252CACF70046775E /* GalleryData.swift in Sources */,
+				DCD7351F252CACF70046775E /* DocumentImage+CoreDataClass.swift in Sources */,
+				DCD73520252CACF70046775E /* DocumentImage+CoreDataProperties.swift in Sources */,
+				DCD73521252CACF70046775E /* QuadPoint+CoreDataClass.swift in Sources */,
+				DCD73522252CACF70046775E /* PreviewCoordinator.swift in Sources */,
+				DCD73523252CACF70046775E /* PreviewView.swift in Sources */,
+				DCD73524252CACF70046775E /* DocumentGroupData.swift in Sources */,
+				DCD73525252CACF70046775E /* CameraData.swift in Sources */,
+				DCD73526252CACF70046775E /* DocumentGroup+CoreDataProperties.swift in Sources */,
+				DCD73527252CACF70046775E /* EditScanCoordinator.swift in Sources */,
+				DCD73528252CACF70046775E /* DocumentGroupView.swift in Sources */,
+				DCD73529252CACF70046775E /* ScanAlbumsTableViewCell.swift in Sources */,
+				DCD7352A252CACF70046775E /* CameraCoordinator.swift in Sources */,
+				DCD7352B252CACF70046775E /* GalleryModel.swift in Sources */,
+				DCD7352C252CACF70046775E /* ScanAlbumsCoordinator.swift in Sources */,
+				DCD7352D252CACF70046775E /* AppDelegate.swift in Sources */,
+				DCD7352E252CACF70046775E /* ScanAlbumsView.swift in Sources */,
+				DCD7352F252CACF70046775E /* PreviewData.swift in Sources */,
+				DCD73530252CACF70046775E /* EditScanViewController.swift in Sources */,
+				DCD73531252CACF70046775E /* DocumentGroupCoordinator.swift in Sources */,
+				DCD73532252CACF70046775E /* SceneDelegate.swift in Sources */,
+				DCD73533252CACF70046775E /* ScanImagePickerData.swift in Sources */,
+				DCD73534252CACF70046775E /* GalleryViewController.swift in Sources */,
+				DCD73535252CACF70046775E /* PreviewViewController.swift in Sources */,
+				DCD73536252CACF70046775E /* GalleryView.swift in Sources */,
+				DCD73537252CACF70046775E /* DocumentGroupCollectionViewCell.swift in Sources */,
+				DCD73538252CACF70046775E /* Document+CoreDataClass.swift in Sources */,
+				DCD73539252CACF70046775E /* EditScanData.swift in Sources */,
+				DCD7353A252CACF70046775E /* DocumentGroup+CoreDataClass.swift in Sources */,
+				DCD7353B252CACF70046775E /* DataManager.swift in Sources */,
+				DCD7353C252CACF70046775E /* AlertView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,6 +919,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.1;
+				OTHER_SWIFT_FLAGS = "-DPRODUCTION";
 				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.apps.SCANDO;
 				PRODUCT_NAME = SCANDO;
 				SWIFT_VERSION = 5.0;
@@ -773,8 +944,59 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.1;
+				OTHER_SWIFT_FLAGS = "-DPRODUCTION";
 				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.apps.SCANDO;
 				PRODUCT_NAME = SCANDO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		DCD7354C252CACF70046775E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6NMANHT3A2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = KingMaster/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.0.1;
+				OTHER_SWIFT_FLAGS = "-DSANDBOX";
+				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.apps.dev.SCANDO;
+				PRODUCT_NAME = "DEV🛠";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		DCD7354D252CACF70046775E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6NMANHT3A2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = KingMaster/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.0.1;
+				OTHER_SWIFT_FLAGS = "-DSANDBOX";
+				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.apps.dev.SCANDO;
+				PRODUCT_NAME = "DEV🛠";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -792,11 +1014,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0901C6AE25038A340051FF16 /* Build configuration list for PBXNativeTarget "KingMaster" */ = {
+		0901C6AE25038A340051FF16 /* Build configuration list for PBXNativeTarget "Production" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0901C6AF25038A340051FF16 /* Debug */,
 				0901C6B025038A340051FF16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DCD7354B252CACF70046775E /* Build configuration list for PBXNativeTarget "Sandbox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DCD7354C252CACF70046775E /* Debug */,
+				DCD7354D252CACF70046775E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
