@@ -50,7 +50,7 @@ class PreviewView: View {
 	
 	lazy var rotateLeftBarButton = UIBarButtonItem(image: UIImage(named: "RotateLeftButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(rotateLeftBarButtonTapped))
 	
-	lazy var translateBarButton = UIBarButtonItem(image: UIImage(named: "FilterButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(translateBarButtonTapped))
+	lazy var filterBarButton = UIBarButtonItem(image: UIImage(named: "FilterButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(filterBarButtonTapped))
 	
 	// MARK: - Life Cycle
 	
@@ -123,7 +123,7 @@ extension PreviewView {
 		onViewEvent?(.didTapRotateLeft)
 	}
 	
-	@objc func translateBarButtonTapped() {
+	@objc func filterBarButtonTapped() {
 		
 	}
 	

@@ -74,7 +74,7 @@ class PreviewViewController: ViewController<PreviewView> {
 		title = "Preview"
 		let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 		navigationItem.rightBarButtonItems = [screenView.doneBarButton]
-		toolbarItems = [screenView.translateBarButton, spacer, screenView.rotateLeftBarButton, spacer, screenView.rotateRightBarButton, spacer, screenView.downloadBarButton]
+		toolbarItems = [screenView.filterBarButton, spacer, screenView.rotateLeftBarButton, spacer, screenView.rotateRightBarButton, spacer, screenView.downloadBarButton]
 	}
 	
 	private func configureBar() {
