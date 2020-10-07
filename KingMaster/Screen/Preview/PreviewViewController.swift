@@ -93,6 +93,8 @@ class PreviewViewController: ViewController<PreviewView> {
 				self?.rotateRight()
 			case .didTapDownload:
 				self?.saveImage()
+			case .didTapFilter:
+				self?.filterImage()
 			}
 		}
 	}
@@ -169,6 +171,10 @@ class PreviewViewController: ViewController<PreviewView> {
 			}
 		}
 		
+		
+	}
+	
+	private func filterImage() {
 		
 	}
 	
