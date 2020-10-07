@@ -56,10 +56,21 @@ class FilterViewController: ViewController<FilterView> {
 		screenView.onViewEvent = { [weak self] (viewEvent: FilterView.ViewEvent) in
 			switch viewEvent {
 			case .didChangeSegment(let index):
-				print(index)
+				self?.changeSegment(index: index)
 			case .didTapDownload:
 				self?.downloadImage()
 			}
+		}
+	}
+	
+	private func changeSegment(index: Int) {
+		switch index {
+		case 0:
+			screenView.image = originalImage
+		case 1:
+			screenView.image = grayImage
+		default:
+			screenView.image = originalImage
 		}
 	}
 	
