@@ -17,6 +17,7 @@ class PreviewViewController: ViewController<PreviewView> {
 	
 	enum NavigationEvent {
 		case didFinish(newGroup: Bool, newDocument: Bool)
+		case didFilter(processedImage: UIImage)
 	}
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
@@ -58,10 +59,8 @@ class PreviewViewController: ViewController<PreviewView> {
 		
 		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
 			autoreleasepool {
-				let transformedImage = PerspectiveTransformer.applyTransform(to: data.image, withQuad: data.quad)
-				let colorConverter = ConvertColor(image: transformedImage)
 				
-				self?.processedImage = colorConverter.convertToHSV()
+				self?.processedImage = PerspectiveTransformer.applyTransform(to: data.image, withQuad: data.quad)
 			}
 			
 			ThreadManager.executeOnMain {
@@ -180,7 +179,8 @@ class PreviewViewController: ViewController<PreviewView> {
 	}
 	
 	private func filterImage() {
-		
+		guard let processedImage = processedImage else { return }
+		onNavigationEvent?(.didFilter(processedImage: processedImage))
 	}
 	
 }
