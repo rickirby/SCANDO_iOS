@@ -64,6 +64,7 @@
 		DCB689402517AD29001AD049 /* CameraData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6893F2517AD29001AD049 /* CameraData.swift */; };
 		DCD2C73C252D543500CC391C /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD2C73B252D543500CC391C /* FilterView.swift */; };
 		DCD2C73E252D546500CC391C /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD2C73D252D546500CC391C /* FilterViewController.swift */; };
+		DCD2C740252D54C600CC391C /* FilterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD2C73F252D54C600CC391C /* FilterCoordinator.swift */; };
 		DCD7350D252CACF70046775E /* Document+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1725166321006D409A /* Document+CoreDataProperties.swift */; };
 		DCD7350E252CACF70046775E /* SCANDODateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC82CC942517058900403550 /* SCANDODateFormatter.swift */; };
 		DCD7350F252CACF70046775E /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADAD25065154004BA0F7 /* Router.swift */; };
@@ -217,6 +218,7 @@
 		DCB6893F2517AD29001AD049 /* CameraData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraData.swift; sourceTree = "<group>"; };
 		DCD2C73B252D543500CC391C /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		DCD2C73D252D546500CC391C /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		DCD2C73F252D54C600CC391C /* FilterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCoordinator.swift; sourceTree = "<group>"; };
 		DCD7354E252CACF70046775E /* DEV🛠.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DEV🛠.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCE0E730250AFB5F00971B22 /* SCANDOConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCANDOConstant.swift; sourceTree = "<group>"; };
 		DCE0E732250AFE2300971B22 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
@@ -548,6 +550,7 @@
 		DCD2C739252D540F00CC391C /* Filter */ = {
 			isa = PBXGroup;
 			children = (
+				DCD2C73F252D54C600CC391C /* FilterCoordinator.swift */,
 				DCD2C73D252D546500CC391C /* FilterViewController.swift */,
 				DCD2C73A252D542800CC391C /* Views */,
 			);
@@ -720,6 +723,7 @@
 				0922627425053E0B00BDDB90 /* DocumentGroupView.swift in Sources */,
 				09195CDA2504C429006CC8A4 /* ScanAlbumsTableViewCell.swift in Sources */,
 				DC972BC12512454F00A6C43B /* CameraCoordinator.swift in Sources */,
+				DCD2C740252D54C600CC391C /* FilterCoordinator.swift in Sources */,
 				DCEBA927251B86C100932A0E /* GalleryModel.swift in Sources */,
 				09C8ADB0250652BC004BA0F7 /* ScanAlbumsCoordinator.swift in Sources */,
 				0901C69B25038A320051FF16 /* AppDelegate.swift in Sources */,
