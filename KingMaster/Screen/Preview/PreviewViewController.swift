@@ -144,8 +144,16 @@ class PreviewViewController: ViewController<PreviewView> {
 		reloadImage()
 	}
 	
-	
 	private func finishImage() {
+		saveImage() { newGroup, newDocument in
+			ThreadManager.executeOnMain {
+				self.screenView.stopLoading()
+				self.onNavigationEvent?(.didFinish(newGroup: newGroup, newDocument: newDocument))
+			}
+		}
+	}
+	
+	private func saveImage(completion: ((Bool, Bool) -> Void)?) {
 		screenView.startLoading()
 		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
 			var newGroup = true
@@ -165,10 +173,7 @@ class PreviewViewController: ViewController<PreviewView> {
 				self?.model.addNewDocumentGroup(name: "Scando Document", originalImage: image, thumbnailImage: processedImage, quad: quad, rotationAngle: self!.rotationAngle.value, date: Date())
 			}
 			
-			ThreadManager.executeOnMain {
-				self?.screenView.stopLoading()
-				self?.onNavigationEvent?(.didFinish(newGroup: newGroup, newDocument: newDocument))
-			}
+			completion?(newGroup, newDocument)
 		}
 		
 		
