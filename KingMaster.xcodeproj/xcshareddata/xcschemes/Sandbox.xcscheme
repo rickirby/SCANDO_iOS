@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DCD7350B252CACF70046775E"
-               BuildableName = "Sandbox.app"
+               BuildableName = "DEV&#x1f6e0;.app"
                BlueprintName = "Sandbox"
                ReferencedContainer = "container:KingMaster.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DCD7350B252CACF70046775E"
-            BuildableName = "Sandbox.app"
+            BuildableName = "DEV&#x1f6e0;.app"
             BlueprintName = "Sandbox"
             ReferencedContainer = "container:KingMaster.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DCD7350B252CACF70046775E"
-            BuildableName = "Sandbox.app"
+            BuildableName = "DEV&#x1f6e0;.app"
             BlueprintName = "Sandbox"
             ReferencedContainer = "container:KingMaster.xcodeproj">
          </BuildableReference>
