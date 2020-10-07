@@ -29,6 +29,20 @@ class FilterView: View {
 		
 		return segmentControl
 	}()
+	
+	// MARK: - Life Cycles
+	
+	override func setViews() {
+		super.setViews()
+		
+		configureView()
+	}
+	
+	// MARK: - Private Methods
+	
+	func configureView() {
+		backgroundColor = .systemBackground
+	}
 }
 
 extension FilterView {
