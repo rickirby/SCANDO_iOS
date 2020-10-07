@@ -62,6 +62,8 @@
 		DCB3CE4B251A4ED000D4EDFB /* ScanImagePickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB3CE4A251A4ED000D4EDFB /* ScanImagePickerData.swift */; };
 		DCB3CE4E251A5A4400D4EDFB /* GalleryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB3CE4D251A5A4400D4EDFB /* GalleryData.swift */; };
 		DCB689402517AD29001AD049 /* CameraData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6893F2517AD29001AD049 /* CameraData.swift */; };
+		DCD2C73C252D543500CC391C /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD2C73B252D543500CC391C /* FilterView.swift */; };
+		DCD2C73E252D546500CC391C /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD2C73D252D546500CC391C /* FilterViewController.swift */; };
 		DCD7350D252CACF70046775E /* Document+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1725166321006D409A /* Document+CoreDataProperties.swift */; };
 		DCD7350E252CACF70046775E /* SCANDODateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC82CC942517058900403550 /* SCANDODateFormatter.swift */; };
 		DCD7350F252CACF70046775E /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADAD25065154004BA0F7 /* Router.swift */; };
@@ -213,6 +215,8 @@
 		DCB3CE4A251A4ED000D4EDFB /* ScanImagePickerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanImagePickerData.swift; sourceTree = "<group>"; };
 		DCB3CE4D251A5A4400D4EDFB /* GalleryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryData.swift; sourceTree = "<group>"; };
 		DCB6893F2517AD29001AD049 /* CameraData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraData.swift; sourceTree = "<group>"; };
+		DCD2C73B252D543500CC391C /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		DCD2C73D252D546500CC391C /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		DCD7354E252CACF70046775E /* DEV🛠.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DEV🛠.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCE0E730250AFB5F00971B22 /* SCANDOConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCANDOConstant.swift; sourceTree = "<group>"; };
 		DCE0E732250AFE2300971B22 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
@@ -310,6 +314,7 @@
 				7206EAED250C6D8200A3DA4A /* Gallery */,
 				DC75E59725138C3200186F30 /* EditScan */,
 				DC4CD0002514FB08000A84BC /* Preview */,
+				DCD2C739252D540F00CC391C /* Filter */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -540,6 +545,23 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		DCD2C739252D540F00CC391C /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				DCD2C73D252D546500CC391C /* FilterViewController.swift */,
+				DCD2C73A252D542800CC391C /* Views */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		DCD2C73A252D542800CC391C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DCD2C73B252D543500CC391C /* FilterView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		DCE0E72E250AFB2C00971B22 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -703,6 +725,7 @@
 				0901C69B25038A320051FF16 /* AppDelegate.swift in Sources */,
 				097A18AC25046FD70044D5FB /* ScanAlbumsView.swift in Sources */,
 				DC7129942515743200ACCB2B /* PreviewData.swift in Sources */,
+				DCD2C73C252D543500CC391C /* FilterView.swift in Sources */,
 				DC75E59C25138CBD00186F30 /* EditScanViewController.swift in Sources */,
 				092E85D5250659B300A01F60 /* DocumentGroupCoordinator.swift in Sources */,
 				0901C69D25038A320051FF16 /* SceneDelegate.swift in Sources */,
@@ -711,6 +734,7 @@
 				DC4CD0052514FB78000A84BC /* PreviewViewController.swift in Sources */,
 				DCB1B5E52512DC9D00B1630C /* GalleryView.swift in Sources */,
 				0922627625053E0B00BDDB90 /* DocumentGroupCollectionViewCell.swift in Sources */,
+				DCD2C73E252D546500CC391C /* FilterViewController.swift in Sources */,
 				DC215A1E25166321006D409A /* Document+CoreDataClass.swift in Sources */,
 				DC75E59F2513AA4700186F30 /* EditScanData.swift in Sources */,
 				DC215A2225166321006D409A /* DocumentGroup+CoreDataClass.swift in Sources */,
