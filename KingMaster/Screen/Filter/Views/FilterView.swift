@@ -20,6 +20,12 @@ class FilterView: View {
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
 	
+	var image: UIImage? {
+		didSet {
+			processedImageView.image = image
+		}
+	}
+	
 	// MARK: - View Components
 	
 	lazy var segmentControl: UISegmentedControl = {

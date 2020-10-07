@@ -11,12 +11,22 @@ import RBToolkit
 
 class FilterViewController: ViewController<FilterView> {
 	
+	// MARK: - Public Properties
+	
+	var passedData: (() -> FilterCoordinator.FilterData)?
+	
+	// MARK: - Private Properties
+	
+	var originalImage: UIImage?
+	var grayImage: UIImage?
+	
 	// MARK: - Life Cycles
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		configureLoadBar()
+		loadData()
 		configureViewEvent()
 	}
 	
@@ -26,6 +36,18 @@ class FilterViewController: ViewController<FilterView> {
 		let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 		navigationItem.titleView = screenView.segmentControl
 		toolbarItems = [spacer, screenView.downloadBarButton]
+	}
+	
+	private func loadData() {
+		guard let passedData = passedData?() else { return }
+		
+		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+			self?.originalImage = passedData.image
+			
+			ThreadManager.executeOnMain {
+				self?.screenView.image = self?.originalImage
+			}
+		}
 	}
 	
 	private func configureViewEvent() {

@@ -67,6 +67,9 @@ class PreviewCoordinator: Coordinator {
 	private func openFilter(processedImage: UIImage) {
 		filterCoordinator = nil
 		filterCoordinator = FilterCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		filterCoordinator?.passedData = {
+			return FilterCoordinator.FilterData(image: processedImage)
+		}
 		
 		filterCoordinator?.start()
 	}
