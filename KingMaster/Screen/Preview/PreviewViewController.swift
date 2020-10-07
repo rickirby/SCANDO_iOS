@@ -92,7 +92,7 @@ class PreviewViewController: ViewController<PreviewView> {
 			case .didTapRotateRight:
 				self?.rotateRight()
 			case .didTapDownload:
-				self?.saveImage()
+				self?.downloadImage()
 			case .didTapFilter:
 				self?.filterImage()
 			}
@@ -104,7 +104,7 @@ class PreviewViewController: ViewController<PreviewView> {
 		screenView.reloadImage(withImage: processedImage)
 	}
 	
-	private func saveImage() {
+	private func downloadImage() {
 		guard let image = processedImage else { return }
 		screenView.startLoading()
 		

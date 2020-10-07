@@ -77,7 +77,7 @@ class GalleryViewController: RBPhotosGalleryViewController {
 			case .didTapEdit:
 				self?.editImage()
 			case .didTapDownload:
-				self?.saveImage()
+				self?.downloadImage()
 			case .didTapDelete:
 				self?.deleteImage()
 			}
@@ -131,7 +131,7 @@ class GalleryViewController: RBPhotosGalleryViewController {
 		}
 	}
 	
-	private func saveImage() {
+	private func downloadImage() {
 		screenView.startLoading()
 		
 		let image = galleryViewImagesData[currentPageIndex]
