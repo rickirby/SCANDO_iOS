@@ -8,6 +8,7 @@
 
 import UIKit
 import RBToolkit
+import RBImageProcessor
 
 class FilterViewController: ViewController<FilterView> {
 	
@@ -43,6 +44,7 @@ class FilterViewController: ViewController<FilterView> {
 		
 		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
 			self?.originalImage = passedData.image
+			self?.grayImage = ConvertColor.makeGray(from: passedData.image)
 			
 			ThreadManager.executeOnMain {
 				self?.screenView.image = self?.originalImage
