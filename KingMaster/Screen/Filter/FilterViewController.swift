@@ -17,11 +17,21 @@ class FilterViewController: ViewController<FilterView> {
 		super.viewDidLoad()
 		
 		configureLoadBar()
+		configureViewEvent()
 	}
 	
 	// MARK: - Private Methods
 	
 	func configureLoadBar() {
 		navigationItem.titleView = screenView.segmentControl
+	}
+	
+	func configureViewEvent() {
+		screenView.onViewEvent = { [weak self] (viewEvent: FilterView.ViewEvent) in
+			switch viewEvent {
+			case .didChangeSegment(let index):
+				print(index)
+			}
+		}
 	}
 }
