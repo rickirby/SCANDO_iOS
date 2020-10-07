@@ -15,14 +15,12 @@ class FilterView: View {
 	
 	lazy var segmentControl: UISegmentedControl = {
 		let titles = ["Grayscale", "Adapt Th"]
-		let screenWidth = UIScreen.main.bounds.width
+		let segmentControlWidth = UIScreen.main.bounds.width - 100
 		let segmentControl = UISegmentedControl(items: titles)
-		segmentControl.tintColor = .white
-		segmentControl.backgroundColor = .blue
 		segmentControl.selectedSegmentIndex = 0
 		
 		for index in 0..<titles.count {
-			segmentControl.setWidth(screenWidth / CGFloat(titles.count), forSegmentAt: index)
+			segmentControl.setWidth(segmentControlWidth / CGFloat(titles.count), forSegmentAt: index)
 		}
 		segmentControl.sizeToFit()
 		segmentControl.addTarget(self, action: #selector(segmentControlChanged), for: .valueChanged)

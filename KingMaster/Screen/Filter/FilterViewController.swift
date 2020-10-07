@@ -11,4 +11,17 @@ import RBToolkit
 
 class FilterViewController: ViewController<FilterView> {
 	
+	// MARK: - Life Cycles
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		configureLoadBar()
+	}
+	
+	// MARK: - Private Methods
+	
+	func configureLoadBar() {
+		navigationItem.titleView = screenView.segmentControl
+	}
 }
