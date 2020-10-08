@@ -56,6 +56,8 @@ class FilterView: View {
 	
 	lazy var downloadBarButton = UIBarButtonItem(image: UIImage(named: "SaveButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(downloadBarButtonTapped))
 	
+	lazy var adjustBarButton = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(adjustBarButtonTapped))
+	
 	// MARK: - Life Cycles
 	
 	override func setViews() {
@@ -77,6 +79,8 @@ class FilterView: View {
 			processedImageView.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor),
 			processedImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor)
 		])
+		
+		adjustBarButton.isEnabled = false
 	}
 }
 
@@ -86,6 +90,10 @@ extension FilterView {
 	
 	@objc func segmentControlChanged() {
 		onViewEvent?(.didChangeSegment(index: segmentControl.selectedSegmentIndex))
+	}
+	
+	@objc func adjustBarButtonTapped() {
+		
 	}
 	
 	@objc func downloadBarButtonTapped() {
