@@ -16,6 +16,7 @@ class FilterView: View {
 	enum ViewEvent {
 		case didChangeSegment(index: Int)
 		case didTapDownload
+		case didTapAdjust
 	}
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
@@ -93,7 +94,7 @@ extension FilterView {
 	}
 	
 	@objc func adjustBarButtonTapped() {
-		
+		onViewEvent?(.didTapAdjust)
 	}
 	
 	@objc func downloadBarButtonTapped() {

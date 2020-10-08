@@ -111,6 +111,6 @@ class AlertView {
 			cancelHandler()
 		}))
 		
-		ac.present(ac, animated: true, completion: nil)
+		target.present(ac, animated: true, completion: nil)
 	}
 }

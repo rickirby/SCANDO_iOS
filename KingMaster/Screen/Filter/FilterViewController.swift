@@ -61,6 +61,8 @@ class FilterViewController: ViewController<FilterView> {
 				self?.changeSegment(index: index)
 			case .didTapDownload:
 				self?.downloadImage()
+			case .didTapAdjust:
+				self?.adjustParam()
 			}
 		}
 	}
@@ -82,5 +84,30 @@ class FilterViewController: ViewController<FilterView> {
 	
 	private func downloadImage() {
 		
+	}
+	
+	private func adjustParam() {
+		switch screenView.segmentControl.selectedSegmentIndex {
+		case 2:
+			adjustAdaptiveParam()
+		default:
+			break
+		}
+	}
+	
+	private func adjustAdaptiveParam() {
+		AlertView.createAdaptiveParamAlert(self, defaultValueHandler: {
+			$0.text = "57"
+			$1.text = "7"
+		}, setHandler: {
+			guard let textField1Text = $0.text, let textField2Text = $1.text, let blockSize = Int(textField1Text), let constant = Double(textField2Text), let originalImage = self.originalImage else {
+				$0.text = ""
+				$1.text = ""
+				
+				return
+			}
+			self.adaptiveThresholdImage = ConvertColor.adaptiveThreshold(from: originalImage, isGaussian: true, blockSize: blockSize, constant: constant)
+			self.screenView.image = self.adaptiveThresholdImage
+		}, cancelHandler: {})
 	}
 }
