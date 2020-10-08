@@ -56,7 +56,7 @@ class FilterView: View {
 	
 	lazy var downloadBarButton = UIBarButtonItem(image: UIImage(named: "SaveButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(downloadBarButtonTapped))
 	
-	lazy var adjustBarButton = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(adjustBarButtonTapped))
+	lazy var adjustBarButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(adjustBarButtonTapped))
 	
 	// MARK: - Life Cycles
 	
