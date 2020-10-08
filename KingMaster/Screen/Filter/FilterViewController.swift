@@ -20,6 +20,7 @@ class FilterViewController: ViewController<FilterView> {
 	
 	var originalImage: UIImage?
 	var grayImage: UIImage?
+	var adaptiveThresholdImage: UIImage?
 	
 	// MARK: - Life Cycles
 	
@@ -45,6 +46,7 @@ class FilterViewController: ViewController<FilterView> {
 		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
 			self?.originalImage = passedData.image
 			self?.grayImage = ConvertColor.makeGray(from: passedData.image)
+			self?.adaptiveThresholdImage = ConvertColor.adaptiveThreshold(from: passedData.image, isGaussian: true, blockSize: 57, constant: 7)
 			
 			ThreadManager.executeOnMain {
 				self?.screenView.image = self?.originalImage
@@ -69,6 +71,8 @@ class FilterViewController: ViewController<FilterView> {
 			screenView.image = originalImage
 		case 1:
 			screenView.image = grayImage
+		case 2:
+			screenView.image = adaptiveThresholdImage
 		default:
 			screenView.image = originalImage
 		}
