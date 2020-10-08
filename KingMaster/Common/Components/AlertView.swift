@@ -90,4 +90,27 @@ class AlertView {
 		
 		target.present(ac, animated: true, completion: nil)
 	}
+	
+	static func createAdaptiveParamAlert(_ target: UIViewController, defaultValueHandler: @escaping (UITextField, UITextField) -> Void, setHandler: @escaping (UITextField, UITextField) -> Void, cancelHandler: @escaping () -> Void) {
+		let ac = UIAlertController(title: SCANDOConstant.setAdaptiveTitle, message: SCANDOConstant.setAdaptiveMessage, preferredStyle: .alert)
+		ac.addTextField {
+			$0.placeholder = SCANDOConstant.setAdaptiveBlockSizePlaceholder
+		}
+		ac.addTextField {
+			$0.placeholder = SCANDOConstant.setAdaptiveConstantPlaceholder
+		}
+		ac.addAction(UIAlertAction(title: SCANDOConstant.setAdaptiveDefaultValueAction, style: .default, handler: { _ in
+			guard let textField0 = ac.textFields?[0], let textField1 = ac.textFields?[1] else { return }
+			defaultValueHandler(textField0, textField1)
+		}))
+		ac.addAction(UIAlertAction(title: SCANDOConstant.setAdaptivePositiveAction, style: .default, handler: { _ in
+			guard let textField0 = ac.textFields?[0], let textField1 = ac.textFields?[1] else { return }
+			setHandler(textField0, textField1)
+		}))
+		ac.addAction(UIAlertAction(title: SCANDOConstant.setAdaptiveNegativeAction, style: .cancel, handler: { _ in
+			cancelHandler()
+		}))
+		
+		ac.present(ac, animated: true, completion: nil)
+	}
 }
