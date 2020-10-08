@@ -98,7 +98,7 @@ class FilterViewController: ViewController<FilterView> {
 	private func adjustAdaptiveParam() {
 		guard let originalImage = originalImage else { return }
 		AlertView.createAdaptiveParamAlert(self, setHandler: {
-			guard let textField1Text = $0.text, let textField2Text = $1.text, let blockSize = Int(textField1Text), let constant = Double(textField2Text) else {
+			guard let textField0Text = $0.text, let textField1Text = $1.text, let textField2Text = $2.text, let type = Int(textField0Text), let blockSize = Int(textField1Text), let constant = Double(textField2Text) else {
 				DispatchQueue.global(qos: .userInitiated).async {
 					self.adaptiveThresholdImage = ConvertColor.adaptiveThreshold(from: originalImage, isGaussian: true, blockSize: 57, constant: 7)
 					ThreadManager.executeOnMain {
@@ -110,7 +110,7 @@ class FilterViewController: ViewController<FilterView> {
 			}
 			
 			DispatchQueue.global(qos: .userInitiated).async {
-				self.adaptiveThresholdImage = ConvertColor.adaptiveThreshold(from: originalImage, isGaussian: true, blockSize: blockSize, constant: constant)
+				self.adaptiveThresholdImage = ConvertColor.adaptiveThreshold(from: originalImage, isGaussian: (type == 1), blockSize: blockSize, constant: constant)
 				ThreadManager.executeOnMain {
 					self.screenView.image = self.adaptiveThresholdImage
 				}

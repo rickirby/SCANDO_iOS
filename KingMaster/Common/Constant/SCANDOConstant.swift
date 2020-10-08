@@ -45,9 +45,9 @@ class SCANDOConstant {
 	
 	static let setAdaptiveTitle: String = "Adaptive Parameter"
 	static let setAdaptiveMessage: String = "Set value for following parameters."
+	static let setAdaptiveTypePlaceholder: String = "Type 0: Mean, 1: Gauss"
 	static let setAdaptiveBlockSizePlaceholder: String = "Block Size"
 	static let setAdaptiveConstantPlaceholder: String = "Constant"
-	static let setAdaptiveDefaultValueAction: String = "Default Value"
 	static let setAdaptivePositiveAction: String = "OK"
 	static let setAdaptiveNegativeAction: String = "Cancel"
 }
