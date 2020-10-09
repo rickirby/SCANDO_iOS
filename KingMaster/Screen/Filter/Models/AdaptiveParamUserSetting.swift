@@ -1,5 +1,5 @@
 //
-//  FilterUserSetting.swift
+//  AdaptiveParamUserSetting.swift
 //  KingMaster
 //
 //  Created by Ricki Bin Yamin on 09/10/20.

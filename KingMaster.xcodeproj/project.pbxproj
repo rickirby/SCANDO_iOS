@@ -29,8 +29,8 @@
 		09C8ADB2250653FF004BA0F7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADB1250653FF004BA0F7 /* AppCoordinator.swift */; };
 		09FDB4A3252FED7E007E8D7A /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB4A2252FED7E007E8D7A /* UserSetting.swift */; };
 		09FDB4A4252FED7E007E8D7A /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB4A2252FED7E007E8D7A /* UserSetting.swift */; };
-		09FDB4A6252FEE5E007E8D7A /* FilterUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB4A5252FEE5E007E8D7A /* FilterUserSetting.swift */; };
-		09FDB4A7252FEE5E007E8D7A /* FilterUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB4A5252FEE5E007E8D7A /* FilterUserSetting.swift */; };
+		09FDB4A6252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB4A5252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift */; };
+		09FDB4A7252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB4A5252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift */; };
 		7206EAEF250C704B00A3DA4A /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7206EAEE250C704B00A3DA4A /* GalleryViewController.swift */; };
 		7206EAF1250C73F200A3DA4A /* GalleryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7206EAF0250C73F200A3DA4A /* GalleryCoordinator.swift */; };
 		DC215A1C25166321006D409A /* QuadPoint+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1425166321006D409A /* QuadPoint+CoreDataClass.swift */; };
@@ -192,7 +192,7 @@
 		09C8ADAF250652BC004BA0F7 /* ScanAlbumsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAlbumsCoordinator.swift; sourceTree = "<group>"; };
 		09C8ADB1250653FF004BA0F7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		09FDB4A2252FED7E007E8D7A /* UserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetting.swift; sourceTree = "<group>"; };
-		09FDB4A5252FEE5E007E8D7A /* FilterUserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterUserSetting.swift; sourceTree = "<group>"; };
+		09FDB4A5252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveParamUserSetting.swift; sourceTree = "<group>"; };
 		7206EAEE250C704B00A3DA4A /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		7206EAF0250C73F200A3DA4A /* GalleryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCoordinator.swift; sourceTree = "<group>"; };
 		DC215A1425166321006D409A /* QuadPoint+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuadPoint+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -564,7 +564,7 @@
 			isa = PBXGroup;
 			children = (
 				DCC826E5252E047B00DBD037 /* FilterData.swift */,
-				09FDB4A5252FEE5E007E8D7A /* FilterUserSetting.swift */,
+				09FDB4A5252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -719,7 +719,7 @@
 				DC215A1F25166321006D409A /* Document+CoreDataProperties.swift in Sources */,
 				DC82CC952517058900403550 /* SCANDODateFormatter.swift in Sources */,
 				09C8ADAE25065154004BA0F7 /* Router.swift in Sources */,
-				09FDB4A6252FEE5E007E8D7A /* FilterUserSetting.swift in Sources */,
+				09FDB4A6252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift in Sources */,
 				DC215A1D25166321006D409A /* QuadPoint+CoreDataProperties.swift in Sources */,
 				DCE0E731250AFB5F00971B22 /* SCANDOConstant.swift in Sources */,
 				097A18A825046E660044D5FB /* ScanAlbumsViewController.swift in Sources */,
@@ -780,7 +780,7 @@
 				DCD7350D252CACF70046775E /* Document+CoreDataProperties.swift in Sources */,
 				DCD7350E252CACF70046775E /* SCANDODateFormatter.swift in Sources */,
 				DCD7350F252CACF70046775E /* Router.swift in Sources */,
-				09FDB4A7252FEE5E007E8D7A /* FilterUserSetting.swift in Sources */,
+				09FDB4A7252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift in Sources */,
 				DCD73510252CACF70046775E /* QuadPoint+CoreDataProperties.swift in Sources */,
 				DCD73511252CACF70046775E /* SCANDOConstant.swift in Sources */,
 				DCD73512252CACF70046775E /* ScanAlbumsViewController.swift in Sources */,
