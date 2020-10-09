@@ -91,7 +91,7 @@ class AlertView {
 		target.present(ac, animated: true, completion: nil)
 	}
 	
-	static func createAdaptiveParamAlert(_ target: UIViewController, currentType: Int?, currentBlockSize: Int?, currentConstant: Int?, setHandler: @escaping (UITextField, UITextField, UITextField) -> Void, cancelHandler: @escaping () -> Void) {
+	static func createAdaptiveParamAlert(_ target: UIViewController, currentType: Int?, currentBlockSize: Int?, currentConstant: Double?, setHandler: @escaping (UITextField, UITextField, UITextField) -> Void, cancelHandler: @escaping () -> Void) {
 		let ac = UIAlertController(title: SCANDOConstant.setAdaptiveTitle, message: SCANDOConstant.setAdaptiveMessage, preferredStyle: .alert)
 		ac.addTextField {
 			$0.placeholder = SCANDOConstant.setAdaptiveTypePlaceholder

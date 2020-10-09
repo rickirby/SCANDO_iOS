@@ -44,9 +44,13 @@ class FilterViewController: ViewController<FilterView> {
 		guard let passedData = passedData?() else { return }
 		
 		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+			// Original Image
 			self?.originalImage = passedData.image
+			// Gray Image
 			self?.grayImage = ConvertColor.makeGray(from: passedData.image)
-			self?.adaptiveThresholdImage = ConvertColor.adaptiveThreshold(from: passedData.image, isGaussian: (FilterUserSettting.shared.read(forKey: .adaptiveType) ?? 1) == 1, blockSize: FilterUserSettting.shared.read(forKey: .adaptiveBlockSize) ?? 57, constant: Double(FilterUserSettting.shared.read(forKey: .adaptiveConstant) ?? 7))
+			// Adaptive Threshold Image
+			let adaptiveParam = AdaptiveParamUserSettting.shared.read()
+			self?.adaptiveThresholdImage = ConvertColor.adaptiveThreshold(from: passedData.image, isGaussian: (adaptiveParam?.type ?? 1) == 1, blockSize: adaptiveParam?.blockSize ?? 57, constant: adaptiveParam?.constant ?? 7)
 			
 			ThreadManager.executeOnMain {
 				self?.screenView.image = self?.originalImage
@@ -98,18 +102,13 @@ class FilterViewController: ViewController<FilterView> {
 	private func adjustAdaptiveParam() {
 		guard let originalImage = originalImage else { return }
 		
-		let currentAdaptiveType = FilterUserSettting.shared.read(forKey: .adaptiveType)
-		let currentAdaptiveBlockSize = FilterUserSettting.shared.read(forKey: .adaptiveBlockSize)
-		let currentAdaptiveConstant = FilterUserSettting.shared.read(forKey: .adaptiveConstant)
+		let adaptiveParam = AdaptiveParamUserSettting.shared.read()
 		
-		AlertView.createAdaptiveParamAlert(self, currentType: currentAdaptiveType, currentBlockSize: currentAdaptiveBlockSize, currentConstant: currentAdaptiveConstant, setHandler: {
+		AlertView.createAdaptiveParamAlert(self, currentType: adaptiveParam?.type, currentBlockSize: adaptiveParam?.blockSize, currentConstant: adaptiveParam?.constant, setHandler: {
 			guard let textField0Text = $0.text, let textField1Text = $1.text, let textField2Text = $2.text, let type = Int(textField0Text), let blockSize = Int(textField1Text), let constant = Double(textField2Text) else {
 				DispatchQueue.global(qos: .userInitiated).async {
 					self.adaptiveThresholdImage = ConvertColor.adaptiveThreshold(from: originalImage, isGaussian: true, blockSize: 57, constant: 7)
-					
-					FilterUserSettting.shared.save(1, forKey: .adaptiveType)
-					FilterUserSettting.shared.save(57, forKey: .adaptiveBlockSize)
-					FilterUserSettting.shared.save(7, forKey: .adaptiveConstant)
+					AdaptiveParamUserSettting.shared.save(AdaptiveParamUserSettting.AdaptiveParam(type: 1, blockSize: 57, constant: 7))
 					
 					ThreadManager.executeOnMain {
 						self.screenView.image = self.adaptiveThresholdImage
@@ -122,9 +121,7 @@ class FilterViewController: ViewController<FilterView> {
 			DispatchQueue.global(qos: .userInitiated).async {
 				self.adaptiveThresholdImage = ConvertColor.adaptiveThreshold(from: originalImage, isGaussian: (type == 1), blockSize: blockSize, constant: constant)
 				
-				FilterUserSettting.shared.save(type, forKey: .adaptiveType)
-				FilterUserSettting.shared.save(blockSize, forKey: .adaptiveBlockSize)
-				FilterUserSettting.shared.save(Int(constant), forKey: .adaptiveConstant)
+				AdaptiveParamUserSettting.shared.save(AdaptiveParamUserSettting.AdaptiveParam(type: type, blockSize: blockSize, constant: constant))
 				
 				ThreadManager.executeOnMain {
 					self.screenView.image = self.adaptiveThresholdImage

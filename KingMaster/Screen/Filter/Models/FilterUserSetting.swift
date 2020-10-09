@@ -8,34 +8,32 @@
 
 import UIKit
 
-class FilterUserSettting: UserSetting {
+class AdaptiveParamUserSettting {
 	
-	static let shared = FilterUserSettting()
-	
-	enum Key: String, CaseIterable {
-		case adaptiveType = "adaptive_type"
-		case adaptiveBlockSize = "adaptive_blocksize"
-		case adaptiveConstant = "adaptive_constant"
+	struct AdaptiveParam: Codable {
+		var type: Int
+		var blockSize: Int
+		var constant: Double
 	}
 	
-	typealias ValueType = Int
+	let key = "adaptive_param"
 	
-	func save(_ value: Int, forKey key: FilterUserSettting.Key) {
-		UserDefaults.standard.set(value, forKey: key.rawValue)
-	}
+	static let shared = AdaptiveParamUserSettting()
 	
-	func read(forKey key: FilterUserSettting.Key) -> Int? {
-		return UserDefaults.standard.value(forKey: key.rawValue) as? Int
-	}
-	
-	func remove(forKey key: FilterUserSettting.Key) {
-		UserDefaults.standard.removeObject(forKey: key.rawValue)
-	}
-	
-	func removeAll() {
-		for key in Key.allCases {
-			remove(forKey: key)
+	func save(_ value: AdaptiveParam) {
+		if let data = try? JSONEncoder().encode(value) {
+			UserDefaults.standard.set(data, forKey: key)
 		}
+	}
+	
+	func read() -> AdaptiveParam? {
+		guard let data = UserDefaults.standard.value(forKey: key) as? Data, let value = try? JSONDecoder().decode(AdaptiveParam.self, from: data) else { return nil }
+		
+		return value
+	}
+	
+	func remove() {
+		UserDefaults.standard.removeObject(forKey: key)
 	}
 	
 }
