@@ -53,7 +53,7 @@ class FilterViewController: ViewController<FilterView> {
 			self?.adaptiveThresholdImage = ConvertColor.adaptiveThreshold(from: passedData.image, isGaussian: (adaptiveParam?.type ?? 1) == 1, blockSize: adaptiveParam?.blockSize ?? 57, constant: adaptiveParam?.constant ?? 7)
 			
 			ThreadManager.executeOnMain {
-				self?.screenView.image = self?.originalImage
+				self?.refreshImage(index: self?.screenView.segmentControl.selectedSegmentIndex ?? 0)
 			}
 		}
 	}
@@ -62,7 +62,7 @@ class FilterViewController: ViewController<FilterView> {
 		screenView.onViewEvent = { [weak self] (viewEvent: FilterView.ViewEvent) in
 			switch viewEvent {
 			case .didChangeSegment(let index):
-				self?.changeSegment(index: index)
+				self?.refreshImage(index: index)
 			case .didTapDownload:
 				self?.downloadImage()
 			case .didTapAdjust:
@@ -71,7 +71,7 @@ class FilterViewController: ViewController<FilterView> {
 		}
 	}
 	
-	private func changeSegment(index: Int) {
+	private func refreshImage(index: Int) {
 		switch index {
 		case 0:
 			screenView.image = originalImage
@@ -100,32 +100,25 @@ class FilterViewController: ViewController<FilterView> {
 	}
 	
 	private func adjustAdaptiveParam() {
-		guard let originalImage = originalImage else { return }
 		
 		let adaptiveParam = AdaptiveParamUserSettting.shared.read()
 		
 		AlertView.createAdaptiveParamAlert(self, currentType: adaptiveParam?.type, currentBlockSize: adaptiveParam?.blockSize, currentConstant: adaptiveParam?.constant, setHandler: {
+			
 			guard let textField0Text = $0.text, let textField1Text = $1.text, let textField2Text = $2.text, let type = Int(textField0Text), let blockSize = Int(textField1Text), let constant = Double(textField2Text) else {
 				DispatchQueue.global(qos: .userInitiated).async {
-					self.adaptiveThresholdImage = ConvertColor.adaptiveThreshold(from: originalImage, isGaussian: true, blockSize: 57, constant: 7)
 					AdaptiveParamUserSettting.shared.save(AdaptiveParamUserSettting.AdaptiveParam(type: 1, blockSize: 57, constant: 7))
 					
-					ThreadManager.executeOnMain {
-						self.screenView.image = self.adaptiveThresholdImage
-					}
+					self.loadData()
 				}
 				
 				return
 			}
 			
 			DispatchQueue.global(qos: .userInitiated).async {
-				self.adaptiveThresholdImage = ConvertColor.adaptiveThreshold(from: originalImage, isGaussian: (type == 1), blockSize: blockSize, constant: constant)
-				
 				AdaptiveParamUserSettting.shared.save(AdaptiveParamUserSettting.AdaptiveParam(type: type, blockSize: blockSize, constant: constant))
 				
-				ThreadManager.executeOnMain {
-					self.screenView.image = self.adaptiveThresholdImage
-				}
+				self.loadData()
 			}
 		}, cancelHandler: {})
 	}
