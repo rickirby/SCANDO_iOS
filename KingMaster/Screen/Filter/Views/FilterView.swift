@@ -16,6 +16,7 @@ class FilterView: View {
 	enum ViewEvent {
 		case didChangeSegment(index: Int)
 		case didTapDownload
+		case didTapAdjust
 	}
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
@@ -29,7 +30,7 @@ class FilterView: View {
 	// MARK: - View Components
 	
 	lazy var segmentControl: UISegmentedControl = {
-		let titles = ["Ori", "Gray"]
+		let titles = ["Ori", "Gray", "AdptvTh"]
 		let segmentControlWidth = UIScreen.main.bounds.width - 100
 		let segmentControl = UISegmentedControl(items: titles)
 		segmentControl.selectedSegmentIndex = 0
@@ -56,6 +57,8 @@ class FilterView: View {
 	
 	lazy var downloadBarButton = UIBarButtonItem(image: UIImage(named: "SaveButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(downloadBarButtonTapped))
 	
+	lazy var adjustBarButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(adjustBarButtonTapped))
+	
 	// MARK: - Life Cycles
 	
 	override func setViews() {
@@ -77,6 +80,8 @@ class FilterView: View {
 			processedImageView.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor),
 			processedImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor)
 		])
+		
+		adjustBarButton.isEnabled = false
 	}
 }
 
@@ -86,6 +91,10 @@ extension FilterView {
 	
 	@objc func segmentControlChanged() {
 		onViewEvent?(.didChangeSegment(index: segmentControl.selectedSegmentIndex))
+	}
+	
+	@objc func adjustBarButtonTapped() {
+		onViewEvent?(.didTapAdjust)
 	}
 	
 	@objc func downloadBarButtonTapped() {
