@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AdaptiveParamUserSettting {
+class AdaptiveParamUserSetting {
 	
 	struct AdaptiveParam: Codable {
 		var type: Int
@@ -18,7 +18,7 @@ class AdaptiveParamUserSettting {
 	
 	let key = "adaptive_param"
 	
-	static let shared = AdaptiveParamUserSettting()
+	static let shared = AdaptiveParamUserSetting()
 	
 	func save(_ value: AdaptiveParam) {
 		if let data = try? JSONEncoder().encode(value) {

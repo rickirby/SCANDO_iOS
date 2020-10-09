@@ -49,7 +49,7 @@ class FilterViewController: ViewController<FilterView> {
 			// Gray Image
 			self?.grayImage = ConvertColor.makeGray(from: passedData.image)
 			// Adaptive Threshold Image
-			let adaptiveParam = AdaptiveParamUserSettting.shared.read()
+			let adaptiveParam = AdaptiveParamUserSetting.shared.read()
 			self?.adaptiveThresholdImage = ConvertColor.adaptiveThreshold(from: passedData.image, isGaussian: (adaptiveParam?.type ?? 1) == 1, blockSize: adaptiveParam?.blockSize ?? 57, constant: adaptiveParam?.constant ?? 7)
 			
 			ThreadManager.executeOnMain {
@@ -101,13 +101,13 @@ class FilterViewController: ViewController<FilterView> {
 	
 	private func adjustAdaptiveParam() {
 		
-		let adaptiveParam = AdaptiveParamUserSettting.shared.read()
+		let adaptiveParam = AdaptiveParamUserSetting.shared.read()
 		
 		AlertView.createAdaptiveParamAlert(self, currentType: adaptiveParam?.type, currentBlockSize: adaptiveParam?.blockSize, currentConstant: adaptiveParam?.constant, setHandler: {
 			
 			guard let textField0Text = $0.text, let textField1Text = $1.text, let textField2Text = $2.text, let type = Int(textField0Text), let blockSize = Int(textField1Text), let constant = Double(textField2Text) else {
 				DispatchQueue.global(qos: .userInitiated).async {
-					AdaptiveParamUserSettting.shared.save(AdaptiveParamUserSettting.AdaptiveParam(type: 1, blockSize: 57, constant: 7))
+					AdaptiveParamUserSetting.shared.save(AdaptiveParamUserSetting.AdaptiveParam(type: 1, blockSize: 57, constant: 7))
 					
 					self.loadData()
 				}
@@ -116,7 +116,7 @@ class FilterViewController: ViewController<FilterView> {
 			}
 			
 			DispatchQueue.global(qos: .userInitiated).async {
-				AdaptiveParamUserSettting.shared.save(AdaptiveParamUserSettting.AdaptiveParam(type: type, blockSize: blockSize, constant: constant))
+				AdaptiveParamUserSetting.shared.save(AdaptiveParamUserSetting.AdaptiveParam(type: type, blockSize: blockSize, constant: constant))
 				
 				self.loadData()
 			}
