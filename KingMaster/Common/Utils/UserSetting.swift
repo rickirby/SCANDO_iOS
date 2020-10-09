@@ -11,10 +11,10 @@ import UIKit
 protocol UserSetting {
 	
 	associatedtype Key
-	associatedtype Type
+	associatedtype ValueType
 	
-	func save(_ value: Type, forKey key: Key)
-	func read(forKey key: Key) -> Type?
+	func save(_ value: ValueType, forKey key: Key)
+	func read(forKey key: Key) -> ValueType?
 	func remove(forKey key: Key)
 	func removeAll()
 }
