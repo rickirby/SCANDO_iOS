@@ -46,7 +46,7 @@ class FilterViewController: ViewController<FilterView> {
 		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
 			self?.originalImage = passedData.image
 			self?.grayImage = ConvertColor.makeGray(from: passedData.image)
-			self?.adaptiveThresholdImage = ConvertColor.adaptiveThreshold(from: passedData.image, isGaussian: true, blockSize: 57, constant: 7)
+			self?.adaptiveThresholdImage = ConvertColor.adaptiveThreshold(from: passedData.image, isGaussian: (FilterUserSettting.shared.read(forKey: .adaptiveType) ?? 1) == 1, blockSize: FilterUserSettting.shared.read(forKey: .adaptiveBlockSize) ?? 57, constant: Double(FilterUserSettting.shared.read(forKey: .adaptiveConstant) ?? 7))
 			
 			ThreadManager.executeOnMain {
 				self?.screenView.image = self?.originalImage
