@@ -27,6 +27,8 @@
 		09C8ADAE25065154004BA0F7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADAD25065154004BA0F7 /* Router.swift */; };
 		09C8ADB0250652BC004BA0F7 /* ScanAlbumsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADAF250652BC004BA0F7 /* ScanAlbumsCoordinator.swift */; };
 		09C8ADB2250653FF004BA0F7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADB1250653FF004BA0F7 /* AppCoordinator.swift */; };
+		09FDB4A3252FED7E007E8D7A /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB4A2252FED7E007E8D7A /* UserSetting.swift */; };
+		09FDB4A4252FED7E007E8D7A /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB4A2252FED7E007E8D7A /* UserSetting.swift */; };
 		7206EAEF250C704B00A3DA4A /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7206EAEE250C704B00A3DA4A /* GalleryViewController.swift */; };
 		7206EAF1250C73F200A3DA4A /* GalleryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7206EAF0250C73F200A3DA4A /* GalleryCoordinator.swift */; };
 		DC215A1C25166321006D409A /* QuadPoint+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1425166321006D409A /* QuadPoint+CoreDataClass.swift */; };
@@ -187,6 +189,7 @@
 		09C8ADAD25065154004BA0F7 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		09C8ADAF250652BC004BA0F7 /* ScanAlbumsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAlbumsCoordinator.swift; sourceTree = "<group>"; };
 		09C8ADB1250653FF004BA0F7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		09FDB4A2252FED7E007E8D7A /* UserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetting.swift; sourceTree = "<group>"; };
 		7206EAEE250C704B00A3DA4A /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		7206EAF0250C73F200A3DA4A /* GalleryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCoordinator.swift; sourceTree = "<group>"; };
 		DC215A1425166321006D409A /* QuadPoint+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuadPoint+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -508,6 +511,7 @@
 			isa = PBXGroup;
 			children = (
 				DCAC3ED625158F6B00F5DD59 /* ThreadManager.swift */,
+				09FDB4A2252FED7E007E8D7A /* UserSetting.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -735,6 +739,7 @@
 				DC82E091251AD38B00FB9CA7 /* DocumentGroupData.swift in Sources */,
 				DCB689402517AD29001AD049 /* CameraData.swift in Sources */,
 				DC215A2325166321006D409A /* DocumentGroup+CoreDataProperties.swift in Sources */,
+				09FDB4A3252FED7E007E8D7A /* UserSetting.swift in Sources */,
 				DC39BC7A2514AF590067DF71 /* EditScanCoordinator.swift in Sources */,
 				0922627425053E0B00BDDB90 /* DocumentGroupView.swift in Sources */,
 				09195CDA2504C429006CC8A4 /* ScanAlbumsTableViewCell.swift in Sources */,
@@ -794,6 +799,7 @@
 				DCD73522252CACF70046775E /* PreviewCoordinator.swift in Sources */,
 				DCD73523252CACF70046775E /* PreviewView.swift in Sources */,
 				DCD73524252CACF70046775E /* DocumentGroupData.swift in Sources */,
+				09FDB4A4252FED7E007E8D7A /* UserSetting.swift in Sources */,
 				DCD73525252CACF70046775E /* CameraData.swift in Sources */,
 				DCD73526252CACF70046775E /* DocumentGroup+CoreDataProperties.swift in Sources */,
 				DCD73527252CACF70046775E /* EditScanCoordinator.swift in Sources */,
