@@ -140,4 +140,23 @@ class AlertView {
 		
 		target.present(ac, animated: true, completion: nil)
 	}
+	
+	static func createErodeParamAlert(_ target: UIViewController, currentIteration: Int?, setHandler: @escaping (UITextField) -> Void, cancelHandler: @escaping () -> Void) {
+		let ac = UIAlertController(title: SCANDOConstant.setErodeTitle, message: SCANDOConstant.setErodeMessage, preferredStyle: .alert)
+		ac.addTextField {
+			$0.placeholder = SCANDOConstant.setErodeIterationPlaceholder
+			if let iteration = currentIteration {
+				$0.text = String(iteration)
+			}
+		}
+		ac.addAction(UIAlertAction(title: SCANDOConstant.setErodePositiveAction, style: .default, handler: { _ in
+			guard let textField = ac.textFields?[0] else { return }
+			setHandler(textField)
+		}))
+		ac.addAction(UIAlertAction(title: SCANDOConstant.setErodeNegativeAction, style: .cancel, handler: { _ in
+			cancelHandler()
+		}))
+		
+		target.present(ac, animated: true, completion: nil)
+	}
 }
