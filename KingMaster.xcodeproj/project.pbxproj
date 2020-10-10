@@ -62,6 +62,7 @@
 		DC972BC12512454F00A6C43B /* CameraCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC972BC02512454F00A6C43B /* CameraCoordinator.swift */; };
 		DC972BC4251258C400A6C43B /* ScanImagePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC972BC3251258C400A6C43B /* ScanImagePickerCoordinator.swift */; };
 		DC9F070E25314818005A517B /* DilateParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9F070D25314818005A517B /* DilateParamUserSetting.swift */; };
+		DC9F070F253149B5005A517B /* DilateParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9F070D25314818005A517B /* DilateParamUserSetting.swift */; };
 		DCAC3ED725158F6B00F5DD59 /* ThreadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAC3ED625158F6B00F5DD59 /* ThreadManager.swift */; };
 		DCB1B5E52512DC9D00B1630C /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB1B5E42512DC9D00B1630C /* GalleryView.swift */; };
 		DCB3CE4B251A4ED000D4EDFB /* ScanImagePickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB3CE4A251A4ED000D4EDFB /* ScanImagePickerData.swift */; };
@@ -802,6 +803,7 @@
 				DCD7351C252CACF70046775E /* ScanImagePickerCoordinator.swift in Sources */,
 				DCD7351D252CACF70046775E /* DocumentGroupViewController.swift in Sources */,
 				DCD7351E252CACF70046775E /* GalleryData.swift in Sources */,
+				DC9F070F253149B5005A517B /* DilateParamUserSetting.swift in Sources */,
 				DCD7351F252CACF70046775E /* DocumentImage+CoreDataClass.swift in Sources */,
 				DCD73520252CACF70046775E /* DocumentImage+CoreDataProperties.swift in Sources */,
 				DCD73521252CACF70046775E /* QuadPoint+CoreDataClass.swift in Sources */,
