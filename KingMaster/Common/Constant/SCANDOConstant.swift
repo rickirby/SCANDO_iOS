@@ -50,4 +50,10 @@ class SCANDOConstant {
 	static let setAdaptiveConstantPlaceholder: String = "Constant"
 	static let setAdaptivePositiveAction: String = "OK"
 	static let setAdaptiveNegativeAction: String = "Cancel"
+	
+	static let setDilateTitle: String = "Dilate Parameter"
+	static let setDilateMessage: String = "Set value for following parameter"
+	static let setDilateIterationPlaceholder: String = "Iteration"
+	static let setDilatePositiveAction: String = "OK"
+	static let setDilateNegativeAction: String = "Cancel"
 }

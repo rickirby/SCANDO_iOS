@@ -21,6 +21,7 @@ class FilterViewController: ViewController<FilterView> {
 	var originalImage: UIImage?
 	var grayImage: UIImage?
 	var adaptiveThresholdImage: UIImage?
+	var dilateImage: UIImage?
 	
 	// MARK: - Life Cycles
 	
@@ -51,6 +52,9 @@ class FilterViewController: ViewController<FilterView> {
 			// Adaptive Threshold Image
 			let adaptiveParam = AdaptiveParamUserSetting.shared.read()
 			self?.adaptiveThresholdImage = ConvertColor.adaptiveThreshold(from: passedData.image, isGaussian: (adaptiveParam?.type ?? 1) == 1, blockSize: adaptiveParam?.blockSize ?? 57, constant: adaptiveParam?.constant ?? 7)
+			// Dilate Image
+			let dilateParam = DilateParamUserSetting.shared.read()
+			self?.dilateImage = ConvertColor.dilate(from: passedData.image, iteration: dilateParam?.iteration ?? 1, isGaussian: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7)
 			
 			ThreadManager.executeOnMain {
 				self?.refreshImage(index: self?.screenView.segmentControl.selectedSegmentIndex ?? 0)
@@ -79,11 +83,13 @@ class FilterViewController: ViewController<FilterView> {
 			screenView.image = grayImage
 		case 2:
 			screenView.image = adaptiveThresholdImage
+		case 3:
+			screenView.image = dilateImage
 		default:
 			screenView.image = originalImage
 		}
 		
-		screenView.adjustBarButton.isEnabled = (index == 2)
+		screenView.adjustBarButton.isEnabled = (index == 2) || (index == 3)
 	}
 	
 	private func downloadImage() {
@@ -94,6 +100,8 @@ class FilterViewController: ViewController<FilterView> {
 		switch screenView.segmentControl.selectedSegmentIndex {
 		case 2:
 			adjustAdaptiveParam()
+		case 3:
+			adjustDilateParam()
 		default:
 			break
 		}
@@ -120,6 +128,23 @@ class FilterViewController: ViewController<FilterView> {
 				
 				self.loadData()
 			}
+		}, cancelHandler: {})
+	}
+	
+	func adjustDilateParam() {
+		
+		let dilateParam = DilateParamUserSetting.shared.read()
+		
+		AlertView.createDilateParamAlert(self, currentIteration: dilateParam?.iteration, setHandler: {
+			
+			guard let textFieldText = $0.text, let iteration = Int(textFieldText) else { return }
+			
+			DispatchQueue.global(qos: .userInitiated).async {
+				DilateParamUserSetting.shared.save(DilateParamUserSetting.DilateParam(iteration: iteration))
+				
+				self.loadData()
+			}
+			
 		}, cancelHandler: {})
 	}
 }
