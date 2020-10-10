@@ -22,6 +22,7 @@ class FilterViewController: ViewController<FilterView> {
 	var grayImage: UIImage?
 	var adaptiveThresholdImage: UIImage?
 	var dilateImage: UIImage?
+	var erodeImage: UIImage?
 	
 	// MARK: - Life Cycles
 	
@@ -55,6 +56,9 @@ class FilterViewController: ViewController<FilterView> {
 			// Dilate Image
 			let dilateParam = DilateParamUserSetting.shared.read()
 			self?.dilateImage = ConvertColor.dilate(from: passedData.image, iteration: dilateParam?.iteration ?? 1, isGaussian: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7)
+			// Erode Image
+			let erodeParam = ErodeParamUserSetting.shared.read()
+			self?.erodeImage = ConvertColor.erode(from: passedData.image, erodeIteration: erodeParam?.iteration ?? 1, dilateIteration: dilateParam?.iteration ?? 1, isGaussian: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7)
 			
 			ThreadManager.executeOnMain {
 				self?.refreshImage(index: self?.screenView.segmentControl.selectedSegmentIndex ?? 0)
@@ -85,11 +89,13 @@ class FilterViewController: ViewController<FilterView> {
 			screenView.image = adaptiveThresholdImage
 		case 3:
 			screenView.image = dilateImage
+		case 4:
+			screenView.image = erodeImage
 		default:
 			screenView.image = originalImage
 		}
 		
-		screenView.adjustBarButton.isEnabled = (index == 2) || (index == 3)
+		screenView.adjustBarButton.isEnabled = (index == 2) || (index == 3) || (index == 4)
 	}
 	
 	private func downloadImage() {
@@ -102,6 +108,8 @@ class FilterViewController: ViewController<FilterView> {
 			adjustAdaptiveParam()
 		case 3:
 			adjustDilateParam()
+		case 4:
+			adjustErodeParam()
 		default:
 			break
 		}
@@ -145,6 +153,23 @@ class FilterViewController: ViewController<FilterView> {
 				self.loadData()
 			}
 			
+		}, cancelHandler: {})
+	}
+	
+	func adjustErodeParam() {
+		
+		let erodeParam = ErodeParamUserSetting.shared.read()
+		
+		AlertView.createErodeParamAlert(self, currentIteration: erodeParam?.iteration, setHandler: {
+			
+			guard let textFieldText = $0.text, let iteration = Int(textFieldText) else { return }
+			
+			DispatchQueue.global(qos: .userInitiated).async {
+				
+				ErodeParamUserSetting.shared.save(ErodeParamUserSetting.ErodeParam(iteration: iteration))
+				
+				self.loadData()
+			}
 		}, cancelHandler: {})
 	}
 }

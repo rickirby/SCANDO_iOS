@@ -30,7 +30,7 @@ class FilterView: View {
 	// MARK: - View Components
 	
 	lazy var segmentControl: UISegmentedControl = {
-		let titles = ["Ori", "Gray", "AdptvTh", "Dilate"]
+		let titles = ["Ori", "Gray", "AdptvTh", "Dilate", "Erode"]
 		let segmentControlWidth = UIScreen.main.bounds.width - 100
 		let segmentControl = UISegmentedControl(items: titles)
 		segmentControl.selectedSegmentIndex = 0

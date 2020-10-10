@@ -56,4 +56,10 @@ class SCANDOConstant {
 	static let setDilateIterationPlaceholder: String = "Iteration"
 	static let setDilatePositiveAction: String = "OK"
 	static let setDilateNegativeAction: String = "Cancel"
+	
+	static let setErodeTitle: String = "Erode Parameter"
+	static let setErodeMessage: String = "Set value for following parameter"
+	static let setErodeIterationPlaceholder: String = "Iteration"
+	static let setErodePositiveAction: String = "OK"
+	static let setErodeNegativeAction: String = "Cancel"
 }
