@@ -88,7 +88,7 @@ class FilterViewController: ViewController<FilterView> {
 			screenView.image = originalImage
 		}
 		
-		screenView.adjustBarButton.isEnabled = (index == 2)
+		screenView.adjustBarButton.isEnabled = (index == 2) || (index == 3)
 	}
 	
 	private func downloadImage() {
@@ -99,6 +99,8 @@ class FilterViewController: ViewController<FilterView> {
 		switch screenView.segmentControl.selectedSegmentIndex {
 		case 2:
 			adjustAdaptiveParam()
+		case 3:
+			adjustDilateParam()
 		default:
 			break
 		}
@@ -126,5 +128,9 @@ class FilterViewController: ViewController<FilterView> {
 				self.loadData()
 			}
 		}, cancelHandler: {})
+	}
+	
+	func adjustDilateParam() {
+		
 	}
 }
