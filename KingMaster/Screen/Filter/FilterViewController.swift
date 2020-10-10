@@ -53,7 +53,8 @@ class FilterViewController: ViewController<FilterView> {
 			let adaptiveParam = AdaptiveParamUserSetting.shared.read()
 			self?.adaptiveThresholdImage = ConvertColor.adaptiveThreshold(from: passedData.image, isGaussian: (adaptiveParam?.type ?? 1) == 1, blockSize: adaptiveParam?.blockSize ?? 57, constant: adaptiveParam?.constant ?? 7)
 			// Dilate Image
-			self?.dilateImage = ConvertColor.dilate(from: passedData.image, iteration: 1, isGaussian: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7)
+			let dilateParam = DilateParamUserSetting.shared.read()
+			self?.dilateImage = ConvertColor.dilate(from: passedData.image, iteration: dilateParam?.iteration ?? 1, isGaussian: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7)
 			
 			ThreadManager.executeOnMain {
 				self?.refreshImage(index: self?.screenView.segmentControl.selectedSegmentIndex ?? 0)
@@ -132,5 +133,18 @@ class FilterViewController: ViewController<FilterView> {
 	
 	func adjustDilateParam() {
 		
+		let dilateParam = DilateParamUserSetting.shared.read()
+		
+		AlertView.createDilateParamAlert(self, currentIteration: dilateParam?.iteration, setHandler: {
+			
+			guard let textFieldText = $0.text, let iteration = Int(textFieldText) else { return }
+			
+			DispatchQueue.global(qos: .userInitiated).async {
+				DilateParamUserSetting.shared.save(DilateParamUserSetting.DilateParam(iteration: iteration))
+				
+				self.loadData()
+			}
+			
+		}, cancelHandler: {})
 	}
 }
