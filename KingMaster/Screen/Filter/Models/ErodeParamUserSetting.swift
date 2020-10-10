@@ -10,7 +10,7 @@ import UIKit
 
 class ErodeParamUserSetting {
 	
-	struct ErodeParam {
+	struct ErodeParam: Codable {
 		var iteration: Int
 	}
 	
