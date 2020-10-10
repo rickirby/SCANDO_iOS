@@ -42,4 +42,24 @@ class SCANDOConstant {
 	static let renamePlaceholder: String = "New Name"
 	static let renamePositiveAction: String = "OK"
 	static let renameNegativeAction: String = "Cancel"
+	
+	static let setAdaptiveTitle: String = "Adaptive Parameter"
+	static let setAdaptiveMessage: String = "Set value for following parameters."
+	static let setAdaptiveTypePlaceholder: String = "Type 0: Mean, 1: Gauss"
+	static let setAdaptiveBlockSizePlaceholder: String = "Block Size"
+	static let setAdaptiveConstantPlaceholder: String = "Constant"
+	static let setAdaptivePositiveAction: String = "OK"
+	static let setAdaptiveNegativeAction: String = "Cancel"
+	
+	static let setDilateTitle: String = "Dilate Parameter"
+	static let setDilateMessage: String = "Set value for following parameter"
+	static let setDilateIterationPlaceholder: String = "Iteration"
+	static let setDilatePositiveAction: String = "OK"
+	static let setDilateNegativeAction: String = "Cancel"
+	
+	static let setErodeTitle: String = "Erode Parameter"
+	static let setErodeMessage: String = "Set value for following parameter"
+	static let setErodeIterationPlaceholder: String = "Iteration"
+	static let setErodePositiveAction: String = "OK"
+	static let setErodeNegativeAction: String = "Cancel"
 }
