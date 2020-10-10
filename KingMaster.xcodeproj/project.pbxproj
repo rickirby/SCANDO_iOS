@@ -43,6 +43,7 @@
 		DC215A2325166321006D409A /* DocumentGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1B25166321006D409A /* DocumentGroup+CoreDataProperties.swift */; };
 		DC215A262516640E006D409A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A252516640E006D409A /* DataManager.swift */; };
 		DC39BC7A2514AF590067DF71 /* EditScanCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39BC792514AF580067DF71 /* EditScanCoordinator.swift */; };
+		DC3F5E96253159CB007B6B3E /* ErodeParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3F5E95253159CB007B6B3E /* ErodeParamUserSetting.swift */; };
 		DC415C6C252CA193001AD7D2 /* RBImageProcessor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC415C6B252CA193001AD7D2 /* RBImageProcessor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DC46E1452521686E000ED989 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DC46E1442521686E000ED989 /* README.md */; };
 		DC4CD0032514FB51000A84BC /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4CD0022514FB51000A84BC /* PreviewView.swift */; };
@@ -207,6 +208,7 @@
 		DC215A1B25166321006D409A /* DocumentGroup+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentGroup+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DC215A252516640E006D409A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		DC39BC792514AF580067DF71 /* EditScanCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScanCoordinator.swift; sourceTree = "<group>"; };
+		DC3F5E95253159CB007B6B3E /* ErodeParamUserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErodeParamUserSetting.swift; sourceTree = "<group>"; };
 		DC415C6B252CA193001AD7D2 /* RBImageProcessor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBImageProcessor.framework; path = Carthage/Build/iOS/RBImageProcessor.framework; sourceTree = "<group>"; };
 		DC46E1442521686E000ED989 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DC4CD0022514FB51000A84BC /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
@@ -569,6 +571,7 @@
 				DCC826E5252E047B00DBD037 /* FilterData.swift */,
 				09FDB4A5252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift */,
 				DC9F070D25314818005A517B /* DilateParamUserSetting.swift */,
+				DC3F5E95253159CB007B6B3E /* ErodeParamUserSetting.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -723,6 +726,7 @@
 				DC215A1F25166321006D409A /* Document+CoreDataProperties.swift in Sources */,
 				DC82CC952517058900403550 /* SCANDODateFormatter.swift in Sources */,
 				09C8ADAE25065154004BA0F7 /* Router.swift in Sources */,
+				DC3F5E96253159CB007B6B3E /* ErodeParamUserSetting.swift in Sources */,
 				09FDB4A6252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift in Sources */,
 				DC215A1D25166321006D409A /* QuadPoint+CoreDataProperties.swift in Sources */,
 				DCE0E731250AFB5F00971B22 /* SCANDOConstant.swift in Sources */,
