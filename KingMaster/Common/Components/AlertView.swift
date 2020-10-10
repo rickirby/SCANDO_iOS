@@ -122,7 +122,7 @@ class AlertView {
 		target.present(ac, animated: true, completion: nil)
 	}
 	
-	func createDilateParamAlert(_ target: UIViewController, currentIteration: Int?, setHandler: @escaping (UITextField) -> Void, cancelHandler: @escaping () -> Void) {
+	static func createDilateParamAlert(_ target: UIViewController, currentIteration: Int?, setHandler: @escaping (UITextField) -> Void, cancelHandler: @escaping () -> Void) {
 		let ac = UIAlertController(title: SCANDOConstant.setDilateTitle, message: SCANDOConstant.setDilateMessage, preferredStyle: .alert)
 		ac.addTextField {
 			$0.placeholder = SCANDOConstant.setDilateIterationPlaceholder
