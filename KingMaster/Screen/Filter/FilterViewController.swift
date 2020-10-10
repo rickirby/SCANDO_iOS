@@ -21,6 +21,7 @@ class FilterViewController: ViewController<FilterView> {
 	var originalImage: UIImage?
 	var grayImage: UIImage?
 	var adaptiveThresholdImage: UIImage?
+	var dilateImage: UIImage?
 	
 	// MARK: - Life Cycles
 	
@@ -51,6 +52,8 @@ class FilterViewController: ViewController<FilterView> {
 			// Adaptive Threshold Image
 			let adaptiveParam = AdaptiveParamUserSetting.shared.read()
 			self?.adaptiveThresholdImage = ConvertColor.adaptiveThreshold(from: passedData.image, isGaussian: (adaptiveParam?.type ?? 1) == 1, blockSize: adaptiveParam?.blockSize ?? 57, constant: adaptiveParam?.constant ?? 7)
+			// Dilate Image
+			self?.dilateImage = ConvertColor.dilate(from: passedData.image, iteration: 1, isGaussian: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7)
 			
 			ThreadManager.executeOnMain {
 				self?.refreshImage(index: self?.screenView.segmentControl.selectedSegmentIndex ?? 0)
@@ -79,6 +82,8 @@ class FilterViewController: ViewController<FilterView> {
 			screenView.image = grayImage
 		case 2:
 			screenView.image = adaptiveThresholdImage
+		case 3:
+			screenView.image = dilateImage
 		default:
 			screenView.image = originalImage
 		}
