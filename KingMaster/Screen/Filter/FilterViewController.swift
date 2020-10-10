@@ -158,5 +158,18 @@ class FilterViewController: ViewController<FilterView> {
 	
 	func adjustErodeParam() {
 		
+		let erodeParam = ErodeParamUserSetting.shared.read()
+		
+		AlertView.createErodeParamAlert(self, currentIteration: erodeParam?.iteration, setHandler: {
+			
+			guard let textFieldText = $0.text, let iteration = Int(textFieldText) else { return }
+			
+			DispatchQueue.global(qos: .userInitiated).async {
+				
+				ErodeParamUserSetting.shared.save(ErodeParamUserSetting.ErodeParam(iteration: iteration))
+				
+				self.loadData()
+			}
+		}, cancelHandler: {})
 	}
 }
