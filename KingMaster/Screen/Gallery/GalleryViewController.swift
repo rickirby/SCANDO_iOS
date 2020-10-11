@@ -62,7 +62,7 @@ class GalleryViewController: RBPhotosGalleryViewController {
 	private func configureLoadBar() {
 		let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 		navigationItem.rightBarButtonItem = screenView.editBarButton
-		toolbarItems = [screenView.deleteBarButton, spacer, screenView.downloadBarButton]
+		toolbarItems = [screenView.deleteBarButton, spacer, screenView.devBarButton, spacer, screenView.downloadBarButton]
 	}
 	
 	private func configureBar() {

@@ -36,6 +36,8 @@ class GalleryView: UIView {
 	
 	lazy var deleteBarButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteBarButtonTapped))
 	
+	lazy var devBarButton = UIBarButtonItem(title: "DEV", style: .plain, target: self, action: #selector(devBarButtonTapped))
+	
 	// MARK: - Life Cycle
 	
 	override init(frame: CGRect) {
@@ -87,5 +89,9 @@ extension GalleryView {
 	
 	@objc func deleteBarButtonTapped() {
 		onViewEvent?(.didTapDelete)
+	}
+	
+	@objc func devBarButtonTapped() {
+		
 	}
 }
