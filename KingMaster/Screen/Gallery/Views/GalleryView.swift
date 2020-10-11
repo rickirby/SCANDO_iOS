@@ -16,7 +16,9 @@ class GalleryView: UIView {
 		case didTapEdit
 		case didTapDownload
 		case didTapDelete
+		#if SANDBOX
 		case didTapDev
+		#endif
 	}
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
@@ -37,7 +39,9 @@ class GalleryView: UIView {
 	
 	lazy var deleteBarButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteBarButtonTapped))
 	
+	#if SANDBOX
 	lazy var devBarButton = UIBarButtonItem(title: "DEV", style: .plain, target: self, action: #selector(devBarButtonTapped))
+	#endif
 	
 	// MARK: - Life Cycle
 	
@@ -92,7 +96,9 @@ extension GalleryView {
 		onViewEvent?(.didTapDelete)
 	}
 	
+	#if SANDBOX
 	@objc func devBarButtonTapped() {
 		onViewEvent?(.didTapDev)
 	}
+	#endif
 }
