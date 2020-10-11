@@ -16,6 +16,7 @@ class GalleryView: UIView {
 		case didTapEdit
 		case didTapDownload
 		case didTapDelete
+		case didTapDev
 	}
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
@@ -92,6 +93,6 @@ extension GalleryView {
 	}
 	
 	@objc func devBarButtonTapped() {
-		
+		onViewEvent?(.didTapDev)
 	}
 }

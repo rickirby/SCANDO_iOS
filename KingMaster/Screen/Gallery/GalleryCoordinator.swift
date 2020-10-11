@@ -23,6 +23,7 @@ class GalleryCoordinator: Coordinator {
 	
 	private weak var navigationController: UINavigationController?
 	private var editScanCoordinator: EditScanCoordinator?
+	private var filterCoordinator: FilterCoordinator?
 	
 	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
@@ -44,6 +45,8 @@ class GalleryCoordinator: Coordinator {
 				Router.shared.popViewController(on: self!)
 			case .didTapEdit(let image, let quad, let currentDocument):
 				self?.openEditScan(image: image, quad: quad, currentDocument: currentDocument)
+			case .didOpenDev(let processedImage):
+				self?.openDev(processedImage)
 			}
 		}
 		
@@ -58,5 +61,15 @@ class GalleryCoordinator: Coordinator {
 		}
 		
 		editScanCoordinator?.start()
+	}
+	
+	private func openDev(_ processedImage: UIImage) {
+		filterCoordinator = nil
+		filterCoordinator = FilterCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		filterCoordinator?.passedData = {
+			return FilterCoordinator.FilterData(image: processedImage)
+		}
+		
+		filterCoordinator?.start()
 	}
 }

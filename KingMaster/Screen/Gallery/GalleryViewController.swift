@@ -17,6 +17,7 @@ class GalleryViewController: RBPhotosGalleryViewController {
 	enum NavigationEvent {
 		case didDeleteImage
 		case didTapEdit(image: UIImage, quad: Quadrilateral, currentDocument: Document)
+		case didOpenDev(processedImage: UIImage)
 	}
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
@@ -80,6 +81,8 @@ class GalleryViewController: RBPhotosGalleryViewController {
 				self?.downloadImage()
 			case .didTapDelete:
 				self?.deleteImage()
+			case .didTapDev:
+				self?.openDev()
 			}
 		}
 	}
@@ -165,6 +168,10 @@ class GalleryViewController: RBPhotosGalleryViewController {
 		let quad = Quadrilateral(topLeft: CGPoint(x: document.quad.topLeftX, y: document.quad.topLeftY), topRight: CGPoint(x: document.quad.topRightX, y: document.quad.topRightY), bottomRight: CGPoint(x: document.quad.bottomRightX, y: document.quad.bottomRightY), bottomLeft: CGPoint(x: document.quad.bottomLeftX, y: document.quad.bottomLeftY))
 		onNavigationEvent?(.didTapEdit(image: image, quad: quad, currentDocument: document))
 		
+	}
+	
+	private func openDev() {
+		onNavigationEvent?(.didOpenDev(processedImage: galleryViewImagesData[currentPageIndex]))
 	}
 }
 
