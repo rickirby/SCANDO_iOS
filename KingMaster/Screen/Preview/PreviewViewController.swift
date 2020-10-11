@@ -9,6 +9,7 @@
 import UIKit
 import RBToolkit
 import RBCameraDocScan
+import RBImageProcessor
 
 class PreviewViewController: ViewController<PreviewView> {
 	
@@ -16,6 +17,7 @@ class PreviewViewController: ViewController<PreviewView> {
 	
 	enum NavigationEvent {
 		case didFinish(newGroup: Bool, newDocument: Bool)
+		case didFilter(processedImage: UIImage)
 	}
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
@@ -57,6 +59,7 @@ class PreviewViewController: ViewController<PreviewView> {
 		
 		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
 			autoreleasepool {
+				
 				self?.processedImage = PerspectiveTransformer.applyTransform(to: data.image, withQuad: data.quad)
 			}
 			
@@ -70,7 +73,7 @@ class PreviewViewController: ViewController<PreviewView> {
 		title = "Preview"
 		let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 		navigationItem.rightBarButtonItems = [screenView.doneBarButton]
-		toolbarItems = [screenView.translateBarButton, spacer, screenView.rotateLeftBarButton, spacer, screenView.rotateRightBarButton, spacer, screenView.downloadBarButton]
+		toolbarItems = [screenView.filterBarButton, spacer, screenView.rotateLeftBarButton, spacer, screenView.rotateRightBarButton, spacer, screenView.downloadBarButton]
 	}
 	
 	private func configureBar() {
@@ -88,7 +91,9 @@ class PreviewViewController: ViewController<PreviewView> {
 			case .didTapRotateRight:
 				self?.rotateRight()
 			case .didTapDownload:
-				self?.saveImage()
+				self?.downloadImage()
+			case .didTapFilter:
+				self?.filterImage()
 			}
 		}
 	}
@@ -98,7 +103,7 @@ class PreviewViewController: ViewController<PreviewView> {
 		screenView.reloadImage(withImage: processedImage)
 	}
 	
-	private func saveImage() {
+	private func downloadImage() {
 		guard let image = processedImage else { return }
 		screenView.startLoading()
 		
@@ -138,8 +143,16 @@ class PreviewViewController: ViewController<PreviewView> {
 		reloadImage()
 	}
 	
-	
 	private func finishImage() {
+		saveImage() { newGroup, newDocument in
+			ThreadManager.executeOnMain {
+				self.screenView.stopLoading()
+				self.onNavigationEvent?(.didFinish(newGroup: newGroup, newDocument: newDocument))
+			}
+		}
+	}
+	
+	private func saveImage(completion: ((Bool, Bool) -> Void)?) {
 		screenView.startLoading()
 		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
 			var newGroup = true
@@ -159,13 +172,15 @@ class PreviewViewController: ViewController<PreviewView> {
 				self?.model.addNewDocumentGroup(name: "Scando Document", originalImage: image, thumbnailImage: processedImage, quad: quad, rotationAngle: self!.rotationAngle.value, date: Date())
 			}
 			
-			ThreadManager.executeOnMain {
-				self?.screenView.stopLoading()
-				self?.onNavigationEvent?(.didFinish(newGroup: newGroup, newDocument: newDocument))
-			}
+			completion?(newGroup, newDocument)
 		}
 		
 		
+	}
+	
+	private func filterImage() {
+		guard let processedImage = processedImage else { return }
+		onNavigationEvent?(.didFilter(processedImage: processedImage))
 	}
 	
 }
