@@ -35,7 +35,7 @@ class PreviewView: View {
 	lazy var activityIndicator: UIActivityIndicatorView = {
 		let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
 		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-		activityIndicator.color = .white
+		activityIndicator.color = .gray
 		activityIndicator.hidesWhenStopped = true
 		
 		return activityIndicator
