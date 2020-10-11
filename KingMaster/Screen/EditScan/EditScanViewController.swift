@@ -86,7 +86,7 @@ class EditScanViewController: ViewController<EditScanView> {
 			case .didTapAll:
 				self?.toggleAllAreaQuad()
 			case .didTapDownload:
-				self?.saveImage()
+				self?.downloadImage()
 			}
 		}
 	}
@@ -115,7 +115,7 @@ class EditScanViewController: ViewController<EditScanView> {
 		}
 	}
 	
-	private func saveImage() {
+	private func downloadImage() {
 		guard let image = image else { return }
 		screenView.startLoading()
 		
