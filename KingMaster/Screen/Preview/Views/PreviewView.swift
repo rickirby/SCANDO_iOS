@@ -50,8 +50,6 @@ class PreviewView: View {
 	
 	lazy var rotateLeftBarButton = UIBarButtonItem(image: UIImage(named: "RotateLeftButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(rotateLeftBarButtonTapped))
 	
-	lazy var filterBarButton = UIBarButtonItem(image: UIImage(named: "FilterButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(filterBarButtonTapped))
-	
 	// MARK: - Life Cycle
 	
 	override func setViews() {
@@ -121,9 +119,6 @@ extension PreviewView {
 	
 	@objc func rotateLeftBarButtonTapped() {
 		onViewEvent?(.didTapRotateLeft)
-	}
-	
-	@objc func filterBarButtonTapped() {
 	}
 	
 }
