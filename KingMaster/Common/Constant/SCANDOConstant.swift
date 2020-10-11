@@ -43,6 +43,12 @@ class SCANDOConstant {
 	static let renamePositiveAction: String = "OK"
 	static let renameNegativeAction: String = "Cancel"
 	
+	static let addNewScanAlbumTitle: String = "Add New Scan Album"
+	static let addNewScanAlbumMessage: String = "Insert a Title for New Scan Album"
+	static let addNewScanAlbumPlaceholder: String = "New Title"
+	static let addNewScanAlbumPositiveAction: String = "OK"
+	static let addNewScanAlbumNegativeAction: String = "Cancel"
+	
 	static let setAdaptiveTitle: String = "Adaptive Parameter"
 	static let setAdaptiveMessage: String = "Set value for following parameters."
 	static let setAdaptiveTypePlaceholder: String = "Type 0: Mean, 1: Gauss"
