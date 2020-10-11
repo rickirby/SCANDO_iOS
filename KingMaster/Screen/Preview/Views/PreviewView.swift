@@ -15,7 +15,6 @@ class PreviewView: View {
 	
 	enum ViewEvent {
 		case didTapDone
-		case didTapRotateLeft
 		case didTapRotateRight
 		case didTapDownload
 	}
@@ -47,8 +46,6 @@ class PreviewView: View {
 	lazy var downloadBarButton = UIBarButtonItem(image: UIImage(named: "SaveButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(downloadBarButtonTapped))
 	
 	lazy var rotateRightBarButton = UIBarButtonItem(image: UIImage(named: "RotateRightButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(rotateRightBarButtonTapped))
-	
-	lazy var rotateLeftBarButton = UIBarButtonItem(image: UIImage(named: "RotateLeftButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(rotateLeftBarButtonTapped))
 	
 	// MARK: - Life Cycle
 	
@@ -115,10 +112,6 @@ extension PreviewView {
 	
 	@objc func rotateRightBarButtonTapped() {
 		onViewEvent?(.didTapRotateRight)
-	}
-	
-	@objc func rotateLeftBarButtonTapped() {
-		onViewEvent?(.didTapRotateLeft)
 	}
 	
 }
