@@ -17,7 +17,6 @@ class PreviewViewController: ViewController<PreviewView> {
 	
 	enum NavigationEvent {
 		case didFinish(newGroup: Bool, newDocument: Bool)
-		case didFilter(processedImage: UIImage)
 	}
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
@@ -92,8 +91,6 @@ class PreviewViewController: ViewController<PreviewView> {
 				self?.rotateRight()
 			case .didTapDownload:
 				self?.downloadImage()
-			case .didTapFilter:
-				self?.filterImage()
 			}
 		}
 	}
@@ -176,11 +173,6 @@ class PreviewViewController: ViewController<PreviewView> {
 		}
 		
 		
-	}
-	
-	private func filterImage() {
-		guard let processedImage = processedImage else { return }
-		onNavigationEvent?(.didFilter(processedImage: processedImage))
 	}
 	
 }

@@ -56,8 +56,6 @@ class PreviewCoordinator: Coordinator {
 					
 					nav.popToViewController(vc, animated: true)
 				}
-			case .didFilter(let processedImage):
-				self?.openFilter(processedImage: processedImage)
 			}
 		}
 		

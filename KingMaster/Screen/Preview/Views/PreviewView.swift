@@ -18,7 +18,6 @@ class PreviewView: View {
 		case didTapRotateLeft
 		case didTapRotateRight
 		case didTapDownload
-		case didTapFilter
 	}
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
@@ -125,7 +124,6 @@ extension PreviewView {
 	}
 	
 	@objc func filterBarButtonTapped() {
-		onViewEvent?(.didTapFilter)
 	}
 	
 }
