@@ -22,7 +22,6 @@ class PreviewCoordinator: Coordinator {
 	var passedData: (() -> PreviewData)?
 	
 	private weak var navigationController: UINavigationController?
-	private var filterCoordinator: FilterCoordinator?
 	
 	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
@@ -56,21 +55,10 @@ class PreviewCoordinator: Coordinator {
 					
 					nav.popToViewController(vc, animated: true)
 				}
-			case .didFilter(let processedImage):
-				self?.openFilter(processedImage: processedImage)
 			}
 		}
 		
 		return vc
 	}
 	
-	private func openFilter(processedImage: UIImage) {
-		filterCoordinator = nil
-		filterCoordinator = FilterCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
-		filterCoordinator?.passedData = {
-			return FilterCoordinator.FilterData(image: processedImage)
-		}
-		
-		filterCoordinator?.start()
-	}
 }

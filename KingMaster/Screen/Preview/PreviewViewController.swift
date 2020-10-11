@@ -17,7 +17,6 @@ class PreviewViewController: ViewController<PreviewView> {
 	
 	enum NavigationEvent {
 		case didFinish(newGroup: Bool, newDocument: Bool)
-		case didFilter(processedImage: UIImage)
 	}
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
@@ -73,7 +72,7 @@ class PreviewViewController: ViewController<PreviewView> {
 		title = "Preview"
 		let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 		navigationItem.rightBarButtonItems = [screenView.doneBarButton]
-		toolbarItems = [screenView.filterBarButton, spacer, screenView.rotateLeftBarButton, spacer, screenView.rotateRightBarButton, spacer, screenView.downloadBarButton]
+		toolbarItems = [screenView.rotateRightBarButton, spacer, screenView.downloadBarButton]
 	}
 	
 	private func configureBar() {
@@ -86,14 +85,10 @@ class PreviewViewController: ViewController<PreviewView> {
 			switch viewEvent {
 			case .didTapDone:
 				self?.finishImage()
-			case .didTapRotateLeft:
-				self?.rotateLeft()
 			case .didTapRotateRight:
 				self?.rotateRight()
 			case .didTapDownload:
 				self?.downloadImage()
-			case .didTapFilter:
-				self?.filterImage()
 			}
 		}
 	}
@@ -126,19 +121,6 @@ class PreviewViewController: ViewController<PreviewView> {
 		}
 		
 		processedImage = processedImage?.rotated(by: Measurement<UnitAngle>(value: 90, unit: .degrees))
-		
-		reloadImage()
-	}
-	
-	private func rotateLeft() {
-		screenView.startLoading()
-		rotationAngle.value -= 90
-		
-		if rotationAngle.value < 0 {
-			rotationAngle.value += 360
-		}
-		
-		processedImage = processedImage?.rotated(by: Measurement<UnitAngle>(value: -90, unit: .degrees))
 		
 		reloadImage()
 	}
@@ -176,11 +158,6 @@ class PreviewViewController: ViewController<PreviewView> {
 		}
 		
 		
-	}
-	
-	private func filterImage() {
-		guard let processedImage = processedImage else { return }
-		onNavigationEvent?(.didFilter(processedImage: processedImage))
 	}
 	
 }
