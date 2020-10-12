@@ -82,6 +82,18 @@ class FilterView: View {
 		AlertView.createSaveImageAlert(vc, didFinishSavingWithError: error)
 	}
 	
+	func startLoading() {
+		ThreadManager.executeOnMain {
+			self.activityIndicator.startAnimating()
+		}
+	}
+	
+	func stopLoading() {
+		ThreadManager.executeOnMain {
+			self.activityIndicator.stopAnimating()
+		}
+	}
+	
 	// MARK: - Private Methods
 	
 	func configureView() {
