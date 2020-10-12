@@ -91,6 +91,23 @@ class AlertView {
 		target.present(ac, animated: true, completion: nil)
 	}
 	
+	static func createAddNewScanAlbumAlert(_ target: UIViewController, positiveHandler: @escaping (String) -> Void, negativeHandler: @escaping () -> Void) {
+		let ac = UIAlertController(title: SCANDOConstant.addNewScanAlbumTitle, message: SCANDOConstant.addNewScanAlbumMessage, preferredStyle: .alert)
+		ac.addTextField {
+			$0.placeholder = SCANDOConstant.addNewScanAlbumPlaceholder
+			$0.autocapitalizationType = .words
+		}
+		ac.addAction(UIAlertAction(title: SCANDOConstant.addNewScanAlbumPositiveAction, style: .default, handler: { _ in
+			guard let textField = ac.textFields?[0] else { return }
+			positiveHandler(textField.text ?? "")
+		}))
+		ac.addAction(UIAlertAction(title: SCANDOConstant.addNewScanAlbumNegativeAction, style: .cancel, handler: { _ in
+			negativeHandler()
+		}))
+		
+		target.present(ac, animated: true, completion: nil)
+	}
+	
 	static func createAdaptiveParamAlert(_ target: UIViewController, currentType: Int?, currentBlockSize: Int?, currentConstant: Double?, setHandler: @escaping (UITextField, UITextField, UITextField) -> Void, cancelHandler: @escaping () -> Void) {
 		let ac = UIAlertController(title: SCANDOConstant.setAdaptiveTitle, message: SCANDOConstant.setAdaptiveMessage, preferredStyle: .alert)
 		ac.addTextField {
