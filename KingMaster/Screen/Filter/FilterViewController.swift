@@ -99,8 +99,17 @@ class FilterViewController: ViewController<FilterView> {
 	}
 	
 	private func downloadImage() {
+		guard let image = screenView.image else { return }
 		
+		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+			UIImageWriteToSavedPhotosAlbum(image, self, #selector(self?.image(_:didFinishSavingWithError:contextInfo:)), nil)
+		}
 	}
+	
+	@objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+//		screenView.stopLoading()
+		screenView.showSaveAlert(on: self, error: error)
+    }
 	
 	private func adjustParam() {
 		switch screenView.segmentControl.selectedSegmentIndex {

@@ -67,6 +67,12 @@ class FilterView: View {
 		configureView()
 	}
 	
+	// MARK: - Public Methods
+	
+	func showSaveAlert(on vc: UIViewController, error: Error?) {
+		AlertView.createSaveImageAlert(vc, didFinishSavingWithError: error)
+	}
+	
 	// MARK: - Private Methods
 	
 	func configureView() {
