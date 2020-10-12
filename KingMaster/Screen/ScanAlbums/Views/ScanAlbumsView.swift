@@ -118,7 +118,7 @@ class ScanAlbumsView: View {
 		}, saveHandler: {
 			print("Save")
 		}, deleteHandler: {
-			print("Delete")
+			self.swipeDeleteHandler(index: index, complete)
 		}, cancelHandler: {
 			complete(true)
 		})
