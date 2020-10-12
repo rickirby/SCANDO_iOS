@@ -11,5 +11,5 @@ Created by Ricki Bin Yamin
 Use carthage to download listed framework above
 
 ## Current Project Version
-0.0.2
+0.0.3
 
