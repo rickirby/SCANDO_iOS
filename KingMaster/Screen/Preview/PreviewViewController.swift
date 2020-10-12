@@ -17,7 +17,6 @@ class PreviewViewController: ViewController<PreviewView> {
 	
 	enum NavigationEvent {
 		case didFinish(newGroup: Bool, newDocument: Bool)
-		case didFilter(processedImage: UIImage)
 	}
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
@@ -73,7 +72,7 @@ class PreviewViewController: ViewController<PreviewView> {
 		title = "Preview"
 		let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 		navigationItem.rightBarButtonItems = [screenView.doneBarButton]
-		toolbarItems = [screenView.filterBarButton, spacer, screenView.rotateLeftBarButton, spacer, screenView.rotateRightBarButton, spacer, screenView.downloadBarButton]
+		toolbarItems = [screenView.rotateRightBarButton, spacer, screenView.downloadBarButton]
 	}
 	
 	private func configureBar() {
@@ -86,14 +85,10 @@ class PreviewViewController: ViewController<PreviewView> {
 			switch viewEvent {
 			case .didTapDone:
 				self?.finishImage()
-			case .didTapRotateLeft:
-				self?.rotateLeft()
 			case .didTapRotateRight:
 				self?.rotateRight()
 			case .didTapDownload:
 				self?.downloadImage()
-			case .didTapFilter:
-				self?.filterImage()
 			}
 		}
 	}
@@ -130,19 +125,6 @@ class PreviewViewController: ViewController<PreviewView> {
 		reloadImage()
 	}
 	
-	private func rotateLeft() {
-		screenView.startLoading()
-		rotationAngle.value -= 90
-		
-		if rotationAngle.value < 0 {
-			rotationAngle.value += 360
-		}
-		
-		processedImage = processedImage?.rotated(by: Measurement<UnitAngle>(value: -90, unit: .degrees))
-		
-		reloadImage()
-	}
-	
 	private func finishImage() {
 		saveImage() { newGroup, newDocument in
 			ThreadManager.executeOnMain {
@@ -153,34 +135,41 @@ class PreviewViewController: ViewController<PreviewView> {
 	}
 	
 	private func saveImage(completion: ((Bool, Bool) -> Void)?) {
+		
+		var newGroup = true
+		var newDocument = true
+		guard let image = image, let processedImage = processedImage, let quad = quad, let passedData = passedData?() else { return }
+		
 		screenView.startLoading()
-		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-			var newGroup = true
-			var newDocument = true
-			guard let image = self?.image, let processedImage = self?.processedImage, let quad = self?.quad, let passedData = self?.passedData?() else { return }
-			if let documentGroup = passedData.documentGroup {
+		
+		if let documentGroup = passedData.documentGroup {
+			DispatchQueue.global(qos: .userInitiated).async { [weak self] in
 				if let currentDocument = passedData.currentDocument {
+					// Edit document case
 					self?.model.updateDocument(documentGroup: documentGroup, currentDocument: currentDocument, newQuadrilateral: quad, newRotationAngle: self!.rotationAngle.value, newThumbnailImage: processedImage)
 					
 					newDocument = false
 				} else {
+					// Add new document case
 					self?.model.addDocumentToDocumentGroup(documentGroup: documentGroup, originalImage: image, thumbnailImage: processedImage, quad: quad, rotationAngle: self!.rotationAngle.value, date: Date())
 				}
 				
 				newGroup = false
-			} else {
-				self?.model.addNewDocumentGroup(name: "Scando Document", originalImage: image, thumbnailImage: processedImage, quad: quad, rotationAngle: self!.rotationAngle.value, date: Date())
+				
+				completion?(newGroup, newDocument)
 			}
+		} else {
+			// Add new document group / scan album case
+			AlertView.createAddNewScanAlbumAlert(self, positiveHandler: {
+				let title = $0.isEmpty ? "New Document" : $0
+				DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+					self?.model.addNewDocumentGroup(name: title, originalImage: image, thumbnailImage: processedImage, quad: quad, rotationAngle: self!.rotationAngle.value, date: Date())
+					
+					completion?(newGroup, newDocument)
+				}
+			}, negativeHandler: {})
 			
-			completion?(newGroup, newDocument)
 		}
-		
-		
-	}
-	
-	private func filterImage() {
-		guard let processedImage = processedImage else { return }
-		onNavigationEvent?(.didFilter(processedImage: processedImage))
 	}
 	
 }

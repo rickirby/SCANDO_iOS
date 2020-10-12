@@ -22,7 +22,6 @@ class PreviewCoordinator: Coordinator {
 	var passedData: (() -> PreviewData)?
 	
 	private weak var navigationController: UINavigationController?
-	private var filterCoordinator: FilterCoordinator?
 	
 	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
@@ -40,37 +39,30 @@ class PreviewCoordinator: Coordinator {
 		vc.onNavigationEvent = { [weak self] (navigationEvent: PreviewViewController.NavigationEvent) in
 			switch navigationEvent {
 			case .didFinish(let newGroup, let newDocument):
-				if newGroup {
-					Router.shared.popToRootViewController(on: self!)
-					DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-						NotificationCenter.default.post(name: NSNotification.Name("didFinishAddNewDocumentGroup"), object: nil)
-					}
-				} else {
-					guard let nav = self?.rootViewController as? UINavigationController, let vc = nav.viewControllers[1] as? DocumentGroupViewController else { return }
-					
-					if newDocument {
-						NotificationCenter.default.post(name: NSNotification.Name("didFinishAddNewDocument"), object: nil)
-					} else {
-						NotificationCenter.default.post(name: NSNotification.Name("didFinishEditDocument"), object: nil)
-					}
-					
-					nav.popToViewController(vc, animated: true)
-				}
-			case .didFilter(let processedImage):
-				self?.openFilter(processedImage: processedImage)
+				self?.finishImage(newGroup: newGroup, newDocument: newDocument)
 			}
 		}
 		
 		return vc
 	}
 	
-	private func openFilter(processedImage: UIImage) {
-		filterCoordinator = nil
-		filterCoordinator = FilterCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
-		filterCoordinator?.passedData = {
-			return FilterCoordinator.FilterData(image: processedImage)
+	func finishImage(newGroup: Bool, newDocument: Bool) {
+		if newGroup {
+			Router.shared.popToRootViewController(on: self)
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+				NotificationCenter.default.post(name: NSNotification.Name("didFinishAddNewDocumentGroup"), object: nil)
+			}
+		} else {
+			guard let nav = rootViewController as? UINavigationController, let vc = nav.viewControllers[1] as? DocumentGroupViewController else { return }
+			
+			if newDocument {
+				NotificationCenter.default.post(name: NSNotification.Name("didFinishAddNewDocument"), object: nil)
+			} else {
+				NotificationCenter.default.post(name: NSNotification.Name("didFinishEditDocument"), object: nil)
+			}
+			
+			nav.popToViewController(vc, animated: true)
 		}
-		
-		filterCoordinator?.start()
 	}
+	
 }

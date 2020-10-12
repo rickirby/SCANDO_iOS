@@ -17,6 +17,9 @@ class GalleryViewController: RBPhotosGalleryViewController {
 	enum NavigationEvent {
 		case didDeleteImage
 		case didTapEdit(image: UIImage, quad: Quadrilateral, currentDocument: Document)
+		#if SANDBOX
+		case didOpenDev(processedImage: UIImage)
+		#endif
 	}
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
@@ -62,7 +65,11 @@ class GalleryViewController: RBPhotosGalleryViewController {
 	private func configureLoadBar() {
 		let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 		navigationItem.rightBarButtonItem = screenView.editBarButton
+		#if PRODUCTION
 		toolbarItems = [screenView.deleteBarButton, spacer, screenView.downloadBarButton]
+		#elseif SANDBOX
+		toolbarItems = [screenView.deleteBarButton, spacer, screenView.devBarButton, spacer, screenView.downloadBarButton]
+		#endif
 	}
 	
 	private func configureBar() {
@@ -80,6 +87,10 @@ class GalleryViewController: RBPhotosGalleryViewController {
 				self?.downloadImage()
 			case .didTapDelete:
 				self?.deleteImage()
+			#if SANDBOX
+			case .didTapDev:
+				self?.openDev()
+			#endif
 			}
 		}
 	}
@@ -166,6 +177,12 @@ class GalleryViewController: RBPhotosGalleryViewController {
 		onNavigationEvent?(.didTapEdit(image: image, quad: quad, currentDocument: document))
 		
 	}
+	
+	#if SANDBOX
+	private func openDev() {
+		onNavigationEvent?(.didOpenDev(processedImage: galleryViewImagesData[currentPageIndex]))
+	}
+	#endif
 }
 
 extension GalleryViewController: RBPhotosGalleryViewDelegate, RBPhotosGalleryViewDataSource {

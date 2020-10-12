@@ -27,15 +27,11 @@ class GalleryCache {
 		return cache
 	}
 	
-	static func removeCache(for index: Int) -> Bool {
+	static func removeCache(for index: Int) {
 		
-		guard let cache = cacheData.first(where: {$0.index == index}), let indexToDelete = cacheData.firstIndex(of: cache), indexToDelete < cacheData.count else {
-			return false
-		}
+		guard let cache = cacheData.first(where: {$0.index == index}), let indexToDelete = cacheData.firstIndex(of: cache), indexToDelete < cacheData.count else { return }
 		
 		cacheData.remove(at: indexToDelete)
-		
-		return true
 	}
 	
 	// used if a row removed

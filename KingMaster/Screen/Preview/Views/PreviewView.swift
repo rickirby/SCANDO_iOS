@@ -15,10 +15,8 @@ class PreviewView: View {
 	
 	enum ViewEvent {
 		case didTapDone
-		case didTapRotateLeft
 		case didTapRotateRight
 		case didTapDownload
-		case didTapFilter
 	}
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
@@ -37,7 +35,7 @@ class PreviewView: View {
 	lazy var activityIndicator: UIActivityIndicatorView = {
 		let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
 		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-		activityIndicator.color = .white
+		activityIndicator.color = .gray
 		activityIndicator.hidesWhenStopped = true
 		
 		return activityIndicator
@@ -48,10 +46,6 @@ class PreviewView: View {
 	lazy var downloadBarButton = UIBarButtonItem(image: UIImage(named: "SaveButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(downloadBarButtonTapped))
 	
 	lazy var rotateRightBarButton = UIBarButtonItem(image: UIImage(named: "RotateRightButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(rotateRightBarButtonTapped))
-	
-	lazy var rotateLeftBarButton = UIBarButtonItem(image: UIImage(named: "RotateLeftButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(rotateLeftBarButtonTapped))
-	
-	lazy var filterBarButton = UIBarButtonItem(image: UIImage(named: "FilterButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(filterBarButtonTapped))
 	
 	// MARK: - Life Cycle
 	
@@ -118,14 +112,6 @@ extension PreviewView {
 	
 	@objc func rotateRightBarButtonTapped() {
 		onViewEvent?(.didTapRotateRight)
-	}
-	
-	@objc func rotateLeftBarButtonTapped() {
-		onViewEvent?(.didTapRotateLeft)
-	}
-	
-	@objc func filterBarButtonTapped() {
-		onViewEvent?(.didTapFilter)
 	}
 	
 }
