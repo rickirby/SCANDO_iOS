@@ -28,7 +28,6 @@ class SCANDOConstant {
 	
 	static let swipeMoreRenameAction: String = "Rename"
 	static let swipeMoreSaveAction: String = "Save to Photos"
-	static let swipeMoreChangeAction: String = "Change Cover Page"
 	static let swipeMoreDeleteAction: String = "Delete"
 	static let swipeMoreCancelAction: String = "Cancel"
 	
