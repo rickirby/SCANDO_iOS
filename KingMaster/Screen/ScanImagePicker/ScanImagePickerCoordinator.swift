@@ -45,7 +45,7 @@ class ScanImagePickerCoordinator: Coordinator {
 		editScanCoordinator = nil
 		editScanCoordinator = EditScanCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
 		editScanCoordinator?.passedData = {
-			return EditScanCoordinator.EditScanData(image: image, quad: quad, isRotateImage: true, documentGroup: self.passedData?().documentGroup)
+			return EditScanCoordinator.EditScanData(image: image, quad: quad, isRotateImage: false, documentGroup: self.passedData?().documentGroup)
 		}
 		
 		editScanCoordinator?.start()
