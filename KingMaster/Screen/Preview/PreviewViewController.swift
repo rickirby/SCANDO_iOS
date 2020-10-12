@@ -161,7 +161,7 @@ class PreviewViewController: ViewController<PreviewView> {
 		} else {
 			// Add new document group / scan album case
 			AlertView.createAddNewScanAlbumAlert(self, positiveHandler: {
-				let title = $0.isEmpty ? "New Document" : $0
+				let title = $0.isEmpty ? "Document \(SCANDODateFormatter.shared.string(from: Date()))" : $0
 				DispatchQueue.global(qos: .userInitiated).async { [weak self] in
 					self?.model.addNewDocumentGroup(name: title, originalImage: image, thumbnailImage: processedImage, quad: quad, rotationAngle: self!.rotationAngle.value, date: Date())
 					
