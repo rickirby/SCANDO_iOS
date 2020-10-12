@@ -117,8 +117,6 @@ class ScanAlbumsView: View {
 			self.renameHandler(index: index, complete)
 		}, saveHandler: {
 			print("Save")
-		}, changeHandler: {
-			print("Change")
 		}, deleteHandler: {
 			print("Delete")
 		}, cancelHandler: {

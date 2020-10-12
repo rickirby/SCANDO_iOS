@@ -22,16 +22,13 @@ class AlertView {
 		target.present(ac, animated: true, completion: nil)
 	}
 	
-	static func createSwipeMoreSheet(_ target: UIViewController, renameHandler: @escaping () -> Void, saveHandler: @escaping () -> Void, changeHandler: @escaping () -> Void, deleteHandler: @escaping () -> Void, cancelHandler: @escaping () -> Void) {
+	static func createSwipeMoreSheet(_ target: UIViewController, renameHandler: @escaping () -> Void, saveHandler: @escaping () -> Void, deleteHandler: @escaping () -> Void, cancelHandler: @escaping () -> Void) {
 		let ac = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 		ac.addAction(UIAlertAction(title: SCANDOConstant.swipeMoreRenameAction, style: .default) { _ in
 			renameHandler()
 		})
 		ac.addAction(UIAlertAction(title: SCANDOConstant.swipeMoreSaveAction, style: .default) { _ in
 			saveHandler()
-		})
-		ac.addAction(UIAlertAction(title: SCANDOConstant.swipeMoreChangeAction, style: .default) { _ in
-			changeHandler()
 		})
 		ac.addAction(UIAlertAction(title: SCANDOConstant.swipeMoreDeleteAction, style: .destructive) { _ in
 			deleteHandler()
