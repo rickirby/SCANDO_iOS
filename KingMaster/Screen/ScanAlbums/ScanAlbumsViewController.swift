@@ -78,6 +78,8 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 			case .rename(let index, let newName):
 				guard let object = self?.model.fetchedResultsController.object(at: IndexPath(row: index, section: 0)), !newName.isEmpty else { return }
 				self?.model.updateName(documentGroupToUpdate: object, newName: newName)
+			case .saveAll(let index):
+				self?.saveAllDocument(index)
 			}
 		}
 	}
@@ -145,5 +147,23 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		}
 		
 		model.deleteData(documentGroupsToDelete: itemsToDelete)
+	}
+	
+	private func saveAllDocument(_ index: Int) {
+		guard let documents = model.fetchedResultsController.object(at: IndexPath(row: index, section: 0)).documents.allObjects as? [Document] else { return }
+		
+		DispatchQueue.global(qos: .userInitiated).async {
+			
+			for document in documents {
+				guard let image = UIImage(data: document.thumbnail) else { return }
+				
+				UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
+			}
+			
+			ThreadManager.executeOnMain {
+				self.screenView.showSaveAlert(error: nil)
+			}
+		}
+		
 	}
 }
