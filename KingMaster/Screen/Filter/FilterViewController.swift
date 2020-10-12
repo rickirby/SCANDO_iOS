@@ -44,6 +44,9 @@ class FilterViewController: ViewController<FilterView> {
 	
 	private func loadData() {
 		guard let passedData = passedData?() else { return }
+		ThreadManager.executeOnMain {
+			self.screenView.startLoading()
+		}
 		
 		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
 			// Original Image
@@ -61,6 +64,7 @@ class FilterViewController: ViewController<FilterView> {
 			self?.erodeImage = ConvertColor.erode(from: passedData.image, erodeIteration: erodeParam?.iteration ?? 1, dilateIteration: dilateParam?.iteration ?? 1, isGaussian: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7)
 			
 			ThreadManager.executeOnMain {
+				self?.screenView.stopLoading()
 				self?.refreshImage(index: self?.screenView.segmentControl.selectedSegmentIndex ?? 0)
 			}
 		}
