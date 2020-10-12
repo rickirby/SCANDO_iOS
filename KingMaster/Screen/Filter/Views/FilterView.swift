@@ -96,7 +96,7 @@ class FilterView: View {
 	
 	// MARK: - Private Methods
 	
-	func configureView() {
+	private func configureView() {
 		backgroundColor = .systemBackground
 		
 		addAllSubviews(views: [processedImageView, activityIndicator])

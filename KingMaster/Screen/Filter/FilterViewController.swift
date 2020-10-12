@@ -153,7 +153,7 @@ class FilterViewController: ViewController<FilterView> {
 		}, cancelHandler: {})
 	}
 	
-	func adjustDilateParam() {
+	private func adjustDilateParam() {
 		
 		let dilateParam = DilateParamUserSetting.shared.read()
 		
@@ -170,7 +170,7 @@ class FilterViewController: ViewController<FilterView> {
 		}, cancelHandler: {})
 	}
 	
-	func adjustErodeParam() {
+	private func adjustErodeParam() {
 		
 		let erodeParam = ErodeParamUserSetting.shared.read()
 		
