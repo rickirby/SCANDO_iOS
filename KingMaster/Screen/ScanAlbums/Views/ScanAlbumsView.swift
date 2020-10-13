@@ -72,10 +72,10 @@ class ScanAlbumsView: View {
 	
 	// MARK: - Public Method
 	
-	func showSaveAlert(error: Error?) {
+	func showSaveAlert(count: Int) {
 		guard let vc = findViewController() else { return }
 		
-		AlertView.createSaveImageAlert(vc, isOriginalImage: false, didFinishSavingWithError: error)
+		AlertView.createSaveAllImageAlert(vc, count: count)
 	}
 	
 	// MARK: - Private Method

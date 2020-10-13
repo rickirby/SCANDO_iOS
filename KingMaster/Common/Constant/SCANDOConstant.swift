@@ -34,6 +34,8 @@ class SCANDOConstant {
 	static let saveSuccessTitle: String = "Saved!"
 	static let saveOriginalSuccessMessage: String = "The original image has been saved to your Photos"
 	static let saveProcessedSuccessMessage: String = "The processed image has been saved to your Photos"
+	static let saveAllImageSuccessMessage: String = " image has been saved to your Photos"
+	static let saveAllImagesSuccessMessage: String = " images has been saved to your Photos"
 	static let saveErrorTitle: String = "Save Error!"
 	static let saveAction: String = "OK"
 	

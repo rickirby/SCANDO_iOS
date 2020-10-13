@@ -71,6 +71,13 @@ class AlertView {
 		target.present(ac, animated: true, completion: nil)
 	}
 	
+	static func createSaveAllImageAlert(_ target: UIViewController, count: Int) {
+		let ac = UIAlertController(title: SCANDOConstant.saveSuccessTitle, message: String(count) + (count > 1 ? SCANDOConstant.saveAllImageSuccessMessage : SCANDOConstant.saveAllImagesSuccessMessage) , preferredStyle: .alert)
+		ac.addAction(UIAlertAction(title: SCANDOConstant.saveAction, style: .default, handler: nil))
+		
+		target.present(ac, animated: true, completion: nil)
+	}
+	
 	static func createRenameAlert(_ target: UIViewController, currentName: String, positiveHandler: @escaping (String) -> Void, negativeHandler: @escaping () -> Void) {
 		let ac = UIAlertController(title: SCANDOConstant.renameTitle, message: currentName, preferredStyle: .alert)
 		ac.addTextField { (textField) in

@@ -161,7 +161,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 			}
 			
 			ThreadManager.executeOnMain {
-				self.screenView.showSaveAlert(error: nil)
+				self.screenView.showSaveAlert(count: documents.count)
 			}
 		}
 		
