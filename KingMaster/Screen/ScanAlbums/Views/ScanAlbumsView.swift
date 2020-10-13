@@ -22,6 +22,7 @@ class ScanAlbumsView: View {
 		case selectAll
 		case delete(indexes: [Int])
 		case rename(index: Int, newName: String)
+		case saveAll(index: Int)
 	}
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
@@ -67,6 +68,14 @@ class ScanAlbumsView: View {
 		if let indexPath = tableView.indexPathForSelectedRow {
 			tableView.deselectRow(at: indexPath, animated: true)
 		}
+	}
+	
+	// MARK: - Public Method
+	
+	func showSaveAlert(count: Int) {
+		guard let vc = findViewController() else { return }
+		
+		AlertView.createSaveAllImageAlert(vc, count: count)
 	}
 	
 	// MARK: - Private Method
@@ -116,11 +125,10 @@ class ScanAlbumsView: View {
 		AlertView.createSwipeMoreSheet(vc, renameHandler: {
 			self.renameHandler(index: index, complete)
 		}, saveHandler: {
-			print("Save")
-		}, changeHandler: {
-			print("Change")
+			self.onViewEvent?(.saveAll(index: index))
+			complete(true)
 		}, deleteHandler: {
-			print("Delete")
+			self.swipeDeleteHandler(index: index, complete)
 		}, cancelHandler: {
 			complete(true)
 		})

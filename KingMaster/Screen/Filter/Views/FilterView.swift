@@ -55,6 +55,15 @@ class FilterView: View {
 		return imageView
 	}()
 	
+	lazy var activityIndicator: UIActivityIndicatorView = {
+		let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+		activityIndicator.color = .gray
+		activityIndicator.hidesWhenStopped = true
+		
+		return activityIndicator
+	}()
+	
 	lazy var downloadBarButton = UIBarButtonItem(image: UIImage(named: "SaveButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(downloadBarButtonTapped))
 	
 	lazy var adjustBarButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(adjustBarButtonTapped))
@@ -67,18 +76,39 @@ class FilterView: View {
 		configureView()
 	}
 	
+	// MARK: - Public Methods
+	
+	func showSaveAlert(on vc: UIViewController, error: Error?) {
+		AlertView.createSaveImageAlert(vc, didFinishSavingWithError: error)
+	}
+	
+	func startLoading() {
+		ThreadManager.executeOnMain {
+			self.activityIndicator.startAnimating()
+		}
+	}
+	
+	func stopLoading() {
+		ThreadManager.executeOnMain {
+			self.activityIndicator.stopAnimating()
+		}
+	}
+	
 	// MARK: - Private Methods
 	
-	func configureView() {
+	private func configureView() {
 		backgroundColor = .systemBackground
 		
-		addAllSubviews(views: [processedImageView])
+		addAllSubviews(views: [processedImageView, activityIndicator])
 		
 		NSLayoutConstraint.activate([
 			processedImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
 			processedImageView.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor),
 			processedImageView.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor),
-			processedImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor)
+			processedImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
+			
+			activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+			activityIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor)
 		])
 		
 		adjustBarButton.isEnabled = false

@@ -140,9 +140,8 @@ class PreviewViewController: ViewController<PreviewView> {
 		var newDocument = true
 		guard let image = image, let processedImage = processedImage, let quad = quad, let passedData = passedData?() else { return }
 		
-		screenView.startLoading()
-		
 		if let documentGroup = passedData.documentGroup {
+			screenView.startLoading()
 			DispatchQueue.global(qos: .userInitiated).async { [weak self] in
 				if let currentDocument = passedData.currentDocument {
 					// Edit document case
@@ -161,7 +160,8 @@ class PreviewViewController: ViewController<PreviewView> {
 		} else {
 			// Add new document group / scan album case
 			AlertView.createAddNewScanAlbumAlert(self, positiveHandler: {
-				let title = $0.isEmpty ? "New Document" : $0
+				let title = $0.isEmpty ? "Document \(SCANDODateFormatter.shared.string(from: Date()))" : $0
+				self.screenView.startLoading()
 				DispatchQueue.global(qos: .userInitiated).async { [weak self] in
 					self?.model.addNewDocumentGroup(name: title, originalImage: image, thumbnailImage: processedImage, quad: quad, rotationAngle: self!.rotationAngle.value, date: Date())
 					
