@@ -106,7 +106,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 //				GalleryCache.removeCache(for: indexPath.row)
 //				GalleryCache.slideUpCache(after: indexPath.row)
 				if indexToDelete.isEmpty {
-					DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+					DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
 						for i in indexToDelete {
 							GalleryCache.removeCache(for: i)
 							GalleryCache.slideUpCache(after: i)
