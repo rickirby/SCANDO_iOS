@@ -139,9 +139,6 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 		if let passedData = self.passedData?() {
 			
 			GalleryCache.removeCache(for: passedData.index)
-//			if passedData.index > 0 {
-//				GalleryCache.slideDownCache(before: passedData.index)
-//			}
 			
 			self.passedData = {
 				return DocumentGroupCoordinator.DocumentGroupData(index: 0, documentGroup: passedData.documentGroup)
@@ -166,11 +163,6 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 		screenView.collectionView.reloadData()
 		
 		if let passedData = self.passedData?() {
-			
-//			GalleryCache.removeCache(for: passedData.index)
-//			if passedData.index > 0 {
-//				GalleryCache.slideDownCache(before: passedData.index)
-//			}
 			
 			self.passedData = {
 				return DocumentGroupCoordinator.DocumentGroupData(index: 0, documentGroup: passedData.documentGroup)
