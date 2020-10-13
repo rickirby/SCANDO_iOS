@@ -72,7 +72,7 @@ class AlertView {
 	}
 	
 	static func createSaveAllImageAlert(_ target: UIViewController, count: Int) {
-		let ac = UIAlertController(title: SCANDOConstant.saveSuccessTitle, message: String(count) + (count > 1 ? SCANDOConstant.saveAllImageSuccessMessage : SCANDOConstant.saveAllImagesSuccessMessage) , preferredStyle: .alert)
+		let ac = UIAlertController(title: SCANDOConstant.saveSuccessTitle, message: String(count) + (count > 1 ? SCANDOConstant.saveAllImagesSuccessMessage : SCANDOConstant.saveAllImageSuccessMessage) , preferredStyle: .alert)
 		ac.addAction(UIAlertAction(title: SCANDOConstant.saveAction, style: .default, handler: nil))
 		
 		target.present(ac, animated: true, completion: nil)
