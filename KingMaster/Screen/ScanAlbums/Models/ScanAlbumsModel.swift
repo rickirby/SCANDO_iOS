@@ -25,7 +25,7 @@ class ScanAlbumsModel: NSObject {
 	var onModelEvent: ((ModelEvent) -> Void)?
 	
 	lazy var fetchedResultsController: NSFetchedResultsController<DocumentGroup> = {
-		let managedContext = DataManager.shared.persistentContainer.viewContext
+		let managedContext = DataManager.shared.viewContext
 		let fetchRequest = NSFetchRequest<DocumentGroup>(entityName: "DocumentGroup")
 		let sort = NSSortDescriptor(key: "date", ascending: false)
 		fetchRequest.sortDescriptors = [sort]
@@ -54,7 +54,7 @@ class ScanAlbumsModel: NSObject {
 	}
 	
 	func deleteData(documentGroupsToDelete documentGroups: [DocumentGroup]) {
-		let managedObjectContext = DataManager.shared.persistentContainer.viewContext
+		let managedObjectContext = DataManager.shared.viewContext
 		
 		for documentGroup in documentGroups {
 			managedObjectContext.delete(documentGroup)
@@ -68,7 +68,7 @@ class ScanAlbumsModel: NSObject {
 	}
 	
 	func updateName(documentGroupToUpdate documentGroup: DocumentGroup, newName: String) {
-		let managedObjectContext = DataManager.shared.persistentContainer.viewContext
+		let managedObjectContext = DataManager.shared.viewContext
 		
 		documentGroup.name = newName
 		do {

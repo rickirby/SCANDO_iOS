@@ -15,7 +15,15 @@ class DataManager {
 	
 	static let shared: DataManager = DataManager()
 	
-	lazy var persistentContainer: NSPersistentContainer = {
+	var viewContext: NSManagedObjectContext {
+		let viewContext = persistentContainer.viewContext
+		viewContext.automaticallyMergesChangesFromParent = true
+		return viewContext
+	}
+	
+	// MARK: - Private Properties
+	
+	private lazy var persistentContainer: NSPersistentContainer = {
 		let container = NSPersistentContainer(name: "KingMaster")
 		container.loadPersistentStores { (_, error) in
 			if let error = error as NSError? {
@@ -26,7 +34,7 @@ class DataManager {
 		return container
 	}()
 	
-	// MARK: - Public Properties
+	// MARK: - Public Method
 	
 	func saveContext() {
 		let context = persistentContainer.viewContext
