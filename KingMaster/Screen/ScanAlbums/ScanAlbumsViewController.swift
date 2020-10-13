@@ -92,6 +92,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	}
 	
 	private func configureModel() {
+		var indexToDelete: [Int] = []
 		model.onModelEvent = { (modelEvent: ScanAlbumsModel.ModelEvent) in
 			switch modelEvent {
 			case .beginUpdates:
@@ -102,8 +103,20 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 				GalleryCache.slideDownAllCache()
 				self.screenView.tableView.insertRows(at: [newIndexPath], with: .automatic)
 			case .deleteData(let indexPath):
-				GalleryCache.removeCache(for: indexPath.row)
-				GalleryCache.slideUpCache(after: indexPath.row)
+//				GalleryCache.removeCache(for: indexPath.row)
+//				GalleryCache.slideUpCache(after: indexPath.row)
+				if indexToDelete.isEmpty {
+					DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+						for i in indexToDelete {
+							GalleryCache.removeCache(for: i)
+							GalleryCache.slideUpCache(after: i)
+						}
+						
+						indexToDelete.removeAll()
+					}
+				}
+				
+				indexToDelete.append(indexPath.row)
 				self.screenView.tableView.deleteRows(at: [indexPath], with: .automatic)
 			case .updateData(let indexPath):
 				GalleryCache.removeCache(for: indexPath.row)
@@ -148,7 +161,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	private func deleteData(indexes: [Int]) {
 		var itemsToDelete = [DocumentGroup]()
 		for i in indexes {
-//			GalleryCache.removeCache(for: i)
+			GalleryCache.removeCache(for: i)
 //			GalleryCache.slideUpCache(after: i)
 			itemsToDelete.append(model.fetchedResultsController.object(at: IndexPath(row: i, section: 0)))
 		}
