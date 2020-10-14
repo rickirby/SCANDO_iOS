@@ -300,7 +300,6 @@
 				DC215A032516618A006D409A /* Data */,
 				097A18A525046CED0044D5FB /* Screen */,
 				09C8ADA9250650E7004BA0F7 /* Common */,
-				DCE7EE3C25367ED100D7B074 /* Entitlements */,
 				0901C6A625038A340051FF16 /* Assets.xcassets */,
 				0901C6A825038A340051FF16 /* LaunchScreen.storyboard */,
 				0901C6AB25038A340051FF16 /* Info.plist */,
@@ -414,6 +413,7 @@
 			children = (
 				DC215A252516640E006D409A /* DataManager.swift */,
 				DC215A24251663EB006D409A /* CoreDataModels */,
+				DCE7EE3C25367ED100D7B074 /* CloudKitEntitlements */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -619,12 +619,12 @@
 			path = Constant;
 			sourceTree = "<group>";
 		};
-		DCE7EE3C25367ED100D7B074 /* Entitlements */ = {
+		DCE7EE3C25367ED100D7B074 /* CloudKitEntitlements */ = {
 			isa = PBXGroup;
 			children = (
 				DC5A8F232535377A00971510 /* DEV🛠.entitlements */,
 			);
-			path = Entitlements;
+			path = CloudKitEntitlements;
 			sourceTree = "<group>";
 		};
 		DCE9228F2516E4BA00A30804 /* Models */ = {
@@ -1042,7 +1042,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "KingMaster/Entitlements/DEV🛠.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "KingMaster/Data/CloudKitEntitlements/DEV🛠.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6NMANHT3A2;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1068,7 +1068,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "KingMaster/Entitlements/DEV🛠.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "KingMaster/Data/CloudKitEntitlements/DEV🛠.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6NMANHT3A2;
 				FRAMEWORK_SEARCH_PATHS = (
