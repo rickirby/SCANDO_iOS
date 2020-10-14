@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Document" representedClassName="Document" syncable="YES">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Document" representedClassName=".Document" syncable="YES">
         <attribute name="date" attributeType="Date" defaultDateTimeInterval="622218540" usesScalarValueType="NO"/>
         <attribute name="rotationAngle" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="thumbnail" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
-        <relationship name="image" maxCount="1" deletionRule="Cascade" destinationEntity="DocumentImage" inverseName="owner" inverseEntity="DocumentImage"/>
+        <attribute name="thumbnail" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <relationship name="image" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DocumentImage" inverseName="owner" inverseEntity="DocumentImage"/>
         <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DocumentGroup" inverseName="documents" inverseEntity="DocumentGroup"/>
-        <relationship name="quad" maxCount="1" deletionRule="Cascade" destinationEntity="QuadPoint" inverseName="owner" inverseEntity="QuadPoint"/>
+        <relationship name="quad" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="QuadPoint" inverseName="owner" inverseEntity="QuadPoint"/>
     </entity>
-    <entity name="DocumentGroup" representedClassName="DocumentGroup" syncable="YES">
+    <entity name="DocumentGroup" representedClassName=".DocumentGroup" syncable="YES">
         <attribute name="date" attributeType="Date" defaultDateTimeInterval="622218540" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String" defaultValueString=""/>
-        <relationship name="documents" toMany="YES" deletionRule="Cascade" destinationEntity="Document" inverseName="owner" inverseEntity="Document"/>
+        <relationship name="documents" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Document" inverseName="owner" inverseEntity="Document"/>
     </entity>
-    <entity name="DocumentImage" representedClassName="DocumentImage" syncable="YES">
-        <attribute name="originalImage" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+    <entity name="DocumentImage" representedClassName=".DocumentImage" syncable="YES">
+        <attribute name="originalImage" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Document" inverseName="image" inverseEntity="Document"/>
     </entity>
-    <entity name="QuadPoint" representedClassName="QuadPoint" syncable="YES">
+    <entity name="QuadPoint" representedClassName=".QuadPoint" syncable="YES">
         <attribute name="bottomLeftX" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="bottomLeftY" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="bottomRightX" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
