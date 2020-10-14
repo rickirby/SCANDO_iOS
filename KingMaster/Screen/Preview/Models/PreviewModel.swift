@@ -18,7 +18,7 @@ class PreviewModel: NSObject {
 	
 	func addNewDocumentGroup(name: String, originalImage image: UIImage, thumbnailImage: UIImage, quad: Quadrilateral, rotationAngle: Double, date: Date) {
 		
-		let managedObjectContext = DataManager.shared.persistentContainer.viewContext
+		let managedObjectContext = DataManager.shared.viewContext
 		
 		let documentGroup = DocumentGroup(context: managedObjectContext)
 		documentGroup.name = name
@@ -58,7 +58,7 @@ class PreviewModel: NSObject {
 	
 	func addDocumentToDocumentGroup(documentGroup: DocumentGroup, originalImage image: UIImage, thumbnailImage: UIImage, quad: Quadrilateral, rotationAngle: Double, date: Date) {
 		
-		let managedObjectContext = DataManager.shared.persistentContainer.viewContext
+		let managedObjectContext = DataManager.shared.viewContext
 		
 		if let imageData = image.jpegData(compressionQuality: 0.7), let thumbnailData = thumbnailImage.jpegData(compressionQuality: 0.7) {
 			let quadPoint = QuadPoint(context: managedObjectContext)
@@ -94,7 +94,7 @@ class PreviewModel: NSObject {
 	
 	func updateDocument(documentGroup: DocumentGroup, currentDocument: Document, newQuadrilateral: Quadrilateral?, newRotationAngle: Double?, newThumbnailImage: UIImage) {
         
-        let managedObjectContext = DataManager.shared.persistentContainer.viewContext
+        let managedObjectContext = DataManager.shared.viewContext
         var isChanged = false
         
         if let quad = newQuadrilateral {
