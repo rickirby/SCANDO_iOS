@@ -22,16 +22,13 @@ class AlertView {
 		target.present(ac, animated: true, completion: nil)
 	}
 	
-	static func createSwipeMoreSheet(_ target: UIViewController, renameHandler: @escaping () -> Void, saveHandler: @escaping () -> Void, changeHandler: @escaping () -> Void, deleteHandler: @escaping () -> Void, cancelHandler: @escaping () -> Void) {
+	static func createSwipeMoreSheet(_ target: UIViewController, renameHandler: @escaping () -> Void, saveHandler: @escaping () -> Void, deleteHandler: @escaping () -> Void, cancelHandler: @escaping () -> Void) {
 		let ac = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 		ac.addAction(UIAlertAction(title: SCANDOConstant.swipeMoreRenameAction, style: .default) { _ in
 			renameHandler()
 		})
 		ac.addAction(UIAlertAction(title: SCANDOConstant.swipeMoreSaveAction, style: .default) { _ in
 			saveHandler()
-		})
-		ac.addAction(UIAlertAction(title: SCANDOConstant.swipeMoreChangeAction, style: .default) { _ in
-			changeHandler()
 		})
 		ac.addAction(UIAlertAction(title: SCANDOConstant.swipeMoreDeleteAction, style: .destructive) { _ in
 			deleteHandler()
@@ -69,6 +66,13 @@ class AlertView {
 	
 	static func createSaveImageAlert(_ target: UIViewController, isOriginalImage: Bool = false, didFinishSavingWithError error: Error?) {
 		let ac = UIAlertController(title: error == nil ? SCANDOConstant.saveSuccessTitle : SCANDOConstant.saveErrorTitle, message: error == nil ? (isOriginalImage ? SCANDOConstant.saveOriginalSuccessMessage : SCANDOConstant.saveProcessedSuccessMessage) : error?.localizedDescription, preferredStyle: .alert)
+		ac.addAction(UIAlertAction(title: SCANDOConstant.saveAction, style: .default, handler: nil))
+		
+		target.present(ac, animated: true, completion: nil)
+	}
+	
+	static func createSaveAllImageAlert(_ target: UIViewController, count: Int) {
+		let ac = UIAlertController(title: SCANDOConstant.saveSuccessTitle, message: String(count) + (count > 1 ? SCANDOConstant.saveAllImagesSuccessMessage : SCANDOConstant.saveAllImageSuccessMessage) , preferredStyle: .alert)
 		ac.addAction(UIAlertAction(title: SCANDOConstant.saveAction, style: .default, handler: nil))
 		
 		target.present(ac, animated: true, completion: nil)
