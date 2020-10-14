@@ -142,6 +142,7 @@
 		DCE0E733250AFE2300971B22 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0E732250AFE2300971B22 /* AlertView.swift */; };
 		DCE922912516E4CB00A30804 /* ScanAlbumsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE922902516E4CB00A30804 /* ScanAlbumsModel.swift */; };
 		DCEBA927251B86C100932A0E /* GalleryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEBA926251B86C100932A0E /* GalleryModel.swift */; };
+		DCEFA2F1253684870082EF54 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC5A8F24253537BA00971510 /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -245,6 +246,7 @@
 		DCE0E732250AFE2300971B22 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		DCE922902516E4CB00A30804 /* ScanAlbumsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAlbumsModel.swift; sourceTree = "<group>"; };
 		DCEBA926251B86C100932A0E /* GalleryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryModel.swift; sourceTree = "<group>"; };
+		DCEFA2F0253684640082EF54 /* SCANDO.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SCANDO.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				099AB2012503E6C600B76522 /* RBPhotosGallery.framework in Frameworks */,
+				DCEFA2F1253684870082EF54 /* CloudKit.framework in Frameworks */,
 				099AB2032503E6C600B76522 /* RBToolkit.framework in Frameworks */,
 				DC972BBD25123F9800A6C43B /* RBCameraDocScan.framework in Frameworks */,
 			);
@@ -623,6 +626,7 @@
 			isa = PBXGroup;
 			children = (
 				DC5A8F232535377A00971510 /* DEV🛠.entitlements */,
+				DCEFA2F0253684640082EF54 /* SCANDO.entitlements */,
 			);
 			path = CloudKitEntitlements;
 			sourceTree = "<group>";
@@ -992,6 +996,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = KingMaster/Data/CloudKitEntitlements/SCANDO.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6NMANHT3A2;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1017,6 +1022,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = KingMaster/Data/CloudKitEntitlements/SCANDO.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6NMANHT3A2;
 				FRAMEWORK_SEARCH_PATHS = (
