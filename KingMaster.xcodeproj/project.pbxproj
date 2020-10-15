@@ -34,6 +34,7 @@
 		DC0932E825387632007C3A10 /* RBCameraDocScan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */; };
 		DC0932EA25387634007C3A10 /* RBPhotosGallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 099AB1FF2503E6C500B76522 /* RBPhotosGallery.framework */; };
 		DC0932EC25387636007C3A10 /* RBToolkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 099AB2002503E6C600B76522 /* RBToolkit.framework */; };
+		DC0932EF25387DD9007C3A10 /* RBImageProcessor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC415C6B252CA193001AD7D2 /* RBImageProcessor.framework */; };
 		DC215A1C25166321006D409A /* QuadPoint+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1425166321006D409A /* QuadPoint+CoreDataClass.swift */; };
 		DC215A1D25166321006D409A /* QuadPoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1525166321006D409A /* QuadPoint+CoreDataProperties.swift */; };
 		DC215A1E25166321006D409A /* Document+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1625166321006D409A /* Document+CoreDataClass.swift */; };
@@ -132,32 +133,11 @@
 		DCD73543252CACF70046775E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0901C6A825038A340051FF16 /* LaunchScreen.storyboard */; };
 		DCD73544252CACF70046775E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DC46E1442521686E000ED989 /* README.md */; };
 		DCD73545252CACF70046775E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0901C6A625038A340051FF16 /* Assets.xcassets */; };
-		DCD73547252CACF70046775E /* RBPhotosGallery.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 099AB1FF2503E6C500B76522 /* RBPhotosGallery.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		DCD73548252CACF70046775E /* RBToolkit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 099AB2002503E6C600B76522 /* RBToolkit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		DCD73549252CACF70046775E /* RBCameraDocScan.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		DCD7354A252CACF70046775E /* RBImageProcessor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC415C6B252CA193001AD7D2 /* RBImageProcessor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DCE0E731250AFB5F00971B22 /* SCANDOConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0E730250AFB5F00971B22 /* SCANDOConstant.swift */; };
 		DCE0E733250AFE2300971B22 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0E732250AFE2300971B22 /* AlertView.swift */; };
 		DCE922912516E4CB00A30804 /* ScanAlbumsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE922902516E4CB00A30804 /* ScanAlbumsModel.swift */; };
 		DCEBA927251B86C100932A0E /* GalleryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEBA926251B86C100932A0E /* GalleryModel.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		DCD73546252CACF70046775E /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				DCD73547252CACF70046775E /* RBPhotosGallery.framework in Embed Frameworks */,
-				DCD73548252CACF70046775E /* RBToolkit.framework in Embed Frameworks */,
-				DCD73549252CACF70046775E /* RBCameraDocScan.framework in Embed Frameworks */,
-				DCD7354A252CACF70046775E /* RBImageProcessor.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0901C69725038A320051FF16 /* SCANDO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCANDO.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -249,8 +229,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCD7353E252CACF70046775E /* RBPhotosGallery.framework in Frameworks */,
 				DC5A8F25253537BA00971510 /* CloudKit.framework in Frameworks */,
+				DC0932EF25387DD9007C3A10 /* RBImageProcessor.framework in Frameworks */,
+				DCD7353E252CACF70046775E /* RBPhotosGallery.framework in Frameworks */,
 				DCD7353F252CACF70046775E /* RBToolkit.framework in Frameworks */,
 				DCD73540252CACF70046775E /* RBCameraDocScan.framework in Frameworks */,
 			);
@@ -651,7 +632,6 @@
 				DCD7350C252CACF70046775E /* Sources */,
 				DCD7353D252CACF70046775E /* Frameworks */,
 				DCD73541252CACF70046775E /* Resources */,
-				DCD73546252CACF70046775E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
