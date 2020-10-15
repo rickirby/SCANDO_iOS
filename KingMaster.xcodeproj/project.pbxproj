@@ -19,10 +19,6 @@
 		092E85D5250659B300A01F60 /* DocumentGroupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E85D4250659B300A01F60 /* DocumentGroupCoordinator.swift */; };
 		097A18A825046E660044D5FB /* ScanAlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A18A725046E660044D5FB /* ScanAlbumsViewController.swift */; };
 		097A18AC25046FD70044D5FB /* ScanAlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A18AB25046FD70044D5FB /* ScanAlbumsView.swift */; };
-		099AB2012503E6C600B76522 /* RBPhotosGallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 099AB1FF2503E6C500B76522 /* RBPhotosGallery.framework */; };
-		099AB2022503E6C600B76522 /* RBPhotosGallery.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 099AB1FF2503E6C500B76522 /* RBPhotosGallery.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		099AB2032503E6C600B76522 /* RBToolkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 099AB2002503E6C600B76522 /* RBToolkit.framework */; };
-		099AB2042503E6C600B76522 /* RBToolkit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 099AB2002503E6C600B76522 /* RBToolkit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		09C8ADAC2506511F004BA0F7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADAB2506511F004BA0F7 /* Coordinator.swift */; };
 		09C8ADAE25065154004BA0F7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADAD25065154004BA0F7 /* Router.swift */; };
 		09C8ADB0250652BC004BA0F7 /* ScanAlbumsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADAF250652BC004BA0F7 /* ScanAlbumsCoordinator.swift */; };
@@ -33,6 +29,11 @@
 		09FDB4A7252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB4A5252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift */; };
 		7206EAEF250C704B00A3DA4A /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7206EAEE250C704B00A3DA4A /* GalleryViewController.swift */; };
 		7206EAF1250C73F200A3DA4A /* GalleryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7206EAF0250C73F200A3DA4A /* GalleryCoordinator.swift */; };
+		DC0932E325387625007C3A10 /* RBImageProcessor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC415C6B252CA193001AD7D2 /* RBImageProcessor.framework */; };
+		DC0932E625387631007C3A10 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC5A8F24253537BA00971510 /* CloudKit.framework */; };
+		DC0932E825387632007C3A10 /* RBCameraDocScan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */; };
+		DC0932EA25387634007C3A10 /* RBPhotosGallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 099AB1FF2503E6C500B76522 /* RBPhotosGallery.framework */; };
+		DC0932EC25387636007C3A10 /* RBToolkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 099AB2002503E6C600B76522 /* RBToolkit.framework */; };
 		DC215A1C25166321006D409A /* QuadPoint+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1425166321006D409A /* QuadPoint+CoreDataClass.swift */; };
 		DC215A1D25166321006D409A /* QuadPoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1525166321006D409A /* QuadPoint+CoreDataProperties.swift */; };
 		DC215A1E25166321006D409A /* Document+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1625166321006D409A /* Document+CoreDataClass.swift */; };
@@ -45,7 +46,6 @@
 		DC39BC7A2514AF590067DF71 /* EditScanCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39BC792514AF580067DF71 /* EditScanCoordinator.swift */; };
 		DC3F5E96253159CB007B6B3E /* ErodeParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3F5E95253159CB007B6B3E /* ErodeParamUserSetting.swift */; };
 		DC3F5E9725315AEC007B6B3E /* ErodeParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3F5E95253159CB007B6B3E /* ErodeParamUserSetting.swift */; };
-		DC415C6C252CA193001AD7D2 /* RBImageProcessor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC415C6B252CA193001AD7D2 /* RBImageProcessor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DC46E1452521686E000ED989 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DC46E1442521686E000ED989 /* README.md */; };
 		DC4CD0032514FB51000A84BC /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4CD0022514FB51000A84BC /* PreviewView.swift */; };
 		DC4CD0052514FB78000A84BC /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4CD0042514FB78000A84BC /* PreviewViewController.swift */; };
@@ -60,8 +60,6 @@
 		DC82E08E251ACCC800FB9CA7 /* GalleryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC82E08D251ACCC800FB9CA7 /* GalleryCache.swift */; };
 		DC82E091251AD38B00FB9CA7 /* DocumentGroupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC82E090251AD38B00FB9CA7 /* DocumentGroupData.swift */; };
 		DC832C56251F4238001D54C0 /* RBCameraDocScan.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DC832C55251F4238001D54C0 /* RBCameraDocScan.bundle */; };
-		DC972BBD25123F9800A6C43B /* RBCameraDocScan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */; };
-		DC972BBE25123F9800A6C43B /* RBCameraDocScan.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DC972BC12512454F00A6C43B /* CameraCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC972BC02512454F00A6C43B /* CameraCoordinator.swift */; };
 		DC972BC4251258C400A6C43B /* ScanImagePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC972BC3251258C400A6C43B /* ScanImagePickerCoordinator.swift */; };
 		DC9F070E25314818005A517B /* DilateParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9F070D25314818005A517B /* DilateParamUserSetting.swift */; };
@@ -142,24 +140,9 @@
 		DCE0E733250AFE2300971B22 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0E732250AFE2300971B22 /* AlertView.swift */; };
 		DCE922912516E4CB00A30804 /* ScanAlbumsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE922902516E4CB00A30804 /* ScanAlbumsModel.swift */; };
 		DCEBA927251B86C100932A0E /* GalleryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEBA926251B86C100932A0E /* GalleryModel.swift */; };
-		DCEFA2F1253684870082EF54 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC5A8F24253537BA00971510 /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		099AB2052503E6C600B76522 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				099AB2022503E6C600B76522 /* RBPhotosGallery.framework in Embed Frameworks */,
-				099AB2042503E6C600B76522 /* RBToolkit.framework in Embed Frameworks */,
-				DC972BBE25123F9800A6C43B /* RBCameraDocScan.framework in Embed Frameworks */,
-				DC415C6C252CA193001AD7D2 /* RBImageProcessor.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		DCD73546252CACF70046775E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -254,10 +237,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				099AB2012503E6C600B76522 /* RBPhotosGallery.framework in Frameworks */,
-				DCEFA2F1253684870082EF54 /* CloudKit.framework in Frameworks */,
-				099AB2032503E6C600B76522 /* RBToolkit.framework in Frameworks */,
-				DC972BBD25123F9800A6C43B /* RBCameraDocScan.framework in Frameworks */,
+				DC0932E625387631007C3A10 /* CloudKit.framework in Frameworks */,
+				DC0932E325387625007C3A10 /* RBImageProcessor.framework in Frameworks */,
+				DC0932EA25387634007C3A10 /* RBPhotosGallery.framework in Frameworks */,
+				DC0932EC25387636007C3A10 /* RBToolkit.framework in Frameworks */,
+				DC0932E825387632007C3A10 /* RBCameraDocScan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -649,7 +633,7 @@
 				0901C69325038A320051FF16 /* Sources */,
 				0901C69425038A320051FF16 /* Frameworks */,
 				0901C69525038A320051FF16 /* Resources */,
-				099AB2052503E6C600B76522 /* Embed Frameworks */,
+				DC0932EE253876B6007C3A10 /* Copy Carthage Frameworks */,
 			);
 			buildRules = (
 			);
@@ -736,6 +720,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DC0932EE253876B6007C3A10 /* Copy Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RBCameraDocScan.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RBImageProcessor.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RBPhotosGallery.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RBToolkit.framework",
+			);
+			name = "Copy Carthage Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0901C69325038A320051FF16 /* Sources */ = {
