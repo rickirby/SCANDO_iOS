@@ -632,6 +632,7 @@
 				DCD7350C252CACF70046775E /* Sources */,
 				DCD7353D252CACF70046775E /* Frameworks */,
 				DCD73541252CACF70046775E /* Resources */,
+				DC0932F025387E19007C3A10 /* Copy Carthage Frameworks */,
 			);
 			buildRules = (
 			);
@@ -703,6 +704,28 @@
 
 /* Begin PBXShellScriptBuildPhase section */
 		DC0932EE253876B6007C3A10 /* Copy Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RBCameraDocScan.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RBImageProcessor.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RBPhotosGallery.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RBToolkit.framework",
+			);
+			name = "Copy Carthage Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		DC0932F025387E19007C3A10 /* Copy Carthage Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
