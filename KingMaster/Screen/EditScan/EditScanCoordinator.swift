@@ -11,6 +11,8 @@ import RBCameraDocScan
 
 class EditScanCoordinator: Coordinator {
 	
+	// MARK: - Public Properties
+	
 	var rootViewController: UIViewController {
 		guard let navigationController = navigationController else {
 			return UIViewController()
@@ -21,18 +23,26 @@ class EditScanCoordinator: Coordinator {
 	
 	var passedData: (() -> EditScanData)?
 	
+	// MARK: - Private Properties
+	
 	private weak var navigationController: UINavigationController?
 	private var previewCoordinator: PreviewCoordinator?
+	
+	// MARK: - Life Cycles
 	
 	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
 	}
+	
+	// MARK: - Public Methods
 	
 	func start() {
 		let vc = makeEditScanViewController()
 		
 		Router.shared.push(vc, on: self)
 	}
+	
+	// MARK: - Private Methods
 	
 	private func makeEditScanViewController() -> UIViewController {
 		let vc = EditScanViewController()
@@ -58,4 +68,5 @@ class EditScanCoordinator: Coordinator {
 		
 		previewCoordinator?.start()
 	}
+	
 }
