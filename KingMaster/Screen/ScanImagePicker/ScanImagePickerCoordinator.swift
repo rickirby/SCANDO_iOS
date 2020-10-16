@@ -11,6 +11,8 @@ import RBCameraDocScan
 
 class ScanImagePickerCoordinator: Coordinator {
 	
+	// MARK: - Public Properties
+	
 	var rootViewController: UIViewController {
 		guard let navigationController = navigationController else {
 			return UIViewController()
@@ -21,18 +23,26 @@ class ScanImagePickerCoordinator: Coordinator {
 	
 	var passedData: (() -> ScanImagePickerData)?
 	
+	// MARK: - Private Properties
+	
 	private weak var navigationController: UINavigationController?
 	private var editScanCoordinator: EditScanCoordinator?
+	
+	// MARK: - Life Cycles
 	
 	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
 	}
+	
+	// MARK: - Public Methods
 	
 	func start() {
 		let vc = makeViewController()
 		
 		Router.shared.present(vc, on: self.rootViewController)
 	}
+	
+	// MARK: - Private Methods
 	
 	private func makeViewController() -> UIViewController {
 		let vc = RBScanImagePickerController()
@@ -50,9 +60,12 @@ class ScanImagePickerCoordinator: Coordinator {
 		
 		editScanCoordinator?.start()
 	}
+	
 }
 
 extension ScanImagePickerCoordinator: RBScanImagePickerControllerDelegate {
+	
+	// MARK: - RBScanImagePickerController delegate method
 	
 	func gotPicture(image: UIImage, quad: Quadrilateral?) {
 		openEditScan(image: image, quad: quad)
