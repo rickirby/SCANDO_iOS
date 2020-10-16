@@ -13,3 +13,6 @@ Use carthage to download listed framework above
 ## Current Project Version
 0.1.1
 
+## Testflight Build Number
+1
+
