@@ -10,6 +10,8 @@ import UIKit
 
 class DocumentGroupCoordinator: Coordinator {
 	
+	// MARK: - Public Properties
+	
 	var rootViewController: UIViewController {
 		guard let navigationController = navigationController else {
 			return UIViewController()
@@ -20,20 +22,28 @@ class DocumentGroupCoordinator: Coordinator {
 	
 	var passedData: (() -> DocumentGroupData)?
 	
+	// MARK: - Private Properties
+	
 	private weak var navigationController: UINavigationController?
 	private var galleryCoordinator: GalleryCoordinator?
 	private var cameraCoordinator: CameraCoordinator?
 	private var scanImagePickerCoordinator: ScanImagePickerCoordinator?
 	
+	// MARK: - Life Cycles
+	
 	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
 	}
+	
+	// MARK: - Public Methods
 	
 	func start() {
 		let vc = makeDocumentGroupViewController()
 		
 		Router.shared.push(vc, on: self)
 	}
+	
+	// MARK: - Private Methods
 	
 	private func makeDocumentGroupViewController() -> UIViewController {
 		let vc = DocumentGroupViewController()
@@ -58,6 +68,7 @@ class DocumentGroupCoordinator: Coordinator {
 		cameraCoordinator?.passedData = {
 			return CameraCoordinator.CameraData(documentGroup: self.passedData?().documentGroup)
 		}
+		
 		cameraCoordinator?.start()
 	}
 	
@@ -67,6 +78,7 @@ class DocumentGroupCoordinator: Coordinator {
 		scanImagePickerCoordinator?.passedData = {
 			return ScanImagePickerCoordinator.ScanImagePickerData(documentGroup: self.passedData?().documentGroup)
 		}
+		
 		scanImagePickerCoordinator?.start()
 	}
 	
@@ -80,4 +92,5 @@ class DocumentGroupCoordinator: Coordinator {
 		
 		galleryCoordinator?.start()
 	}
+	
 }
