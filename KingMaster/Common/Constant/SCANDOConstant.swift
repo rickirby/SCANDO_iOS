@@ -28,13 +28,14 @@ class SCANDOConstant {
 	
 	static let swipeMoreRenameAction: String = "Rename"
 	static let swipeMoreSaveAction: String = "Save to Photos"
-	static let swipeMoreChangeAction: String = "Change Cover Page"
 	static let swipeMoreDeleteAction: String = "Delete"
 	static let swipeMoreCancelAction: String = "Cancel"
 	
 	static let saveSuccessTitle: String = "Saved!"
 	static let saveOriginalSuccessMessage: String = "The original image has been saved to your Photos"
 	static let saveProcessedSuccessMessage: String = "The processed image has been saved to your Photos"
+	static let saveAllImageSuccessMessage: String = " image has been saved to your Photos"
+	static let saveAllImagesSuccessMessage: String = " images has been saved to your Photos"
 	static let saveErrorTitle: String = "Save Error!"
 	static let saveAction: String = "OK"
 	

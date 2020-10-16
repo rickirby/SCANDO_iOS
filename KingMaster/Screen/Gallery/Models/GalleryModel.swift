@@ -13,7 +13,7 @@ class GalleryModel {
 	// MARK: - Public Method
 	
 	func deleteData(documentToDelete document: Document) {
-		let managedObjectContext = DataManager.shared.persistentContainer.viewContext
+		let managedObjectContext = DataManager.shared.viewContext
 		
 		managedObjectContext.delete(document)
 		

@@ -78,6 +78,8 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 			case .rename(let index, let newName):
 				guard let object = self?.model.fetchedResultsController.object(at: IndexPath(row: index, section: 0)), !newName.isEmpty else { return }
 				self?.model.updateName(documentGroupToUpdate: object, newName: newName)
+			case .saveAll(let index):
+				self?.saveAllDocument(index)
 			}
 		}
 	}
@@ -92,6 +94,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	}
 	
 	private func configureModel() {
+		var indexToDelete: [Int] = []
 		model.onModelEvent = { (modelEvent: ScanAlbumsModel.ModelEvent) in
 			switch modelEvent {
 			case .beginUpdates:
@@ -99,12 +102,31 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 			case .endUpdates:
 				self.screenView.tableView.endUpdates()
 			case .insertData(let newIndexPath):
+				GalleryCache.slideDownAllCache()
 				self.screenView.tableView.insertRows(at: [newIndexPath], with: .automatic)
 			case .deleteData(let indexPath):
+				if indexToDelete.isEmpty {
+					DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+						for i in indexToDelete {
+							GalleryCache.removeCache(for: i)
+							GalleryCache.slideUpCache(after: i)
+						}
+						
+						indexToDelete.removeAll()
+					}
+				}
+				
+				indexToDelete.append(indexPath.row)
 				self.screenView.tableView.deleteRows(at: [indexPath], with: .automatic)
 			case .updateData(let indexPath):
+				GalleryCache.removeCache(for: indexPath.row)
 				self.screenView.tableView.reloadRows(at: [indexPath], with: .automatic)
 			case .moveData(let indexPath, let newIndexPath):
+				GalleryCache.removeCache(for: indexPath.row)
+				if indexPath.row > 0 {
+					GalleryCache.slideDownCache(before: indexPath.row)
+				}
+
 				self.screenView.tableView.moveRow(at: indexPath, to: newIndexPath)
 				DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { [weak self] in
 					self?.screenView.tableView.reloadRows(at: [newIndexPath], with: .automatic)
@@ -118,7 +140,6 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	}
 	
 	@objc func didFinishAddNewDocumentGroup() {
-		GalleryCache.slideDownAllCache()
 		screenView.tableView.delegate?.tableView?(self.screenView.tableView, didSelectRowAt: IndexPath(row: 0, section: 0))
 	}
 	
@@ -140,10 +161,27 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		var itemsToDelete = [DocumentGroup]()
 		for i in indexes {
 			GalleryCache.removeCache(for: i)
-			GalleryCache.slideUpCache(after: i)
 			itemsToDelete.append(model.fetchedResultsController.object(at: IndexPath(row: i, section: 0)))
 		}
 		
 		model.deleteData(documentGroupsToDelete: itemsToDelete)
+	}
+	
+	private func saveAllDocument(_ index: Int) {
+		guard let documents = model.fetchedResultsController.object(at: IndexPath(row: index, section: 0)).documents.allObjects as? [Document] else { return }
+		
+		DispatchQueue.global(qos: .userInitiated).async {
+			
+			for document in documents {
+				guard let image = UIImage(data: document.thumbnail) else { return }
+				
+				UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
+			}
+			
+			ThreadManager.executeOnMain {
+				self.screenView.showSaveAlert(count: documents.count)
+			}
+		}
+		
 	}
 }

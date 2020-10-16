@@ -44,6 +44,9 @@ class FilterViewController: ViewController<FilterView> {
 	
 	private func loadData() {
 		guard let passedData = passedData?() else { return }
+		ThreadManager.executeOnMain {
+			self.screenView.startLoading()
+		}
 		
 		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
 			// Original Image
@@ -61,6 +64,7 @@ class FilterViewController: ViewController<FilterView> {
 			self?.erodeImage = ConvertColor.erode(from: passedData.image, erodeIteration: erodeParam?.iteration ?? 1, dilateIteration: dilateParam?.iteration ?? 1, isGaussian: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7)
 			
 			ThreadManager.executeOnMain {
+				self?.screenView.stopLoading()
 				self?.refreshImage(index: self?.screenView.segmentControl.selectedSegmentIndex ?? 0)
 			}
 		}
@@ -99,8 +103,18 @@ class FilterViewController: ViewController<FilterView> {
 	}
 	
 	private func downloadImage() {
+		guard let image = screenView.image else { return }
+		screenView.startLoading()
 		
+		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+			UIImageWriteToSavedPhotosAlbum(image, self, #selector(self?.image(_:didFinishSavingWithError:contextInfo:)), nil)
+		}
 	}
+	
+	@objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+		screenView.stopLoading()
+		screenView.showSaveAlert(on: self, error: error)
+    }
 	
 	private func adjustParam() {
 		switch screenView.segmentControl.selectedSegmentIndex {
@@ -139,7 +153,7 @@ class FilterViewController: ViewController<FilterView> {
 		}, cancelHandler: {})
 	}
 	
-	func adjustDilateParam() {
+	private func adjustDilateParam() {
 		
 		let dilateParam = DilateParamUserSetting.shared.read()
 		
@@ -156,7 +170,7 @@ class FilterViewController: ViewController<FilterView> {
 		}, cancelHandler: {})
 	}
 	
-	func adjustErodeParam() {
+	private func adjustErodeParam() {
 		
 		let erodeParam = ErodeParamUserSetting.shared.read()
 		

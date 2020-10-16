@@ -11,6 +11,8 @@ import RBCameraDocScan
 
 class CameraCoordinator: Coordinator {
 	
+	// MARK: - Public Properties
+	
 	var rootViewController: UIViewController {
 		guard let navigationController = navigationController else {
 			return UIViewController()
@@ -21,19 +23,27 @@ class CameraCoordinator: Coordinator {
 	
 	var passedData: (() -> CameraData)?
 	
+	// MARK: - Private Properties
+	
 	private weak var navigationController: UINavigationController?
 	private var scanImagePickerCoordinator: ScanImagePickerCoordinator?
 	private var editScanCoordinator: EditScanCoordinator?
 	
+	// MARK: - Life Cycles
+	
 	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
 	}
+	
+	// MARK: - Public Methods
 	
 	func start() {
 		let vc = makeViewController()
 		
 		Router.shared.push(vc, on: self)
 	}
+	
+	// MARK: - Private Methods
 	
 	private func makeViewController() -> UIViewController {
 		let vc = RBCameraViewController()
@@ -45,6 +55,7 @@ class CameraCoordinator: Coordinator {
 	private func openScanImagePicker() {
 		scanImagePickerCoordinator = nil
 		scanImagePickerCoordinator = ScanImagePickerCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		
 		scanImagePickerCoordinator?.start()
 	}
 	
@@ -57,9 +68,13 @@ class CameraCoordinator: Coordinator {
 		
 		editScanCoordinator?.start()
 	}
+	
 }
 
 extension CameraCoordinator: RBCameraViewControllerDelegate {
+	
+	// MARK: - RBCameraViewController delegate method
+	
 	func gotCapturedPicture(_ target: UIViewController, image: UIImage, quad: Quadrilateral?) {
 		openEditScan(image: image, quad: quad)
 	}
@@ -71,4 +86,5 @@ extension CameraCoordinator: RBCameraViewControllerDelegate {
 	func didTapImagePick(_ target: UIViewController) {
 		openScanImagePicker()
 	}
+	
 }
