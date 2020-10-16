@@ -10,6 +10,8 @@ import UIKit
 
 class FilterCoordinator: Coordinator {
 	
+	// MARK: - Public Properties
+	
 	var rootViewController: UIViewController {
 		guard let navigationController = navigationController else {
 			return UIViewController()
@@ -20,11 +22,17 @@ class FilterCoordinator: Coordinator {
 	
 	var passedData: (() -> FilterData)?
 	
+	// MARK: - Private Properties
+	
 	private weak var navigationController: UINavigationController?
+	
+	// MARK: - Life Cycles
 	
 	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
 	}
+	
+	// MARK: - Public Methods
 	
 	func start() {
 		let vc = makeFilterViewController()
@@ -32,10 +40,13 @@ class FilterCoordinator: Coordinator {
 		Router.shared.push(vc, on: self)
 	}
 	
+	// MARK: - Private Methods
+	
 	private func makeFilterViewController() -> UIViewController {
 		let vc = FilterViewController()
 		vc.passedData = passedData
 		
 		return vc
 	}
+	
 }

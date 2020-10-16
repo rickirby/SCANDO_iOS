@@ -11,6 +11,8 @@ import RBCameraDocScan
 
 class GalleryCoordinator: Coordinator {
 	
+	// MARK: - Public Properties
+	
 	var rootViewController: UIViewController {
 		guard let navigationController = navigationController else {
 			return UIViewController()
@@ -21,13 +23,19 @@ class GalleryCoordinator: Coordinator {
 	
 	var passedData: (() -> GalleryData)?
 	
+	// MARK: - Private Properties
+	
 	private weak var navigationController: UINavigationController?
 	private var editScanCoordinator: EditScanCoordinator?
 	private var filterCoordinator: FilterCoordinator?
 	
+	// MARK: - Life Cycles
+	
 	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
 	}
+	
+	// MARK: - Public Methods
 	
 	func start() {
 		let vc = makeGalleryViewController()
@@ -35,7 +43,9 @@ class GalleryCoordinator: Coordinator {
 		Router.shared.push(vc, on: self)
 	}
 	
-	func makeGalleryViewController() -> UIViewController {
+	// MARK: - Private Methods
+	
+	private func makeGalleryViewController() -> UIViewController {
 		let vc = GalleryViewController()
 		vc.passedData = passedData
 		vc.onNavigationEvent = { [weak self] (navigationEvent: GalleryViewController.NavigationEvent) in
