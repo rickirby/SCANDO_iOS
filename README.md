@@ -14,5 +14,5 @@ Use carthage to download listed framework above
 0.1.1
 
 ## Testflight Build Number
-1
+2
 
