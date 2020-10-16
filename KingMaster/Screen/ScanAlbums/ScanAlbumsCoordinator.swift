@@ -11,20 +11,28 @@ import RBCameraDocScan
 
 class ScanAlbumsCoordinator: Coordinator {
 	
+	// MARK: - Public Properties
+	
 	var rootViewController: UIViewController {
 		return navigationController
 	}
+	
+	// MARK: - Private Properties
 	
 	private let navigationController: UINavigationController = UINavigationController()
 	private var documentGroupCoordinator: DocumentGroupCoordinator?
 	private var cameraCoordinator: CameraCoordinator?
 	private var scanImagePickerCoordinator: ScanImagePickerCoordinator?
 	
+	// MARK: - Public Methods
+	
 	func start() {
 		let vc = makeViewController()
 		
 		Router.shared.push(vc, on: self)
 	}
+	
+	// MARK: - Private Methods
 	
 	private func makeViewController() -> UIViewController {
 		let vc = ScanAlbumsViewController()
@@ -45,12 +53,14 @@ class ScanAlbumsCoordinator: Coordinator {
 	private func openCamera() {
 		cameraCoordinator = nil
 		cameraCoordinator = CameraCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		
 		cameraCoordinator?.start()
 	}
 	
 	private func openScanImagePicker() {
 		scanImagePickerCoordinator = nil
 		scanImagePickerCoordinator = ScanImagePickerCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		
 		scanImagePickerCoordinator?.start()
 	}
 	
@@ -60,6 +70,7 @@ class ScanAlbumsCoordinator: Coordinator {
 		documentGroupCoordinator?.passedData = {
 			return DocumentGroupCoordinator.DocumentGroupData(index: index, documentGroup: object)
 		}
+		
 		documentGroupCoordinator?.start()
 	}
 	

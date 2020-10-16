@@ -10,15 +10,23 @@ import UIKit
 
 class AppCoordinator: Coordinator {
 	
-	private var scanAlbumsCoordinator: ScanAlbumsCoordinator?
+	// MARK: - Public Properties
 	
 	var rootViewController: UIViewController {
 		return UIViewController()
 	}
 	
+	// MARK: - Private Properties
+	
+	private var scanAlbumsCoordinator: ScanAlbumsCoordinator?
+	
+	// MARK: - Public Methods
+	
 	func start() {
 		showMain()
 	}
+	
+	// MARK: - Private Methods
 	
 	private func showMain() {
 		scanAlbumsCoordinator = nil
@@ -31,4 +39,5 @@ class AppCoordinator: Coordinator {
 		scanAlbumsCoordinator.start()
 		Router.shared.setRoot(scanAlbumsCoordinator.rootViewController)
 	}
+	
 }

@@ -11,6 +11,8 @@ import RBToolkit
 
 class PreviewCoordinator: Coordinator {
 	
+	// MARK: - Public Properties
+	
 	var rootViewController: UIViewController {
 		guard let navigationController = navigationController else {
 			return UIViewController()
@@ -21,11 +23,17 @@ class PreviewCoordinator: Coordinator {
 	
 	var passedData: (() -> PreviewData)?
 	
+	// MARK: - Private Properties
+	
 	private weak var navigationController: UINavigationController?
+	
+	// MARK: - Life Cycles
 	
 	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
 	}
+	
+	// MARK: - Public Methods
 	
 	func start() {
 		let vc = makePreviewViewController()
@@ -33,7 +41,9 @@ class PreviewCoordinator: Coordinator {
 		Router.shared.push(vc, on: self)
 	}
 	
-	func makePreviewViewController() -> UIViewController {
+	// MARK: - Private Methods
+	
+	private func makePreviewViewController() -> UIViewController {
 		let vc = PreviewViewController()
 		vc.passedData = passedData
 		vc.onNavigationEvent = { [weak self] (navigationEvent: PreviewViewController.NavigationEvent) in
@@ -46,7 +56,7 @@ class PreviewCoordinator: Coordinator {
 		return vc
 	}
 	
-	func finishImage(newGroup: Bool, newDocument: Bool) {
+	private func finishImage(newGroup: Bool, newDocument: Bool) {
 		if newGroup {
 			Router.shared.popToRootViewController(on: self)
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
