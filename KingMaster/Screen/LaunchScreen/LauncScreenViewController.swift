@@ -49,6 +49,7 @@ class LaunchScreenViewController: UIViewController {
 			iconImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			iconImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 			iconImageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 230/414),
+			iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 			
 			scandoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			scandoLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -138),
