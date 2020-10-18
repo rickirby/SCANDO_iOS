@@ -136,6 +136,7 @@ class FilterViewController: ViewController<FilterView> {
 		AlertView.createAdaptiveParamAlert(self, currentType: adaptiveParam?.type, currentBlockSize: adaptiveParam?.blockSize, currentConstant: adaptiveParam?.constant, setHandler: {
 			
 			guard let textField0Text = $0.text, let textField1Text = $1.text, let textField2Text = $2.text, let type = Int(textField0Text), let blockSize = Int(textField1Text), let constant = Double(textField2Text) else {
+				// Provide default value if text field error or empty
 				DispatchQueue.global(qos: .userInitiated).async {
 					AdaptiveParamUserSetting.shared.save(AdaptiveParamUserSetting.AdaptiveParam(type: 1, blockSize: 57, constant: 7))
 					
@@ -145,11 +146,17 @@ class FilterViewController: ViewController<FilterView> {
 				return
 			}
 			
-			DispatchQueue.global(qos: .userInitiated).async {
-				AdaptiveParamUserSetting.shared.save(AdaptiveParamUserSetting.AdaptiveParam(type: type, blockSize: blockSize, constant: constant))
+			if (blockSize > 1) && (blockSize % 2) == 1 {
+				// Check if blockSize value is acceptable to avoid crash
+				DispatchQueue.global(qos: .userInitiated).async {
+					AdaptiveParamUserSetting.shared.save(AdaptiveParamUserSetting.AdaptiveParam(type: type, blockSize: blockSize, constant: constant))
+					
+					self.loadData()
+				}
+			} else {
 				
-				self.loadData()
 			}
+			
 		}, cancelHandler: {})
 	}
 	
