@@ -42,6 +42,8 @@ class LaunchScreenViewController: UIViewController {
 		return label
 	}()
 	
+	// MARK: - Life Cycles
+	
 	override func loadView() {
 		super.loadView()
 		
