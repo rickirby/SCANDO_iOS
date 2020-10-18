@@ -57,7 +57,7 @@ class LaunchScreenViewController: UIViewController {
 			scandoLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -138),
 			
 			versionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			versionLabel.topAnchor.constraint(equalTo: scandoLabel.bottomAnchor, constant: 5)
+			versionLabel.topAnchor.constraint(equalTo: scandoLabel.bottomAnchor)
 		])
 	}
 }
