@@ -33,9 +33,11 @@ class LaunchScreenViewController: UIViewController {
 	lazy var versionLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
-		label.font = .systemFont(ofSize: 14, weight: .regular)
+		label.font = .systemFont(ofSize: 12, weight: .regular)
 		label.textColor = .white
-		label.text = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+		if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+			label.text = "version \(version).\(buildNumber)"
+		}
 		
 		return label
 	}()
