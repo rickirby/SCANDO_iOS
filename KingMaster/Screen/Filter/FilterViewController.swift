@@ -154,7 +154,7 @@ class FilterViewController: ViewController<FilterView> {
 					self.loadData()
 				}
 			} else {
-				
+				AlertView.createAdaptiveParamErrorAlert(self)
 			}
 			
 		}, cancelHandler: {})
