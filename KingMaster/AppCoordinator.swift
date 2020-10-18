@@ -23,7 +23,10 @@ class AppCoordinator: Coordinator {
 	// MARK: - Public Methods
 	
 	func start() {
-		showMain()
+		Router.shared.setRoot(LaunchScreenViewController())
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+			self.showMain()
+		}
 	}
 	
 	// MARK: - Private Methods
