@@ -24,7 +24,7 @@ class AppCoordinator: Coordinator {
 	
 	func start() {
 		Router.shared.setRoot(LaunchScreenViewController())
-		DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
 			self.showMain()
 		}
 	}
