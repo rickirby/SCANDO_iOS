@@ -143,6 +143,13 @@ class AlertView {
 		target.present(ac, animated: true, completion: nil)
 	}
 	
+	static func createAdaptiveParamErrorAlert(_ target: UIViewController) {
+		let ac = UIAlertController(title: SCANDOConstant.setAdaptiveParamErrorTitle, message: SCANDOConstant.setAdaptiveParamErrorMessage, preferredStyle: .alert)
+		ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+		
+		target.present(ac, animated: true, completion: nil)
+	}
+	
 	static func createDilateParamAlert(_ target: UIViewController, currentIteration: Int?, setHandler: @escaping (UITextField) -> Void, cancelHandler: @escaping () -> Void) {
 		let ac = UIAlertController(title: SCANDOConstant.setDilateTitle, message: SCANDOConstant.setDilateMessage, preferredStyle: .alert)
 		ac.addTextField {

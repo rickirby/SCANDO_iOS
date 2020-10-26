@@ -58,6 +58,9 @@ class SCANDOConstant {
 	static let setAdaptivePositiveAction: String = "OK"
 	static let setAdaptiveNegativeAction: String = "Cancel"
 	
+	static let setAdaptiveParamErrorTitle: String = "Error"
+	static let setAdaptiveParamErrorMessage: String = "Block Size value should be odd integer with value > 1"
+	
 	static let setDilateTitle: String = "Dilate Parameter"
 	static let setDilateMessage: String = "Set value for following parameter"
 	static let setDilateIterationPlaceholder: String = "Iteration"
