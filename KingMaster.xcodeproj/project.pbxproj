@@ -35,6 +35,8 @@
 		DC0932EA25387634007C3A10 /* RBPhotosGallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 099AB1FF2503E6C500B76522 /* RBPhotosGallery.framework */; };
 		DC0932EC25387636007C3A10 /* RBToolkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 099AB2002503E6C600B76522 /* RBToolkit.framework */; };
 		DC0932EF25387DD9007C3A10 /* RBImageProcessor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC415C6B252CA193001AD7D2 /* RBImageProcessor.framework */; };
+		DC0FAC10253C462F0033593C /* LauncScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0FAC0F253C462F0033593C /* LauncScreenViewController.swift */; };
+		DC0FAC11253C469E0033593C /* LauncScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0FAC0F253C462F0033593C /* LauncScreenViewController.swift */; };
 		DC215A1C25166321006D409A /* QuadPoint+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1425166321006D409A /* QuadPoint+CoreDataClass.swift */; };
 		DC215A1D25166321006D409A /* QuadPoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1525166321006D409A /* QuadPoint+CoreDataProperties.swift */; };
 		DC215A1E25166321006D409A /* Document+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1625166321006D409A /* Document+CoreDataClass.swift */; };
@@ -164,6 +166,7 @@
 		09FDB4A5252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveParamUserSetting.swift; sourceTree = "<group>"; };
 		7206EAEE250C704B00A3DA4A /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		7206EAF0250C73F200A3DA4A /* GalleryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCoordinator.swift; sourceTree = "<group>"; };
+		DC0FAC0F253C462F0033593C /* LauncScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncScreenViewController.swift; sourceTree = "<group>"; };
 		DC215A1425166321006D409A /* QuadPoint+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuadPoint+CoreDataClass.swift"; sourceTree = "<group>"; };
 		DC215A1525166321006D409A /* QuadPoint+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuadPoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DC215A1625166321006D409A /* Document+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Document+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -299,6 +302,7 @@
 		097A18A525046CED0044D5FB /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				DC0FAC0E253C3E4E0033593C /* LaunchScreen */,
 				097A18A625046D540044D5FB /* ScanAlbums */,
 				0922627725053E1600BDDB90 /* DocumentGroup */,
 				DC972BBF2512453A00A6C43B /* Camera */,
@@ -374,6 +378,14 @@
 				DCB1B5E32512DC6A00B1630C /* Views */,
 			);
 			path = Gallery;
+			sourceTree = "<group>";
+		};
+		DC0FAC0E253C3E4E0033593C /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				DC0FAC0F253C462F0033593C /* LauncScreenViewController.swift */,
+			);
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 		DC215A032516618A006D409A /* Data */ = {
@@ -761,6 +773,7 @@
 				09FDB4A6252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift in Sources */,
 				DC215A1D25166321006D409A /* QuadPoint+CoreDataProperties.swift in Sources */,
 				DCE0E731250AFB5F00971B22 /* SCANDOConstant.swift in Sources */,
+				DC0FAC10253C462F0033593C /* LauncScreenViewController.swift in Sources */,
 				097A18A825046E660044D5FB /* ScanAlbumsViewController.swift in Sources */,
 				7206EAF1250C73F200A3DA4A /* GalleryCoordinator.swift in Sources */,
 				09C8ADB2250653FF004BA0F7 /* AppCoordinator.swift in Sources */,
@@ -824,6 +837,7 @@
 				09FDB4A7252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift in Sources */,
 				DCD73510252CACF70046775E /* QuadPoint+CoreDataProperties.swift in Sources */,
 				DCD73511252CACF70046775E /* SCANDOConstant.swift in Sources */,
+				DC0FAC11253C469E0033593C /* LauncScreenViewController.swift in Sources */,
 				DCD73512252CACF70046775E /* ScanAlbumsViewController.swift in Sources */,
 				DCD73513252CACF70046775E /* GalleryCoordinator.swift in Sources */,
 				DCD73514252CACF70046775E /* AppCoordinator.swift in Sources */,
@@ -1010,7 +1024,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KingMaster/Data/CloudKitEntitlements/SCANDO.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6NMANHT3A2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1022,7 +1036,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.1;
+				MARKETING_VERSION = 0.1.2;
 				OTHER_SWIFT_FLAGS = "-DPRODUCTION";
 				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.apps.SCANDO;
 				PRODUCT_NAME = SCANDO;
@@ -1037,7 +1051,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KingMaster/Data/CloudKitEntitlements/SCANDO.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6NMANHT3A2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1049,7 +1063,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.1;
+				MARKETING_VERSION = 0.1.2;
 				OTHER_SWIFT_FLAGS = "-DPRODUCTION";
 				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.apps.SCANDO;
 				PRODUCT_NAME = SCANDO;
@@ -1064,7 +1078,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "KingMaster/Data/CloudKitEntitlements/DEV🛠.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6NMANHT3A2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1076,7 +1090,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.1;
+				MARKETING_VERSION = 0.1.2;
 				OTHER_SWIFT_FLAGS = "-DSANDBOX";
 				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.apps.dev.SCANDO;
 				PRODUCT_NAME = "DEV🛠";
@@ -1091,7 +1105,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "KingMaster/Data/CloudKitEntitlements/DEV🛠.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6NMANHT3A2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1103,7 +1117,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.1;
+				MARKETING_VERSION = 0.1.2;
 				OTHER_SWIFT_FLAGS = "-DSANDBOX";
 				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.apps.dev.SCANDO;
 				PRODUCT_NAME = "DEV🛠";
