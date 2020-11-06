@@ -44,6 +44,7 @@ class DocumentGroupView: View {
 		collectionView.translatesAutoresizingMaskIntoConstraints = false
 		collectionView.backgroundColor = .systemBackground
 		collectionView.contentInset = UIEdgeInsets(top: contentInset, left: contentInset, bottom: contentInset, right: contentInset)
+		collectionView.alwaysBounceVertical = true
 		
 		return collectionView
 	}()
