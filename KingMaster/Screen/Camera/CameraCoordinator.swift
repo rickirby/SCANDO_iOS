@@ -55,6 +55,9 @@ class CameraCoordinator: Coordinator {
 	private func openScanImagePicker() {
 		scanImagePickerCoordinator = nil
 		scanImagePickerCoordinator = ScanImagePickerCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		scanImagePickerCoordinator?.passedData = {
+			return ScanImagePickerCoordinator.ScanImagePickerData(documentGroup: self.passedData?().documentGroup)
+		}
 		
 		scanImagePickerCoordinator?.start()
 	}

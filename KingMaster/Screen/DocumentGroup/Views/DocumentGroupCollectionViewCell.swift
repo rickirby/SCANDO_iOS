@@ -65,6 +65,7 @@ class DocumentGroupCollectionViewCell: UICollectionViewCell {
 	}
 	
 	func configure(with image: UIImage?) {
+		imageView.backgroundColor = .clear
 		imageView.image = image
 	}
 }

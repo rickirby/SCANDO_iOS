@@ -16,6 +16,7 @@ class GalleryViewController: RBPhotosGalleryViewController {
 	
 	enum NavigationEvent {
 		case didDeleteImage
+		case didDeleteLastImage
 		case didTapEdit(image: UIImage, quad: Quadrilateral, currentDocument: Document)
 		#if SANDBOX
 		case didOpenDev(processedImage: UIImage)
@@ -158,12 +159,19 @@ class GalleryViewController: RBPhotosGalleryViewController {
     }
 	
 	private func deleteImage() {
-		guard let indexOfDocumentGroup = passedData?().indexOfDocumentGroup else { return }
+		guard let documentGroup = passedData?().documentGroup, let indexOfDocumentGroup = passedData?().indexOfDocumentGroup else { return }
 		screenView.showDeleteAlert(on: self, deleteHandler: {
-			let documentToDelete = self.galleryViewDocumentsData[self.currentPageIndex]
-			self.model.deleteData(documentToDelete: documentToDelete)
-			GalleryCache.removeCache(for: indexOfDocumentGroup)
-			self.onNavigationEvent?(.didDeleteImage)
+			if self.galleryViewDocumentsData.count > 1 {
+				let documentToDelete = self.galleryViewDocumentsData[self.currentPageIndex]
+				self.model.deleteData(documentToDelete: documentToDelete)
+				GalleryCache.removeCache(for: indexOfDocumentGroup)
+				self.onNavigationEvent?(.didDeleteImage)
+			} else {
+				self.model.deleteDocumentGroup(documentGroupToDelete: documentGroup)
+				GalleryCache.removeCache(for: indexOfDocumentGroup)
+				self.onNavigationEvent?(.didDeleteLastImage)
+			}
+			
 		}, cancelHandler: {
 			
 		})
