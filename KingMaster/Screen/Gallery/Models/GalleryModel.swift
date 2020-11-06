@@ -23,4 +23,16 @@ class GalleryModel {
 			print("Could not save \(error), \(error.userInfo)")
 		}
 	}
+	
+	func deleteDocumentGroup(documentGroupToDelete documentGroup: DocumentGroup) {
+		let managedObjectContext = DataManager.shared.viewContext
+		
+		managedObjectContext.delete(documentGroup)
+		
+		do {
+			try managedObjectContext.save()
+		} catch let error as NSError {
+			print("Could not save \(error), \(error.userInfo)")
+		}
+	}
 }
