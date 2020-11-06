@@ -128,6 +128,11 @@ extension DocumentGroupView: UICollectionViewDelegate, UICollectionViewDataSourc
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		guard indexPath.row < viewDataSupply?().count ?? 0 else {
+			onViewEvent?(.didTapCamera)
+			return
+		}
+		
 		onViewEvent?(.didSelectRow(index: indexPath.row))
 	}
 }
