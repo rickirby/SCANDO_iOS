@@ -52,7 +52,7 @@ class DocumentGroupViewController: ViewController<DocumentGroupView> {
 	
 	private func configureLoadBar() {
 		title = "Documents"
-		navigationItem.rightBarButtonItems = [screenView.cameraBarButton, screenView.fileBarButton]
+//		navigationItem.rightBarButtonItems = [screenView.cameraBarButton, screenView.fileBarButton]
 	}
 	
 	private func configureBar() {
