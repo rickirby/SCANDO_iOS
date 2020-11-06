@@ -107,15 +107,22 @@ extension DocumentGroupView {
 
 extension DocumentGroupView: UICollectionViewDelegate, UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return viewDataSupply?().count ?? 0
+		return (viewDataSupply?().count ?? 0) + 1
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DocumentGroupCell", for: indexPath) as? DocumentGroupCollectionViewCell, let object = viewDataSupply?()[indexPath.row] else {
+		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DocumentGroupCell", for: indexPath) as? DocumentGroupCollectionViewCell, indexPath.row < (viewDataSupply?().count ?? 0) + 1 else {
 			return UICollectionViewCell()
 		}
 		
-		cell.configure(with: object)
+		if indexPath.row < viewDataSupply?().count ?? 0 {
+			guard let object = viewDataSupply?()[indexPath.row] else {
+				return UICollectionViewCell()
+			}
+			cell.configure(with: object)
+		} else {
+			cell.configure(with: UIImage(named: "TapToAdd"))
+		}
 		
 		return cell
 	}
