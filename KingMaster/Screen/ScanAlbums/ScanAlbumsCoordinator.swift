@@ -42,6 +42,8 @@ class ScanAlbumsCoordinator: Coordinator {
 				self?.openCamera()
 			case .didTapPicker:
 				self?.openScanImagePicker()
+			case .didTapSetting:
+				break
 			case .didSelectRow(let index, let object):
 				self?.openDocumentGroup(from: index, with: object)
 			}
