@@ -48,7 +48,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	
 	private func configureLoadBar() {
 		title = "Scan Albums"
-		navigationItem.rightBarButtonItems = [screenView.cameraBarButton, screenView.fileBarButton]
+		navigationItem.rightBarButtonItems = [screenView.cameraBarButton]
 		toolbarItems = [screenView.deleteBarButton]
 	}
 	
