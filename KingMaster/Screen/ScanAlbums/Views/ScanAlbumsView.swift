@@ -49,6 +49,8 @@ class ScanAlbumsView: View {
 	
 	lazy var fileBarButton = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(fileBarButtonTapped))
 	
+	lazy var settingBarButton = UIBarButtonItem(title: "Setting", style: .plain, target: self, action: nil)
+	
 	lazy var cancelBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelBarButtonTapped))
 	
 	lazy var selectAllBarButton = UIBarButtonItem(title: "Select All", style: .plain, target: self, action: #selector(selectAllBarButtonTapped))

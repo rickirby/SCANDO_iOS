@@ -25,6 +25,22 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	
 	private let model = ScanAlbumsModel()
 	
+	private var rightBarButtonItemsNormalState: [UIBarButtonItem] {
+		return [screenView.cameraBarButton]
+	}
+	
+	private var rightBarButtonItemsEditingState: [UIBarButtonItem] {
+		return [screenView.selectAllBarButton]
+	}
+	
+	private var leftBarButtonItemsNormalState: [UIBarButtonItem] {
+		return [screenView.settingBarButton]
+	}
+	
+	private var leftBarButtonItemsEditingState: [UIBarButtonItem] {
+		return [screenView.cancelBarButton]
+	}
+	
 	// MARK: - Life Cycle
 	
 	override func viewDidLoad() {
@@ -48,7 +64,8 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	
 	private func configureLoadBar() {
 		title = "Scan Albums"
-		navigationItem.rightBarButtonItems = [screenView.cameraBarButton]
+		navigationItem.rightBarButtonItems = rightBarButtonItemsNormalState
+		navigationItem.leftBarButtonItems = leftBarButtonItemsNormalState
 		toolbarItems = [screenView.deleteBarButton]
 	}
 	
@@ -144,15 +161,15 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	}
 	
 	private func configureNavigationItemForEditingState() {
-		navigationItem.leftBarButtonItem = screenView.cancelBarButton
-		navigationItem.rightBarButtonItems = [screenView.selectAllBarButton]
+		navigationItem.leftBarButtonItems = leftBarButtonItemsEditingState
+		navigationItem.rightBarButtonItems = rightBarButtonItemsEditingState
 		
 		navigationController?.setToolbarHidden(false, animated: true)
 	}
 	
 	private func configureNavigationItemForNormalState() {
-		navigationItem.leftBarButtonItem = nil
-		navigationItem.rightBarButtonItems = [screenView.cameraBarButton, screenView.fileBarButton]
+		navigationItem.leftBarButtonItems = leftBarButtonItemsNormalState
+		navigationItem.rightBarButtonItems = rightBarButtonItemsNormalState
 		
 		navigationController?.setToolbarHidden(true, animated: true)
 	}
