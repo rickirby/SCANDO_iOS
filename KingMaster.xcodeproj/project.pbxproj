@@ -75,6 +75,8 @@
 		DCB5C6C42556EFD700E87733 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB5C6C22556EFD700E87733 /* SettingView.swift */; };
 		DCB5C6C62556FA6900E87733 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB5C6C52556FA6900E87733 /* SettingViewController.swift */; };
 		DCB5C6C72556FA6900E87733 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB5C6C52556FA6900E87733 /* SettingViewController.swift */; };
+		DCB5C6CA2557063F00E87733 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB5C6C92557063F00E87733 /* SettingModel.swift */; };
+		DCB5C6CB2557063F00E87733 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB5C6C92557063F00E87733 /* SettingModel.swift */; };
 		DCB689402517AD29001AD049 /* CameraData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6893F2517AD29001AD049 /* CameraData.swift */; };
 		DCC826E6252E047B00DBD037 /* FilterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC826E5252E047B00DBD037 /* FilterData.swift */; };
 		DCC826E7252E04F600DBD037 /* FilterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC826E5252E047B00DBD037 /* FilterData.swift */; };
@@ -208,6 +210,7 @@
 		DCB3CE4D251A5A4400D4EDFB /* GalleryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryData.swift; sourceTree = "<group>"; };
 		DCB5C6C22556EFD700E87733 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		DCB5C6C52556FA6900E87733 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		DCB5C6C92557063F00E87733 /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
 		DCB6893F2517AD29001AD049 /* CameraData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraData.swift; sourceTree = "<group>"; };
 		DCC826E5252E047B00DBD037 /* FilterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterData.swift; sourceTree = "<group>"; };
 		DCD2C73B252D543500CC391C /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
@@ -547,8 +550,9 @@
 		DCB5C6C02556EF9B00E87733 /* SettingScreen */ = {
 			isa = PBXGroup;
 			children = (
-				DCB5C6C12556EFBB00E87733 /* Views */,
 				DCB5C6C52556FA6900E87733 /* SettingViewController.swift */,
+				DCB5C6C82557063200E87733 /* Models */,
+				DCB5C6C12556EFBB00E87733 /* Views */,
 			);
 			path = SettingScreen;
 			sourceTree = "<group>";
@@ -559,6 +563,14 @@
 				DCB5C6C22556EFD700E87733 /* SettingView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		DCB5C6C82557063200E87733 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DCB5C6C92557063F00E87733 /* SettingModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		DCB6893E2517AD1C001AD049 /* Models */ = {
@@ -810,6 +822,7 @@
 				09C8ADAC2506511F004BA0F7 /* Coordinator.swift in Sources */,
 				DC82E08E251ACCC800FB9CA7 /* GalleryCache.swift in Sources */,
 				DC972BC4251258C400A6C43B /* ScanImagePickerCoordinator.swift in Sources */,
+				DCB5C6CA2557063F00E87733 /* SettingModel.swift in Sources */,
 				0922627525053E0B00BDDB90 /* DocumentGroupViewController.swift in Sources */,
 				DCB3CE4E251A5A4400D4EDFB /* GalleryData.swift in Sources */,
 				DC215A2025166321006D409A /* DocumentImage+CoreDataClass.swift in Sources */,
@@ -876,6 +889,7 @@
 				DCD73518252CACF70046775E /* KingMaster.xcdatamodeld in Sources */,
 				DCD73519252CACF70046775E /* ScanAlbumsModel.swift in Sources */,
 				DCD7351A252CACF70046775E /* Coordinator.swift in Sources */,
+				DCB5C6CB2557063F00E87733 /* SettingModel.swift in Sources */,
 				DCD7351B252CACF70046775E /* GalleryCache.swift in Sources */,
 				DCD7351C252CACF70046775E /* ScanImagePickerCoordinator.swift in Sources */,
 				DCD7351D252CACF70046775E /* DocumentGroupViewController.swift in Sources */,
