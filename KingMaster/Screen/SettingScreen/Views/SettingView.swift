@@ -13,6 +13,13 @@ class SettingView: View {
 	
 	// MARK: - Public Properties
 	
+	enum ViewEvent {
+		case didSelectRow(indexPath: IndexPath)
+	}
+	
+	var onViewEvent: ((ViewEvent) -> Void)?
+	var viewDataSupply: (() -> [[String]])?
+	
 	// MARK: - View Components
 	
 	lazy var tableView: UITableView = {
