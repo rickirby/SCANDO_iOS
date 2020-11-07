@@ -11,5 +11,15 @@ import RBToolkit
 
 class SettingViewController: ViewController<SettingView> {
 	
+	// MARK: - Public Properties
 	
+	enum NavigationEvent {
+		case didTapAbout
+		case didTapHelp
+		case didTapConnectionSetting
+	}
+	
+	var onNavigationEvent: ((NavigationEvent) -> ())?
+	
+	// MARK: - Life Cycles
 }
