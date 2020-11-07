@@ -11,7 +11,7 @@ Created by Ricki Bin Yamin
 Use carthage to download listed framework above
 
 ## Current Project Version
-0.1.3
+0.1.4
 
 ## Testflight Build Number
 1
