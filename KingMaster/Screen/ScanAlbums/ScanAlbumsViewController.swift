@@ -16,6 +16,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	enum NavigationEvent {
 		case didTapCamera
 		case didTapPicker
+		case didTapSetting
 		case didSelectRow(index: Int, object: DocumentGroup)
 	}
 	
@@ -24,6 +25,22 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	// MARK: - Private Properties
 	
 	private let model = ScanAlbumsModel()
+	
+	private var rightBarButtonItemsNormalState: [UIBarButtonItem] {
+		return [screenView.cameraBarButton]
+	}
+	
+	private var rightBarButtonItemsEditingState: [UIBarButtonItem] {
+		return [screenView.selectAllBarButton]
+	}
+	
+	private var leftBarButtonItemsNormalState: [UIBarButtonItem] {
+		return [screenView.settingBarButton]
+	}
+	
+	private var leftBarButtonItemsEditingState: [UIBarButtonItem] {
+		return [screenView.cancelBarButton]
+	}
 	
 	// MARK: - Life Cycle
 	
@@ -48,7 +65,8 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	
 	private func configureLoadBar() {
 		title = "Scan Albums"
-		navigationItem.rightBarButtonItems = [screenView.cameraBarButton, screenView.fileBarButton]
+		navigationItem.rightBarButtonItems = rightBarButtonItemsNormalState
+		navigationItem.leftBarButtonItems = leftBarButtonItemsNormalState
 		toolbarItems = [screenView.deleteBarButton]
 	}
 	
@@ -64,6 +82,8 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 				self?.onNavigationEvent?(.didTapCamera)
 			case .didTapPicker:
 				self?.onNavigationEvent?(.didTapPicker)
+			case .didTapSetting:
+				self?.onNavigationEvent?(.didTapSetting)
 			case .didSelectRow(let index):
 				guard let object = self?.model.fetchedResultsController.object(at: IndexPath(row: index, section: 0)) else { return }
 				self?.onNavigationEvent?(.didSelectRow(index: index, object: object))
@@ -144,15 +164,15 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	}
 	
 	private func configureNavigationItemForEditingState() {
-		navigationItem.leftBarButtonItem = screenView.cancelBarButton
-		navigationItem.rightBarButtonItems = [screenView.selectAllBarButton]
+		navigationItem.leftBarButtonItems = leftBarButtonItemsEditingState
+		navigationItem.rightBarButtonItems = rightBarButtonItemsEditingState
 		
 		navigationController?.setToolbarHidden(false, animated: true)
 	}
 	
 	private func configureNavigationItemForNormalState() {
-		navigationItem.leftBarButtonItem = nil
-		navigationItem.rightBarButtonItems = [screenView.cameraBarButton, screenView.fileBarButton]
+		navigationItem.leftBarButtonItems = leftBarButtonItemsNormalState
+		navigationItem.rightBarButtonItems = rightBarButtonItemsNormalState
 		
 		navigationController?.setToolbarHidden(true, animated: true)
 	}
