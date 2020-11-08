@@ -64,6 +64,8 @@
 		DC82E091251AD38B00FB9CA7 /* DocumentGroupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC82E090251AD38B00FB9CA7 /* DocumentGroupData.swift */; };
 		DC832C56251F4238001D54C0 /* RBCameraDocScan.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DC832C55251F4238001D54C0 /* RBCameraDocScan.bundle */; };
 		DC89011925580E41001318D7 /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89011825580E41001318D7 /* SettingCoordinator.swift */; };
+		DC89011B25582A6A001318D7 /* ConnectionStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89011A25582A6A001318D7 /* ConnectionStatusView.swift */; };
+		DC89011F25582C59001318D7 /* ConnectionStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89011A25582A6A001318D7 /* ConnectionStatusView.swift */; };
 		DC972BC12512454F00A6C43B /* CameraCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC972BC02512454F00A6C43B /* CameraCoordinator.swift */; };
 		DC972BC4251258C400A6C43B /* ScanImagePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC972BC3251258C400A6C43B /* ScanImagePickerCoordinator.swift */; };
 		DC9F070E25314818005A517B /* DilateParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9F070D25314818005A517B /* DilateParamUserSetting.swift */; };
@@ -202,6 +204,7 @@
 		DC82E090251AD38B00FB9CA7 /* DocumentGroupData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentGroupData.swift; sourceTree = "<group>"; };
 		DC832C55251F4238001D54C0 /* RBCameraDocScan.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = RBCameraDocScan.bundle; path = Carthage/Build/iOS/RBCameraDocScan.framework/RBCameraDocScan.bundle; sourceTree = "<group>"; };
 		DC89011825580E41001318D7 /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
+		DC89011A25582A6A001318D7 /* ConnectionStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatusView.swift; sourceTree = "<group>"; };
 		DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBCameraDocScan.framework; path = Carthage/Build/iOS/RBCameraDocScan.framework; sourceTree = "<group>"; };
 		DC972BC02512454F00A6C43B /* CameraCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCoordinator.swift; sourceTree = "<group>"; };
 		DC972BC3251258C400A6C43B /* ScanImagePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanImagePickerCoordinator.swift; sourceTree = "<group>"; };
@@ -564,6 +567,7 @@
 			isa = PBXGroup;
 			children = (
 				DCB5C6C22556EFD700E87733 /* SettingView.swift */,
+				DC89011A25582A6A001318D7 /* ConnectionStatusView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -841,6 +845,7 @@
 				DCB689402517AD29001AD049 /* CameraData.swift in Sources */,
 				DC215A2325166321006D409A /* DocumentGroup+CoreDataProperties.swift in Sources */,
 				09FDB4A3252FED7E007E8D7A /* UserSetting.swift in Sources */,
+				DC89011B25582A6A001318D7 /* ConnectionStatusView.swift in Sources */,
 				DC39BC7A2514AF590067DF71 /* EditScanCoordinator.swift in Sources */,
 				0922627425053E0B00BDDB90 /* DocumentGroupView.swift in Sources */,
 				09195CDA2504C429006CC8A4 /* ScanAlbumsTableViewCell.swift in Sources */,
@@ -909,6 +914,7 @@
 				DCD73524252CACF70046775E /* DocumentGroupData.swift in Sources */,
 				09FDB4A4252FED7E007E8D7A /* UserSetting.swift in Sources */,
 				DCD73525252CACF70046775E /* CameraData.swift in Sources */,
+				DC89011F25582C59001318D7 /* ConnectionStatusView.swift in Sources */,
 				DCD73526252CACF70046775E /* DocumentGroup+CoreDataProperties.swift in Sources */,
 				DCD73527252CACF70046775E /* EditScanCoordinator.swift in Sources */,
 				DCD73528252CACF70046775E /* DocumentGroupView.swift in Sources */,
