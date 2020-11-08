@@ -19,7 +19,7 @@ class SettingViewController: ViewController<SettingView> {
 		case didTapConnectionSetting
 	}
 	
-	var onNavigationEvent: ((NavigationEvent) -> ())?
+	var onNavigationEvent: ((NavigationEvent) -> Void)?
 	
 	// MARK: - Private Properties
 	

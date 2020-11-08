@@ -66,6 +66,8 @@
 		DC89011925580E41001318D7 /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89011825580E41001318D7 /* SettingCoordinator.swift */; };
 		DC89011B25582A6A001318D7 /* ConnectionStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89011A25582A6A001318D7 /* ConnectionStatusView.swift */; };
 		DC89011F25582C59001318D7 /* ConnectionStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89011A25582A6A001318D7 /* ConnectionStatusView.swift */; };
+		DC89012425583FA9001318D7 /* ConnectionStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89012325583FA8001318D7 /* ConnectionStatusViewController.swift */; };
+		DC89012525583FA9001318D7 /* ConnectionStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89012325583FA8001318D7 /* ConnectionStatusViewController.swift */; };
 		DC972BC12512454F00A6C43B /* CameraCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC972BC02512454F00A6C43B /* CameraCoordinator.swift */; };
 		DC972BC4251258C400A6C43B /* ScanImagePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC972BC3251258C400A6C43B /* ScanImagePickerCoordinator.swift */; };
 		DC9F070E25314818005A517B /* DilateParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9F070D25314818005A517B /* DilateParamUserSetting.swift */; };
@@ -205,6 +207,7 @@
 		DC832C55251F4238001D54C0 /* RBCameraDocScan.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = RBCameraDocScan.bundle; path = Carthage/Build/iOS/RBCameraDocScan.framework/RBCameraDocScan.bundle; sourceTree = "<group>"; };
 		DC89011825580E41001318D7 /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
 		DC89011A25582A6A001318D7 /* ConnectionStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatusView.swift; sourceTree = "<group>"; };
+		DC89012325583FA8001318D7 /* ConnectionStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatusViewController.swift; sourceTree = "<group>"; };
 		DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBCameraDocScan.framework; path = Carthage/Build/iOS/RBCameraDocScan.framework; sourceTree = "<group>"; };
 		DC972BC02512454F00A6C43B /* CameraCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCoordinator.swift; sourceTree = "<group>"; };
 		DC972BC3251258C400A6C43B /* ScanImagePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanImagePickerCoordinator.swift; sourceTree = "<group>"; };
@@ -557,6 +560,7 @@
 			children = (
 				DC89011825580E41001318D7 /* SettingCoordinator.swift */,
 				DCB5C6C52556FA6900E87733 /* SettingViewController.swift */,
+				DC89012325583FA8001318D7 /* ConnectionStatusViewController.swift */,
 				DCB5C6C82557063200E87733 /* Models */,
 				DCB5C6C12556EFBB00E87733 /* Views */,
 			);
@@ -866,6 +870,7 @@
 				DCB1B5E52512DC9D00B1630C /* GalleryView.swift in Sources */,
 				0922627625053E0B00BDDB90 /* DocumentGroupCollectionViewCell.swift in Sources */,
 				DCD2C73E252D546500CC391C /* FilterViewController.swift in Sources */,
+				DC89012425583FA9001318D7 /* ConnectionStatusViewController.swift in Sources */,
 				DC215A1E25166321006D409A /* Document+CoreDataClass.swift in Sources */,
 				DC75E59F2513AA4700186F30 /* EditScanData.swift in Sources */,
 				DC215A2225166321006D409A /* DocumentGroup+CoreDataClass.swift in Sources */,
@@ -926,6 +931,7 @@
 				DCD7352E252CACF70046775E /* ScanAlbumsView.swift in Sources */,
 				DCD7352F252CACF70046775E /* PreviewData.swift in Sources */,
 				DCD73530252CACF70046775E /* EditScanViewController.swift in Sources */,
+				DC89012525583FA9001318D7 /* ConnectionStatusViewController.swift in Sources */,
 				DCD73531252CACF70046775E /* DocumentGroupCoordinator.swift in Sources */,
 				DCD73532252CACF70046775E /* SceneDelegate.swift in Sources */,
 				DCD73533252CACF70046775E /* ScanImagePickerData.swift in Sources */,

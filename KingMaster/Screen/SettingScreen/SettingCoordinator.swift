@@ -65,6 +65,8 @@ class SettingCoordinator: Coordinator {
 	}
 	
 	private func openConnectionSetting() {
+		let vc = ConnectionStatusViewController()
 		
+		Router.shared.push(vc, on: self)
 	}
 }
