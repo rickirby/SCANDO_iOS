@@ -18,7 +18,8 @@ class SettingView: View {
 	}
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
-	var viewDataSupply: (() -> [[String]])?
+	var viewDataSupplyTableTitle: (() -> [[String]])?
+	var viewDataSupplySectionTitle: (() -> [String])?
 	
 	// MARK: - View Components
 	
@@ -52,6 +53,51 @@ class SettingView: View {
 	}
 	
 	private func configureTableView() {
-		
+		tableView.delegate = self
+		tableView.dataSource = self
 	}
+	
+}
+
+extension SettingView: UITableViewDelegate, UITableViewDataSource {
+	
+	func numberOfSections(in tableView: UITableView) -> Int {
+		return viewDataSupplyTableTitle?().count ?? 0
+	}
+	
+	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		guard section < viewDataSupplySectionTitle?().count ?? 0 else {
+			return nil
+		}
+		return viewDataSupplySectionTitle?()[section]
+	}
+	
+	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return 38.0
+	}
+	
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		guard let tableData = viewDataSupplyTableTitle?(),
+			section < tableData.count else {
+			return 0
+		}
+		
+		return tableData[section].count
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = UITableViewCell()
+		guard let tableData = viewDataSupplyTableTitle?(),
+			indexPath.section < tableData.count,
+			indexPath.row < tableData[indexPath.section].count else {
+			return cell
+		}
+		
+		cell.textLabel?.text = tableData[indexPath.section][indexPath.row]
+		cell.accessoryType = .disclosureIndicator
+		
+		return cell
+	}
+	
+	
 }

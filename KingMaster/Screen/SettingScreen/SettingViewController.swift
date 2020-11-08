@@ -58,10 +58,16 @@ class SettingViewController: ViewController<SettingView> {
 	}
 	
 	private func configureViewData() {
-		screenView.viewDataSupply = {
-			let viewData: [[String]] = self.tableData.map { $0.rowsData.map { $0.title } }
+		screenView.viewDataSupplyTableTitle = {
+			let tableTitle: [[String]] = self.tableData.map { $0.rowsData.map { $0.title } }
 			
-			return viewData
+			return tableTitle
+		}
+		
+		screenView.viewDataSupplySectionTitle = {
+			let sectionTitle: [String] = self.tableData.map { $0.sectionTitle }
+			
+			return sectionTitle
 		}
 	}
 	
