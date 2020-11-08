@@ -42,6 +42,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 		super.viewWillAppear(animated)
 		
 		configureBar()
+		clearTableSelectionOnViewWillAppear()
 	}
 	
 	// MARK: - Private Method
@@ -126,7 +127,7 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 				if indexPath.row > 0 {
 					GalleryCache.slideDownCache(before: indexPath.row)
 				}
-
+				
 				self.screenView.tableView.moveRow(at: indexPath, to: newIndexPath)
 				DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { [weak self] in
 					self?.screenView.tableView.reloadRows(at: [newIndexPath], with: .automatic)
@@ -137,6 +138,24 @@ class ScanAlbumsViewController: ViewController<ScanAlbumsView> {
 	
 	private func configureObserver() {
 		NotificationCenter.default.addObserver(self, selector: #selector(didFinishAddNewDocumentGroup), name: NSNotification.Name("didFinishAddNewDocumentGroup"), object: nil)
+	}
+	
+	private func clearTableSelectionOnViewWillAppear() {
+		if let selectedIndexPath = self.screenView.tableView.indexPathForSelectedRow {
+			if let transitionCoordinator = self.transitionCoordinator {
+				transitionCoordinator.animate(alongsideTransition: { (context) in
+					self.screenView.tableView.deselectRow(at: selectedIndexPath, animated: true)
+				}, completion: nil)
+				
+				transitionCoordinator.notifyWhenInteractionChanges { (context) in
+					if context.isCancelled {
+						self.screenView.tableView.selectRow(at: selectedIndexPath, animated: true, scrollPosition: .none)
+					}
+				}
+			} else {
+				self.screenView.tableView.deselectRow(at: selectedIndexPath, animated: true)
+			}
+		}
 	}
 	
 	@objc func didFinishAddNewDocumentGroup() {
