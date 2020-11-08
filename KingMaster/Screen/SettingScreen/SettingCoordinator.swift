@@ -23,6 +23,7 @@ class SettingCoordinator: Coordinator {
 	// MARK: - Private Properties
 	
 	private weak var navigationController: UINavigationController?
+	private var connectionStatusCoordinator: ConnectionStatusCoordinator?
 	
 	// MARK: - Life Cycles
 	
@@ -65,8 +66,9 @@ class SettingCoordinator: Coordinator {
 	}
 	
 	private func openConnectionSetting() {
-		let vc = ConnectionStatusViewController()
+		connectionStatusCoordinator = nil
+		connectionStatusCoordinator = ConnectionStatusCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
 		
-		Router.shared.push(vc, on: self)
+		connectionStatusCoordinator?.start()
 	}
 }

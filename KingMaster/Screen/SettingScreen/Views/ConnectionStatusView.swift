@@ -94,6 +94,7 @@ class ConnectionStatusView: View {
 	// MARK: - Private Methods
 	
 	private func configureView() {
+		backgroundColor = .systemBackground
 		addAllSubviews(views: [titleLabel, descriptionLabel, printerImageView, verticalStack])
 		configureVerticalStack()
 		

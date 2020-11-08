@@ -68,6 +68,7 @@
 		DC89011F25582C59001318D7 /* ConnectionStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89011A25582A6A001318D7 /* ConnectionStatusView.swift */; };
 		DC89012425583FA9001318D7 /* ConnectionStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89012325583FA8001318D7 /* ConnectionStatusViewController.swift */; };
 		DC89012525583FA9001318D7 /* ConnectionStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89012325583FA8001318D7 /* ConnectionStatusViewController.swift */; };
+		DC8DB88025584A3F00F8437F /* ConnectionStatusCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DB87F25584A3F00F8437F /* ConnectionStatusCoordinator.swift */; };
 		DC972BC12512454F00A6C43B /* CameraCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC972BC02512454F00A6C43B /* CameraCoordinator.swift */; };
 		DC972BC4251258C400A6C43B /* ScanImagePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC972BC3251258C400A6C43B /* ScanImagePickerCoordinator.swift */; };
 		DC9F070E25314818005A517B /* DilateParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9F070D25314818005A517B /* DilateParamUserSetting.swift */; };
@@ -208,6 +209,7 @@
 		DC89011825580E41001318D7 /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
 		DC89011A25582A6A001318D7 /* ConnectionStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatusView.swift; sourceTree = "<group>"; };
 		DC89012325583FA8001318D7 /* ConnectionStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatusViewController.swift; sourceTree = "<group>"; };
+		DC8DB87F25584A3F00F8437F /* ConnectionStatusCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatusCoordinator.swift; sourceTree = "<group>"; };
 		DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBCameraDocScan.framework; path = Carthage/Build/iOS/RBCameraDocScan.framework; sourceTree = "<group>"; };
 		DC972BC02512454F00A6C43B /* CameraCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCoordinator.swift; sourceTree = "<group>"; };
 		DC972BC3251258C400A6C43B /* ScanImagePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanImagePickerCoordinator.swift; sourceTree = "<group>"; };
@@ -559,6 +561,7 @@
 			isa = PBXGroup;
 			children = (
 				DC89011825580E41001318D7 /* SettingCoordinator.swift */,
+				DC8DB87F25584A3F00F8437F /* ConnectionStatusCoordinator.swift */,
 				DCB5C6C52556FA6900E87733 /* SettingViewController.swift */,
 				DC89012325583FA8001318D7 /* ConnectionStatusViewController.swift */,
 				DCB5C6C82557063200E87733 /* Models */,
@@ -873,6 +876,7 @@
 				DC89012425583FA9001318D7 /* ConnectionStatusViewController.swift in Sources */,
 				DC215A1E25166321006D409A /* Document+CoreDataClass.swift in Sources */,
 				DC75E59F2513AA4700186F30 /* EditScanData.swift in Sources */,
+				DC8DB88025584A3F00F8437F /* ConnectionStatusCoordinator.swift in Sources */,
 				DC215A2225166321006D409A /* DocumentGroup+CoreDataClass.swift in Sources */,
 				DC215A262516640E006D409A /* DataManager.swift in Sources */,
 				DCE0E733250AFE2300971B22 /* AlertView.swift in Sources */,
