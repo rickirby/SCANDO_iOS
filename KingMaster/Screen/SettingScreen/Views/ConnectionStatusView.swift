@@ -49,6 +49,7 @@ class ConnectionStatusView: View {
 		let button = UIButton()
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.setTitleColor(.systemBlue, for: .normal)
+		button.setTitleColor(.systemGray2, for: .highlighted)
 		button.setTitle("Learn More about Braille Printer", for: .normal)
 		
 		return button
@@ -66,10 +67,12 @@ class ConnectionStatusView: View {
 	private lazy var positiveButton: UIButton = {
 		let button = UIButton()
 		button.translatesAutoresizingMaskIntoConstraints = false
-		button.backgroundColor = .systemBlue
+		button.setBackgroundColor(.systemBlue, for: .normal)
+		button.setBackgroundColor(.systemGray2, for: .highlighted)
 		button.setTitleColor(.white, for: .normal)
 		button.layer.cornerRadius = 16.0
-		button.setTitle("Default Button", for: .normal)
+		button.clipsToBounds = true
+		button.setTitle("Start Pairing", for: .normal)
 		
 		return button
 	}()
@@ -77,12 +80,14 @@ class ConnectionStatusView: View {
 	private lazy var negativeButton: UIButton = {
 		let button = UIButton()
 		button.translatesAutoresizingMaskIntoConstraints = false
-		button.backgroundColor = .clear
+		button.setBackgroundColor(.clear, for: .normal)
+		button.setBackgroundColor(.systemFill, for: .highlighted)
 		button.setTitleColor(.systemRed, for: .normal)
 		button.layer.borderColor = UIColor.systemRed.cgColor
 		button.layer.borderWidth = 1.0
 		button.layer.cornerRadius = 16.0
-		button.setTitle("Default Button", for: .normal)
+		button.clipsToBounds = true
+		button.setTitle("Cancel", for: .normal)
 		
 		return button
 	}()
