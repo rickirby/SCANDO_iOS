@@ -25,10 +25,10 @@ class ConnectionStatusView: View {
 	private lazy var titleLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
-		label.font = .systemFont(ofSize: 36, weight: .bold)
+		label.font = .preferredFont(forTextStyle: .largeTitle)
 		label.numberOfLines = 1
 		label.textColor = .label
-		label.text = "Default Title"
+		label.text = "Hi, there!"
 		
 		return label
 	}()
@@ -36,11 +36,22 @@ class ConnectionStatusView: View {
 	private lazy var descriptionLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
-		label.font = .systemFont(ofSize: 18, weight: .regular)
+		label.font = .preferredFont(forTextStyle: .title3)
+		label.numberOfLines = 2
+		label.textAlignment = .center
 		label.textColor = .label
-		label.text = "Default description for this view"
+		label.text = "If you have supported Braille Printer, you can pair it with your iPhone here"
 		
 		return label
+	}()
+	
+	private lazy var learnMoreButton: UIButton = {
+		let button = UIButton()
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.setTitleColor(.systemBlue, for: .normal)
+		button.setTitle("Learn More about Braille Printer", for: .normal)
+		
+		return button
 	}()
 	
 	private lazy var printerImageView: UIImageView = {
@@ -58,6 +69,7 @@ class ConnectionStatusView: View {
 		button.backgroundColor = .systemBlue
 		button.setTitleColor(.white, for: .normal)
 		button.layer.cornerRadius = 16.0
+		button.setTitle("Default Button", for: .normal)
 		
 		return button
 	}()
@@ -70,6 +82,7 @@ class ConnectionStatusView: View {
 		button.layer.borderColor = UIColor.systemRed.cgColor
 		button.layer.borderWidth = 1.0
 		button.layer.cornerRadius = 16.0
+		button.setTitle("Default Button", for: .normal)
 		
 		return button
 	}()
@@ -95,7 +108,7 @@ class ConnectionStatusView: View {
 	
 	private func configureView() {
 		backgroundColor = .systemBackground
-		addAllSubviews(views: [titleLabel, descriptionLabel, printerImageView, verticalStack])
+		addAllSubviews(views: [titleLabel, descriptionLabel, learnMoreButton, printerImageView, verticalStack])
 		configureVerticalStack()
 		
 		NSLayoutConstraint.activate([
@@ -103,7 +116,11 @@ class ConnectionStatusView: View {
 			titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 			
 			descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 21),
-			descriptionLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+			descriptionLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 30),
+			descriptionLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -30),
+			
+			learnMoreButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 21),
+			learnMoreButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 			
 			printerImageView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 90),
 			printerImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
