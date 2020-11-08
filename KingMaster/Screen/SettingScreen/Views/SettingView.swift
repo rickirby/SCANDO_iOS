@@ -72,10 +72,6 @@ extension SettingView: UITableViewDelegate, UITableViewDataSource {
 		return viewDataSupplySectionTitle?()[section]
 	}
 	
-	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-		return 38.0
-	}
-	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		guard let tableData = viewDataSupplyTableTitle?(),
 			section < tableData.count else {

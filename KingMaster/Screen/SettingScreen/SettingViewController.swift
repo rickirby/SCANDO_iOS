@@ -31,12 +31,28 @@ class SettingViewController: ViewController<SettingView> {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		configureLoadBar()
 		configureModel()
 		configureViewEvent()
 		configureViewData()
 	}
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		configureBar()
+	}
+	
 	// MARK: - Private Methods
+	
+	private func configureLoadBar() {
+		title = "Setting"
+	}
+	
+	private func configureBar() {
+		setLargeTitleDisplayMode(.never)
+		navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+	}
 	
 	private func configureModel() {
 		tableData = model.getTableData()
