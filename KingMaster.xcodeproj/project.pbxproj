@@ -46,6 +46,9 @@
 		DC215A2225166321006D409A /* DocumentGroup+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1A25166321006D409A /* DocumentGroup+CoreDataClass.swift */; };
 		DC215A2325166321006D409A /* DocumentGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1B25166321006D409A /* DocumentGroup+CoreDataProperties.swift */; };
 		DC215A262516640E006D409A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A252516640E006D409A /* DataManager.swift */; };
+		DC301E3F2558C37300E9B50D /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DB881255851A000F8437F /* UIButton+Extension.swift */; };
+		DC301E402558C38500E9B50D /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89011825580E41001318D7 /* SettingCoordinator.swift */; };
+		DC301E412558C38D00E9B50D /* ConnectionStatusCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DB87F25584A3F00F8437F /* ConnectionStatusCoordinator.swift */; };
 		DC39BC7A2514AF590067DF71 /* EditScanCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39BC792514AF580067DF71 /* EditScanCoordinator.swift */; };
 		DC3F5E96253159CB007B6B3E /* ErodeParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3F5E95253159CB007B6B3E /* ErodeParamUserSetting.swift */; };
 		DC3F5E9725315AEC007B6B3E /* ErodeParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3F5E95253159CB007B6B3E /* ErodeParamUserSetting.swift */; };
@@ -912,6 +915,7 @@
 				DCD73519252CACF70046775E /* ScanAlbumsModel.swift in Sources */,
 				DCD7351A252CACF70046775E /* Coordinator.swift in Sources */,
 				DCB5C6CB2557063F00E87733 /* SettingModel.swift in Sources */,
+				DC301E402558C38500E9B50D /* SettingCoordinator.swift in Sources */,
 				DCD7351B252CACF70046775E /* GalleryCache.swift in Sources */,
 				DCD7351C252CACF70046775E /* ScanImagePickerCoordinator.swift in Sources */,
 				DCD7351D252CACF70046775E /* DocumentGroupViewController.swift in Sources */,
@@ -932,6 +936,7 @@
 				DCD73527252CACF70046775E /* EditScanCoordinator.swift in Sources */,
 				DCD73528252CACF70046775E /* DocumentGroupView.swift in Sources */,
 				DCD73529252CACF70046775E /* ScanAlbumsTableViewCell.swift in Sources */,
+				DC301E3F2558C37300E9B50D /* UIButton+Extension.swift in Sources */,
 				DCD7352A252CACF70046775E /* CameraCoordinator.swift in Sources */,
 				DCD7352B252CACF70046775E /* GalleryModel.swift in Sources */,
 				DCD7352C252CACF70046775E /* ScanAlbumsCoordinator.swift in Sources */,
@@ -948,6 +953,7 @@
 				DCD73536252CACF70046775E /* GalleryView.swift in Sources */,
 				DCD73537252CACF70046775E /* DocumentGroupCollectionViewCell.swift in Sources */,
 				DCD238EE252DF18700E7C0A3 /* FilterViewController.swift in Sources */,
+				DC301E412558C38D00E9B50D /* ConnectionStatusCoordinator.swift in Sources */,
 				DCD73538252CACF70046775E /* Document+CoreDataClass.swift in Sources */,
 				DCD73539252CACF70046775E /* EditScanData.swift in Sources */,
 				DCD7353A252CACF70046775E /* DocumentGroup+CoreDataClass.swift in Sources */,
