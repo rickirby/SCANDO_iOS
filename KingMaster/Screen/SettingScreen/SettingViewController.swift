@@ -41,6 +41,7 @@ class SettingViewController: ViewController<SettingView> {
 		super.viewWillAppear(animated)
 		
 		configureBar()
+		clearTableSelectionOnViewWillAppear()
 	}
 	
 	// MARK: - Private Methods
@@ -84,6 +85,24 @@ class SettingViewController: ViewController<SettingView> {
 			let sectionTitle: [String] = self.tableData.map { $0.sectionTitle }
 			
 			return sectionTitle
+		}
+	}
+	
+	private func clearTableSelectionOnViewWillAppear() {
+		if let selectedIndexPath = self.screenView.tableView.indexPathForSelectedRow {
+			if let transitionCoordinator = self.transitionCoordinator {
+				transitionCoordinator.animate(alongsideTransition: { (context) in
+					self.screenView.tableView.deselectRow(at: selectedIndexPath, animated: true)
+				}, completion: nil)
+				
+				transitionCoordinator.notifyWhenInteractionChanges { (context) in
+					if context.isCancelled {
+						self.screenView.tableView.selectRow(at: selectedIndexPath, animated: true, scrollPosition: .none)
+					}
+				}
+			} else {
+				self.screenView.tableView.deselectRow(at: selectedIndexPath, animated: true)
+			}
 		}
 	}
 	
