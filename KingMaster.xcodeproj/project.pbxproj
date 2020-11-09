@@ -49,6 +49,8 @@
 		DC301E3F2558C37300E9B50D /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DB881255851A000F8437F /* UIButton+Extension.swift */; };
 		DC301E402558C38500E9B50D /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89011825580E41001318D7 /* SettingCoordinator.swift */; };
 		DC301E412558C38D00E9B50D /* ConnectionStatusCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DB87F25584A3F00F8437F /* ConnectionStatusCoordinator.swift */; };
+		DC301E432558D1BC00E9B50D /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC301E422558D1BC00E9B50D /* UIViewController+Extension.swift */; };
+		DC301E442558D1BC00E9B50D /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC301E422558D1BC00E9B50D /* UIViewController+Extension.swift */; };
 		DC39BC7A2514AF590067DF71 /* EditScanCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39BC792514AF580067DF71 /* EditScanCoordinator.swift */; };
 		DC3F5E96253159CB007B6B3E /* ErodeParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3F5E95253159CB007B6B3E /* ErodeParamUserSetting.swift */; };
 		DC3F5E9725315AEC007B6B3E /* ErodeParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3F5E95253159CB007B6B3E /* ErodeParamUserSetting.swift */; };
@@ -192,6 +194,7 @@
 		DC215A1A25166321006D409A /* DocumentGroup+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentGroup+CoreDataClass.swift"; sourceTree = "<group>"; };
 		DC215A1B25166321006D409A /* DocumentGroup+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentGroup+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DC215A252516640E006D409A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		DC301E422558D1BC00E9B50D /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		DC39BC792514AF580067DF71 /* EditScanCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScanCoordinator.swift; sourceTree = "<group>"; };
 		DC3F5E95253159CB007B6B3E /* ErodeParamUserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErodeParamUserSetting.swift; sourceTree = "<group>"; };
 		DC415C6B252CA193001AD7D2 /* RBImageProcessor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBImageProcessor.framework; path = Carthage/Build/iOS/RBImageProcessor.framework; sourceTree = "<group>"; };
@@ -604,6 +607,7 @@
 			isa = PBXGroup;
 			children = (
 				DC8DB881255851A000F8437F /* UIButton+Extension.swift */,
+				DC301E422558D1BC00E9B50D /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -834,6 +838,7 @@
 				097A18A825046E660044D5FB /* ScanAlbumsViewController.swift in Sources */,
 				7206EAF1250C73F200A3DA4A /* GalleryCoordinator.swift in Sources */,
 				09C8ADB2250653FF004BA0F7 /* AppCoordinator.swift in Sources */,
+				DC301E432558D1BC00E9B50D /* UIViewController+Extension.swift in Sources */,
 				DC82CC972517109E00403550 /* PreviewModel.swift in Sources */,
 				DCAC3ED725158F6B00F5DD59 /* ThreadManager.swift in Sources */,
 				DC75E59A25138C9400186F30 /* EditScanView.swift in Sources */,
@@ -906,6 +911,7 @@
 				DCD73512252CACF70046775E /* ScanAlbumsViewController.swift in Sources */,
 				DCD73513252CACF70046775E /* GalleryCoordinator.swift in Sources */,
 				DCD73514252CACF70046775E /* AppCoordinator.swift in Sources */,
+				DC301E442558D1BC00E9B50D /* UIViewController+Extension.swift in Sources */,
 				DCD73515252CACF70046775E /* PreviewModel.swift in Sources */,
 				DCD73516252CACF70046775E /* ThreadManager.swift in Sources */,
 				DCD238EF252DF18B00E7C0A3 /* FilterView.swift in Sources */,
