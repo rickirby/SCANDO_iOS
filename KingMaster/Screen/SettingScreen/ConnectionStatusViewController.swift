@@ -20,12 +20,24 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 		case didTapReset
 	}
 	
+	enum Status {
+		case connected
+		case disconnected
+	}
+	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
+	var connectionStatus: Status = .disconnected {
+		didSet {
+			configureStatus(for: connectionStatus)
+		}
+	}
 	
 	// MARK: - Life Cycles
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		configureViewEvent()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -40,5 +52,28 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 		navigationController?.setNavigationBarHidden(true, animated: true)
 		navigationController?.setToolbarHidden(true, animated: true)
 		navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+	}
+	
+	private func configureViewEvent() {
+		screenView.onViewEvent = { [weak self] (viewEvent: ConnectionStatusView.ViewEvent) in
+			switch viewEvent {
+			case .didTapPositive:
+				if self?.connectionStatus ?? .disconnected == .disconnected {
+					self?.onNavigationEvent?(.didTapPair)
+				} else {
+					self?.onNavigationEvent?(.didTapDone)
+				}
+			case .didTapNegative:
+				if self?.connectionStatus ?? .disconnected == .disconnected {
+					self?.onNavigationEvent?(.didTapCancel)
+				} else {
+					self?.onNavigationEvent?(.didTapReset)
+				}
+			}
+		}
+	}
+	
+	private func configureStatus(for status: Status) {
+		
 	}
 }
