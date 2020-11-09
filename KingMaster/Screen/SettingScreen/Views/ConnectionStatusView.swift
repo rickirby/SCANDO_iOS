@@ -72,6 +72,7 @@ class ConnectionStatusView: View {
 		button.setTitleColor(.white, for: .normal)
 		button.layer.cornerRadius = 16.0
 		button.clipsToBounds = true
+		button.addTarget(self, action: #selector(positiveButtonTapped), for: .touchUpInside)
 		button.setTitle("Start Pairing", for: .normal)
 		
 		return button
@@ -87,6 +88,7 @@ class ConnectionStatusView: View {
 		button.layer.borderWidth = 1.0
 		button.layer.cornerRadius = 16.0
 		button.clipsToBounds = true
+		button.addTarget(self, action: #selector(negativeButtonTapped), for: .touchUpInside)
 		button.setTitle("Cancel", for: .normal)
 		
 		return button
@@ -159,6 +161,14 @@ class ConnectionStatusView: View {
 		for view in views {
 			verticalStack.addArrangedSubview(view)
 		}
+	}
+	
+	@objc func positiveButtonTapped() {
+		onViewEvent?(.didTapPositive)
+	}
+	
+	@objc func negativeButtonTapped() {
+		onViewEvent?(.didTapNegative)
 	}
 	
 }

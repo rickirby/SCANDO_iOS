@@ -42,7 +42,29 @@ class ConnectionStatusCoordinator: Coordinator {
 	
 	private func makeConnectionStatusViewController() -> UIViewController {
 		let vc = ConnectionStatusViewController()
+		vc.onNavigationEvent = { [weak self] (navigationEvent: ConnectionStatusViewController.NavigationEvent) in
+			switch navigationEvent {
+			case .didTapPair:
+				self?.openPair()
+			case .didTapReset:
+				self?.openReset()
+			case .didTapDone, .didTapCancel:
+				self?.popViewController()
+			}
+		}
 		
 		return vc
+	}
+	
+	private func openPair() {
+		
+	}
+	
+	private func openReset() {
+		
+	}
+	
+	private func popViewController() {
+		Router.shared.popViewController(on: self)
 	}
 }
