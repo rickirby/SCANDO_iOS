@@ -74,6 +74,6 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 	}
 	
 	private func configureStatus(for status: Status) {
-		
+		screenView.configureStatus(for: status)
 	}
 }

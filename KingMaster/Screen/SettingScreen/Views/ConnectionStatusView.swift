@@ -109,6 +109,15 @@ class ConnectionStatusView: View {
 		configureView()
 	}
 	
+	// MARK: - Public Metthods
+	
+	func configureStatus(for status: ConnectionStatusViewController.Status) {
+		titleLabel.text = status == .connected ? SCANDOConstant.connectionStatusTitleConnected : SCANDOConstant.connectionStatusTitleDisconnected
+		descriptionLabel.text = status == .connected ? SCANDOConstant.connectionStatusDescriptionConnected : SCANDOConstant.connectionStatusDescriptionDisconnectted
+		positiveButton.setTitle(status == .connected ? SCANDOConstant.connectionStatusPositiveButtonConnected : SCANDOConstant.connectionStatusPositiveButtonDisconnected, for: .normal)
+		negativeButton.setTitle(status == .connected ? SCANDOConstant.connectionStatusNegativeButtonConnected : SCANDOConstant.connectionStatusNegativeButtonDisconnected, for: .normal)
+	}
+	
 	// MARK: - Private Methods
 	
 	private func configureView() {
