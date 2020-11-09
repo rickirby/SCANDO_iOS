@@ -13,6 +13,15 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 	
 	// MARK: - Public Properties
 	
+	enum NavigationEvent {
+		case didTapPair
+		case didTapCancel
+		case didTapDone
+		case didTapReset
+	}
+	
+	var onNavigationEvent: ((NavigationEvent) -> Void)?
+	
 	// MARK: - Life Cycles
 	
 	override func viewDidLoad() {
