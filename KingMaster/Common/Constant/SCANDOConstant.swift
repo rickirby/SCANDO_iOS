@@ -72,4 +72,16 @@ class SCANDOConstant {
 	static let setErodeIterationPlaceholder: String = "Iteration"
 	static let setErodePositiveAction: String = "OK"
 	static let setErodeNegativeAction: String = "Cancel"
+	
+	static let connectionStatusTitleConnected: String = "Everything is OK"
+	static let connectionStatusDescriptionConnected: String = "You are all set. Connection status is okay. You are ready to copy braille page"
+	static let connectionStatusPositiveButtonConnected: String = "Done"
+	static let connectionStatusNegativeButtonConnected: String = "Reset Connection"
+	
+	static let connectionStatusTitleDisconnected: String = "Hi, there!"
+	static let connectionStatusDescriptionDisconnectted: String = "If you have supported Braille Printer, you can pair it with your iPhone here"
+	static let connectionStatusPositiveButtonDisconnected: String = "Start Pairing"
+	static let connectionStatusNegativeButtonDisconnected: String = "Cancel"
+	
+	static let connectionStatusLearnMoreButton: String = "Learn more about Braille Printer"
 }
