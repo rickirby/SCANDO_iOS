@@ -79,6 +79,7 @@
 		DC972BC4251258C400A6C43B /* ScanImagePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC972BC3251258C400A6C43B /* ScanImagePickerCoordinator.swift */; };
 		DC9F070E25314818005A517B /* DilateParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9F070D25314818005A517B /* DilateParamUserSetting.swift */; };
 		DC9F070F253149B5005A517B /* DilateParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9F070D25314818005A517B /* DilateParamUserSetting.swift */; };
+		DCA49DE0255A210B007B6A7B /* ProductIDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA49DDF255A210B007B6A7B /* ProductIDView.swift */; };
 		DCAC3ED725158F6B00F5DD59 /* ThreadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAC3ED625158F6B00F5DD59 /* ThreadManager.swift */; };
 		DCB1B5E52512DC9D00B1630C /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB1B5E42512DC9D00B1630C /* GalleryView.swift */; };
 		DCB3CE4B251A4ED000D4EDFB /* ScanImagePickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB3CE4A251A4ED000D4EDFB /* ScanImagePickerData.swift */; };
@@ -222,6 +223,7 @@
 		DC972BC02512454F00A6C43B /* CameraCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCoordinator.swift; sourceTree = "<group>"; };
 		DC972BC3251258C400A6C43B /* ScanImagePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanImagePickerCoordinator.swift; sourceTree = "<group>"; };
 		DC9F070D25314818005A517B /* DilateParamUserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DilateParamUserSetting.swift; sourceTree = "<group>"; };
+		DCA49DDF255A210B007B6A7B /* ProductIDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductIDView.swift; sourceTree = "<group>"; };
 		DCAC3ED625158F6B00F5DD59 /* ThreadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadManager.swift; sourceTree = "<group>"; };
 		DCB1B5E42512DC9D00B1630C /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		DCB3CE4A251A4ED000D4EDFB /* ScanImagePickerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanImagePickerData.swift; sourceTree = "<group>"; };
@@ -583,6 +585,7 @@
 			children = (
 				DCB5C6C22556EFD700E87733 /* SettingView.swift */,
 				DC89011A25582A6A001318D7 /* ConnectionStatusView.swift */,
+				DCA49DDF255A210B007B6A7B /* ProductIDView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -835,6 +838,7 @@
 				DC215A1D25166321006D409A /* QuadPoint+CoreDataProperties.swift in Sources */,
 				DCE0E731250AFB5F00971B22 /* SCANDOConstant.swift in Sources */,
 				DC0FAC10253C462F0033593C /* LauncScreenViewController.swift in Sources */,
+				DCA49DE0255A210B007B6A7B /* ProductIDView.swift in Sources */,
 				097A18A825046E660044D5FB /* ScanAlbumsViewController.swift in Sources */,
 				7206EAF1250C73F200A3DA4A /* GalleryCoordinator.swift in Sources */,
 				09C8ADB2250653FF004BA0F7 /* AppCoordinator.swift in Sources */,
