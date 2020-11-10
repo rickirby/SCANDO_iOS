@@ -81,13 +81,8 @@ class ConnectionStatusView: View {
 	private lazy var negativeButton: UIButton = {
 		let button = UIButton()
 		button.translatesAutoresizingMaskIntoConstraints = false
-		button.setBackgroundColor(.clear, for: .normal)
-		button.setBackgroundColor(.systemFill, for: .highlighted)
 		button.setTitleColor(.systemRed, for: .normal)
-		button.layer.borderColor = UIColor.systemRed.cgColor
-		button.layer.borderWidth = 1.0
-		button.layer.cornerRadius = 16.0
-		button.clipsToBounds = true
+		button.setTitleColor(.systemGray2, for: .highlighted)
 		button.addTarget(self, action: #selector(negativeButtonTapped), for: .touchUpInside)
 		button.setTitle("Cancel", for: .normal)
 		
