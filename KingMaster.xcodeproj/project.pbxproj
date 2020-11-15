@@ -63,6 +63,8 @@
 		DC4F8D1E2560CB0300EA616C /* ProductIDCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F8D1D2560CB0300EA616C /* ProductIDCoordinator.swift */; };
 		DC4F8D1F2560CB0300EA616C /* ProductIDCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F8D1D2560CB0300EA616C /* ProductIDCoordinator.swift */; };
 		DC4F8D212560DEB500EA616C /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC4F8D202560DEB500EA616C /* NetworkExtension.framework */; };
+		DC4F8D232560E1A900EA616C /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F8D222560E1A900EA616C /* UITextField+Extension.swift */; };
+		DC4F8D242560E1A900EA616C /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F8D222560E1A900EA616C /* UITextField+Extension.swift */; };
 		DC5A8F25253537BA00971510 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC5A8F24253537BA00971510 /* CloudKit.framework */; };
 		DC7129912515736A00ACCB2B /* PreviewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7129902515736A00ACCB2B /* PreviewCoordinator.swift */; };
 		DC7129942515743200ACCB2B /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7129932515743200ACCB2B /* PreviewData.swift */; };
@@ -211,6 +213,7 @@
 		DC4F8D192560C81600EA616C /* ProductIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductIDViewController.swift; sourceTree = "<group>"; };
 		DC4F8D1D2560CB0300EA616C /* ProductIDCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductIDCoordinator.swift; sourceTree = "<group>"; };
 		DC4F8D202560DEB500EA616C /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		DC4F8D222560E1A900EA616C /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		DC5A8F232535377A00971510 /* DEV🛠.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DEV🛠.entitlements"; sourceTree = "<group>"; };
 		DC5A8F24253537BA00971510 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		DC7129902515736A00ACCB2B /* PreviewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCoordinator.swift; sourceTree = "<group>"; };
@@ -623,6 +626,7 @@
 			isa = PBXGroup;
 			children = (
 				DC8DB881255851A000F8437F /* UIButton+Extension.swift */,
+				DC4F8D222560E1A900EA616C /* UITextField+Extension.swift */,
 				DC301E422558D1BC00E9B50D /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
@@ -907,6 +911,7 @@
 				DC89012425583FA9001318D7 /* ConnectionStatusViewController.swift in Sources */,
 				DC215A1E25166321006D409A /* Document+CoreDataClass.swift in Sources */,
 				DC75E59F2513AA4700186F30 /* EditScanData.swift in Sources */,
+				DC4F8D232560E1A900EA616C /* UITextField+Extension.swift in Sources */,
 				DC8DB88025584A3F00F8437F /* ConnectionStatusCoordinator.swift in Sources */,
 				DC215A2225166321006D409A /* DocumentGroup+CoreDataClass.swift in Sources */,
 				DC215A262516640E006D409A /* DataManager.swift in Sources */,
@@ -983,6 +988,7 @@
 				DCD238EE252DF18700E7C0A3 /* FilterViewController.swift in Sources */,
 				DC301E412558C38D00E9B50D /* ConnectionStatusCoordinator.swift in Sources */,
 				DCD73538252CACF70046775E /* Document+CoreDataClass.swift in Sources */,
+				DC4F8D242560E1A900EA616C /* UITextField+Extension.swift in Sources */,
 				DCD73539252CACF70046775E /* EditScanData.swift in Sources */,
 				DCD7353A252CACF70046775E /* DocumentGroup+CoreDataClass.swift in Sources */,
 				DCD7353B252CACF70046775E /* DataManager.swift in Sources */,
