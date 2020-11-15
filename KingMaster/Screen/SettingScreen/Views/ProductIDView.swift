@@ -14,7 +14,7 @@ class ProductIDView: View {
 	// MARK: - Public Properties
 	
 	enum ViewEvent {
-		case next
+		case didTapDone
 	}
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
@@ -76,6 +76,6 @@ class ProductIDView: View {
 	}()
 	
 	@objc func positiveButtonTapped() {
-		
+		onViewEvent?(.didTapDone)
 	}
 }
