@@ -14,7 +14,7 @@ class ProductIDView: View {
 	// MARK: - Public Properties
 	
 	enum ViewEvent {
-		case didTapDone
+		case didTapDone(productID: String)
 	}
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
@@ -64,6 +64,9 @@ class ProductIDView: View {
 		textField.clipsToBounds = true
 		textField.textAlignment = .center
 		textField.font = .preferredFont(forTextStyle: .title2)
+		textField.placeholder = "Input Product ID here"
+		textField.keyboardType = .numberPad
+		textField.addDoneButtonOnKeyboard()
 		
 		return textField
 	}()
@@ -120,6 +123,10 @@ class ProductIDView: View {
 	}
 	
 	@objc private func positiveButtonTapped() {
-		onViewEvent?(.didTapDone)
+		guard let productID = productIDTextField.text else {
+			return
+		}
+		
+		onViewEvent?(.didTapDone(productID: productID))
 	}
 }
