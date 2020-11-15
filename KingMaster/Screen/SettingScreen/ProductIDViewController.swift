@@ -29,6 +29,12 @@ class ProductIDViewController: ViewController<ProductIDView> {
 		configureViewEvent()
 	}
 	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		
+		NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: "ESP32")
+	}
+	
 	// MARK: - Private Methods
 	
 	func configureViewEvent() {
@@ -41,19 +47,40 @@ class ProductIDViewController: ViewController<ProductIDView> {
 	}
 	
 	func startConfiguringConnection(_ productID: String) {
-		let configuration = NEHotspotConfiguration.init(ssid: productID, passphrase: "abc\(productID)abc", isWEP: false)
+		//		let configuration = NEHotspotConfiguration.init(ssid: productID, passphrase: "abc\(productID)abc", isWEP: false)
+		let configuration = NEHotspotConfiguration.init(ssid: "ESP32", passphrase: productID, isWEP: false)
 		configuration.joinOnce = true
-
+		
 		NEHotspotConfigurationManager.shared.apply(configuration) { (error) in
-			if error != nil {
-				if error?.localizedDescription == "already associated." {
-					
-				} else {
-					
-				}
+			if let error = error as NSError? {
+				// failure
+				print("FAIL2")
 			} else {
-				
+				if self.currentSSIDs().first == "ESP32" {
+					// Real success
+					print("REALSUCCESS")
+				} else {
+					// Failure
+					print("REALFAIL")
+				}
 			}
+		}
+	}
+	
+	func currentSSIDs() -> [String] {
+		
+		guard let interfaceNames = CNCopySupportedInterfaces() as? [String] else {
+			return []
+		}
+		
+		return interfaceNames.compactMap { name in
+			guard let info = CNCopyCurrentNetworkInfo(name as CFString) as? [String:AnyObject] else {
+				return nil
+			}
+			guard let ssid = info[kCNNetworkInfoKeySSID as String] as? String else {
+				return nil
+			}
+			return ssid
 		}
 	}
 }
