@@ -106,7 +106,7 @@ class ConnectionStatusView: View {
 		configureView()
 	}
 	
-	// MARK: - Public Metthods
+	// MARK: - Public Methods
 	
 	func configureStatus(for status: ConnectionStatusViewController.Status) {
 		titleLabel.text = status == .connected ? SCANDOConstant.connectionStatusTitleConnected : SCANDOConstant.connectionStatusTitleDisconnected
