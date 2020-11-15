@@ -36,7 +36,7 @@ class ConnectionStatusView: View {
 	private lazy var descriptionLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
-		label.font = .preferredFont(forTextStyle: .title3)
+		label.font = .preferredFont(forTextStyle: .body)
 		label.numberOfLines = 2
 		label.textAlignment = .center
 		label.textColor = .label

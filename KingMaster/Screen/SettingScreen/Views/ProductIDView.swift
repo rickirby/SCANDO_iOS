@@ -35,7 +35,7 @@ class ProductIDView: View {
 	private lazy var descriptionLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
-		label.font = .preferredFont(forTextStyle: .title3)
+		label.font = .preferredFont(forTextStyle: .body)
 		label.numberOfLines = 2
 		label.textAlignment = .center
 		label.textColor = .label
@@ -57,6 +57,13 @@ class ProductIDView: View {
 	private lazy var productIDTextField: UITextField = {
 		let textField = UITextField()
 		textField.translatesAutoresizingMaskIntoConstraints = false
+		textField.backgroundColor = .systemGray6
+		textField.layer.cornerRadius = 12.0
+		textField.layer.borderWidth = 1.0
+		textField.layer.borderColor = UIColor.systemGray3.cgColor
+		textField.clipsToBounds = true
+		textField.textAlignment = .center
+		textField.font = .preferredFont(forTextStyle: .title2)
 		
 		return textField
 	}()
@@ -75,7 +82,44 @@ class ProductIDView: View {
 		return button
 	}()
 	
-	@objc func positiveButtonTapped() {
+	// MARK: - Life Cycles
+	
+	override func setViews() {
+		super.setViews()
+		
+		configureView()
+	}
+	
+	// MARK: - Private Methods
+	
+	private func configureView() {
+		backgroundColor = .systemBackground
+		addAllSubviews(views: [titleLabel, descriptionLabel, learnMoreButton, productIDTextField, positiveButton])
+		
+		NSLayoutConstraint.activate([
+			titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 90),
+			titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+			
+			descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 21),
+			descriptionLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 30),
+			descriptionLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -30),
+			
+			learnMoreButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 21),
+			learnMoreButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+			
+			productIDTextField.topAnchor.constraint(equalTo: learnMoreButton.bottomAnchor, constant: 87),
+			productIDTextField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 46),
+			productIDTextField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -46),
+			productIDTextField.heightAnchor.constraint(equalToConstant: 64),
+			
+			positiveButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 24),
+			positiveButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -24),
+			positiveButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -68),
+			positiveButton.heightAnchor.constraint(equalToConstant: 48)
+		])
+	}
+	
+	@objc private func positiveButtonTapped() {
 		onViewEvent?(.didTapDone)
 	}
 }

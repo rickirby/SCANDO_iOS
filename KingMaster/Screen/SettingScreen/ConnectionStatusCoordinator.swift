@@ -23,6 +23,7 @@ class ConnectionStatusCoordinator: Coordinator {
 	// MARK: - Private Properties
 	
 	private weak var navigationController: UINavigationController?
+	private var productIDCoordinator: ProductIDCoordinator?
 	
 	// MARK: - Life Cycles
 	
@@ -57,7 +58,10 @@ class ConnectionStatusCoordinator: Coordinator {
 	}
 	
 	private func openPair() {
+		productIDCoordinator = nil
+		productIDCoordinator = ProductIDCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
 		
+		productIDCoordinator?.start()
 	}
 	
 	private func openReset() {
