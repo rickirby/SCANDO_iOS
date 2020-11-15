@@ -60,6 +60,8 @@
 		DC4F8D1A2560C81600EA616C /* ProductIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F8D192560C81600EA616C /* ProductIDViewController.swift */; };
 		DC4F8D1B2560C81600EA616C /* ProductIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F8D192560C81600EA616C /* ProductIDViewController.swift */; };
 		DC4F8D1C2560C81B00EA616C /* ProductIDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA49DDF255A210B007B6A7B /* ProductIDView.swift */; };
+		DC4F8D1E2560CB0300EA616C /* ProductIDCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F8D1D2560CB0300EA616C /* ProductIDCoordinator.swift */; };
+		DC4F8D1F2560CB0300EA616C /* ProductIDCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F8D1D2560CB0300EA616C /* ProductIDCoordinator.swift */; };
 		DC5A8F25253537BA00971510 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC5A8F24253537BA00971510 /* CloudKit.framework */; };
 		DC7129912515736A00ACCB2B /* PreviewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7129902515736A00ACCB2B /* PreviewCoordinator.swift */; };
 		DC7129942515743200ACCB2B /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7129932515743200ACCB2B /* PreviewData.swift */; };
@@ -206,6 +208,7 @@
 		DC4CD0022514FB51000A84BC /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		DC4CD0042514FB78000A84BC /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		DC4F8D192560C81600EA616C /* ProductIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductIDViewController.swift; sourceTree = "<group>"; };
+		DC4F8D1D2560CB0300EA616C /* ProductIDCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductIDCoordinator.swift; sourceTree = "<group>"; };
 		DC5A8F232535377A00971510 /* DEV🛠.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DEV🛠.entitlements"; sourceTree = "<group>"; };
 		DC5A8F24253537BA00971510 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		DC7129902515736A00ACCB2B /* PreviewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCoordinator.swift; sourceTree = "<group>"; };
@@ -576,6 +579,7 @@
 			children = (
 				DC89011825580E41001318D7 /* SettingCoordinator.swift */,
 				DC8DB87F25584A3F00F8437F /* ConnectionStatusCoordinator.swift */,
+				DC4F8D1D2560CB0300EA616C /* ProductIDCoordinator.swift */,
 				DCB5C6C52556FA6900E87733 /* SettingViewController.swift */,
 				DC89012325583FA8001318D7 /* ConnectionStatusViewController.swift */,
 				DC4F8D192560C81600EA616C /* ProductIDViewController.swift */,
@@ -894,6 +898,7 @@
 				DC4CD0052514FB78000A84BC /* PreviewViewController.swift in Sources */,
 				DCB1B5E52512DC9D00B1630C /* GalleryView.swift in Sources */,
 				0922627625053E0B00BDDB90 /* DocumentGroupCollectionViewCell.swift in Sources */,
+				DC4F8D1E2560CB0300EA616C /* ProductIDCoordinator.swift in Sources */,
 				DCD2C73E252D546500CC391C /* FilterViewController.swift in Sources */,
 				DC89012425583FA9001318D7 /* ConnectionStatusViewController.swift in Sources */,
 				DC215A1E25166321006D409A /* Document+CoreDataClass.swift in Sources */,
@@ -969,6 +974,7 @@
 				DCD73535252CACF70046775E /* PreviewViewController.swift in Sources */,
 				DCD73536252CACF70046775E /* GalleryView.swift in Sources */,
 				DCD73537252CACF70046775E /* DocumentGroupCollectionViewCell.swift in Sources */,
+				DC4F8D1F2560CB0300EA616C /* ProductIDCoordinator.swift in Sources */,
 				DC4F8D1B2560C81600EA616C /* ProductIDViewController.swift in Sources */,
 				DCD238EE252DF18700E7C0A3 /* FilterViewController.swift in Sources */,
 				DC301E412558C38D00E9B50D /* ConnectionStatusCoordinator.swift in Sources */,
