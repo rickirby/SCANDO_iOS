@@ -36,7 +36,7 @@ class ConnectionStatusView: View {
 	private lazy var descriptionLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
-		label.font = .preferredFont(forTextStyle: .title3)
+		label.font = .preferredFont(forTextStyle: .body)
 		label.numberOfLines = 2
 		label.textAlignment = .center
 		label.textColor = .label
@@ -81,13 +81,8 @@ class ConnectionStatusView: View {
 	private lazy var negativeButton: UIButton = {
 		let button = UIButton()
 		button.translatesAutoresizingMaskIntoConstraints = false
-		button.setBackgroundColor(.clear, for: .normal)
-		button.setBackgroundColor(.systemFill, for: .highlighted)
 		button.setTitleColor(.systemRed, for: .normal)
-		button.layer.borderColor = UIColor.systemRed.cgColor
-		button.layer.borderWidth = 1.0
-		button.layer.cornerRadius = 16.0
-		button.clipsToBounds = true
+		button.setTitleColor(.systemGray2, for: .highlighted)
 		button.addTarget(self, action: #selector(negativeButtonTapped), for: .touchUpInside)
 		button.setTitle("Cancel", for: .normal)
 		
@@ -111,7 +106,7 @@ class ConnectionStatusView: View {
 		configureView()
 	}
 	
-	// MARK: - Public Metthods
+	// MARK: - Public Methods
 	
 	func configureStatus(for status: ConnectionStatusViewController.Status) {
 		titleLabel.text = status == .connected ? SCANDOConstant.connectionStatusTitleConnected : SCANDOConstant.connectionStatusTitleDisconnected
@@ -145,7 +140,7 @@ class ConnectionStatusView: View {
 			
 			verticalStack.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 24),
 			verticalStack.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -24),
-			verticalStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -68),
+			verticalStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -40),
 			
 			positiveButton.widthAnchor.constraint(equalTo: verticalStack.widthAnchor, multiplier: 1),
 			positiveButton.heightAnchor.constraint(equalToConstant: 48),
