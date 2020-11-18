@@ -119,7 +119,7 @@ class ProductIDView: View {
 			
 			positiveButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 24),
 			positiveButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -24),
-			positiveButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -68),
+			positiveButton.bottomAnchor.constraint(equalTo: self.keyboardLayoutGuide.topAnchor, constant: -68),
 			positiveButton.heightAnchor.constraint(equalToConstant: 48)
 		])
 	}

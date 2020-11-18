@@ -32,6 +32,7 @@ class ProductIDViewController: ViewController<ProductIDView> {
 		super.viewDidLoad()
 		
 		configureViewEvent()
+		automaticallyAdjustKeyboardLayoutGuide = true
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {
