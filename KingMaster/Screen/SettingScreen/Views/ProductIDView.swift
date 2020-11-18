@@ -112,14 +112,14 @@ class ProductIDView: View {
 			learnMoreButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 21),
 			learnMoreButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 			
-			productIDTextField.topAnchor.constraint(equalTo: learnMoreButton.bottomAnchor, constant: 87),
+			productIDTextField.topAnchor.constraint(equalTo: learnMoreButton.bottomAnchor, constant: 57),
 			productIDTextField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 46),
 			productIDTextField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -46),
 			productIDTextField.heightAnchor.constraint(equalToConstant: 64),
 			
 			positiveButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 24),
 			positiveButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -24),
-			positiveButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -68),
+			positiveButton.bottomAnchor.constraint(equalTo: self.keyboardLayoutGuide.topAnchor, constant: -40),
 			positiveButton.heightAnchor.constraint(equalToConstant: 48)
 		])
 	}

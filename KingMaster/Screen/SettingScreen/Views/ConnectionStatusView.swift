@@ -140,7 +140,7 @@ class ConnectionStatusView: View {
 			
 			verticalStack.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 24),
 			verticalStack.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -24),
-			verticalStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -68),
+			verticalStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -40),
 			
 			positiveButton.widthAnchor.constraint(equalTo: verticalStack.widthAnchor, multiplier: 1),
 			positiveButton.heightAnchor.constraint(equalToConstant: 48),
