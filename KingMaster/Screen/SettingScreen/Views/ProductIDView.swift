@@ -67,6 +67,7 @@ class ProductIDView: View {
 		textField.placeholder = "Input Product ID here"
 		textField.keyboardType = .numberPad
 		textField.addDoneButtonOnKeyboard()
+		textField.addTarget(self, action: #selector(textFieldDidChanged), for: .editingChanged)
 		
 		return textField
 	}()
@@ -81,6 +82,7 @@ class ProductIDView: View {
 		button.clipsToBounds = true
 		button.addTarget(self, action: #selector(positiveButtonTapped), for: .touchUpInside)
 		button.setTitle("Start Pairing", for: .normal)
+		button.isEnabled = false
 		
 		return button
 	}()
@@ -128,5 +130,13 @@ class ProductIDView: View {
 		}
 		
 		onViewEvent?(.didTapDone(productID: productID))
+	}
+	
+	@objc private func textFieldDidChanged() {
+		guard let text = productIDTextField.text else {
+			return
+		}
+		
+		positiveButton.isEnabled = text.count == 8
 	}
 }

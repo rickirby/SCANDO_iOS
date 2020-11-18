@@ -21,6 +21,11 @@ class ProductIDViewController: ViewController<ProductIDView> {
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
 	
+	// MARK: - Private Properties
+	
+	private var savedSSID = ""
+	private var connectionState = false
+	
 	// MARK: - Life Cycles
 	
 	override func viewDidLoad() {
@@ -32,12 +37,12 @@ class ProductIDViewController: ViewController<ProductIDView> {
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 		
-		NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: "ESP32")
+		NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: savedSSID)
 	}
 	
 	// MARK: - Private Methods
 	
-	func configureViewEvent() {
+	private func configureViewEvent() {
 		screenView.onViewEvent = { [weak self] (viewEvent: ProductIDView.ViewEvent) in
 			switch viewEvent {
 			case .didTapDone(let productID):
@@ -46,28 +51,30 @@ class ProductIDViewController: ViewController<ProductIDView> {
 		}
 	}
 	
-	func startConfiguringConnection(_ productID: String) {
-		//		let configuration = NEHotspotConfiguration.init(ssid: productID, passphrase: "abc\(productID)abc", isWEP: false)
-		let configuration = NEHotspotConfiguration.init(ssid: "ESP32", passphrase: productID, isWEP: false)
+	private func startConfiguringConnection(_ productID: String) {
+		
+		let ssid = "ESP32"
+		let pass = productID
+		
+		let configuration = NEHotspotConfiguration.init(ssid: ssid, passphrase: pass, isWEP: false)
 		configuration.joinOnce = true
 		
 		NEHotspotConfigurationManager.shared.apply(configuration) { (error) in
 			if let error = error as NSError? {
-				// failure
-				print("FAIL2")
+				print("===\(error)")
+				self.handleConnection(success: false)
 			} else {
-				if self.currentSSIDs().first == "ESP32" {
-					// Real success
-					print("REALSUCCESS")
+				if self.currentSSIDs().first == ssid {
+					self.savedSSID = ssid
+					self.handleConnection(success: true)
 				} else {
-					// Failure
-					print("REALFAIL")
+					self.handleConnection(success: false)
 				}
 			}
 		}
 	}
 	
-	func currentSSIDs() -> [String] {
+	private func currentSSIDs() -> [String] {
 		
 		guard let interfaceNames = CNCopySupportedInterfaces() as? [String] else {
 			return []
@@ -82,5 +89,16 @@ class ProductIDViewController: ViewController<ProductIDView> {
 			}
 			return ssid
 		}
+	}
+	
+	private func handleConnection(success: Bool) {
+		
+		if success {
+			connectionState = true
+		} else {
+			savedSSID = ""
+			connectionState = false
+		}
+		
 	}
 }
