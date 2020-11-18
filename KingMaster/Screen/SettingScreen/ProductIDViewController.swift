@@ -94,6 +94,8 @@ class ProductIDViewController: ViewController<ProductIDView> {
 	
 	private func handleConnection(success: Bool) {
 		
+		screenView.stopLoading()
+		
 		if success {
 			connectionState = true
 		} else {

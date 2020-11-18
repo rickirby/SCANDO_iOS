@@ -87,6 +87,16 @@ class ProductIDView: View {
 		return button
 	}()
 	
+	private lazy var activityIndicator: UIActivityIndicatorView = {
+		let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+		activityIndicator.color = .gray
+		activityIndicator.hidesWhenStopped = true
+		activityIndicator.stopAnimating()
+		
+		return activityIndicator
+	}()
+	
 	// MARK: - Life Cycles
 	
 	override func setViews() {
@@ -95,11 +105,21 @@ class ProductIDView: View {
 		configureView()
 	}
 	
+	// MARK: - Public Methods
+	
+	func startLoading() {
+		activityIndicator.startAnimating()
+	}
+	
+	func stopLoading() {
+		activityIndicator.stopAnimating()
+	}
+	
 	// MARK: - Private Methods
 	
 	private func configureView() {
 		backgroundColor = .systemBackground
-		addAllSubviews(views: [titleLabel, descriptionLabel, learnMoreButton, productIDTextField, positiveButton])
+		addAllSubviews(views: [titleLabel, descriptionLabel, learnMoreButton, productIDTextField, positiveButton, activityIndicator])
 		
 		NSLayoutConstraint.activate([
 			titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 90),
@@ -120,7 +140,10 @@ class ProductIDView: View {
 			positiveButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 24),
 			positiveButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -24),
 			positiveButton.bottomAnchor.constraint(equalTo: self.keyboardLayoutGuide.topAnchor, constant: -40),
-			positiveButton.heightAnchor.constraint(equalToConstant: 48)
+			positiveButton.heightAnchor.constraint(equalToConstant: 48),
+			
+			activityIndicator.topAnchor.constraint(equalTo: productIDTextField.bottomAnchor, constant: 20),
+			activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor)
 		])
 	}
 	
@@ -129,6 +152,8 @@ class ProductIDView: View {
 			return
 		}
 		
+		productIDTextField.resignFirstResponder()
+		startLoading()
 		onViewEvent?(.didTapDone(productID: productID))
 	}
 	
