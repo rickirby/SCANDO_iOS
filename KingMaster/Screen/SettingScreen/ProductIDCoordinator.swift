@@ -13,7 +13,7 @@ class ProductIDCoordinator: Coordinator {
 	// MARK: - Public Properties
 	
 	var onSelectDirectConnection: (() -> Void)?
-	var onSelectSharedConnection: ((String) -> Void)?
+	var onSelectSharedConnection: (() -> Void)?
 	
 	var rootViewController: UIViewController {
 		guard let navigationController = navigationController else {
@@ -51,9 +51,9 @@ class ProductIDCoordinator: Coordinator {
 			case .directConnection:
 				self?.dismissViewController()
 				self?.onSelectDirectConnection?()
-			case .sharedConnection(printerSSID: let printerSSID):
+			case .sharedConnection:
 				self?.dismissViewController()
-				self?.onSelectSharedConnection?(printerSSID)
+				self?.onSelectSharedConnection?()
 			}
 		}
 		

@@ -24,7 +24,7 @@ class ProductIDViewController: ViewController<ProductIDView> {
 	
 	// MARK: - Private Properties
 	
-	private var savedSSID = ""
+	private var printerSSID = ""
 	
 	// MARK: - Life Cycles
 	
@@ -65,7 +65,7 @@ class ProductIDViewController: ViewController<ProductIDView> {
 				self.handleConnection(success: false)
 			} else {
 				if self.currentSSIDs().first == ssid {
-					self.savedSSID = ssid
+					self.printerSSID = ssid
 					self.handleConnection(success: true)
 				} else {
 					self.handleConnection(success: false)
@@ -100,12 +100,12 @@ class ProductIDViewController: ViewController<ProductIDView> {
 				ConnectionUserSetting.shared.save("")
 				self.onNavigationEvent?(.directConnection)
 			}, sharedConnectionHandler: {
-				ConnectionUserSetting.shared.save(self.savedSSID)
-				self.onNavigationEvent?(.sharedConnection(printerSSID: self.savedSSID))
+				ConnectionUserSetting.shared.save(self.printerSSID)
+				self.onNavigationEvent?(.sharedConnection(printerSSID: self.printerSSID))
 			}, cancelHandler: {
 				self.dismiss(animated: true) {
 					ConnectionUserSetting.shared.save(nil)
-					NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: self.savedSSID)
+					NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: self.printerSSID)
 				}
 			})
 

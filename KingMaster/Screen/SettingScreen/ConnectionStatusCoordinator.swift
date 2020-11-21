@@ -65,8 +65,8 @@ class ConnectionStatusCoordinator: Coordinator {
 		productIDCoordinator?.onSelectDirectConnection = { [weak self] in
 			self?.notifyDirectConnection()
 		}
-		productIDCoordinator?.onSelectSharedConnection = { [weak self] printerSSID in
-			self?.openWifiSelection(printerSSID)
+		productIDCoordinator?.onSelectSharedConnection = { [weak self] in
+			self?.openWifiSelection()
 		}
 		
 		productIDCoordinator?.start()
@@ -84,7 +84,7 @@ class ConnectionStatusCoordinator: Coordinator {
 		connectionStatusViewController?.refreshStatus()
 	}
 	
-	private func openWifiSelection(_ printerSSID: String) {
+	private func openWifiSelection() {
 		connectionStatusViewController?.refreshStatus()
 	}
 }

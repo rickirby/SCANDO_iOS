@@ -10,7 +10,7 @@ import UIKit
 
 class ConnectionUserSetting {
 	
-	let key = "shared_ssid"
+	let key = "printer_ssid"
 	
 	static let shared = ConnectionUserSetting()
 	
