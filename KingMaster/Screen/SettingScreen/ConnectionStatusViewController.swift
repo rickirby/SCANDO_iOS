@@ -56,9 +56,10 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 		}
 		
 		if printerSSID == "" {
+			// TODO: Should check connection test first
 			screenView.configureStatus(for: .connected)
 		} else {
-			
+			screenView.configureStatus(for: .connected)
 		}
 		
 	}
