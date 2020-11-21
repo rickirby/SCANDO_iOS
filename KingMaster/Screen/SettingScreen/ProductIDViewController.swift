@@ -16,7 +16,8 @@ class ProductIDViewController: ViewController<ProductIDView> {
 	// MARK: - Public Properties
 	
 	enum NavigationEvent {
-		case didDismiss
+		case directConnection
+		case sharedConnection(printerSSID: String)
 	}
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
@@ -24,7 +25,6 @@ class ProductIDViewController: ViewController<ProductIDView> {
 	// MARK: - Private Properties
 	
 	private var savedSSID = ""
-	private var connectionState = false
 	
 	// MARK: - Life Cycles
 	
@@ -38,7 +38,6 @@ class ProductIDViewController: ViewController<ProductIDView> {
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 		
-		NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: savedSSID)
 	}
 	
 	// MARK: - Private Methods
@@ -97,10 +96,18 @@ class ProductIDViewController: ViewController<ProductIDView> {
 		screenView.stopLoading()
 		
 		if success {
-			connectionState = true
+			AlertView.createConnectionModeAlert(self, directConnectHandler: {
+				self.onNavigationEvent?(.directConnection)
+			}, sharedConnectionHandler: {
+				self.onNavigationEvent?(.sharedConnection(printerSSID: self.savedSSID))
+			}, cancelHandler: {
+				self.dismiss(animated: true) {
+					NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: self.savedSSID)
+				}
+			})
+
 		} else {
 			savedSSID = ""
-			connectionState = false
 		}
 		
 	}

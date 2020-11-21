@@ -44,8 +44,11 @@ class ProductIDCoordinator: Coordinator {
 		let vc = ProductIDViewController()
 		vc.onNavigationEvent = { [weak self] (navigationEvent: ProductIDViewController.NavigationEvent) in
 			switch navigationEvent {
-			case .didDismiss:
-				self?.dismissViewController()
+			
+			case .directConnection:
+				break
+			case .sharedConnection(printerSSID: let printerSSID):
+				break
 			}
 		}
 		
