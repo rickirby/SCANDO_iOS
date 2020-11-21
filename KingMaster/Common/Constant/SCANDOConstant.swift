@@ -84,4 +84,10 @@ class SCANDOConstant {
 	static let connectionStatusNegativeButtonDisconnected: String = "Cancel"
 	
 	static let connectionStatusLearnMoreButton: String = "Learn more about Braille Printer"
+	
+	static let connectionModeTitle: String = "Connection Mode"
+	static let connectionModeMessage: String = "Which way would you like to connect with Braille Printer?"
+	static let connectionModeDirectAction: String = "Direct Connection"
+	static let connectionModeSharedAction: String = "Shared Connection"
+	static let connectionModeCancelActiion: String = "Cancel"
 }

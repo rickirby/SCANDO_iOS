@@ -187,4 +187,19 @@ class AlertView {
 		
 		target.present(ac, animated: true, completion: nil)
 	}
+	
+	static func createConnectionModeAlert(_ target: UIViewController, directConnectHandler: @escaping () -> Void, sharedConnectionHandler: @escaping () -> Void, cancelHandler: @escaping () -> Void) {
+		let ac = UIAlertController(title: SCANDOConstant.connectionModeTitle, message: SCANDOConstant.connectionModeMessage, preferredStyle: .actionSheet)
+		ac.addAction(UIAlertAction(title: SCANDOConstant.connectionModeDirectAction, style: .default, handler: { _ in
+			directConnectHandler()
+		}))
+		ac.addAction(UIAlertAction(title: SCANDOConstant.connectionModeSharedAction, style: .default, handler: { _ in
+			sharedConnectionHandler()
+		}))
+		ac.addAction(UIAlertAction(title: SCANDOConstant.connectionModeCancelActiion, style: .cancel, handler: { _ in
+			cancelHandler()
+		}))
+		
+		target.present(ac, animated: true, completion: nil)
+	}
 }
