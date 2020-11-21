@@ -56,6 +56,8 @@
 		DC3F5E9725315AEC007B6B3E /* ErodeParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3F5E95253159CB007B6B3E /* ErodeParamUserSetting.swift */; };
 		DC455AFA2568E89300A0089F /* ConnectionUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC455AF92568E89300A0089F /* ConnectionUserSetting.swift */; };
 		DC455AFB2568E89300A0089F /* ConnectionUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC455AF92568E89300A0089F /* ConnectionUserSetting.swift */; };
+		DC455B012568F0EC00A0089F /* WifiSelectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC455B002568F0EC00A0089F /* WifiSelectionCoordinator.swift */; };
+		DC455B022568F0EC00A0089F /* WifiSelectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC455B002568F0EC00A0089F /* WifiSelectionCoordinator.swift */; };
 		DC46E1452521686E000ED989 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DC46E1442521686E000ED989 /* README.md */; };
 		DC4CD0032514FB51000A84BC /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4CD0022514FB51000A84BC /* PreviewView.swift */; };
 		DC4CD0052514FB78000A84BC /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4CD0042514FB78000A84BC /* PreviewViewController.swift */; };
@@ -210,6 +212,7 @@
 		DC3F5E95253159CB007B6B3E /* ErodeParamUserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErodeParamUserSetting.swift; sourceTree = "<group>"; };
 		DC415C6B252CA193001AD7D2 /* RBImageProcessor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBImageProcessor.framework; path = Carthage/Build/iOS/RBImageProcessor.framework; sourceTree = "<group>"; };
 		DC455AF92568E89300A0089F /* ConnectionUserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionUserSetting.swift; sourceTree = "<group>"; };
+		DC455B002568F0EC00A0089F /* WifiSelectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiSelectionCoordinator.swift; sourceTree = "<group>"; };
 		DC46E1442521686E000ED989 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DC4CD0022514FB51000A84BC /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		DC4CD0042514FB78000A84BC /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
@@ -590,6 +593,7 @@
 				DC89011825580E41001318D7 /* SettingCoordinator.swift */,
 				DC8DB87F25584A3F00F8437F /* ConnectionStatusCoordinator.swift */,
 				DC4F8D1D2560CB0300EA616C /* ProductIDCoordinator.swift */,
+				DC455B002568F0EC00A0089F /* WifiSelectionCoordinator.swift */,
 				DCB5C6C52556FA6900E87733 /* SettingViewController.swift */,
 				DC89012325583FA8001318D7 /* ConnectionStatusViewController.swift */,
 				DC4F8D192560C81600EA616C /* ProductIDViewController.swift */,
@@ -852,6 +856,7 @@
 			files = (
 				DCB5C6C62556FA6900E87733 /* SettingViewController.swift in Sources */,
 				DC215A1F25166321006D409A /* Document+CoreDataProperties.swift in Sources */,
+				DC455B012568F0EC00A0089F /* WifiSelectionCoordinator.swift in Sources */,
 				DC82CC952517058900403550 /* SCANDODateFormatter.swift in Sources */,
 				09C8ADAE25065154004BA0F7 /* Router.swift in Sources */,
 				DC455AFA2568E89300A0089F /* ConnectionUserSetting.swift in Sources */,
@@ -930,6 +935,7 @@
 			files = (
 				DCB5C6C72556FA6900E87733 /* SettingViewController.swift in Sources */,
 				DCD7350D252CACF70046775E /* Document+CoreDataProperties.swift in Sources */,
+				DC455B022568F0EC00A0089F /* WifiSelectionCoordinator.swift in Sources */,
 				DCD7350E252CACF70046775E /* SCANDODateFormatter.swift in Sources */,
 				DCD7350F252CACF70046775E /* Router.swift in Sources */,
 				DC455AFB2568E89300A0089F /* ConnectionUserSetting.swift in Sources */,
