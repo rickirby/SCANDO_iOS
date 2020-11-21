@@ -33,6 +33,15 @@ class WifiSelectionCoordinator: Coordinator {
 	// MARK: - Public Methods
 	
 	func start() {
+		let vc = makeWifiSelectionViewController()
 		
+		Router.shared.present(vc, on: rootViewController, isAnimated: true)
+	}
+	
+	func makeWifiSelectionViewController() -> UIViewController {
+		let vc = WifiSelectionTableViewController()
+		let navVC = UINavigationController(rootViewController: vc)
+		
+		return navVC
 	}
 }
