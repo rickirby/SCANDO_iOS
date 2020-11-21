@@ -23,6 +23,7 @@ class ConnectionStatusCoordinator: Coordinator {
 	// MARK: - Private Properties
 	
 	private weak var navigationController: UINavigationController?
+	private var connectionStatusViewController: ConnectionStatusViewController?
 	private var productIDCoordinator: ProductIDCoordinator?
 	
 	// MARK: - Life Cycles
@@ -53,6 +54,7 @@ class ConnectionStatusCoordinator: Coordinator {
 				self?.popViewController()
 			}
 		}
+		self.connectionStatusViewController = vc
 		
 		return vc
 	}
@@ -60,6 +62,12 @@ class ConnectionStatusCoordinator: Coordinator {
 	private func openPair() {
 		productIDCoordinator = nil
 		productIDCoordinator = ProductIDCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		productIDCoordinator?.onSelectDirectConnection = { [weak self] in
+			self?.notifyDirectConnection()
+		}
+		productIDCoordinator?.onSelectSharedConnection = { [weak self] printerSSID in
+			self?.openWifiSelection(printerSSID)
+		}
 		
 		productIDCoordinator?.start()
 	}
@@ -70,5 +78,13 @@ class ConnectionStatusCoordinator: Coordinator {
 	
 	private func popViewController() {
 		Router.shared.popViewController(on: self)
+	}
+	
+	private func notifyDirectConnection() {
+		connectionStatusViewController?.refreshStatus()
+	}
+	
+	private func openWifiSelection(_ printerSSID: String) {
+		connectionStatusViewController?.refreshStatus()
 	}
 }

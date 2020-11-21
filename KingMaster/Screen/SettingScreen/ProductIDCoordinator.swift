@@ -12,6 +12,9 @@ class ProductIDCoordinator: Coordinator {
 	
 	// MARK: - Public Properties
 	
+	var onSelectDirectConnection: (() -> Void)?
+	var onSelectSharedConnection: ((String) -> Void)?
+	
 	var rootViewController: UIViewController {
 		guard let navigationController = navigationController else {
 			return UIViewController()
@@ -46,9 +49,11 @@ class ProductIDCoordinator: Coordinator {
 			switch navigationEvent {
 			
 			case .directConnection:
-				break
+				self?.dismissViewController()
+				self?.onSelectDirectConnection?()
 			case .sharedConnection(printerSSID: let printerSSID):
-				break
+				self?.dismissViewController()
+				self?.onSelectSharedConnection?(printerSSID)
 			}
 		}
 		

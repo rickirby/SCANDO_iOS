@@ -46,6 +46,12 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 		configureBar()
 	}
 	
+	// MARK: - Public Methods
+	
+	func refreshStatus() {
+		
+	}
+	
 	// MARK: - Private Methods
 	
 	private func configureBar() {
