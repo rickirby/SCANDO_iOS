@@ -25,6 +25,7 @@ class ConnectionStatusCoordinator: Coordinator {
 	private weak var navigationController: UINavigationController?
 	private var connectionStatusViewController: ConnectionStatusViewController?
 	private var productIDCoordinator: ProductIDCoordinator?
+	private var wifiSelectionCoordinator: WifiSelectionCoordinator?
 	
 	// MARK: - Life Cycles
 	
@@ -85,6 +86,9 @@ class ConnectionStatusCoordinator: Coordinator {
 	}
 	
 	private func openWifiSelection() {
-		connectionStatusViewController?.refreshStatus()
+		wifiSelectionCoordinator = nil
+		wifiSelectionCoordinator = WifiSelectionCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		
+		wifiSelectionCoordinator?.start()
 	}
 }
