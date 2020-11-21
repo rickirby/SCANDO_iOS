@@ -97,18 +97,25 @@ class ProductIDViewController: ViewController<ProductIDView> {
 		
 		if success {
 			AlertView.createConnectionModeAlert(self, directConnectHandler: {
+				ConnectionUserSetting.shared.save("")
 				self.onNavigationEvent?(.directConnection)
 			}, sharedConnectionHandler: {
+				ConnectionUserSetting.shared.save(self.savedSSID)
 				self.onNavigationEvent?(.sharedConnection(printerSSID: self.savedSSID))
 			}, cancelHandler: {
 				self.dismiss(animated: true) {
+					ConnectionUserSetting.shared.save(nil)
 					NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: self.savedSSID)
 				}
 			})
 
 		} else {
-			savedSSID = ""
+			ConnectionUserSetting.shared.save(nil)
 		}
 		
 	}
 }
+
+// value shared connected
+// nil default value, not connected, connection error. should be show first time view
+// "" direct connection
