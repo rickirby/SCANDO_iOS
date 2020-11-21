@@ -50,6 +50,17 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 	
 	func refreshStatus() {
 		
+		guard let printerSSID = ConnectionUserSetting.shared.read() else {
+			screenView.configureStatus(for: .disconnected)
+			return
+		}
+		
+		if printerSSID == "" {
+			screenView.configureStatus(for: .connected)
+		} else {
+			
+		}
+		
 	}
 	
 	// MARK: - Private Methods
