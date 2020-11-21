@@ -108,7 +108,7 @@ class ConnectionStatusView: View {
 	
 	// MARK: - Public Methods
 	
-	func configureStatus(for status: ConnectionStatusViewController.Status) {
+	func configureStatus(for status: ConnectionStatusViewController.Status, sharedSSID: String? = nil) {
 		titleLabel.text = status == .connected ? SCANDOConstant.connectionStatusTitleConnected : SCANDOConstant.connectionStatusTitleDisconnected
 		descriptionLabel.text = status == .connected ? SCANDOConstant.connectionStatusDescriptionConnected : SCANDOConstant.connectionStatusDescriptionDisconnectted
 		positiveButton.setTitle(status == .connected ? SCANDOConstant.connectionStatusPositiveButtonConnected : SCANDOConstant.connectionStatusPositiveButtonDisconnected, for: .normal)
