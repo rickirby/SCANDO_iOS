@@ -118,6 +118,7 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 			}
 			
 			ConnectionUserSetting.shared.save(nil)
+			self.refreshStatus()
 		}
 	}
 	
