@@ -202,4 +202,16 @@ class AlertView {
 		
 		target.present(ac, animated: true, completion: nil)
 	}
+	
+	static func createConnectionResetAlert(_ target: UIViewController, resetHandler: @escaping () -> Void, cancelHandler: (() -> Void)? = nil) {
+		let ac = UIAlertController(title: SCANDOConstant.connectionResetTitle, message: SCANDOConstant.connectionResetMessage, preferredStyle: .alert)
+		ac.addAction(UIAlertAction(title: SCANDOConstant.connectionResetDesctructiveAction, style: .destructive, handler: { _ in
+			resetHandler()
+		}))
+		ac.addAction(UIAlertAction(title: SCANDOConstant.connectionModeCancelActiion, style: .cancel, handler: { _ in
+			cancelHandler?()
+		}))
+		
+		target.present(ac, animated: true, completion: nil)
+	}
 }

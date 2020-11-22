@@ -19,7 +19,6 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 		case didTapPair
 		case didTapCancel
 		case didTapDone
-		case didTapReset
 	}
 	
 	enum Status {
@@ -101,7 +100,7 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 				if self?.connectionStatus ?? .disconnected == .disconnected {
 					self?.onNavigationEvent?(.didTapCancel)
 				} else {
-					self?.onNavigationEvent?(.didTapReset)
+					self?.resetConnection()
 				}
 			}
 		}
@@ -110,4 +109,16 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 	private func configureStatus(for status: Status) {
 		screenView.configureStatus(for: status)
 	}
+	
+	private func resetConnection() {
+		
+		AlertView.createConnectionResetAlert(self) {
+			if let sharedSSID = ConnectionUserSetting.shared.read(), sharedSSID == "" {
+				NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: "")
+			}
+			
+			ConnectionUserSetting.shared.save(nil)
+		}
+	}
+	
 }

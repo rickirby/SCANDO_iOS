@@ -49,8 +49,6 @@ class ConnectionStatusCoordinator: Coordinator {
 			switch navigationEvent {
 			case .didTapPair:
 				self?.openPair()
-			case .didTapReset:
-				self?.openReset()
 			case .didTapDone, .didTapCancel:
 				self?.popViewController()
 			}
@@ -71,10 +69,6 @@ class ConnectionStatusCoordinator: Coordinator {
 		}
 		
 		productIDCoordinator?.start()
-	}
-	
-	private func openReset() {
-		
 	}
 	
 	private func popViewController() {

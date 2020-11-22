@@ -90,4 +90,9 @@ class SCANDOConstant {
 	static let connectionModeDirectAction: String = "Direct Connection"
 	static let connectionModeSharedAction: String = "Shared Connection"
 	static let connectionModeCancelActiion: String = "Cancel"
+	
+	static let connectionResetTitle: String = "Reset Connection"
+	static let connectionResetMessage: String = "Are you sure you want to reset connection setting?"
+	static let connectionResetDesctructiveAction: String = "Reset"
+	static let connectionResetCancelAction: String = "Cancel"
 }
