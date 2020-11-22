@@ -7,13 +7,29 @@
 //
 
 import UIKit
+import SystemConfiguration.CaptiveNetwork
+import NetworkExtension
 
 class WifiSelectionTableViewController: UITableViewController {
 	
 	// MARK: - Private Properties
 	
 	private var selectedIndex: Int?
-	private var availableSSID: [String] = ["Satu", "Dua", "Tiga"]
+	private var availableSSID: [String] = []
+	private var timer: Timer?
+	private var shouldScanOnNext = true
+	
+	private lazy var refreshBarButton: UIBarButtonItem = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(refreshBarButtonTapped))
+	
+	private lazy var activityIndicator: UIActivityIndicatorView = {
+		let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+		activityIndicator.color = .gray
+		activityIndicator.hidesWhenStopped = true
+		activityIndicator.startAnimating()
+		
+		return activityIndicator
+	}()
 	
 	// MARK: - Life Cycles
 	
@@ -21,12 +37,18 @@ class WifiSelectionTableViewController: UITableViewController {
 		super.viewDidLoad()
 		
 		title = "Available Wifi"
+		navigationItem.rightBarButtonItem = refreshBarButton
+		
+		getAvailableWifiList()
+		timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { _ in
+			self.getAvailableWifiList()
+		}
 	}
 	
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
 		
-		// TODO: make request available wifi and distribute to availableSSID properties
+		timer?.invalidate()
 	}
 	
 	// MARK: - UITableViewDataSource
@@ -63,6 +85,47 @@ class WifiSelectionTableViewController: UITableViewController {
 		
 		selectedIndex = indexPath.row
 		tableView.reloadData()
+	}
+	
+	// MARK: -  Private Methods
+	
+	@objc private func refreshBarButtonTapped() {
+		shouldScanOnNext = true
+		getAvailableWifiList()
+		shouldScanOnNext = false
+	}
+	
+	private func getAvailableWifiList() {
+		
+		if shouldScanOnNext {
+			navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
+			NetworkRequest.get(url: "http://scandohardware.local/scanwifi") { result in
+				guard let wifiList = result["wifilist"] as? [String] else {
+					return
+				}
+				
+				self.availableSSID = wifiList
+				
+				ThreadManager.executeOnMain {
+					self.navigationItem.rightBarButtonItem = self.refreshBarButton
+					self.tableView.reloadData()
+				}
+			}
+		}
+		
+		shouldScanOnNext = true
+	}
+	
+	private func connectToWifi(ssid: String, pass: String) {
+		
+	}
+	
+	private func handleConnection(ssid: String?) {
+		if let ssid = ssid {
+			// on success
+		} else {
+			// on failed
+		}
 	}
 	
 }
