@@ -17,7 +17,7 @@ class ProductIDViewController: ViewController<ProductIDView> {
 	
 	enum NavigationEvent {
 		case directConnection
-		case sharedConnection(printerSSID: String)
+		case sharedConnection
 	}
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
@@ -101,11 +101,11 @@ class ProductIDViewController: ViewController<ProductIDView> {
 				self.onNavigationEvent?(.directConnection)
 			}, sharedConnectionHandler: {
 				ConnectionUserSetting.shared.save(self.printerSSID)
-				self.onNavigationEvent?(.sharedConnection(printerSSID: self.printerSSID))
+				self.onNavigationEvent?(.sharedConnection)
 			}, cancelHandler: {
 				self.dismiss(animated: true) {
 					ConnectionUserSetting.shared.save(nil)
-					NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: self.printerSSID)
+					NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: "")
 				}
 			})
 

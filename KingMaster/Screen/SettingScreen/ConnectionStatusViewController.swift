@@ -52,22 +52,20 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 	
 	func refreshStatus() {
 		
-		guard let printerSSID = ConnectionUserSetting.shared.read() else {
+		guard let sharedSSID = ConnectionUserSetting.shared.read() else {
 			screenView.configureStatus(for: .disconnected)
 			return
 		}
 		
-		if printerSSID == "" {
+		if sharedSSID == "" {
 			screenView.startLoading()
 			NetworkRequest.get(url: "http://scandohardware.local/checkresponse") { result in
 				ThreadManager.executeOnMain {
-					if let message = result["msg"] as? String, message == "OK" {
+					if let message = result["msg"] as? String, message == "OKk" {
 						self.screenView.configureStatus(for: .connected)
 					} else {
 						self.screenView.configureStatus(for: .disconnected)
-						if let printerSSID = ConnectionUserSetting.shared.read() {
-							NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: printerSSID)
-						}
+						NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: "")
 					}
 					
 					self.screenView.stopLoading()
