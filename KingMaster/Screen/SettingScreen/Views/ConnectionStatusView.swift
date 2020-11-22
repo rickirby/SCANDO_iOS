@@ -64,6 +64,16 @@ class ConnectionStatusView: View {
 		return imageView
 	}()
 	
+	private lazy var activityIndicator: UIActivityIndicatorView = {
+		let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+		activityIndicator.color = .gray
+		activityIndicator.hidesWhenStopped = true
+		activityIndicator.stopAnimating()
+		
+		return activityIndicator
+	}()
+	
 	private lazy var positiveButton: UIButton = {
 		let button = UIButton()
 		button.translatesAutoresizingMaskIntoConstraints = false
@@ -114,12 +124,20 @@ class ConnectionStatusView: View {
 		positiveButton.setTitle(status == .connected ? SCANDOConstant.connectionStatusPositiveButtonConnected : SCANDOConstant.connectionStatusPositiveButtonDisconnected, for: .normal)
 		negativeButton.setTitle(status == .connected ? SCANDOConstant.connectionStatusNegativeButtonConnected : SCANDOConstant.connectionStatusNegativeButtonDisconnected, for: .normal)
 	}
+
+	func startLoading() {
+		activityIndicator.startAnimating()
+	}
+	
+	func stopLoading() {
+		activityIndicator.stopAnimating()
+	}
 	
 	// MARK: - Private Methods
 	
 	private func configureView() {
 		backgroundColor = .systemBackground
-		addAllSubviews(views: [titleLabel, descriptionLabel, learnMoreButton, printerImageView, verticalStack])
+		addAllSubviews(views: [titleLabel, descriptionLabel, learnMoreButton, printerImageView, activityIndicator, verticalStack])
 		configureVerticalStack()
 		
 		NSLayoutConstraint.activate([
@@ -137,6 +155,9 @@ class ConnectionStatusView: View {
 			printerImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 			printerImageView.widthAnchor.constraint(equalToConstant: CGFloat(214.0).makeDynamicW()),
 			printerImageView.heightAnchor.constraint(equalToConstant: CGFloat(214.0).makeDynamicW()),
+			
+			activityIndicator.topAnchor.constraint(equalTo: printerImageView.bottomAnchor, constant: 20),
+			activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 			
 			verticalStack.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 24),
 			verticalStack.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -24),

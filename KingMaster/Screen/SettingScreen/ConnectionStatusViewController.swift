@@ -58,6 +58,7 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 		}
 		
 		if printerSSID == "" {
+			screenView.startLoading()
 			NetworkRequest.get(url: "http://scandohardware.local/checkresponse") { result in
 				ThreadManager.executeOnMain {
 					if let message = result["msg"] as? String, message == "OK" {
@@ -68,6 +69,8 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 							NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: printerSSID)
 						}
 					}
+					
+					self.screenView.stopLoading()
 				}
 			}
 			
