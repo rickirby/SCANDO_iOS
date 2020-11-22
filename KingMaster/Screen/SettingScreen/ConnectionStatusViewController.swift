@@ -46,6 +46,7 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 		super.viewWillAppear(animated)
 		
 		configureBar()
+		refreshStatus()
 	}
 	
 	// MARK: - Public Methods
@@ -61,11 +62,12 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 			screenView.startLoading()
 			NetworkRequest.get(url: "http://scandohardware.local/checkresponse") { result in
 				ThreadManager.executeOnMain {
-					if let message = result["msg"] as? String, message == "OKk" {
+					if let message = result["msg"] as? String, message == "OK" {
 						self.screenView.configureStatus(for: .connected)
 					} else {
 						self.screenView.configureStatus(for: .disconnected)
 						NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: "")
+						ConnectionUserSetting.shared.save(nil)
 					}
 					
 					self.screenView.stopLoading()
