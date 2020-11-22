@@ -54,7 +54,7 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 	func refreshStatus() {
 		
 		guard let sharedSSID = ConnectionUserSetting.shared.read() else {
-			screenView.configureStatus(for: .disconnected)
+			connectionStatus = .disconnected
 			return
 		}
 		
@@ -63,9 +63,9 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 			NetworkRequest.get(url: "http://scandohardware.local/checkresponse") { result in
 				ThreadManager.executeOnMain {
 					if let message = result["msg"] as? String, message == "OK" {
-						self.screenView.configureStatus(for: .connected)
+						self.connectionStatus = .connected
 					} else {
-						self.screenView.configureStatus(for: .disconnected)
+						self.connectionStatus = .disconnected
 						NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: "")
 						ConnectionUserSetting.shared.save(nil)
 					}
