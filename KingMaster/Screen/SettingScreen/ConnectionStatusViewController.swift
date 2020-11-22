@@ -8,6 +8,8 @@
 
 import UIKit
 import RBToolkit
+import SystemConfiguration.CaptiveNetwork
+import NetworkExtension
 
 class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 	
@@ -56,8 +58,19 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 		}
 		
 		if printerSSID == "" {
-			// TODO: Should check connection test first
-			screenView.configureStatus(for: .connected)
+			NetworkRequest.get(url: "http://scandohardware.local/checkresponse") { result in
+				ThreadManager.executeOnMain {
+					if let message = result["msg"] as? String, message == "OK" {
+						self.screenView.configureStatus(for: .connected)
+					} else {
+						self.screenView.configureStatus(for: .disconnected)
+						if let printerSSID = ConnectionUserSetting.shared.read() {
+							NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: printerSSID)
+						}
+					}
+				}
+			}
+			
 		} else {
 			screenView.configureStatus(for: .connected)
 		}
