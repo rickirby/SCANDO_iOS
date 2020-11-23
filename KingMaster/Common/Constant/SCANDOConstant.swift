@@ -100,4 +100,11 @@ class SCANDOConstant {
 	static let connectToWifiAskPasswordMessage: String = "Input password for "
 	static let connectToWifiAskPasswordConnectAction: String = "OK"
 	static let connectToWifiAskPasswordCancelAction: String = "Cancel"
+	
+	static let connectToWifiSuccessTitle: String = "Connected!"
+	static let connectToWifiErrorTitle: String = "Failed!"
+	static let connectToWifiSuccessMessage: String = "Success connecting your Braille Printer to "
+	static let connectToWifiErrorMessage: String = "Can not connect to selected WiFi network. Re-check the password and try again"
+	static let connectToWifiResultOkAction: String = "OK"
+	static let connectToWifiResultCancelAction: String = "Cancel"
 }

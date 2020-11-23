@@ -123,7 +123,7 @@ class WifiSelectionTableViewController: UITableViewController {
 			return
 		}
 		
-		AlertView.createConnectToWifiAlert(self, connectHandler: { pass in
+		AlertView.createConnectToWifiAlert(self, ssidName: availableSSID[selectedIndex], connectHandler: { pass in
 			let postBodyString = "{\"ssid\":\"\(self.availableSSID[selectedIndex])\",\"pass\":\"\(pass)\"}"
 			guard let postBodyData = postBodyString.data(using: String.Encoding.utf8) else {
 				return
@@ -131,9 +131,21 @@ class WifiSelectionTableViewController: UITableViewController {
 			
 			NetworkRequest.post(url: "http://192.168.4.1/connectwifi", body: postBodyData) { result in
 				self.allowScanning = true
-				guard let ipAddress = result["msg"] as? String, ipAddress != "failed" else {
-					return
+				self.selectedIndex = nil
+				
+				ThreadManager.executeOnMain {
+					guard let ipAddress = result["msg"] as? String else {
+						return
+					}
+					
+					AlertView.createConnectToWifiResultAlert(self, ssidName: self.availableSSID[selectedIndex], success: ipAddress != "failed", onSuccessHandler: {
+						
+					}, onErrorHandler: {
+						
+					})
 				}
+				
+				
 				
 			}
 		}, cancelHandler: {
