@@ -18,6 +18,7 @@ class WifiSelectionTableViewController: UITableViewController {
 	private var availableSSID: [String] = []
 	private var timer: Timer?
 	private var shouldScanOnNext = true
+	private var allowScanning = true
 	
 	private lazy var refreshBarButton: UIBarButtonItem = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(refreshBarButtonTapped))
 	
@@ -84,7 +85,8 @@ class WifiSelectionTableViewController: UITableViewController {
 		}
 		
 		selectedIndex = indexPath.row
-		tableView.reloadData()
+		allowScanning = false
+		connectToWifi()
 	}
 	
 	// MARK: -  Private Methods
@@ -97,9 +99,9 @@ class WifiSelectionTableViewController: UITableViewController {
 	
 	private func getAvailableWifiList() {
 		
-		if shouldScanOnNext {
+		if shouldScanOnNext && allowScanning {
 			navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
-			NetworkRequest.get(url: "http://scandohardware.local/scanwifi") { result in
+			NetworkRequest.get(url: "http://192.168.4.1/scanwifi") { result in
 				guard let wifiList = result["wifilist"] as? [String] else {
 					return
 				}
@@ -116,7 +118,27 @@ class WifiSelectionTableViewController: UITableViewController {
 		shouldScanOnNext = true
 	}
 	
-	private func connectToWifi(ssid: String, pass: String) {
+	private func connectToWifi() {
+		guard let selectedIndex = selectedIndex, selectedIndex < availableSSID.count else {
+			return
+		}
+		
+		AlertView.createConnectToWifiAlert(self, connectHandler: { pass in
+			let postBodyString = "{\"ssid\":\"\(self.availableSSID[selectedIndex])\",\"pass\":\"\(pass)\"}"
+			guard let postBodyData = postBodyString.data(using: String.Encoding.utf8) else {
+				return
+			}
+			
+			NetworkRequest.post(url: "http://192.168.4.1/connectwifi", body: postBodyData) { result in
+				self.allowScanning = true
+				guard let ipAddress = result["msg"] as? String, ipAddress != "failed" else {
+					return
+				}
+				
+			}
+		}, cancelHandler: {
+			self.allowScanning = true
+		})
 		
 	}
 	

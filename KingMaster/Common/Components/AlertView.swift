@@ -214,4 +214,23 @@ class AlertView {
 		
 		target.present(ac, animated: true, completion: nil)
 	}
+	
+	static func createConnectToWifiAlert(_ target: UIViewController, connectHandler: @escaping (String) -> Void, cancelHandler: (() -> Void)? = nil) {
+		let ac = UIAlertController(title: SCANDOConstant.connectToWifiAskPasswordTitle, message: SCANDOConstant.connectToWifiAskPasswordMessage, preferredStyle: .alert)
+		ac.addTextField {
+			$0.placeholder = "Password"
+		}
+		ac.addAction(UIAlertAction(title: SCANDOConstant.connectToWifiAskPasswordConnectAction, style: .default, handler: { _ in
+			guard let textField = ac.textFields?.first else {
+				return
+			}
+			
+			connectHandler(textField.text ?? "")
+		}))
+		ac.addAction(UIAlertAction(title: SCANDOConstant.connectToWifiAskPasswordCancelAction, style: .cancel, handler: { _ in
+			cancelHandler?()
+		}))
+		
+		target.present(ac, animated: true, completion: nil)
+	}
 }

@@ -95,4 +95,9 @@ class SCANDOConstant {
 	static let connectionResetMessage: String = "Are you sure you want to reset connection setting?"
 	static let connectionResetDesctructiveAction: String = "Reset"
 	static let connectionResetCancelAction: String = "Cancel"
+	
+	static let connectToWifiAskPasswordTitle: String = "Password"
+	static let connectToWifiAskPasswordMessage: String = "Input password for "
+	static let connectToWifiAskPasswordConnectAction: String = "OK"
+	static let connectToWifiAskPasswordCancelAction: String = "Cancel"
 }
