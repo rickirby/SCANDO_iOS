@@ -62,7 +62,7 @@ class ConnectionStatusCoordinator: Coordinator {
 		productIDCoordinator = nil
 		productIDCoordinator = ProductIDCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
 		productIDCoordinator?.onSelectDirectConnection = { [weak self] in
-			self?.notifyDirectConnection()
+			self?.notifyRefreshStatus()
 		}
 		productIDCoordinator?.onSelectSharedConnection = { [weak self] in
 			self?.openWifiSelection()
@@ -75,13 +75,16 @@ class ConnectionStatusCoordinator: Coordinator {
 		Router.shared.popViewController(on: self)
 	}
 	
-	private func notifyDirectConnection() {
+	private func notifyRefreshStatus() {
 		connectionStatusViewController?.refreshStatus()
 	}
 	
 	private func openWifiSelection() {
 		wifiSelectionCoordinator = nil
 		wifiSelectionCoordinator = WifiSelectionCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		wifiSelectionCoordinator?.onSuccessConnectingWifi = { [weak self] in
+			self?.notifyRefreshStatus()
+		}
 		
 		wifiSelectionCoordinator?.start()
 	}

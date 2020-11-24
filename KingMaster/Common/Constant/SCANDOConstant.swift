@@ -79,9 +79,19 @@ class SCANDOConstant {
 	static let connectionStatusNegativeButtonConnected: String = "Reset Connection"
 	
 	static let connectionStatusTitleDisconnected: String = "Hi, there!"
-	static let connectionStatusDescriptionDisconnectted: String = "If you have supported Braille Printer, you can pair it with your iPhone here"
+	static let connectionStatusDescriptionDisconnected: String = "If you have supported Braille Printer, you can pair it with your iPhone here"
 	static let connectionStatusPositiveButtonDisconnected: String = "Start Pairing"
 	static let connectionStatusNegativeButtonDisconnected: String = "Cancel"
+	
+	static let connectionStatusTitleSharedConnected: String = "Everything is OK"
+	static let connectionStatusDescriptionSharedConnected: String = "You are all set. You have been connected to shared network. You are ready to copy braille page"
+	static let connectionStatusPositiveButtonSharedConnected: String = "Done"
+	static let connectionStatusNegativeButtonSharedConnected: String = "Reset Connection"
+	
+	static let connectionStatusTitleDifferentNetwork: String = "Something Needs to Set"
+	static let connectionStatusDescriptionDifferentNetwork: String = "Make sure your iPhone have connected to same WiFi as you connect your Braille Printer"
+	static let connectionStatusPositiveButtonDifferentNetwork: String = "Refresh Status"
+	static let connectionStatusNegativeButtonDifferentNetwork: String = "Reset Connection"
 	
 	static let connectionStatusLearnMoreButton: String = "Learn more about Braille Printer"
 	

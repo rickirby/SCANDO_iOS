@@ -119,10 +119,34 @@ class ConnectionStatusView: View {
 	// MARK: - Public Methods
 	
 	func configureStatus(for status: ConnectionStatusViewController.Status, sharedSSID: String? = nil) {
-		titleLabel.text = status == .connected ? SCANDOConstant.connectionStatusTitleConnected : SCANDOConstant.connectionStatusTitleDisconnected
-		descriptionLabel.text = status == .connected ? SCANDOConstant.connectionStatusDescriptionConnected : SCANDOConstant.connectionStatusDescriptionDisconnectted
-		positiveButton.setTitle(status == .connected ? SCANDOConstant.connectionStatusPositiveButtonConnected : SCANDOConstant.connectionStatusPositiveButtonDisconnected, for: .normal)
-		negativeButton.setTitle(status == .connected ? SCANDOConstant.connectionStatusNegativeButtonConnected : SCANDOConstant.connectionStatusNegativeButtonDisconnected, for: .normal)
+		
+		switch status {
+		
+		case .directConnected:
+			titleLabel.text = SCANDOConstant.connectionStatusTitleConnected
+			descriptionLabel.text = SCANDOConstant.connectionStatusDescriptionConnected
+			positiveButton.setTitle(SCANDOConstant.connectionStatusPositiveButtonConnected, for: .normal)
+			negativeButton.setTitle(SCANDOConstant.connectionStatusNegativeButtonConnected, for: .normal)
+			
+		case .sharedConnected:
+			titleLabel.text = SCANDOConstant.connectionStatusTitleSharedConnected
+			descriptionLabel.text = SCANDOConstant.connectionStatusDescriptionSharedConnected
+			positiveButton.setTitle(SCANDOConstant.connectionStatusPositiveButtonSharedConnected, for: .normal)
+			negativeButton.setTitle(SCANDOConstant.connectionStatusNegativeButtonSharedConnected, for: .normal)
+		
+		case .disconnected:
+			titleLabel.text = SCANDOConstant.connectionStatusTitleDisconnected
+			descriptionLabel.text = SCANDOConstant.connectionStatusDescriptionDisconnected
+			positiveButton.setTitle(SCANDOConstant.connectionStatusPositiveButtonDisconnected, for: .normal)
+			negativeButton.setTitle(SCANDOConstant.connectionStatusNegativeButtonDisconnected, for: .normal)
+		
+		case .differentNetwork:
+			titleLabel.text = SCANDOConstant.connectionStatusTitleDifferentNetwork
+			descriptionLabel.text = SCANDOConstant.connectionStatusDescriptionDifferentNetwork
+			positiveButton.setTitle(SCANDOConstant.connectionStatusPositiveButtonDifferentNetwork, for: .normal)
+			negativeButton.setTitle(SCANDOConstant.connectionStatusNegativeButtonDifferentNetwork, for: .normal)
+		}
+		
 	}
 
 	func startLoading() {

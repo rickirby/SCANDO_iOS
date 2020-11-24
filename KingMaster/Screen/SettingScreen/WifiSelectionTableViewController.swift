@@ -12,6 +12,10 @@ import NetworkExtension
 
 class WifiSelectionTableViewController: UITableViewController {
 	
+	// MARK: - Public Properties
+	
+	var onSuccessConnectingWifi: (() -> Void)?
+	
 	// MARK: - Private Properties
 	
 	private var selectedIndex: Int?
@@ -138,11 +142,16 @@ class WifiSelectionTableViewController: UITableViewController {
 						return
 					}
 					
-					AlertView.createConnectToWifiResultAlert(self, ssidName: self.availableSSID[selectedIndex], success: ipAddress != "failed" && ipAddress != "Could not connect", onSuccessHandler: {
+					let isSuccess = ipAddress != "failed" && ipAddress != "Could not connect"
+					
+					if isSuccess {
+						NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: "")
+					}
+					
+					AlertView.createConnectToWifiResultAlert(self, ssidName: self.availableSSID[selectedIndex], success: isSuccess, onSuccessHandler: {
 						ConnectionUserSetting.shared.save(self.availableSSID[selectedIndex])
-						let configuration = NEHotspotConfiguration.init(ssid: self.availableSSID[selectedIndex], passphrase: pass, isWEP: false)
-						NEHotspotConfigurationManager.shared.apply(configuration, completionHandler: nil)
 						self.dismiss(animated: true, completion: nil)
+						self.onSuccessConnectingWifi?()
 					}, onErrorHandler: {
 						self.allowScanning = true
 						self.selectedIndex = nil
