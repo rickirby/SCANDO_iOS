@@ -10,6 +10,7 @@ import UIKit
 import RBToolkit
 import SystemConfiguration.CaptiveNetwork
 import NetworkExtension
+import CoreLocation
 
 class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 	
@@ -39,6 +40,7 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 		super.viewDidLoad()
 		
 		configureViewEvent()
+		askForLocationPermission()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -108,6 +110,25 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 	
 	private func configureStatus(for status: Status) {
 		screenView.configureStatus(for: status)
+	}
+	
+	private func askForLocationPermission() {
+		let locStatus = CLLocationManager.authorizationStatus()
+		switch locStatus {
+		case .notDetermined:
+			locationManager.requestAlwaysAuthorization()
+			return
+		case .denied, .restricted:
+			let alert = UIAlertController(title: "Location Services are disabled", message: "Please enable Location Services in your Settings", preferredStyle: .alert)
+			let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+			alert.addAction(okAction)
+			present(alert, animated: true, completion: nil)
+			return
+		case .authorizedAlways, .authorizedWhenInUse:
+			break
+		@unknown default:
+			break
+		}
 	}
 	
 	private func resetConnection() {
