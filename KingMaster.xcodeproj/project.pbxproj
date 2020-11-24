@@ -54,6 +54,12 @@
 		DC39BC7A2514AF590067DF71 /* EditScanCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39BC792514AF580067DF71 /* EditScanCoordinator.swift */; };
 		DC3F5E96253159CB007B6B3E /* ErodeParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3F5E95253159CB007B6B3E /* ErodeParamUserSetting.swift */; };
 		DC3F5E9725315AEC007B6B3E /* ErodeParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3F5E95253159CB007B6B3E /* ErodeParamUserSetting.swift */; };
+		DC455AFA2568E89300A0089F /* ConnectionUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC455AF92568E89300A0089F /* ConnectionUserSetting.swift */; };
+		DC455AFB2568E89300A0089F /* ConnectionUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC455AF92568E89300A0089F /* ConnectionUserSetting.swift */; };
+		DC455B012568F0EC00A0089F /* WifiSelectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC455B002568F0EC00A0089F /* WifiSelectionCoordinator.swift */; };
+		DC455B022568F0EC00A0089F /* WifiSelectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC455B002568F0EC00A0089F /* WifiSelectionCoordinator.swift */; };
+		DC455B062568F20C00A0089F /* WifiSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC455B052568F20C00A0089F /* WifiSelectionTableViewController.swift */; };
+		DC455B072568F20C00A0089F /* WifiSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC455B052568F20C00A0089F /* WifiSelectionTableViewController.swift */; };
 		DC46E1452521686E000ED989 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DC46E1442521686E000ED989 /* README.md */; };
 		DC4CD0032514FB51000A84BC /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4CD0022514FB51000A84BC /* PreviewView.swift */; };
 		DC4CD0052514FB78000A84BC /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4CD0042514FB78000A84BC /* PreviewViewController.swift */; };
@@ -81,6 +87,8 @@
 		DC89011F25582C59001318D7 /* ConnectionStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89011A25582A6A001318D7 /* ConnectionStatusView.swift */; };
 		DC89012425583FA9001318D7 /* ConnectionStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89012325583FA8001318D7 /* ConnectionStatusViewController.swift */; };
 		DC89012525583FA9001318D7 /* ConnectionStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89012325583FA8001318D7 /* ConnectionStatusViewController.swift */; };
+		DC8D715D256A90D6009B7606 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8D715C256A90D6009B7606 /* NetworkRequest.swift */; };
+		DC8D715E256A90D6009B7606 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8D715C256A90D6009B7606 /* NetworkRequest.swift */; };
 		DC8DB88025584A3F00F8437F /* ConnectionStatusCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DB87F25584A3F00F8437F /* ConnectionStatusCoordinator.swift */; };
 		DC8DB882255851A000F8437F /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DB881255851A000F8437F /* UIButton+Extension.swift */; };
 		DC972BC12512454F00A6C43B /* CameraCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC972BC02512454F00A6C43B /* CameraCoordinator.swift */; };
@@ -207,6 +215,9 @@
 		DC39BC792514AF580067DF71 /* EditScanCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScanCoordinator.swift; sourceTree = "<group>"; };
 		DC3F5E95253159CB007B6B3E /* ErodeParamUserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErodeParamUserSetting.swift; sourceTree = "<group>"; };
 		DC415C6B252CA193001AD7D2 /* RBImageProcessor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBImageProcessor.framework; path = Carthage/Build/iOS/RBImageProcessor.framework; sourceTree = "<group>"; };
+		DC455AF92568E89300A0089F /* ConnectionUserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionUserSetting.swift; sourceTree = "<group>"; };
+		DC455B002568F0EC00A0089F /* WifiSelectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiSelectionCoordinator.swift; sourceTree = "<group>"; };
+		DC455B052568F20C00A0089F /* WifiSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiSelectionTableViewController.swift; sourceTree = "<group>"; };
 		DC46E1442521686E000ED989 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DC4CD0022514FB51000A84BC /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		DC4CD0042514FB78000A84BC /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
@@ -229,6 +240,7 @@
 		DC89011825580E41001318D7 /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
 		DC89011A25582A6A001318D7 /* ConnectionStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatusView.swift; sourceTree = "<group>"; };
 		DC89012325583FA8001318D7 /* ConnectionStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatusViewController.swift; sourceTree = "<group>"; };
+		DC8D715C256A90D6009B7606 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		DC8DB87F25584A3F00F8437F /* ConnectionStatusCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatusCoordinator.swift; sourceTree = "<group>"; };
 		DC8DB881255851A000F8437F /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBCameraDocScan.framework; path = Carthage/Build/iOS/RBCameraDocScan.framework; sourceTree = "<group>"; };
@@ -551,6 +563,7 @@
 			children = (
 				DCAC3ED625158F6B00F5DD59 /* ThreadManager.swift */,
 				09FDB4A2252FED7E007E8D7A /* UserSetting.swift */,
+				DC8D715C256A90D6009B7606 /* NetworkRequest.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -587,9 +600,11 @@
 				DC89011825580E41001318D7 /* SettingCoordinator.swift */,
 				DC8DB87F25584A3F00F8437F /* ConnectionStatusCoordinator.swift */,
 				DC4F8D1D2560CB0300EA616C /* ProductIDCoordinator.swift */,
+				DC455B002568F0EC00A0089F /* WifiSelectionCoordinator.swift */,
 				DCB5C6C52556FA6900E87733 /* SettingViewController.swift */,
 				DC89012325583FA8001318D7 /* ConnectionStatusViewController.swift */,
 				DC4F8D192560C81600EA616C /* ProductIDViewController.swift */,
+				DC455B052568F20C00A0089F /* WifiSelectionTableViewController.swift */,
 				DCB5C6C82557063200E87733 /* Models */,
 				DCB5C6C12556EFBB00E87733 /* Views */,
 			);
@@ -610,6 +625,7 @@
 			isa = PBXGroup;
 			children = (
 				DCB5C6C92557063F00E87733 /* SettingModel.swift */,
+				DC455AF92568E89300A0089F /* ConnectionUserSetting.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -848,8 +864,10 @@
 			files = (
 				DCB5C6C62556FA6900E87733 /* SettingViewController.swift in Sources */,
 				DC215A1F25166321006D409A /* Document+CoreDataProperties.swift in Sources */,
+				DC455B012568F0EC00A0089F /* WifiSelectionCoordinator.swift in Sources */,
 				DC82CC952517058900403550 /* SCANDODateFormatter.swift in Sources */,
 				09C8ADAE25065154004BA0F7 /* Router.swift in Sources */,
+				DC455AFA2568E89300A0089F /* ConnectionUserSetting.swift in Sources */,
 				DC3F5E96253159CB007B6B3E /* ErodeParamUserSetting.swift in Sources */,
 				09FDB4A6252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift in Sources */,
 				DC215A1D25166321006D409A /* QuadPoint+CoreDataProperties.swift in Sources */,
@@ -865,10 +883,12 @@
 				DC75E59A25138C9400186F30 /* EditScanView.swift in Sources */,
 				0901C6A525038A320051FF16 /* KingMaster.xcdatamodeld in Sources */,
 				DCE922912516E4CB00A30804 /* ScanAlbumsModel.swift in Sources */,
+				DC455B062568F20C00A0089F /* WifiSelectionTableViewController.swift in Sources */,
 				09C8ADAC2506511F004BA0F7 /* Coordinator.swift in Sources */,
 				DC82E08E251ACCC800FB9CA7 /* GalleryCache.swift in Sources */,
 				DC972BC4251258C400A6C43B /* ScanImagePickerCoordinator.swift in Sources */,
 				DCB5C6CA2557063F00E87733 /* SettingModel.swift in Sources */,
+				DC8D715D256A90D6009B7606 /* NetworkRequest.swift in Sources */,
 				0922627525053E0B00BDDB90 /* DocumentGroupViewController.swift in Sources */,
 				DCB3CE4E251A5A4400D4EDFB /* GalleryData.swift in Sources */,
 				DC215A2025166321006D409A /* DocumentImage+CoreDataClass.swift in Sources */,
@@ -925,8 +945,10 @@
 			files = (
 				DCB5C6C72556FA6900E87733 /* SettingViewController.swift in Sources */,
 				DCD7350D252CACF70046775E /* Document+CoreDataProperties.swift in Sources */,
+				DC455B022568F0EC00A0089F /* WifiSelectionCoordinator.swift in Sources */,
 				DCD7350E252CACF70046775E /* SCANDODateFormatter.swift in Sources */,
 				DCD7350F252CACF70046775E /* Router.swift in Sources */,
+				DC455AFB2568E89300A0089F /* ConnectionUserSetting.swift in Sources */,
 				DC3F5E9725315AEC007B6B3E /* ErodeParamUserSetting.swift in Sources */,
 				09FDB4A7252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift in Sources */,
 				DCD73510252CACF70046775E /* QuadPoint+CoreDataProperties.swift in Sources */,
@@ -942,10 +964,12 @@
 				DCD238ED252DF18400E7C0A3 /* FilterCoordinator.swift in Sources */,
 				DCD73517252CACF70046775E /* EditScanView.swift in Sources */,
 				DCD73518252CACF70046775E /* KingMaster.xcdatamodeld in Sources */,
+				DC455B072568F20C00A0089F /* WifiSelectionTableViewController.swift in Sources */,
 				DCD73519252CACF70046775E /* ScanAlbumsModel.swift in Sources */,
 				DCD7351A252CACF70046775E /* Coordinator.swift in Sources */,
 				DCB5C6CB2557063F00E87733 /* SettingModel.swift in Sources */,
 				DC301E402558C38500E9B50D /* SettingCoordinator.swift in Sources */,
+				DC8D715E256A90D6009B7606 /* NetworkRequest.swift in Sources */,
 				DC4F8D1C2560C81B00EA616C /* ProductIDView.swift in Sources */,
 				DCD7351B252CACF70046775E /* GalleryCache.swift in Sources */,
 				DCD7351C252CACF70046775E /* ScanImagePickerCoordinator.swift in Sources */,

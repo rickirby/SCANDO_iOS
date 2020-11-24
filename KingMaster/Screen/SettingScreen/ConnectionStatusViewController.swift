@@ -8,6 +8,8 @@
 
 import UIKit
 import RBToolkit
+import SystemConfiguration.CaptiveNetwork
+import NetworkExtension
 
 class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 	
@@ -17,7 +19,6 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 		case didTapPair
 		case didTapCancel
 		case didTapDone
-		case didTapReset
 	}
 	
 	enum Status {
@@ -44,6 +45,38 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 		super.viewWillAppear(animated)
 		
 		configureBar()
+		refreshStatus()
+	}
+	
+	// MARK: - Public Methods
+	
+	func refreshStatus() {
+		
+		guard let sharedSSID = ConnectionUserSetting.shared.read() else {
+			connectionStatus = .disconnected
+			return
+		}
+		
+		if sharedSSID == "" {
+			screenView.startLoading()
+			NetworkRequest.get(url: "http://scandohardware.local/checkresponse") { result in
+				ThreadManager.executeOnMain {
+					if let message = result["msg"] as? String, message == "OK" {
+						self.connectionStatus = .connected
+					} else {
+						self.connectionStatus = .disconnected
+						NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: "")
+						ConnectionUserSetting.shared.save(nil)
+					}
+					
+					self.screenView.stopLoading()
+				}
+			}
+			
+		} else {
+			screenView.configureStatus(for: .connected)
+		}
+		
 	}
 	
 	// MARK: - Private Methods
@@ -67,7 +100,7 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 				if self?.connectionStatus ?? .disconnected == .disconnected {
 					self?.onNavigationEvent?(.didTapCancel)
 				} else {
-					self?.onNavigationEvent?(.didTapReset)
+					self?.resetConnection()
 				}
 			}
 		}
@@ -76,4 +109,17 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 	private func configureStatus(for status: Status) {
 		screenView.configureStatus(for: status)
 	}
+	
+	private func resetConnection() {
+		
+		AlertView.createConnectionResetAlert(self) {
+			if let sharedSSID = ConnectionUserSetting.shared.read(), sharedSSID == "" {
+				NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: "")
+			}
+			
+			ConnectionUserSetting.shared.save(nil)
+			self.refreshStatus()
+		}
+	}
+	
 }

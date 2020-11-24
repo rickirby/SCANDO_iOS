@@ -12,6 +12,9 @@ class ProductIDCoordinator: Coordinator {
 	
 	// MARK: - Public Properties
 	
+	var onSelectDirectConnection: (() -> Void)?
+	var onSelectSharedConnection: (() -> Void)?
+	
 	var rootViewController: UIViewController {
 		guard let navigationController = navigationController else {
 			return UIViewController()
@@ -44,8 +47,13 @@ class ProductIDCoordinator: Coordinator {
 		let vc = ProductIDViewController()
 		vc.onNavigationEvent = { [weak self] (navigationEvent: ProductIDViewController.NavigationEvent) in
 			switch navigationEvent {
-			case .didDismiss:
+			
+			case .directConnection:
 				self?.dismissViewController()
+				self?.onSelectDirectConnection?()
+			case .sharedConnection:
+				self?.dismissViewController()
+				self?.onSelectSharedConnection?()
 			}
 		}
 		

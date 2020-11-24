@@ -16,15 +16,15 @@ class ProductIDViewController: ViewController<ProductIDView> {
 	// MARK: - Public Properties
 	
 	enum NavigationEvent {
-		case didDismiss
+		case directConnection
+		case sharedConnection
 	}
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
 	
 	// MARK: - Private Properties
 	
-	private var savedSSID = ""
-	private var connectionState = false
+	private var printerSSID = ""
 	
 	// MARK: - Life Cycles
 	
@@ -38,7 +38,6 @@ class ProductIDViewController: ViewController<ProductIDView> {
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 		
-		NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: savedSSID)
 	}
 	
 	// MARK: - Private Methods
@@ -66,7 +65,7 @@ class ProductIDViewController: ViewController<ProductIDView> {
 				self.handleConnection(success: false)
 			} else {
 				if self.currentSSIDs().first == ssid {
-					self.savedSSID = ssid
+					self.printerSSID = ssid
 					self.handleConnection(success: true)
 				} else {
 					self.handleConnection(success: false)
@@ -97,11 +96,26 @@ class ProductIDViewController: ViewController<ProductIDView> {
 		screenView.stopLoading()
 		
 		if success {
-			connectionState = true
+			AlertView.createConnectionModeAlert(self, directConnectHandler: {
+				ConnectionUserSetting.shared.save("")
+				self.onNavigationEvent?(.directConnection)
+			}, sharedConnectionHandler: {
+				ConnectionUserSetting.shared.save(self.printerSSID)
+				self.onNavigationEvent?(.sharedConnection)
+			}, cancelHandler: {
+				self.dismiss(animated: true) {
+					ConnectionUserSetting.shared.save(nil)
+					NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: "")
+				}
+			})
+
 		} else {
-			savedSSID = ""
-			connectionState = false
+			ConnectionUserSetting.shared.save(nil)
 		}
 		
 	}
 }
+
+// value shared connected
+// nil default value, not connected, connection error. should be show first time view
+// "" direct connection
