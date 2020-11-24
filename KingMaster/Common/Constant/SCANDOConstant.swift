@@ -84,7 +84,7 @@ class SCANDOConstant {
 	static let connectionStatusNegativeButtonDisconnected: String = "Cancel"
 	
 	static let connectionStatusTitleSharedConnected: String = "Everything is OK"
-	static let connectionStatusDescriptionSharedConnected: String = "You are all set. You have been connected to shared network. You are ready to copy braille page"
+	static let connectionStatusDescriptionSharedConnected: String = "You are all set. You have been connected to shared network."
 	static let connectionStatusPositiveButtonSharedConnected: String = "Done"
 	static let connectionStatusNegativeButtonSharedConnected: String = "Reset Connection"
 	

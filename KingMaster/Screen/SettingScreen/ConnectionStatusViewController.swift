@@ -174,6 +174,7 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 			}
 			
 			ConnectionUserSetting.shared.save(nil)
+			self.screenView.stopLoading()
 			self.refreshStatus()
 		}
 	}
