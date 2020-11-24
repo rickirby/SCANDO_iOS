@@ -26,7 +26,6 @@ class WifiSelectionTableViewController: UITableViewController {
 		let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
 		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
 		activityIndicator.color = .gray
-		activityIndicator.hidesWhenStopped = true
 		activityIndicator.startAnimating()
 		
 		return activityIndicator
@@ -100,7 +99,8 @@ class WifiSelectionTableViewController: UITableViewController {
 	private func getAvailableWifiList() {
 		
 		if shouldScanOnNext && allowScanning {
-			navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
+			navigationItem.setRightBarButton(UIBarButtonItem(customView: activityIndicator), animated: true)
+			activityIndicator.startAnimating()
 			NetworkRequest.get(url: "http://192.168.4.1/scanwifi") { result in
 				guard let wifiList = result["wifilist"] as? [String] else {
 					return
@@ -109,7 +109,8 @@ class WifiSelectionTableViewController: UITableViewController {
 				self.availableSSID = wifiList
 				
 				ThreadManager.executeOnMain {
-					self.navigationItem.rightBarButtonItem = self.refreshBarButton
+					self.activityIndicator.stopAnimating()
+					self.navigationItem.setRightBarButton(self.refreshBarButton, animated: true)
 					self.tableView.reloadData()
 				}
 			}
@@ -124,6 +125,7 @@ class WifiSelectionTableViewController: UITableViewController {
 		}
 		
 		AlertView.createConnectToWifiAlert(self, ssidName: availableSSID[selectedIndex], connectHandler: { pass in
+			self.tableView.reloadData()
 			let postBodyString = "{\"ssid\":\"\(self.availableSSID[selectedIndex])\",\"pass\":\"\(pass)\"}"
 			guard let postBodyData = postBodyString.data(using: String.Encoding.utf8) else {
 				return
@@ -136,27 +138,21 @@ class WifiSelectionTableViewController: UITableViewController {
 						return
 					}
 					
-					AlertView.createConnectToWifiResultAlert(self, ssidName: self.availableSSID[selectedIndex], success: ipAddress != "failed", onSuccessHandler: {
+					AlertView.createConnectToWifiResultAlert(self, ssidName: self.availableSSID[selectedIndex], success: ipAddress != "failed" && ipAddress != "Could not connect", onSuccessHandler: {
 						self.dismiss(animated: true, completion: nil)
 					}, onErrorHandler: {
 						self.allowScanning = true
 						self.selectedIndex = nil
+						self.tableView.reloadData()
 					})
 				}
 			}
 		}, cancelHandler: {
+			self.tableView.deselectRow(at: IndexPath(row: self.selectedIndex ?? 0, section: 0), animated: true)
 			self.allowScanning = true
 			self.selectedIndex = nil
 		})
 		
-	}
-	
-	private func handleConnection(ssid: String?) {
-		if let ssid = ssid {
-			// on success
-		} else {
-			// on failed
-		}
 	}
 	
 }
