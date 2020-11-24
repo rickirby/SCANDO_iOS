@@ -16,6 +16,7 @@ class ScanAlbumsView: View {
 	enum ViewEvent {
 		case didTapCamera
 		case didTapPicker
+		case didTapSetting
 		case didSelectRow(index: Int)
 		case editingStart
 		case editingEnd
@@ -49,6 +50,8 @@ class ScanAlbumsView: View {
 	
 	lazy var fileBarButton = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(fileBarButtonTapped))
 	
+	lazy var settingBarButton = UIBarButtonItem(title: "Setting", style: .plain, target: self, action: #selector(settingBarButtonTapped))
+	
 	lazy var cancelBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelBarButtonTapped))
 	
 	lazy var selectAllBarButton = UIBarButtonItem(title: "Select All", style: .plain, target: self, action: #selector(selectAllBarButtonTapped))
@@ -60,14 +63,6 @@ class ScanAlbumsView: View {
 	override func setViews() {
 		configureView()
 		configureTableView()
-	}
-	
-	override func onViewWillAppear() {
-		super.onViewWillAppear()
-		
-		if let indexPath = tableView.indexPathForSelectedRow {
-			tableView.deselectRow(at: indexPath, animated: true)
-		}
 	}
 	
 	// MARK: - Public Method
@@ -156,6 +151,10 @@ extension ScanAlbumsView {
 	
 	@objc func fileBarButtonTapped() {
 		onViewEvent?(.didTapPicker)
+	}
+	
+	@objc func settingBarButtonTapped() {
+		onViewEvent?(.didTapSetting)
 	}
 	
 	@objc func cancelBarButtonTapped() {
