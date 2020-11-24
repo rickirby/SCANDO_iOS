@@ -1166,7 +1166,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.4;
+				MARKETING_VERSION = 0.2.0;
 				OTHER_SWIFT_FLAGS = "-DPRODUCTION";
 				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.apps.SCANDO;
 				PRODUCT_NAME = SCANDO;
@@ -1193,7 +1193,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.4;
+				MARKETING_VERSION = 0.2.0;
 				OTHER_SWIFT_FLAGS = "-DPRODUCTION";
 				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.apps.SCANDO;
 				PRODUCT_NAME = SCANDO;
@@ -1220,7 +1220,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.4;
+				MARKETING_VERSION = 0.2.0;
 				OTHER_SWIFT_FLAGS = "-DSANDBOX";
 				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.apps.dev.SCANDO;
 				PRODUCT_NAME = "DEV🛠";
@@ -1247,7 +1247,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.4;
+				MARKETING_VERSION = 0.2.0;
 				OTHER_SWIFT_FLAGS = "-DSANDBOX";
 				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.apps.dev.SCANDO;
 				PRODUCT_NAME = "DEV🛠";
