@@ -74,6 +74,7 @@
 		DC5A8F25253537BA00971510 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC5A8F24253537BA00971510 /* CloudKit.framework */; };
 		DC7129912515736A00ACCB2B /* PreviewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7129902515736A00ACCB2B /* PreviewCoordinator.swift */; };
 		DC7129942515743200ACCB2B /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7129932515743200ACCB2B /* PreviewData.swift */; };
+		DC758033256D9DB400BA72C7 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC4F8D202560DEB500EA616C /* NetworkExtension.framework */; };
 		DC75E59A25138C9400186F30 /* EditScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75E59925138C9400186F30 /* EditScanView.swift */; };
 		DC75E59C25138CBD00186F30 /* EditScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75E59B25138CBD00186F30 /* EditScanViewController.swift */; };
 		DC75E59F2513AA4700186F30 /* EditScanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75E59E2513AA4700186F30 /* EditScanData.swift */; };
@@ -287,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC5A8F25253537BA00971510 /* CloudKit.framework in Frameworks */,
+				DC758033256D9DB400BA72C7 /* NetworkExtension.framework in Frameworks */,
 				DC0932EF25387DD9007C3A10 /* RBImageProcessor.framework in Frameworks */,
 				DCD7353E252CACF70046775E /* RBPhotosGallery.framework in Frameworks */,
 				DCD7353F252CACF70046775E /* RBToolkit.framework in Frameworks */,
