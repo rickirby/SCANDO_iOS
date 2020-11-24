@@ -12,6 +12,8 @@ class WifiSelectionCoordinator: Coordinator {
 	
 	// MARK: - Public Properties
 	
+	var onSuccessConnectingWifi: (() -> Void)?
+	
 	var rootViewController: UIViewController {
 		guard let navigationController = navigationController else {
 			return UIViewController()
@@ -40,6 +42,9 @@ class WifiSelectionCoordinator: Coordinator {
 	
 	func makeWifiSelectionViewController() -> UIViewController {
 		let vc = WifiSelectionTableViewController()
+		vc.onSuccessConnectingWifi = { [weak self] in
+			self?.onSuccessConnectingWifi?()
+		}
 		let navVC = UINavigationController(rootViewController: vc)
 		
 		return navVC

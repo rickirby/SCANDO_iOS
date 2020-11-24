@@ -10,6 +10,7 @@ import UIKit
 import RBToolkit
 import SystemConfiguration.CaptiveNetwork
 import NetworkExtension
+import CoreLocation
 
 class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 	
@@ -22,8 +23,10 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 	}
 	
 	enum Status {
-		case connected
+		case directConnected
+		case sharedConnected
 		case disconnected
+		case differentNetwork
 	}
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
@@ -33,12 +36,17 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 		}
 	}
 	
+	// MARK: - Private Properties
+	
+	private let locationManager = CLLocationManager()
+	
 	// MARK: - Life Cycles
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		configureViewEvent()
+		askForLocationPermission()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -57,12 +65,13 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 			return
 		}
 		
+		screenView.startLoading()
+		
 		if sharedSSID == "" {
-			screenView.startLoading()
-			NetworkRequest.get(url: "http://scandohardware.local/checkresponse") { result in
+			NetworkRequest.get(url: "http://192.168.4.1/checkresponse") { result in
 				ThreadManager.executeOnMain {
 					if let message = result["msg"] as? String, message == "OK" {
-						self.connectionStatus = .connected
+						self.connectionStatus = .directConnected
 					} else {
 						self.connectionStatus = .disconnected
 						NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: "")
@@ -74,7 +83,26 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 			}
 			
 		} else {
-			screenView.configureStatus(for: .connected)
+			if currentSSIDs().first == sharedSSID {
+				NetworkRequest.get(url: "http://scandohardware.local/checkresponse") { result in
+					ThreadManager.executeOnMain {
+						if let message = result["msg"] as? String, message == "OK" {
+							self.connectionStatus = .sharedConnected
+						} else {
+							self.connectionStatus = .disconnected
+							NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: "")
+							ConnectionUserSetting.shared.save(nil)
+						}
+						
+						self.screenView.stopLoading()
+					}
+				}
+			} else {
+				connectionStatus = .differentNetwork
+				DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+					self.refreshStatus()
+				}
+			}
 		}
 		
 	}
@@ -89,18 +117,27 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 	
 	private func configureViewEvent() {
 		screenView.onViewEvent = { [weak self] (viewEvent: ConnectionStatusView.ViewEvent) in
+			
+			guard let self = self else {
+				return
+			}
+			
 			switch viewEvent {
+			
 			case .didTapPositive:
-				if self?.connectionStatus ?? .disconnected == .disconnected {
-					self?.onNavigationEvent?(.didTapPair)
-				} else {
-					self?.onNavigationEvent?(.didTapDone)
+				if self.connectionStatus == .disconnected {
+					self.onNavigationEvent?(.didTapPair)
+				} else if self.connectionStatus == .directConnected || self.connectionStatus == .sharedConnected {
+					self.onNavigationEvent?(.didTapDone)
+				} else if self.connectionStatus == .differentNetwork {
+					self.refreshStatus()
 				}
+				
 			case .didTapNegative:
-				if self?.connectionStatus ?? .disconnected == .disconnected {
-					self?.onNavigationEvent?(.didTapCancel)
+				if self.connectionStatus == .disconnected {
+					self.onNavigationEvent?(.didTapCancel)
 				} else {
-					self?.resetConnection()
+					self.resetConnection()
 				}
 			}
 		}
@@ -108,6 +145,25 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 	
 	private func configureStatus(for status: Status) {
 		screenView.configureStatus(for: status)
+	}
+	
+	private func askForLocationPermission() {
+		let locStatus = CLLocationManager.authorizationStatus()
+		switch locStatus {
+		case .notDetermined:
+			locationManager.requestAlwaysAuthorization()
+			return
+		case .denied, .restricted:
+			let alert = UIAlertController(title: "Location Services are disabled", message: "Please enable Location Services in your Settings", preferredStyle: .alert)
+			let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+			alert.addAction(okAction)
+			present(alert, animated: true, completion: nil)
+			return
+		case .authorizedAlways, .authorizedWhenInUse:
+			break
+		@unknown default:
+			break
+		}
 	}
 	
 	private func resetConnection() {
@@ -118,7 +174,25 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 			}
 			
 			ConnectionUserSetting.shared.save(nil)
+			self.screenView.stopLoading()
 			self.refreshStatus()
+		}
+	}
+	
+	private func currentSSIDs() -> [String] {
+		
+		guard let interfaceNames = CNCopySupportedInterfaces() as? [String] else {
+			return []
+		}
+		
+		return interfaceNames.compactMap { name in
+			guard let info = CNCopyCurrentNetworkInfo(name as CFString) as? [String:AnyObject] else {
+				return nil
+			}
+			guard let ssid = info[kCNNetworkInfoKeySSID as String] as? String else {
+				return nil
+			}
+			return ssid
 		}
 	}
 	
