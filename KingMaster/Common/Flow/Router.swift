@@ -59,6 +59,16 @@ internal final class Router {
 		target.present(viewController, animated: isAnimated, completion: nil)
 	}
 	
+	func dismissTopVC() {
+		if var topController = window?.rootViewController {
+			while let presentedViewController = topController.presentedViewController {
+				topController = presentedViewController
+			}
+
+			topController.dismiss(animated: true, completion: nil)
+		}
+	}
+	
 	func popViewController(on coordinator: Coordinator) {
 		guard let nav = coordinator.rootViewController as? UINavigationController else {
 			return
