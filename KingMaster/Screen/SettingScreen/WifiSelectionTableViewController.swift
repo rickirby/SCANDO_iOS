@@ -139,6 +139,9 @@ class WifiSelectionTableViewController: UITableViewController {
 					}
 					
 					AlertView.createConnectToWifiResultAlert(self, ssidName: self.availableSSID[selectedIndex], success: ipAddress != "failed" && ipAddress != "Could not connect", onSuccessHandler: {
+						ConnectionUserSetting.shared.save(self.availableSSID[selectedIndex])
+						let configuration = NEHotspotConfiguration.init(ssid: self.availableSSID[selectedIndex], passphrase: pass, isWEP: false)
+						NEHotspotConfigurationManager.shared.apply(configuration, completionHandler: nil)
 						self.dismiss(animated: true, completion: nil)
 					}, onErrorHandler: {
 						self.allowScanning = true
