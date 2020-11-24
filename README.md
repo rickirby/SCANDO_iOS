@@ -3,7 +3,7 @@ Main Project
 Created by Ricki Bin Yamin
 
 ## This repository uses following dependency:
-- RBToolkit 0.0.2
+- RBToolkit 0.0.3
 - RBPhotosGallery 0.0.3
 - RBCameraDocScan 0.0.3
 - RBImageProcessor 0.0.3
