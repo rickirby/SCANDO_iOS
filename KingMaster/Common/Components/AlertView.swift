@@ -187,4 +187,63 @@ class AlertView {
 		
 		target.present(ac, animated: true, completion: nil)
 	}
+	
+	static func createConnectionModeAlert(_ target: UIViewController, directConnectHandler: @escaping () -> Void, sharedConnectionHandler: @escaping () -> Void, cancelHandler: @escaping () -> Void) {
+		let ac = UIAlertController(title: SCANDOConstant.connectionModeTitle, message: SCANDOConstant.connectionModeMessage, preferredStyle: .actionSheet)
+		ac.addAction(UIAlertAction(title: SCANDOConstant.connectionModeDirectAction, style: .default, handler: { _ in
+			directConnectHandler()
+		}))
+		ac.addAction(UIAlertAction(title: SCANDOConstant.connectionModeSharedAction, style: .default, handler: { _ in
+			sharedConnectionHandler()
+		}))
+		ac.addAction(UIAlertAction(title: SCANDOConstant.connectionModeCancelActiion, style: .cancel, handler: { _ in
+			cancelHandler()
+		}))
+		
+		target.present(ac, animated: true, completion: nil)
+	}
+	
+	static func createConnectionResetAlert(_ target: UIViewController, resetHandler: @escaping () -> Void, cancelHandler: (() -> Void)? = nil) {
+		let ac = UIAlertController(title: SCANDOConstant.connectionResetTitle, message: SCANDOConstant.connectionResetMessage, preferredStyle: .alert)
+		ac.addAction(UIAlertAction(title: SCANDOConstant.connectionResetDesctructiveAction, style: .destructive, handler: { _ in
+			resetHandler()
+		}))
+		ac.addAction(UIAlertAction(title: SCANDOConstant.connectionModeCancelActiion, style: .cancel, handler: { _ in
+			cancelHandler?()
+		}))
+		
+		target.present(ac, animated: true, completion: nil)
+	}
+	
+	static func createConnectToWifiAlert(_ target: UIViewController, ssidName: String, connectHandler: @escaping (String) -> Void, cancelHandler: (() -> Void)? = nil) {
+		let ac = UIAlertController(title: SCANDOConstant.connectToWifiAskPasswordTitle, message: SCANDOConstant.connectToWifiAskPasswordMessage + ssidName, preferredStyle: .alert)
+		ac.addTextField {
+			$0.placeholder = "Password"
+		}
+		ac.addAction(UIAlertAction(title: SCANDOConstant.connectToWifiAskPasswordConnectAction, style: .default, handler: { _ in
+			guard let textField = ac.textFields?.first else {
+				return
+			}
+			
+			connectHandler(textField.text ?? "")
+		}))
+		ac.addAction(UIAlertAction(title: SCANDOConstant.connectToWifiAskPasswordCancelAction, style: .cancel, handler: { _ in
+			cancelHandler?()
+		}))
+		
+		target.present(ac, animated: true, completion: nil)
+	}
+	
+	static func createConnectToWifiResultAlert(_ target: UIViewController, ssidName: String, success: Bool, onSuccessHandler: @escaping () -> Void, onErrorHandler: @escaping () -> Void) {
+		let ac = UIAlertController(title: success ? SCANDOConstant.connectToWifiSuccessTitle : SCANDOConstant.connectToWifiErrorTitle, message: success ? SCANDOConstant.connectToWifiSuccessMessage + ssidName: SCANDOConstant.connectToWifiErrorMessage, preferredStyle: .alert)
+		ac.addAction(UIAlertAction(title: SCANDOConstant.connectToWifiResultOkAction, style: .default, handler: { _ in
+			if success {
+				onSuccessHandler()
+			} else {
+				onErrorHandler()
+			}
+		}))
+		
+		target.present(ac, animated: true, completion: nil)
+	}
 }

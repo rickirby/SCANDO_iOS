@@ -46,15 +46,35 @@
 		DC215A2225166321006D409A /* DocumentGroup+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1A25166321006D409A /* DocumentGroup+CoreDataClass.swift */; };
 		DC215A2325166321006D409A /* DocumentGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A1B25166321006D409A /* DocumentGroup+CoreDataProperties.swift */; };
 		DC215A262516640E006D409A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC215A252516640E006D409A /* DataManager.swift */; };
+		DC301E3F2558C37300E9B50D /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DB881255851A000F8437F /* UIButton+Extension.swift */; };
+		DC301E402558C38500E9B50D /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89011825580E41001318D7 /* SettingCoordinator.swift */; };
+		DC301E412558C38D00E9B50D /* ConnectionStatusCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DB87F25584A3F00F8437F /* ConnectionStatusCoordinator.swift */; };
+		DC301E432558D1BC00E9B50D /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC301E422558D1BC00E9B50D /* UIViewController+Extension.swift */; };
+		DC301E442558D1BC00E9B50D /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC301E422558D1BC00E9B50D /* UIViewController+Extension.swift */; };
 		DC39BC7A2514AF590067DF71 /* EditScanCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39BC792514AF580067DF71 /* EditScanCoordinator.swift */; };
 		DC3F5E96253159CB007B6B3E /* ErodeParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3F5E95253159CB007B6B3E /* ErodeParamUserSetting.swift */; };
 		DC3F5E9725315AEC007B6B3E /* ErodeParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3F5E95253159CB007B6B3E /* ErodeParamUserSetting.swift */; };
+		DC455AFA2568E89300A0089F /* ConnectionUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC455AF92568E89300A0089F /* ConnectionUserSetting.swift */; };
+		DC455AFB2568E89300A0089F /* ConnectionUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC455AF92568E89300A0089F /* ConnectionUserSetting.swift */; };
+		DC455B012568F0EC00A0089F /* WifiSelectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC455B002568F0EC00A0089F /* WifiSelectionCoordinator.swift */; };
+		DC455B022568F0EC00A0089F /* WifiSelectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC455B002568F0EC00A0089F /* WifiSelectionCoordinator.swift */; };
+		DC455B062568F20C00A0089F /* WifiSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC455B052568F20C00A0089F /* WifiSelectionTableViewController.swift */; };
+		DC455B072568F20C00A0089F /* WifiSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC455B052568F20C00A0089F /* WifiSelectionTableViewController.swift */; };
 		DC46E1452521686E000ED989 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DC46E1442521686E000ED989 /* README.md */; };
 		DC4CD0032514FB51000A84BC /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4CD0022514FB51000A84BC /* PreviewView.swift */; };
 		DC4CD0052514FB78000A84BC /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4CD0042514FB78000A84BC /* PreviewViewController.swift */; };
+		DC4F8D1A2560C81600EA616C /* ProductIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F8D192560C81600EA616C /* ProductIDViewController.swift */; };
+		DC4F8D1B2560C81600EA616C /* ProductIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F8D192560C81600EA616C /* ProductIDViewController.swift */; };
+		DC4F8D1C2560C81B00EA616C /* ProductIDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA49DDF255A210B007B6A7B /* ProductIDView.swift */; };
+		DC4F8D1E2560CB0300EA616C /* ProductIDCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F8D1D2560CB0300EA616C /* ProductIDCoordinator.swift */; };
+		DC4F8D1F2560CB0300EA616C /* ProductIDCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F8D1D2560CB0300EA616C /* ProductIDCoordinator.swift */; };
+		DC4F8D212560DEB500EA616C /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC4F8D202560DEB500EA616C /* NetworkExtension.framework */; };
+		DC4F8D232560E1A900EA616C /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F8D222560E1A900EA616C /* UITextField+Extension.swift */; };
+		DC4F8D242560E1A900EA616C /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F8D222560E1A900EA616C /* UITextField+Extension.swift */; };
 		DC5A8F25253537BA00971510 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC5A8F24253537BA00971510 /* CloudKit.framework */; };
 		DC7129912515736A00ACCB2B /* PreviewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7129902515736A00ACCB2B /* PreviewCoordinator.swift */; };
 		DC7129942515743200ACCB2B /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7129932515743200ACCB2B /* PreviewData.swift */; };
+		DC758033256D9DB400BA72C7 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC4F8D202560DEB500EA616C /* NetworkExtension.framework */; };
 		DC75E59A25138C9400186F30 /* EditScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75E59925138C9400186F30 /* EditScanView.swift */; };
 		DC75E59C25138CBD00186F30 /* EditScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75E59B25138CBD00186F30 /* EditScanViewController.swift */; };
 		DC75E59F2513AA4700186F30 /* EditScanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75E59E2513AA4700186F30 /* EditScanData.swift */; };
@@ -63,14 +83,30 @@
 		DC82E08E251ACCC800FB9CA7 /* GalleryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC82E08D251ACCC800FB9CA7 /* GalleryCache.swift */; };
 		DC82E091251AD38B00FB9CA7 /* DocumentGroupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC82E090251AD38B00FB9CA7 /* DocumentGroupData.swift */; };
 		DC832C56251F4238001D54C0 /* RBCameraDocScan.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DC832C55251F4238001D54C0 /* RBCameraDocScan.bundle */; };
+		DC89011925580E41001318D7 /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89011825580E41001318D7 /* SettingCoordinator.swift */; };
+		DC89011B25582A6A001318D7 /* ConnectionStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89011A25582A6A001318D7 /* ConnectionStatusView.swift */; };
+		DC89011F25582C59001318D7 /* ConnectionStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89011A25582A6A001318D7 /* ConnectionStatusView.swift */; };
+		DC89012425583FA9001318D7 /* ConnectionStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89012325583FA8001318D7 /* ConnectionStatusViewController.swift */; };
+		DC89012525583FA9001318D7 /* ConnectionStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89012325583FA8001318D7 /* ConnectionStatusViewController.swift */; };
+		DC8D715D256A90D6009B7606 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8D715C256A90D6009B7606 /* NetworkRequest.swift */; };
+		DC8D715E256A90D6009B7606 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8D715C256A90D6009B7606 /* NetworkRequest.swift */; };
+		DC8DB88025584A3F00F8437F /* ConnectionStatusCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DB87F25584A3F00F8437F /* ConnectionStatusCoordinator.swift */; };
+		DC8DB882255851A000F8437F /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DB881255851A000F8437F /* UIButton+Extension.swift */; };
 		DC972BC12512454F00A6C43B /* CameraCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC972BC02512454F00A6C43B /* CameraCoordinator.swift */; };
 		DC972BC4251258C400A6C43B /* ScanImagePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC972BC3251258C400A6C43B /* ScanImagePickerCoordinator.swift */; };
 		DC9F070E25314818005A517B /* DilateParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9F070D25314818005A517B /* DilateParamUserSetting.swift */; };
 		DC9F070F253149B5005A517B /* DilateParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9F070D25314818005A517B /* DilateParamUserSetting.swift */; };
+		DCA49DE0255A210B007B6A7B /* ProductIDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA49DDF255A210B007B6A7B /* ProductIDView.swift */; };
 		DCAC3ED725158F6B00F5DD59 /* ThreadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAC3ED625158F6B00F5DD59 /* ThreadManager.swift */; };
 		DCB1B5E52512DC9D00B1630C /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB1B5E42512DC9D00B1630C /* GalleryView.swift */; };
 		DCB3CE4B251A4ED000D4EDFB /* ScanImagePickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB3CE4A251A4ED000D4EDFB /* ScanImagePickerData.swift */; };
 		DCB3CE4E251A5A4400D4EDFB /* GalleryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB3CE4D251A5A4400D4EDFB /* GalleryData.swift */; };
+		DCB5C6C32556EFD700E87733 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB5C6C22556EFD700E87733 /* SettingView.swift */; };
+		DCB5C6C42556EFD700E87733 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB5C6C22556EFD700E87733 /* SettingView.swift */; };
+		DCB5C6C62556FA6900E87733 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB5C6C52556FA6900E87733 /* SettingViewController.swift */; };
+		DCB5C6C72556FA6900E87733 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB5C6C52556FA6900E87733 /* SettingViewController.swift */; };
+		DCB5C6CA2557063F00E87733 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB5C6C92557063F00E87733 /* SettingModel.swift */; };
+		DCB5C6CB2557063F00E87733 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB5C6C92557063F00E87733 /* SettingModel.swift */; };
 		DCB689402517AD29001AD049 /* CameraData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6893F2517AD29001AD049 /* CameraData.swift */; };
 		DCC826E6252E047B00DBD037 /* FilterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC826E5252E047B00DBD037 /* FilterData.swift */; };
 		DCC826E7252E04F600DBD037 /* FilterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC826E5252E047B00DBD037 /* FilterData.swift */; };
@@ -176,12 +212,20 @@
 		DC215A1A25166321006D409A /* DocumentGroup+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentGroup+CoreDataClass.swift"; sourceTree = "<group>"; };
 		DC215A1B25166321006D409A /* DocumentGroup+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentGroup+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DC215A252516640E006D409A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		DC301E422558D1BC00E9B50D /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		DC39BC792514AF580067DF71 /* EditScanCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScanCoordinator.swift; sourceTree = "<group>"; };
 		DC3F5E95253159CB007B6B3E /* ErodeParamUserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErodeParamUserSetting.swift; sourceTree = "<group>"; };
 		DC415C6B252CA193001AD7D2 /* RBImageProcessor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBImageProcessor.framework; path = Carthage/Build/iOS/RBImageProcessor.framework; sourceTree = "<group>"; };
+		DC455AF92568E89300A0089F /* ConnectionUserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionUserSetting.swift; sourceTree = "<group>"; };
+		DC455B002568F0EC00A0089F /* WifiSelectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiSelectionCoordinator.swift; sourceTree = "<group>"; };
+		DC455B052568F20C00A0089F /* WifiSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiSelectionTableViewController.swift; sourceTree = "<group>"; };
 		DC46E1442521686E000ED989 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DC4CD0022514FB51000A84BC /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		DC4CD0042514FB78000A84BC /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		DC4F8D192560C81600EA616C /* ProductIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductIDViewController.swift; sourceTree = "<group>"; };
+		DC4F8D1D2560CB0300EA616C /* ProductIDCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductIDCoordinator.swift; sourceTree = "<group>"; };
+		DC4F8D202560DEB500EA616C /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		DC4F8D222560E1A900EA616C /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		DC5A8F232535377A00971510 /* DEV🛠.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DEV🛠.entitlements"; sourceTree = "<group>"; };
 		DC5A8F24253537BA00971510 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		DC7129902515736A00ACCB2B /* PreviewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCoordinator.swift; sourceTree = "<group>"; };
@@ -194,14 +238,24 @@
 		DC82E08D251ACCC800FB9CA7 /* GalleryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCache.swift; sourceTree = "<group>"; };
 		DC82E090251AD38B00FB9CA7 /* DocumentGroupData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentGroupData.swift; sourceTree = "<group>"; };
 		DC832C55251F4238001D54C0 /* RBCameraDocScan.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = RBCameraDocScan.bundle; path = Carthage/Build/iOS/RBCameraDocScan.framework/RBCameraDocScan.bundle; sourceTree = "<group>"; };
+		DC89011825580E41001318D7 /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
+		DC89011A25582A6A001318D7 /* ConnectionStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatusView.swift; sourceTree = "<group>"; };
+		DC89012325583FA8001318D7 /* ConnectionStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatusViewController.swift; sourceTree = "<group>"; };
+		DC8D715C256A90D6009B7606 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		DC8DB87F25584A3F00F8437F /* ConnectionStatusCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatusCoordinator.swift; sourceTree = "<group>"; };
+		DC8DB881255851A000F8437F /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		DC972BBC25123F9800A6C43B /* RBCameraDocScan.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBCameraDocScan.framework; path = Carthage/Build/iOS/RBCameraDocScan.framework; sourceTree = "<group>"; };
 		DC972BC02512454F00A6C43B /* CameraCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCoordinator.swift; sourceTree = "<group>"; };
 		DC972BC3251258C400A6C43B /* ScanImagePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanImagePickerCoordinator.swift; sourceTree = "<group>"; };
 		DC9F070D25314818005A517B /* DilateParamUserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DilateParamUserSetting.swift; sourceTree = "<group>"; };
+		DCA49DDF255A210B007B6A7B /* ProductIDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductIDView.swift; sourceTree = "<group>"; };
 		DCAC3ED625158F6B00F5DD59 /* ThreadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadManager.swift; sourceTree = "<group>"; };
 		DCB1B5E42512DC9D00B1630C /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		DCB3CE4A251A4ED000D4EDFB /* ScanImagePickerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanImagePickerData.swift; sourceTree = "<group>"; };
 		DCB3CE4D251A5A4400D4EDFB /* GalleryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryData.swift; sourceTree = "<group>"; };
+		DCB5C6C22556EFD700E87733 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		DCB5C6C52556FA6900E87733 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		DCB5C6C92557063F00E87733 /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
 		DCB6893F2517AD29001AD049 /* CameraData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraData.swift; sourceTree = "<group>"; };
 		DCC826E5252E047B00DBD037 /* FilterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterData.swift; sourceTree = "<group>"; };
 		DCD2C73B252D543500CC391C /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
@@ -221,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC0932E625387631007C3A10 /* CloudKit.framework in Frameworks */,
+				DC4F8D212560DEB500EA616C /* NetworkExtension.framework in Frameworks */,
 				DC0932E325387625007C3A10 /* RBImageProcessor.framework in Frameworks */,
 				DC0932EA25387634007C3A10 /* RBPhotosGallery.framework in Frameworks */,
 				DC0932EC25387636007C3A10 /* RBToolkit.framework in Frameworks */,
@@ -233,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC5A8F25253537BA00971510 /* CloudKit.framework in Frameworks */,
+				DC758033256D9DB400BA72C7 /* NetworkExtension.framework in Frameworks */,
 				DC0932EF25387DD9007C3A10 /* RBImageProcessor.framework in Frameworks */,
 				DCD7353E252CACF70046775E /* RBPhotosGallery.framework in Frameworks */,
 				DCD7353F252CACF70046775E /* RBToolkit.framework in Frameworks */,
@@ -310,6 +366,7 @@
 				7206EAED250C6D8200A3DA4A /* Gallery */,
 				DC75E59725138C3200186F30 /* EditScan */,
 				DC4CD0002514FB08000A84BC /* Preview */,
+				DCB5C6C02556EF9B00E87733 /* SettingScreen */,
 				DCD2C739252D540F00CC391C /* Filter */,
 			);
 			path = Screen;
@@ -338,6 +395,7 @@
 		099AB1FE2503E6C500B76522 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DC4F8D202560DEB500EA616C /* NetworkExtension.framework */,
 				DC5A8F24253537BA00971510 /* CloudKit.framework */,
 				DC832C57251F42D3001D54C0 /* Bundles */,
 				DC415C6B252CA193001AD7D2 /* RBImageProcessor.framework */,
@@ -507,6 +565,7 @@
 			children = (
 				DCAC3ED625158F6B00F5DD59 /* ThreadManager.swift */,
 				09FDB4A2252FED7E007E8D7A /* UserSetting.swift */,
+				DC8D715C256A90D6009B7606 /* NetworkRequest.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -537,6 +596,42 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		DCB5C6C02556EF9B00E87733 /* SettingScreen */ = {
+			isa = PBXGroup;
+			children = (
+				DC89011825580E41001318D7 /* SettingCoordinator.swift */,
+				DC8DB87F25584A3F00F8437F /* ConnectionStatusCoordinator.swift */,
+				DC4F8D1D2560CB0300EA616C /* ProductIDCoordinator.swift */,
+				DC455B002568F0EC00A0089F /* WifiSelectionCoordinator.swift */,
+				DCB5C6C52556FA6900E87733 /* SettingViewController.swift */,
+				DC89012325583FA8001318D7 /* ConnectionStatusViewController.swift */,
+				DC4F8D192560C81600EA616C /* ProductIDViewController.swift */,
+				DC455B052568F20C00A0089F /* WifiSelectionTableViewController.swift */,
+				DCB5C6C82557063200E87733 /* Models */,
+				DCB5C6C12556EFBB00E87733 /* Views */,
+			);
+			path = SettingScreen;
+			sourceTree = "<group>";
+		};
+		DCB5C6C12556EFBB00E87733 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DCB5C6C22556EFD700E87733 /* SettingView.swift */,
+				DC89011A25582A6A001318D7 /* ConnectionStatusView.swift */,
+				DCA49DDF255A210B007B6A7B /* ProductIDView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DCB5C6C82557063200E87733 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DCB5C6C92557063F00E87733 /* SettingModel.swift */,
+				DC455AF92568E89300A0089F /* ConnectionUserSetting.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		DCB6893E2517AD1C001AD049 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -548,6 +643,9 @@
 		DCC58869251F5774008EFD7B /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				DC8DB881255851A000F8437F /* UIButton+Extension.swift */,
+				DC4F8D222560E1A900EA616C /* UITextField+Extension.swift */,
+				DC301E422558D1BC00E9B50D /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -766,25 +864,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCB5C6C62556FA6900E87733 /* SettingViewController.swift in Sources */,
 				DC215A1F25166321006D409A /* Document+CoreDataProperties.swift in Sources */,
+				DC455B012568F0EC00A0089F /* WifiSelectionCoordinator.swift in Sources */,
 				DC82CC952517058900403550 /* SCANDODateFormatter.swift in Sources */,
 				09C8ADAE25065154004BA0F7 /* Router.swift in Sources */,
+				DC455AFA2568E89300A0089F /* ConnectionUserSetting.swift in Sources */,
 				DC3F5E96253159CB007B6B3E /* ErodeParamUserSetting.swift in Sources */,
 				09FDB4A6252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift in Sources */,
 				DC215A1D25166321006D409A /* QuadPoint+CoreDataProperties.swift in Sources */,
 				DCE0E731250AFB5F00971B22 /* SCANDOConstant.swift in Sources */,
 				DC0FAC10253C462F0033593C /* LauncScreenViewController.swift in Sources */,
+				DCA49DE0255A210B007B6A7B /* ProductIDView.swift in Sources */,
 				097A18A825046E660044D5FB /* ScanAlbumsViewController.swift in Sources */,
 				7206EAF1250C73F200A3DA4A /* GalleryCoordinator.swift in Sources */,
 				09C8ADB2250653FF004BA0F7 /* AppCoordinator.swift in Sources */,
+				DC301E432558D1BC00E9B50D /* UIViewController+Extension.swift in Sources */,
 				DC82CC972517109E00403550 /* PreviewModel.swift in Sources */,
 				DCAC3ED725158F6B00F5DD59 /* ThreadManager.swift in Sources */,
 				DC75E59A25138C9400186F30 /* EditScanView.swift in Sources */,
 				0901C6A525038A320051FF16 /* KingMaster.xcdatamodeld in Sources */,
 				DCE922912516E4CB00A30804 /* ScanAlbumsModel.swift in Sources */,
+				DC455B062568F20C00A0089F /* WifiSelectionTableViewController.swift in Sources */,
 				09C8ADAC2506511F004BA0F7 /* Coordinator.swift in Sources */,
 				DC82E08E251ACCC800FB9CA7 /* GalleryCache.swift in Sources */,
 				DC972BC4251258C400A6C43B /* ScanImagePickerCoordinator.swift in Sources */,
+				DCB5C6CA2557063F00E87733 /* SettingModel.swift in Sources */,
+				DC8D715D256A90D6009B7606 /* NetworkRequest.swift in Sources */,
 				0922627525053E0B00BDDB90 /* DocumentGroupViewController.swift in Sources */,
 				DCB3CE4E251A5A4400D4EDFB /* GalleryData.swift in Sources */,
 				DC215A2025166321006D409A /* DocumentImage+CoreDataClass.swift in Sources */,
@@ -792,12 +898,16 @@
 				DC9F070E25314818005A517B /* DilateParamUserSetting.swift in Sources */,
 				DC215A1C25166321006D409A /* QuadPoint+CoreDataClass.swift in Sources */,
 				DC7129912515736A00ACCB2B /* PreviewCoordinator.swift in Sources */,
+				DC8DB882255851A000F8437F /* UIButton+Extension.swift in Sources */,
 				DC4CD0032514FB51000A84BC /* PreviewView.swift in Sources */,
+				DC89011925580E41001318D7 /* SettingCoordinator.swift in Sources */,
+				DCB5C6C32556EFD700E87733 /* SettingView.swift in Sources */,
 				DCC826E6252E047B00DBD037 /* FilterData.swift in Sources */,
 				DC82E091251AD38B00FB9CA7 /* DocumentGroupData.swift in Sources */,
 				DCB689402517AD29001AD049 /* CameraData.swift in Sources */,
 				DC215A2325166321006D409A /* DocumentGroup+CoreDataProperties.swift in Sources */,
 				09FDB4A3252FED7E007E8D7A /* UserSetting.swift in Sources */,
+				DC89011B25582A6A001318D7 /* ConnectionStatusView.swift in Sources */,
 				DC39BC7A2514AF590067DF71 /* EditScanCoordinator.swift in Sources */,
 				0922627425053E0B00BDDB90 /* DocumentGroupView.swift in Sources */,
 				09195CDA2504C429006CC8A4 /* ScanAlbumsTableViewCell.swift in Sources */,
@@ -811,15 +921,20 @@
 				DCD2C73C252D543500CC391C /* FilterView.swift in Sources */,
 				DC75E59C25138CBD00186F30 /* EditScanViewController.swift in Sources */,
 				092E85D5250659B300A01F60 /* DocumentGroupCoordinator.swift in Sources */,
+				DC4F8D1A2560C81600EA616C /* ProductIDViewController.swift in Sources */,
 				0901C69D25038A320051FF16 /* SceneDelegate.swift in Sources */,
 				DCB3CE4B251A4ED000D4EDFB /* ScanImagePickerData.swift in Sources */,
 				7206EAEF250C704B00A3DA4A /* GalleryViewController.swift in Sources */,
 				DC4CD0052514FB78000A84BC /* PreviewViewController.swift in Sources */,
 				DCB1B5E52512DC9D00B1630C /* GalleryView.swift in Sources */,
 				0922627625053E0B00BDDB90 /* DocumentGroupCollectionViewCell.swift in Sources */,
+				DC4F8D1E2560CB0300EA616C /* ProductIDCoordinator.swift in Sources */,
 				DCD2C73E252D546500CC391C /* FilterViewController.swift in Sources */,
+				DC89012425583FA9001318D7 /* ConnectionStatusViewController.swift in Sources */,
 				DC215A1E25166321006D409A /* Document+CoreDataClass.swift in Sources */,
 				DC75E59F2513AA4700186F30 /* EditScanData.swift in Sources */,
+				DC4F8D232560E1A900EA616C /* UITextField+Extension.swift in Sources */,
+				DC8DB88025584A3F00F8437F /* ConnectionStatusCoordinator.swift in Sources */,
 				DC215A2225166321006D409A /* DocumentGroup+CoreDataClass.swift in Sources */,
 				DC215A262516640E006D409A /* DataManager.swift in Sources */,
 				DCE0E733250AFE2300971B22 /* AlertView.swift in Sources */,
@@ -830,9 +945,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCB5C6C72556FA6900E87733 /* SettingViewController.swift in Sources */,
 				DCD7350D252CACF70046775E /* Document+CoreDataProperties.swift in Sources */,
+				DC455B022568F0EC00A0089F /* WifiSelectionCoordinator.swift in Sources */,
 				DCD7350E252CACF70046775E /* SCANDODateFormatter.swift in Sources */,
 				DCD7350F252CACF70046775E /* Router.swift in Sources */,
+				DC455AFB2568E89300A0089F /* ConnectionUserSetting.swift in Sources */,
 				DC3F5E9725315AEC007B6B3E /* ErodeParamUserSetting.swift in Sources */,
 				09FDB4A7252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift in Sources */,
 				DCD73510252CACF70046775E /* QuadPoint+CoreDataProperties.swift in Sources */,
@@ -841,14 +959,20 @@
 				DCD73512252CACF70046775E /* ScanAlbumsViewController.swift in Sources */,
 				DCD73513252CACF70046775E /* GalleryCoordinator.swift in Sources */,
 				DCD73514252CACF70046775E /* AppCoordinator.swift in Sources */,
+				DC301E442558D1BC00E9B50D /* UIViewController+Extension.swift in Sources */,
 				DCD73515252CACF70046775E /* PreviewModel.swift in Sources */,
 				DCD73516252CACF70046775E /* ThreadManager.swift in Sources */,
 				DCD238EF252DF18B00E7C0A3 /* FilterView.swift in Sources */,
 				DCD238ED252DF18400E7C0A3 /* FilterCoordinator.swift in Sources */,
 				DCD73517252CACF70046775E /* EditScanView.swift in Sources */,
 				DCD73518252CACF70046775E /* KingMaster.xcdatamodeld in Sources */,
+				DC455B072568F20C00A0089F /* WifiSelectionTableViewController.swift in Sources */,
 				DCD73519252CACF70046775E /* ScanAlbumsModel.swift in Sources */,
 				DCD7351A252CACF70046775E /* Coordinator.swift in Sources */,
+				DCB5C6CB2557063F00E87733 /* SettingModel.swift in Sources */,
+				DC301E402558C38500E9B50D /* SettingCoordinator.swift in Sources */,
+				DC8D715E256A90D6009B7606 /* NetworkRequest.swift in Sources */,
+				DC4F8D1C2560C81B00EA616C /* ProductIDView.swift in Sources */,
 				DCD7351B252CACF70046775E /* GalleryCache.swift in Sources */,
 				DCD7351C252CACF70046775E /* ScanImagePickerCoordinator.swift in Sources */,
 				DCD7351D252CACF70046775E /* DocumentGroupViewController.swift in Sources */,
@@ -857,16 +981,19 @@
 				DCD7351F252CACF70046775E /* DocumentImage+CoreDataClass.swift in Sources */,
 				DCD73520252CACF70046775E /* DocumentImage+CoreDataProperties.swift in Sources */,
 				DCD73521252CACF70046775E /* QuadPoint+CoreDataClass.swift in Sources */,
+				DCB5C6C42556EFD700E87733 /* SettingView.swift in Sources */,
 				DCC826E7252E04F600DBD037 /* FilterData.swift in Sources */,
 				DCD73522252CACF70046775E /* PreviewCoordinator.swift in Sources */,
 				DCD73523252CACF70046775E /* PreviewView.swift in Sources */,
 				DCD73524252CACF70046775E /* DocumentGroupData.swift in Sources */,
 				09FDB4A4252FED7E007E8D7A /* UserSetting.swift in Sources */,
 				DCD73525252CACF70046775E /* CameraData.swift in Sources */,
+				DC89011F25582C59001318D7 /* ConnectionStatusView.swift in Sources */,
 				DCD73526252CACF70046775E /* DocumentGroup+CoreDataProperties.swift in Sources */,
 				DCD73527252CACF70046775E /* EditScanCoordinator.swift in Sources */,
 				DCD73528252CACF70046775E /* DocumentGroupView.swift in Sources */,
 				DCD73529252CACF70046775E /* ScanAlbumsTableViewCell.swift in Sources */,
+				DC301E3F2558C37300E9B50D /* UIButton+Extension.swift in Sources */,
 				DCD7352A252CACF70046775E /* CameraCoordinator.swift in Sources */,
 				DCD7352B252CACF70046775E /* GalleryModel.swift in Sources */,
 				DCD7352C252CACF70046775E /* ScanAlbumsCoordinator.swift in Sources */,
@@ -874,6 +1001,7 @@
 				DCD7352E252CACF70046775E /* ScanAlbumsView.swift in Sources */,
 				DCD7352F252CACF70046775E /* PreviewData.swift in Sources */,
 				DCD73530252CACF70046775E /* EditScanViewController.swift in Sources */,
+				DC89012525583FA9001318D7 /* ConnectionStatusViewController.swift in Sources */,
 				DCD73531252CACF70046775E /* DocumentGroupCoordinator.swift in Sources */,
 				DCD73532252CACF70046775E /* SceneDelegate.swift in Sources */,
 				DCD73533252CACF70046775E /* ScanImagePickerData.swift in Sources */,
@@ -881,8 +1009,12 @@
 				DCD73535252CACF70046775E /* PreviewViewController.swift in Sources */,
 				DCD73536252CACF70046775E /* GalleryView.swift in Sources */,
 				DCD73537252CACF70046775E /* DocumentGroupCollectionViewCell.swift in Sources */,
+				DC4F8D1F2560CB0300EA616C /* ProductIDCoordinator.swift in Sources */,
+				DC4F8D1B2560C81600EA616C /* ProductIDViewController.swift in Sources */,
 				DCD238EE252DF18700E7C0A3 /* FilterViewController.swift in Sources */,
+				DC301E412558C38D00E9B50D /* ConnectionStatusCoordinator.swift in Sources */,
 				DCD73538252CACF70046775E /* Document+CoreDataClass.swift in Sources */,
+				DC4F8D242560E1A900EA616C /* UITextField+Extension.swift in Sources */,
 				DCD73539252CACF70046775E /* EditScanData.swift in Sources */,
 				DCD7353A252CACF70046775E /* DocumentGroup+CoreDataClass.swift in Sources */,
 				DCD7353B252CACF70046775E /* DataManager.swift in Sources */,
@@ -1036,7 +1168,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.4;
+				MARKETING_VERSION = 0.2.0;
 				OTHER_SWIFT_FLAGS = "-DPRODUCTION";
 				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.apps.SCANDO;
 				PRODUCT_NAME = SCANDO;
@@ -1063,7 +1195,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.4;
+				MARKETING_VERSION = 0.2.0;
 				OTHER_SWIFT_FLAGS = "-DPRODUCTION";
 				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.apps.SCANDO;
 				PRODUCT_NAME = SCANDO;
@@ -1090,7 +1222,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.4;
+				MARKETING_VERSION = 0.2.0;
 				OTHER_SWIFT_FLAGS = "-DSANDBOX";
 				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.apps.dev.SCANDO;
 				PRODUCT_NAME = "DEV🛠";
@@ -1117,7 +1249,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.4;
+				MARKETING_VERSION = 0.2.0;
 				OTHER_SWIFT_FLAGS = "-DSANDBOX";
 				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.apps.dev.SCANDO;
 				PRODUCT_NAME = "DEV🛠";

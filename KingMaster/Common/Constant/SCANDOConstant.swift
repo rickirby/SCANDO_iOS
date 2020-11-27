@@ -72,4 +72,49 @@ class SCANDOConstant {
 	static let setErodeIterationPlaceholder: String = "Iteration"
 	static let setErodePositiveAction: String = "OK"
 	static let setErodeNegativeAction: String = "Cancel"
+	
+	static let connectionStatusTitleConnected: String = "Everything is OK"
+	static let connectionStatusDescriptionConnected: String = "You are all set. Connection status is okay. You are ready to copy braille page"
+	static let connectionStatusPositiveButtonConnected: String = "Done"
+	static let connectionStatusNegativeButtonConnected: String = "Reset Connection"
+	
+	static let connectionStatusTitleDisconnected: String = "Hi, there!"
+	static let connectionStatusDescriptionDisconnected: String = "If you have supported Braille Printer, you can pair it with your iPhone here"
+	static let connectionStatusPositiveButtonDisconnected: String = "Start Pairing"
+	static let connectionStatusNegativeButtonDisconnected: String = "Cancel"
+	
+	static let connectionStatusTitleSharedConnected: String = "Everything is OK"
+	static let connectionStatusDescriptionSharedConnected: String = "You are all set. You have been connected to shared network."
+	static let connectionStatusPositiveButtonSharedConnected: String = "Done"
+	static let connectionStatusNegativeButtonSharedConnected: String = "Reset Connection"
+	
+	static let connectionStatusTitleDifferentNetwork: String = "Something Needs to Set"
+	static let connectionStatusDescriptionDifferentNetwork: String = "Make sure your iPhone have connected to same WiFi as you connect your Braille Printer"
+	static let connectionStatusPositiveButtonDifferentNetwork: String = "Refresh Status"
+	static let connectionStatusNegativeButtonDifferentNetwork: String = "Reset Connection"
+	
+	static let connectionStatusLearnMoreButton: String = "Learn more about Braille Printer"
+	
+	static let connectionModeTitle: String = "Connection Mode"
+	static let connectionModeMessage: String = "Which way would you like to connect with Braille Printer?"
+	static let connectionModeDirectAction: String = "Direct Connection"
+	static let connectionModeSharedAction: String = "Shared Connection"
+	static let connectionModeCancelActiion: String = "Cancel"
+	
+	static let connectionResetTitle: String = "Reset Connection"
+	static let connectionResetMessage: String = "Are you sure you want to reset connection setting?"
+	static let connectionResetDesctructiveAction: String = "Reset"
+	static let connectionResetCancelAction: String = "Cancel"
+	
+	static let connectToWifiAskPasswordTitle: String = "Password"
+	static let connectToWifiAskPasswordMessage: String = "Input password for "
+	static let connectToWifiAskPasswordConnectAction: String = "OK"
+	static let connectToWifiAskPasswordCancelAction: String = "Cancel"
+	
+	static let connectToWifiSuccessTitle: String = "Connected!"
+	static let connectToWifiErrorTitle: String = "Failed!"
+	static let connectToWifiSuccessMessage: String = "Success connecting your Braille Printer to "
+	static let connectToWifiErrorMessage: String = "Can not connect to selected WiFi network. Re-check the password and try again"
+	static let connectToWifiResultOkAction: String = "OK"
+	static let connectToWifiResultCancelAction: String = "Cancel"
 }

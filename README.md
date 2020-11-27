@@ -3,7 +3,7 @@ Main Project
 Created by Ricki Bin Yamin
 
 ## This repository uses following dependency:
-- RBToolkit 0.0.2
+- RBToolkit 0.0.3
 - RBPhotosGallery 0.0.3
 - RBCameraDocScan 0.0.3
 - RBImageProcessor 0.0.3
@@ -11,7 +11,7 @@ Created by Ricki Bin Yamin
 Use carthage to download listed framework above
 
 ## Current Project Version
-0.1.4
+0.2.0
 
 ## Testflight Build Number
 1
