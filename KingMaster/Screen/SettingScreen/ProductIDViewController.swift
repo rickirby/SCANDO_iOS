@@ -53,8 +53,8 @@ class ProductIDViewController: ViewController<ProductIDView> {
 	
 	private func startConfiguringConnection(_ productID: String) {
 		
-		let ssid = "BRAILLE_PRINTER"
-		let pass = productID
+		let ssid = productID
+		let pass = "pass" + productID
 		
 		let configuration = NEHotspotConfiguration.init(ssid: ssid, passphrase: pass, isWEP: false)
 		configuration.joinOnce = true
@@ -98,6 +98,7 @@ class ProductIDViewController: ViewController<ProductIDView> {
 		if success {
 			AlertView.createConnectionModeAlert(self, directConnectHandler: {
 				ConnectionUserSetting.shared.save("")
+                NetworkRequest.get(url: "http://192.168.4.1/directconnection")
 				self.onNavigationEvent?(.directConnection)
 			}, sharedConnectionHandler: {
 				ConnectionUserSetting.shared.save(self.printerSSID)
