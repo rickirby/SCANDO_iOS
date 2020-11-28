@@ -53,8 +53,8 @@ class ProductIDViewController: ViewController<ProductIDView> {
 	
 	private func startConfiguringConnection(_ productID: String) {
 		
-		let ssid = "BRAILLE_PRINTER"
-		let pass = productID
+		let ssid = productID
+		let pass = "pass" + productID
 		
 		let configuration = NEHotspotConfiguration.init(ssid: ssid, passphrase: pass, isWEP: false)
 		configuration.joinOnce = true
