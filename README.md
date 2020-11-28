@@ -16,3 +16,6 @@ Use carthage to download listed framework above
 ## Testflight Build Number
 1
 
+## Compatibility with RB_QueenMaster_Esp
+0.1.0
+
