@@ -98,6 +98,7 @@ class ProductIDViewController: ViewController<ProductIDView> {
 		if success {
 			AlertView.createConnectionModeAlert(self, directConnectHandler: {
 				ConnectionUserSetting.shared.save("")
+                NetworkRequest.get(url: "http://192.168.4.1/directconnection")
 				self.onNavigationEvent?(.directConnection)
 			}, sharedConnectionHandler: {
 				ConnectionUserSetting.shared.save(self.printerSSID)
