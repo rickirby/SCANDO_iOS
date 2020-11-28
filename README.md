@@ -11,8 +11,11 @@ Created by Ricki Bin Yamin
 Use carthage to download listed framework above
 
 ## Current Project Version
-0.2.0
+0.2.1
 
 ## Testflight Build Number
 1
+
+## Compatibility with RB_QueenMaster_Esp
+0.1.0
 
