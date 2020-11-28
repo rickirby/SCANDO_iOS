@@ -161,7 +161,8 @@ class ProductIDView: View {
 		guard let text = productIDTextField.text else {
 			return
 		}
-		
-		positiveButton.isEnabled = text.count == 8
+        
+        productIDTextField.text = String(text.prefix(6))
+		positiveButton.isEnabled = String(text.prefix(6)).count == 6
 	}
 }
