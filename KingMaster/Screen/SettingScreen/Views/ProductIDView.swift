@@ -162,6 +162,6 @@ class ProductIDView: View {
 			return
 		}
 		
-		positiveButton.isEnabled = text.count == 8
+		positiveButton.isEnabled = text.count == 6
 	}
 }
