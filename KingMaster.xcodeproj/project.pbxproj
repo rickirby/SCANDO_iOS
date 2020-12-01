@@ -23,6 +23,10 @@
 		09C8ADAE25065154004BA0F7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADAD25065154004BA0F7 /* Router.swift */; };
 		09C8ADB0250652BC004BA0F7 /* ScanAlbumsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADAF250652BC004BA0F7 /* ScanAlbumsCoordinator.swift */; };
 		09C8ADB2250653FF004BA0F7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADB1250653FF004BA0F7 /* AppCoordinator.swift */; };
+		09E4374A2576ACAE006F33FF /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E437492576ACAE006F33FF /* TranslationView.swift */; };
+		09E4374B2576ACAE006F33FF /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E437492576ACAE006F33FF /* TranslationView.swift */; };
+		09E437512576ACD9006F33FF /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E437502576ACD9006F33FF /* TranslationViewController.swift */; };
+		09E437522576ACD9006F33FF /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E437502576ACD9006F33FF /* TranslationViewController.swift */; };
 		09FDB4A3252FED7E007E8D7A /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB4A2252FED7E007E8D7A /* UserSetting.swift */; };
 		09FDB4A4252FED7E007E8D7A /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB4A2252FED7E007E8D7A /* UserSetting.swift */; };
 		09FDB4A6252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB4A5252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift */; };
@@ -198,6 +202,8 @@
 		09C8ADAD25065154004BA0F7 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		09C8ADAF250652BC004BA0F7 /* ScanAlbumsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAlbumsCoordinator.swift; sourceTree = "<group>"; };
 		09C8ADB1250653FF004BA0F7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		09E437492576ACAE006F33FF /* TranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
+		09E437502576ACD9006F33FF /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
 		09FDB4A2252FED7E007E8D7A /* UserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetting.swift; sourceTree = "<group>"; };
 		09FDB4A5252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveParamUserSetting.swift; sourceTree = "<group>"; };
 		7206EAEE250C704B00A3DA4A /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
@@ -368,6 +374,7 @@
 				DC4CD0002514FB08000A84BC /* Preview */,
 				DCB5C6C02556EF9B00E87733 /* SettingScreen */,
 				DCD2C739252D540F00CC391C /* Filter */,
+				09E437472576AC80006F33FF /* Translation */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -425,6 +432,23 @@
 				09C8ADAD25065154004BA0F7 /* Router.swift */,
 			);
 			path = Flow;
+			sourceTree = "<group>";
+		};
+		09E437472576AC80006F33FF /* Translation */ = {
+			isa = PBXGroup;
+			children = (
+				09E437502576ACD9006F33FF /* TranslationViewController.swift */,
+				09E437482576AC9A006F33FF /* Views */,
+			);
+			path = Translation;
+			sourceTree = "<group>";
+		};
+		09E437482576AC9A006F33FF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				09E437492576ACAE006F33FF /* TranslationView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		7206EAED250C6D8200A3DA4A /* Gallery */ = {
@@ -891,6 +915,7 @@
 				DC972BC4251258C400A6C43B /* ScanImagePickerCoordinator.swift in Sources */,
 				DCB5C6CA2557063F00E87733 /* SettingModel.swift in Sources */,
 				DC8D715D256A90D6009B7606 /* NetworkRequest.swift in Sources */,
+				09E4374A2576ACAE006F33FF /* TranslationView.swift in Sources */,
 				0922627525053E0B00BDDB90 /* DocumentGroupViewController.swift in Sources */,
 				DCB3CE4E251A5A4400D4EDFB /* GalleryData.swift in Sources */,
 				DC215A2025166321006D409A /* DocumentImage+CoreDataClass.swift in Sources */,
@@ -935,6 +960,7 @@
 				DC75E59F2513AA4700186F30 /* EditScanData.swift in Sources */,
 				DC4F8D232560E1A900EA616C /* UITextField+Extension.swift in Sources */,
 				DC8DB88025584A3F00F8437F /* ConnectionStatusCoordinator.swift in Sources */,
+				09E437512576ACD9006F33FF /* TranslationViewController.swift in Sources */,
 				DC215A2225166321006D409A /* DocumentGroup+CoreDataClass.swift in Sources */,
 				DC215A262516640E006D409A /* DataManager.swift in Sources */,
 				DCE0E733250AFE2300971B22 /* AlertView.swift in Sources */,
@@ -972,6 +998,7 @@
 				DCB5C6CB2557063F00E87733 /* SettingModel.swift in Sources */,
 				DC301E402558C38500E9B50D /* SettingCoordinator.swift in Sources */,
 				DC8D715E256A90D6009B7606 /* NetworkRequest.swift in Sources */,
+				09E4374B2576ACAE006F33FF /* TranslationView.swift in Sources */,
 				DC4F8D1C2560C81B00EA616C /* ProductIDView.swift in Sources */,
 				DCD7351B252CACF70046775E /* GalleryCache.swift in Sources */,
 				DCD7351C252CACF70046775E /* ScanImagePickerCoordinator.swift in Sources */,
@@ -1016,6 +1043,7 @@
 				DCD73538252CACF70046775E /* Document+CoreDataClass.swift in Sources */,
 				DC4F8D242560E1A900EA616C /* UITextField+Extension.swift in Sources */,
 				DCD73539252CACF70046775E /* EditScanData.swift in Sources */,
+				09E437522576ACD9006F33FF /* TranslationViewController.swift in Sources */,
 				DCD7353A252CACF70046775E /* DocumentGroup+CoreDataClass.swift in Sources */,
 				DCD7353B252CACF70046775E /* DataManager.swift in Sources */,
 				DCD7353C252CACF70046775E /* AlertView.swift in Sources */,
