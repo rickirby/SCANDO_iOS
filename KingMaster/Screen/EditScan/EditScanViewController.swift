@@ -67,7 +67,7 @@ class EditScanViewController: ViewController<EditScanView> {
 		title = "Edit Document Points"
 		let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 		navigationItem.rightBarButtonItems = [screenView.nextBarButton]
-		toolbarItems = [screenView.allAreaBarButton, spacer, screenView.downloadBarButton]
+		toolbarItems = [screenView.downloadBarButton, spacer, screenView.allAreaBarButton]
 	}
 	
 	private func configureBar() {

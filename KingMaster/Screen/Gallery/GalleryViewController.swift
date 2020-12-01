@@ -67,9 +67,9 @@ class GalleryViewController: RBPhotosGalleryViewController {
 		let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 		navigationItem.rightBarButtonItem = screenView.editBarButton
 		#if PRODUCTION
-		toolbarItems = [screenView.deleteBarButton, spacer, screenView.downloadBarButton]
+		toolbarItems = [screenView.downloadBarButton, spacer, screenView.deleteBarButton]
 		#elseif SANDBOX
-		toolbarItems = [screenView.deleteBarButton, spacer, screenView.devBarButton, spacer, screenView.downloadBarButton]
+		toolbarItems = [screenView.downloadBarButton, spacer, screenView.devBarButton, spacer, screenView.deleteBarButton]
 		#endif
 	}
 	
