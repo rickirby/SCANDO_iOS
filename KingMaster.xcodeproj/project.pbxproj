@@ -27,6 +27,8 @@
 		09E4374B2576ACAE006F33FF /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E437492576ACAE006F33FF /* TranslationView.swift */; };
 		09E437512576ACD9006F33FF /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E437502576ACD9006F33FF /* TranslationViewController.swift */; };
 		09E437522576ACD9006F33FF /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E437502576ACD9006F33FF /* TranslationViewController.swift */; };
+		09E437562576AE4B006F33FF /* TranslationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E437552576AE4B006F33FF /* TranslationCoordinator.swift */; };
+		09E437572576AE4B006F33FF /* TranslationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E437552576AE4B006F33FF /* TranslationCoordinator.swift */; };
 		09FDB4A3252FED7E007E8D7A /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB4A2252FED7E007E8D7A /* UserSetting.swift */; };
 		09FDB4A4252FED7E007E8D7A /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB4A2252FED7E007E8D7A /* UserSetting.swift */; };
 		09FDB4A6252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB4A5252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift */; };
@@ -204,6 +206,7 @@
 		09C8ADB1250653FF004BA0F7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		09E437492576ACAE006F33FF /* TranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
 		09E437502576ACD9006F33FF /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
+		09E437552576AE4B006F33FF /* TranslationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationCoordinator.swift; sourceTree = "<group>"; };
 		09FDB4A2252FED7E007E8D7A /* UserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetting.swift; sourceTree = "<group>"; };
 		09FDB4A5252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveParamUserSetting.swift; sourceTree = "<group>"; };
 		7206EAEE250C704B00A3DA4A /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
@@ -437,6 +440,7 @@
 		09E437472576AC80006F33FF /* Translation */ = {
 			isa = PBXGroup;
 			children = (
+				09E437552576AE4B006F33FF /* TranslationCoordinator.swift */,
 				09E437502576ACD9006F33FF /* TranslationViewController.swift */,
 				09E437482576AC9A006F33FF /* Views */,
 			);
@@ -956,6 +960,7 @@
 				DC4F8D1E2560CB0300EA616C /* ProductIDCoordinator.swift in Sources */,
 				DCD2C73E252D546500CC391C /* FilterViewController.swift in Sources */,
 				DC89012425583FA9001318D7 /* ConnectionStatusViewController.swift in Sources */,
+				09E437562576AE4B006F33FF /* TranslationCoordinator.swift in Sources */,
 				DC215A1E25166321006D409A /* Document+CoreDataClass.swift in Sources */,
 				DC75E59F2513AA4700186F30 /* EditScanData.swift in Sources */,
 				DC4F8D232560E1A900EA616C /* UITextField+Extension.swift in Sources */,
@@ -1039,6 +1044,7 @@
 				DC4F8D1F2560CB0300EA616C /* ProductIDCoordinator.swift in Sources */,
 				DC4F8D1B2560C81600EA616C /* ProductIDViewController.swift in Sources */,
 				DCD238EE252DF18700E7C0A3 /* FilterViewController.swift in Sources */,
+				09E437572576AE4B006F33FF /* TranslationCoordinator.swift in Sources */,
 				DC301E412558C38D00E9B50D /* ConnectionStatusCoordinator.swift in Sources */,
 				DCD73538252CACF70046775E /* Document+CoreDataClass.swift in Sources */,
 				DC4F8D242560E1A900EA616C /* UITextField+Extension.swift in Sources */,
