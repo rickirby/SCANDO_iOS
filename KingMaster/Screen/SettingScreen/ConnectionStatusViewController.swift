@@ -22,15 +22,8 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 		case didTapDone
 	}
 	
-	enum Status {
-		case directConnected
-		case sharedConnected
-		case disconnected
-		case differentNetwork
-	}
-	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
-	var connectionStatus: Status = .disconnected {
+	var connectionStatus: ConnectionStatusModel.Status = .disconnected {
 		didSet {
 			configureStatus(for: connectionStatus)
 		}
@@ -124,7 +117,7 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 		}
 	}
 	
-	private func configureStatus(for status: Status) {
+	private func configureStatus(for status: ConnectionStatusModel.Status) {
 		screenView.configureStatus(for: status)
 	}
 	

@@ -13,9 +13,16 @@ import CoreLocation
 
 class ConnectionStatusModel {
 	
+	enum Status {
+		case directConnected
+		case sharedConnected
+		case disconnected
+		case differentNetwork
+	}
+	
 	static let shared = ConnectionStatusModel()
 	
-	func checkConnectionStatus(onStartLoading: (() -> Void)? = nil, onStopLoading: (() -> Void)? = nil, onGotStatus: ((ConnectionStatusViewController.Status) -> Void)? = nil) {
+	func checkConnectionStatus(onStartLoading: (() -> Void)? = nil, onStopLoading: (() -> Void)? = nil, onGotStatus: ((Status) -> Void)? = nil) {
 		guard let sharedSSID = ConnectionUserSetting.shared.read() else {
 			onGotStatus?(.disconnected)
 			return
