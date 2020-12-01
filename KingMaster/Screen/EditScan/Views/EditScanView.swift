@@ -64,7 +64,7 @@ class EditScanView: View {
 	
 	lazy var allAreaBarButton = UIBarButtonItem(image: UIImage(named: "AllButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(allAreaBarButtonTapped))
 	
-	lazy var downloadBarButton = UIBarButtonItem(image: UIImage(named: "SaveButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(downloadBarButtonTapped))
+	lazy var downloadBarButton = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.down.on.square"), style: .plain, target: self, action: #selector(downloadBarButtonTapped))
 	
 	// MARK: - Life Cycle
 	
