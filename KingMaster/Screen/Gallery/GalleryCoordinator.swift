@@ -28,6 +28,7 @@ class GalleryCoordinator: Coordinator {
 	private weak var navigationController: UINavigationController?
 	private var editScanCoordinator: EditScanCoordinator?
 	private var filterCoordinator: FilterCoordinator?
+	private var translationCoordinator: TranslationCoordinator?
 	
 	// MARK: - Life Cycles
 	
@@ -88,4 +89,11 @@ class GalleryCoordinator: Coordinator {
 		filterCoordinator?.start()
 	}
 	#endif
+	
+	private func openTranslation() {
+		translationCoordinator = nil
+		translationCoordinator = TranslationCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		
+		translationCoordinator?.start()
+	}
 }
