@@ -62,6 +62,8 @@ class GalleryCoordinator: Coordinator {
 			case .didOpenDev(let processedImage):
 				self?.openDev(processedImage)
 			#endif
+			case .didOpenTranslation:
+				self?.openTranslation()
 			}
 		}
 		

@@ -21,6 +21,7 @@ class GalleryViewController: RBPhotosGalleryViewController {
 		#if SANDBOX
 		case didOpenDev(processedImage: UIImage)
 		#endif
+		case didOpenTranslation
 	}
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
@@ -89,7 +90,7 @@ class GalleryViewController: RBPhotosGalleryViewController {
 			case .didTapDelete:
 				self?.deleteImage()
 			case .didTapTranslate:
-				break
+				self?.openTranslation()
 			#if SANDBOX
 			case .didTapDev:
 				self?.openDev()
@@ -193,6 +194,10 @@ class GalleryViewController: RBPhotosGalleryViewController {
 		onNavigationEvent?(.didOpenDev(processedImage: galleryViewImagesData[currentPageIndex]))
 	}
 	#endif
+	
+	private func openTranslation() {
+		onNavigationEvent?(.didOpenTranslation)
+	}
 }
 
 extension GalleryViewController: RBPhotosGalleryViewDelegate, RBPhotosGalleryViewDataSource {
