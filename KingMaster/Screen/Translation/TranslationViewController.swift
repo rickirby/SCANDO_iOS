@@ -11,6 +11,15 @@ import RBToolkit
 
 class TranslationViewController: ViewController<TranslationView> {
 	
+	// MARK: - Public Properties
+	
+	enum NavigationEvent {
+		case openPrint
+		case openConnectionStatus
+	}
+	
+	var onNavigationEvent: ((NavigationEvent) -> Void)?
+	
 	// MARK: - Life Cycles
 	
 	override func viewDidLoad() {
@@ -43,7 +52,24 @@ class TranslationViewController: ViewController<TranslationView> {
 			
 			switch viewEvent {
 			case .didTapPrint:
-				break
+				self?.openPrint()
+			}
+		}
+	}
+	
+	private func openPrint() {
+		
+		screenView.startLoading()
+		
+		ConnectionStatusModel.shared.checkConnectionStatus { status in
+			
+			self.screenView.stopLoading()
+			switch status {
+			
+			case .directConnected, .sharedConnected:
+				self.onNavigationEvent?(.openPrint)
+			default:
+				self.onNavigationEvent?(.openConnectionStatus)
 			}
 		}
 	}
