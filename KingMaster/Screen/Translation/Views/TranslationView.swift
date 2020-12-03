@@ -13,7 +13,7 @@ class TranslationView: View {
 	
 	// MARK: - Private Properties
 	
-	lazy var titleLabel: UILabel = {
+	private lazy var titleLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.font = .preferredFont(forTextStyle: .body)
@@ -23,7 +23,7 @@ class TranslationView: View {
 		return label
 	}()
 	
-	lazy var resultTextView: UITextView = {
+	private lazy var resultTextView: UITextView = {
 		let textView = UITextView()
 		textView.translatesAutoresizingMaskIntoConstraints = false
 		textView.layer.borderWidth = 1.0
@@ -33,7 +33,7 @@ class TranslationView: View {
 		return textView
 	}()
 	
-	lazy var activityIndicator: UIActivityIndicatorView = {
+	private lazy var activityIndicator: UIActivityIndicatorView = {
 		let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
 		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
 		activityIndicator.color = .gray
