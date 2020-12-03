@@ -23,6 +23,7 @@ class TranslationCoordinator: Coordinator {
 	// MARK: - Private Properties
 	
 	private weak var navigationController: UINavigationController?
+	private var connectionStatusCoordinator: ConnectionStatusCoordinator?
 	
 	// MARK: - Life Cycles
 	
@@ -42,7 +43,27 @@ class TranslationCoordinator: Coordinator {
 	
 	private func makeTranslationViewController() -> UIViewController {
 		let vc = TranslationViewController()
+		vc.onNavigationEvent = { [weak self] (navigationEvent: TranslationViewController.NavigationEvent) in
+			
+			switch navigationEvent {
+			case .openPrint:
+				self?.openPrint()
+			case .openConnectionStatus:
+				self?.openConnectionStatus()
+			}
+		}
 		
 		return vc
+	}
+	
+	private func openPrint() {
+		
+	}
+	
+	private func openConnectionStatus() {
+		connectionStatusCoordinator = nil
+		connectionStatusCoordinator = ConnectionStatusCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		
+		connectionStatusCoordinator?.start()
 	}
 }
