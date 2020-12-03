@@ -53,31 +53,23 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 	
 	func refreshStatus() {
 		
-		ConnectionStatusModel.shared.checkConnectionStatus(
-			onStartLoading: {
-				self.screenView.startLoading()
-			},
-			onStopLoading: {
-				self.screenView.stopLoading()
-			},
-			onGotStatus: { status in
-				
-				self.connectionStatus = status
-				
-				switch status {
-				
-				case .disconnected:
-					NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: "")
-					ConnectionUserSetting.shared.save(nil)
-				case .differentNetwork:
-					DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-						self.refreshStatus()
-					}
-				default:
-					break
+		screenView.startLoading()
+		ConnectionStatusModel.shared.checkConnectionStatus { status in
+			self.connectionStatus = status
+			self.screenView.stopLoading()
+			
+			switch status {
+			case .disconnected:
+				NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: "")
+				ConnectionUserSetting.shared.save(nil)
+			case .differentNetwork:
+				DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+					self.refreshStatus()
 				}
+			default:
+				break
 			}
-		)
+		}
 		
 	}
 	

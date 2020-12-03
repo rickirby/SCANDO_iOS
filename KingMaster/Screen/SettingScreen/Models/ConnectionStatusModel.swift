@@ -22,24 +22,20 @@ class ConnectionStatusModel {
 	
 	static let shared = ConnectionStatusModel()
 	
-	func checkConnectionStatus(onStartLoading: (() -> Void)? = nil, onStopLoading: (() -> Void)? = nil, onGotStatus: ((Status) -> Void)? = nil) {
+	func checkConnectionStatus(onComplete: ((Status) -> Void)? = nil) {
 		guard let sharedSSID = ConnectionUserSetting.shared.read() else {
-			onGotStatus?(.disconnected)
+			onComplete?(.disconnected)
 			return
 		}
-		
-		onStartLoading?()
 		
 		if sharedSSID == "" {
 			NetworkRequest.get(url: "http://192.168.4.1/checkresponse") { result in
 				ThreadManager.executeOnMain {
 					if let message = result["msg"] as? String, message == "OK" {
-						onGotStatus?(.directConnected)
+						onComplete?(.directConnected)
 					} else {
-						onGotStatus?(.disconnected)
+						onComplete?(.disconnected)
 					}
-					
-					onStopLoading?()
 				}
 			}
 			
@@ -48,16 +44,14 @@ class ConnectionStatusModel {
 				NetworkRequest.get(url: "http://scandohardware.local/checkresponse") { result in
 					ThreadManager.executeOnMain {
 						if let message = result["msg"] as? String, message == "OK" {
-							onGotStatus?(.sharedConnected)
+							onComplete?(.sharedConnected)
 						} else {
-							onGotStatus?(.disconnected)
+							onComplete?(.disconnected)
 						}
-						
-						onStopLoading?()
 					}
 				}
 			} else {
-				onGotStatus?(.differentNetwork)
+				onComplete?(.differentNetwork)
 			}
 		}
 	}
