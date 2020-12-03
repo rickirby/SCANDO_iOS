@@ -11,9 +11,9 @@ import RBToolkit
 
 class TranslationView: View {
 	
-	// MARK: - Private Properties
+	// MARK: - View Components
 	
-	private lazy var titleLabel: UILabel = {
+	lazy var titleLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.font = .preferredFont(forTextStyle: .body)
@@ -23,7 +23,7 @@ class TranslationView: View {
 		return label
 	}()
 	
-	private lazy var resultTextView: UITextView = {
+	lazy var resultTextView: UITextView = {
 		let textView = UITextView()
 		textView.translatesAutoresizingMaskIntoConstraints = false
 		textView.layer.borderWidth = 1.0
@@ -34,7 +34,7 @@ class TranslationView: View {
 		return textView
 	}()
 	
-	private lazy var activityIndicator: UIActivityIndicatorView = {
+	lazy var activityIndicator: UIActivityIndicatorView = {
 		let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
 		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
 		activityIndicator.color = .gray
