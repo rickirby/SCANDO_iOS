@@ -44,7 +44,9 @@ class TranslationViewController: ViewController<TranslationView> {
 	}
 	
 	private func configureBar() {
+		navigationController?.setNavigationBarHidden(false, animated: true)
 		navigationController?.setToolbarHidden(true, animated: true)
+		navigationController?.interactivePopGestureRecognizer?.isEnabled = true
 	}
 	
 	private func configureViewEvent() {
