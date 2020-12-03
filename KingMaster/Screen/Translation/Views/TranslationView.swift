@@ -43,6 +43,8 @@ class TranslationView: View {
 		return activityIndicator
 	}()
 	
+	lazy var printBarButton: UIBarButtonItem = UIBarButtonItem(title: "Print", style: .plain, target: self, action: #selector(printBarButtonTapped))
+	
 	// MARK: - Life Cycles
 	
 	override func setViews() {
@@ -69,4 +71,7 @@ class TranslationView: View {
 		])
 	}
 	
+	@objc private func printBarButtonTapped() {
+		
+	}
 }

@@ -16,6 +16,7 @@ class TranslationViewController: ViewController<TranslationView> {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		configureLoadBar()
 		automaticallyAdjustKeyboardLayoutGuide = true
 	}
 	
@@ -26,6 +27,10 @@ class TranslationViewController: ViewController<TranslationView> {
 	}
 	
 	// MARK: - Private Methods
+	
+	private func configureLoadBar() {
+		navigationItem.rightBarButtonItem = screenView.printBarButton
+	}
 	
 	private func configureBar() {
 		navigationController?.setToolbarHidden(true, animated: true)
