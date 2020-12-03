@@ -17,6 +17,7 @@ class TranslationViewController: ViewController<TranslationView> {
 		super.viewDidLoad()
 		
 		configureLoadBar()
+		configureViewEvent()
 		automaticallyAdjustKeyboardLayoutGuide = true
 	}
 	
@@ -35,5 +36,15 @@ class TranslationViewController: ViewController<TranslationView> {
 	
 	private func configureBar() {
 		navigationController?.setToolbarHidden(true, animated: true)
+	}
+	
+	private func configureViewEvent() {
+		screenView.onViewEvent = { [weak self] (viewEvent: TranslationView.ViewEvent) in
+			
+			switch viewEvent {
+			case .didTapPrint:
+				break
+			}
+		}
 	}
 }
