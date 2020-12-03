@@ -13,22 +13,13 @@ class TranslationView: View {
 	
 	// MARK: - View Components
 	
-	lazy var titleLabel: UILabel = {
-		let label = UILabel()
-		label.translatesAutoresizingMaskIntoConstraints = false
-		label.font = .preferredFont(forTextStyle: .body)
-		label.textColor = .label
-		label.text = "Translation Result"
-		
-		return label
-	}()
-	
 	lazy var resultTextView: UITextView = {
 		let textView = UITextView()
 		textView.translatesAutoresizingMaskIntoConstraints = false
 		textView.layer.borderWidth = 1.0
 		textView.layer.borderColor = UIColor.gray.cgColor
 		textView.layer.cornerRadius = 3.0
+		textView.font = .preferredFont(forTextStyle: .body)
 		textView.addDoneButtonOnKeyboard()
 		
 		return textView
@@ -57,14 +48,10 @@ class TranslationView: View {
 	
 	private func configureView() {
 		backgroundColor = .systemBackground
-		addAllSubviews(views: [titleLabel, resultTextView, activityIndicator])
+		addAllSubviews(views: [resultTextView, activityIndicator])
 		
 		NSLayoutConstraint.activate([
-			titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
-			titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),
-			titleLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20),
-			
-			resultTextView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 15),
+			resultTextView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
 			resultTextView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),
 			resultTextView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20),
 			resultTextView.bottomAnchor.constraint(equalTo: self.keyboardLayoutGuide.topAnchor, constant: -40)
