@@ -76,7 +76,10 @@ class TranslationView: View {
 			resultTextView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
 			resultTextView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),
 			resultTextView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20),
-			resultTextView.bottomAnchor.constraint(equalTo: self.keyboardLayoutGuide.topAnchor, constant: -40)
+			resultTextView.bottomAnchor.constraint(equalTo: self.keyboardLayoutGuide.topAnchor, constant: -40),
+			
+			activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+			activityIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor)
 		])
 	}
 	
