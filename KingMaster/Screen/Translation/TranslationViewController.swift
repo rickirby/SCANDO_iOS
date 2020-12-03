@@ -29,6 +29,7 @@ class TranslationViewController: ViewController<TranslationView> {
 	// MARK: - Private Methods
 	
 	private func configureLoadBar() {
+		title = "Translation"
 		navigationItem.rightBarButtonItem = screenView.printBarButton
 	}
 	
