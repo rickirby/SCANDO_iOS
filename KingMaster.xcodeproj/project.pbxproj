@@ -23,6 +23,8 @@
 		09C8ADAE25065154004BA0F7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADAD25065154004BA0F7 /* Router.swift */; };
 		09C8ADB0250652BC004BA0F7 /* ScanAlbumsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADAF250652BC004BA0F7 /* ScanAlbumsCoordinator.swift */; };
 		09C8ADB2250653FF004BA0F7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADB1250653FF004BA0F7 /* AppCoordinator.swift */; };
+		09F5977A2576995400C6FDC4 /* ConnectionStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F597792576995400C6FDC4 /* ConnectionStatusModel.swift */; };
+		09F5977B2576995400C6FDC4 /* ConnectionStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F597792576995400C6FDC4 /* ConnectionStatusModel.swift */; };
 		09E4374A2576ACAE006F33FF /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E437492576ACAE006F33FF /* TranslationView.swift */; };
 		09E4374B2576ACAE006F33FF /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E437492576ACAE006F33FF /* TranslationView.swift */; };
 		09E437512576ACD9006F33FF /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E437502576ACD9006F33FF /* TranslationViewController.swift */; };
@@ -204,6 +206,7 @@
 		09C8ADAD25065154004BA0F7 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		09C8ADAF250652BC004BA0F7 /* ScanAlbumsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAlbumsCoordinator.swift; sourceTree = "<group>"; };
 		09C8ADB1250653FF004BA0F7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		09F597792576995400C6FDC4 /* ConnectionStatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatusModel.swift; sourceTree = "<group>"; };
 		09E437492576ACAE006F33FF /* TranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
 		09E437502576ACD9006F33FF /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
 		09E437552576AE4B006F33FF /* TranslationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationCoordinator.swift; sourceTree = "<group>"; };
@@ -656,6 +659,7 @@
 			children = (
 				DCB5C6C92557063F00E87733 /* SettingModel.swift */,
 				DC455AF92568E89300A0089F /* ConnectionUserSetting.swift */,
+				09F597792576995400C6FDC4 /* ConnectionStatusModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -901,6 +905,7 @@
 				DC3F5E96253159CB007B6B3E /* ErodeParamUserSetting.swift in Sources */,
 				09FDB4A6252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift in Sources */,
 				DC215A1D25166321006D409A /* QuadPoint+CoreDataProperties.swift in Sources */,
+				09F5977A2576995400C6FDC4 /* ConnectionStatusModel.swift in Sources */,
 				DCE0E731250AFB5F00971B22 /* SCANDOConstant.swift in Sources */,
 				DC0FAC10253C462F0033593C /* LauncScreenViewController.swift in Sources */,
 				DCA49DE0255A210B007B6A7B /* ProductIDView.swift in Sources */,
@@ -985,6 +990,7 @@
 				DC3F5E9725315AEC007B6B3E /* ErodeParamUserSetting.swift in Sources */,
 				09FDB4A7252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift in Sources */,
 				DCD73510252CACF70046775E /* QuadPoint+CoreDataProperties.swift in Sources */,
+				09F5977B2576995400C6FDC4 /* ConnectionStatusModel.swift in Sources */,
 				DCD73511252CACF70046775E /* SCANDOConstant.swift in Sources */,
 				DC0FAC11253C469E0033593C /* LauncScreenViewController.swift in Sources */,
 				DCD73512252CACF70046775E /* ScanAlbumsViewController.swift in Sources */,

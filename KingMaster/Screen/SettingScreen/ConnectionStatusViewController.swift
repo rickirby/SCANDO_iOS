@@ -22,15 +22,8 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 		case didTapDone
 	}
 	
-	enum Status {
-		case directConnected
-		case sharedConnected
-		case disconnected
-		case differentNetwork
-	}
-	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
-	var connectionStatus: Status = .disconnected {
+	var connectionStatus: ConnectionStatusModel.Status = .disconnected {
 		didSet {
 			configureStatus(for: connectionStatus)
 		}
@@ -60,50 +53,31 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 	
 	func refreshStatus() {
 		
-		guard let sharedSSID = ConnectionUserSetting.shared.read() else {
-			connectionStatus = .disconnected
-			return
-		}
-		
-		screenView.startLoading()
-		
-		if sharedSSID == "" {
-			NetworkRequest.get(url: "http://192.168.4.1/checkresponse") { result in
-				ThreadManager.executeOnMain {
-					if let message = result["msg"] as? String, message == "OK" {
-						self.connectionStatus = .directConnected
-					} else {
-						self.connectionStatus = .disconnected
-						NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: "")
-						ConnectionUserSetting.shared.save(nil)
+		ConnectionStatusModel.shared.checkConnectionStatus(
+			onStartLoading: {
+				self.screenView.startLoading()
+			},
+			onStopLoading: {
+				self.screenView.stopLoading()
+			},
+			onGotStatus: { status in
+				
+				self.connectionStatus = status
+				
+				switch status {
+				
+				case .disconnected:
+					NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: "")
+					ConnectionUserSetting.shared.save(nil)
+				case .differentNetwork:
+					DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+						self.refreshStatus()
 					}
-					
-					self.screenView.stopLoading()
+				default:
+					break
 				}
 			}
-			
-		} else {
-			if currentSSIDs().first == sharedSSID {
-				NetworkRequest.get(url: "http://scandohardware.local/checkresponse") { result in
-					ThreadManager.executeOnMain {
-						if let message = result["msg"] as? String, message == "OK" {
-							self.connectionStatus = .sharedConnected
-						} else {
-							self.connectionStatus = .disconnected
-							NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: "")
-							ConnectionUserSetting.shared.save(nil)
-						}
-						
-						self.screenView.stopLoading()
-					}
-				}
-			} else {
-				connectionStatus = .differentNetwork
-				DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-					self.refreshStatus()
-				}
-			}
-		}
+		)
 		
 	}
 	
@@ -143,7 +117,7 @@ class ConnectionStatusViewController: ViewController<ConnectionStatusView> {
 		}
 	}
 	
-	private func configureStatus(for status: Status) {
+	private func configureStatus(for status: ConnectionStatusModel.Status) {
 		screenView.configureStatus(for: status)
 	}
 	
