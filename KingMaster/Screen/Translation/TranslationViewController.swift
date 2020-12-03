@@ -11,4 +11,23 @@ import RBToolkit
 
 class TranslationViewController: ViewController<TranslationView> {
 	
+	// MARK: - Life Cycles
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		automaticallyAdjustKeyboardLayoutGuide = true
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		configureBar()
+	}
+	
+	// MARK: - Private Methods
+	
+	private func configureBar() {
+		navigationController?.setToolbarHidden(true, animated: true)
+	}
 }
