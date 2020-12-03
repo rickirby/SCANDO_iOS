@@ -28,9 +28,10 @@ class GalleryView: UIView {
 	
 	lazy var activityIndicator: UIActivityIndicatorView = {
 		let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
 		activityIndicator.color = .gray
 		activityIndicator.hidesWhenStopped = true
-		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+		
 		return activityIndicator
 	}()
 	
