@@ -11,6 +11,14 @@ import RBToolkit
 
 class TranslationView: View {
 	
+	// MARK: - Public Properties
+	
+	enum ViewEvent {
+		case didTapPrint
+	}
+	
+	var onViewEvent: ((ViewEvent) -> Void)?
+	
 	// MARK: - View Components
 	
 	lazy var resultTextView: UITextView = {
@@ -58,7 +66,14 @@ class TranslationView: View {
 		])
 	}
 	
+}
+
+extension TranslationView {
+	
+	// MARK: - @Objc Target
+	
 	@objc private func printBarButtonTapped() {
-		
+		onViewEvent?(.didTapPrint)		
 	}
+	
 }
