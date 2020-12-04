@@ -31,7 +31,7 @@ class PrintingView: View {
 		label.numberOfLines = 2
 		label.textAlignment = .center
 		label.textColor = .label
-		label.text = "Please wait while iPhone is connecting to the Braille Printer"
+		label.text = "Please wait while your iPhone is connecting to the Braille Printer"
 		
 		return label
 	}()
