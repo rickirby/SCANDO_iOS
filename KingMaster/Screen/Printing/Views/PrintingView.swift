@@ -67,5 +67,23 @@ class PrintingView: View {
 	
 	private func configureView() {
 		backgroundColor = .systemBackground
+		addAllSubviews(views: [titleLabel, descriptionLabel, printerImageView, activityIndicator])
+		
+		NSLayoutConstraint.activate([
+			titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 90),
+			titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+			
+			descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 21),
+			descriptionLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 30),
+			descriptionLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -30),
+			
+			printerImageView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 90),
+			printerImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+			printerImageView.widthAnchor.constraint(equalToConstant: CGFloat(214.0).makeDynamicW()),
+			printerImageView.heightAnchor.constraint(equalToConstant: CGFloat(214.0).makeDynamicW()),
+			
+			activityIndicator.topAnchor.constraint(equalTo: printerImageView.bottomAnchor, constant: 20),
+			activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+		])
 	}
 }
