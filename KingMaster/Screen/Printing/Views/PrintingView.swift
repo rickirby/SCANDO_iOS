@@ -11,4 +11,17 @@ import RBToolkit
 
 class PrintingView: View {
 	
+	// MARK: - Life Cycles
+	
+	override func setViews() {
+		super.setViews()
+		
+		configureView()
+	}
+	
+	// MARK: - Private Methods
+	
+	private func configureView() {
+		backgroundColor = .systemBackground
+	}
 }
