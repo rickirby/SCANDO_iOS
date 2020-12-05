@@ -91,6 +91,20 @@ class PrintingView: View {
 		configureView()
 	}
 	
+	// MARK: - Public Method
+	
+	func startLoading() {
+		ThreadManager.executeOnMain {
+			self.activityIndicator.startAnimating()
+		}
+	}
+	
+	func stopLoading() {
+		ThreadManager.executeOnMain {
+			self.activityIndicator.stopAnimating()
+		}
+	}
+	
 	// MARK: - Private Methods
 	
 	private func configurePrintingState(_ state: PrintingState) {
