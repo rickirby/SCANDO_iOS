@@ -11,6 +11,16 @@ import RBToolkit
 
 class PrintingViewController: ViewController<PrintingView> {
 	
+	// MARK: - Public Properties
+	
+	enum NavigationEvent {
+		case donePrinting
+		case cancelPrinting
+	}
+	
+	var onNavigationEvent: ((NavigationEvent) -> Void)?
+	var passedData: (() -> String)?
+	
 	// MARK: - Life Cycles
 	
 	override func viewDidLoad() {

@@ -20,6 +20,8 @@ class PrintingCoordinator: Coordinator {
 		return navigationController
 	}
 	
+	var passedData: (() -> String)?
+	
 	// MARK: - Private Properties
 	
 	private weak var navigationController: UINavigationController?
@@ -40,6 +42,7 @@ class PrintingCoordinator: Coordinator {
 	
 	private func makePrintingViewController() -> UIViewController {
 		let vc = PrintingViewController()
+		vc.passedData = passedData
 		
 		return vc
 	}
