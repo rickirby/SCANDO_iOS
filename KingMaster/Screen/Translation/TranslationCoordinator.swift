@@ -24,6 +24,7 @@ class TranslationCoordinator: Coordinator {
 	
 	private weak var navigationController: UINavigationController?
 	private var connectionStatusCoordinator: ConnectionStatusCoordinator?
+	private var printingCoordinator: PrintingCoordinator?
 	
 	// MARK: - Life Cycles
 	
@@ -57,7 +58,10 @@ class TranslationCoordinator: Coordinator {
 	}
 	
 	private func openPrint() {
+		printingCoordinator = nil
+		printingCoordinator = PrintingCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
 		
+		printingCoordinator?.start()
 	}
 	
 	private func openConnectionStatus() {
