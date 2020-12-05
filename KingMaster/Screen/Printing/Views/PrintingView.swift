@@ -11,6 +11,26 @@ import RBToolkit
 
 class PrintingView: View {
 	
+	// MARK: - Public Properties
+	
+	enum ViewEvent {
+		case didTapButton(printingState: PrintingState)
+	}
+	
+	enum PrintingState {
+		case connecting
+		case printingProgress
+		case printingDone
+	}
+	
+	var onViewEvent: ((ViewEvent) -> Void)?
+	
+	var printingState: PrintingState = .printingDone {
+		didSet {
+			configurePrintingState(printingState)
+		}
+	}
+	
 	// MARK: - View Components
 	
 	private lazy var titleLabel: UILabel = {
@@ -19,7 +39,6 @@ class PrintingView: View {
 		label.font = .preferredFont(forTextStyle: .largeTitle)
 		label.numberOfLines = 1
 		label.textColor = .label
-		label.text = "Connecting..."
 		
 		return label
 	}()
@@ -31,7 +50,6 @@ class PrintingView: View {
 		label.numberOfLines = 2
 		label.textAlignment = .center
 		label.textColor = .label
-		label.text = "Please wait while your iPhone is connecting to the Braille Printer"
 		
 		return label
 	}()
@@ -55,6 +73,16 @@ class PrintingView: View {
 		return activityIndicator
 	}()
 	
+	private lazy var actionButton: UIButton = {
+		let button = UIButton()
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.layer.cornerRadius = 16.0
+		button.clipsToBounds = true
+		button.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
+		
+		return button
+	}()
+	
 	// MARK: - Life Cycles
 	
 	override func setViews() {
@@ -65,9 +93,26 @@ class PrintingView: View {
 	
 	// MARK: - Private Methods
 	
+	private func configurePrintingState(_ state: PrintingState) {
+		switch state {
+		case .connecting:
+			configureNegativeButton()
+			titleLabel.text = "Connecting..."
+			descriptionLabel.text = "Please wait while your iPhone is connecting to the Braille Printer"
+		case .printingProgress:
+			configureNegativeButton()
+			titleLabel.text = "Printing..."
+			descriptionLabel.text = "Braille Printer is priting your document"
+		case .printingDone:
+			configurePositiveButton()
+			titleLabel.text = "Done"
+			descriptionLabel.text = "Your document has been successfully printed"
+		}
+	}
+	
 	private func configureView() {
 		backgroundColor = .systemBackground
-		addAllSubviews(views: [titleLabel, descriptionLabel, printerImageView, activityIndicator])
+		addAllSubviews(views: [titleLabel, descriptionLabel, printerImageView, activityIndicator, actionButton])
 		
 		NSLayoutConstraint.activate([
 			titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 90),
@@ -83,7 +128,40 @@ class PrintingView: View {
 			printerImageView.heightAnchor.constraint(equalToConstant: CGFloat(214.0).makeDynamicW()),
 			
 			activityIndicator.topAnchor.constraint(equalTo: printerImageView.bottomAnchor, constant: 20),
-			activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+			activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+			
+			actionButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 24),
+			actionButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -24),
+			actionButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -40),
+			actionButton.heightAnchor.constraint(equalToConstant: 48)
 		])
+		
+		configurePrintingState(printingState)
+	}
+	
+	private func configurePositiveButton() {
+		actionButton.setBackgroundColor(.systemBlue, for: .normal)
+		actionButton.setBackgroundColor(.systemGray2, for: .highlighted)
+		actionButton.setTitleColor(.white, for: .normal)
+		actionButton.setTitleColor(.white, for: .highlighted)
+		actionButton.setTitle("Done", for: .normal)
+	}
+	
+	private func configureNegativeButton() {
+		actionButton.setBackgroundColor(.clear, for: .normal)
+		actionButton.setBackgroundColor(.clear, for: .highlighted)
+		actionButton.setTitleColor(.systemRed, for: .normal)
+		actionButton.setTitleColor(.systemGray2, for: .highlighted)
+		actionButton.setTitle("Cancel", for: .normal)
+	}
+	
+}
+
+extension PrintingView {
+	
+	// MARK: - @Objc Target
+	
+	@objc func actionButtonTapped() {
+		onViewEvent?(.didTapButton(printingState: printingState))
 	}
 }
