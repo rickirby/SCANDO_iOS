@@ -23,6 +23,20 @@
 		09C8ADAE25065154004BA0F7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADAD25065154004BA0F7 /* Router.swift */; };
 		09C8ADB0250652BC004BA0F7 /* ScanAlbumsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADAF250652BC004BA0F7 /* ScanAlbumsCoordinator.swift */; };
 		09C8ADB2250653FF004BA0F7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADB1250653FF004BA0F7 /* AppCoordinator.swift */; };
+		09DF1829257A87CC00517AF9 /* PrintingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DF1828257A87CC00517AF9 /* PrintingView.swift */; };
+		09DF182A257A87CC00517AF9 /* PrintingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DF1828257A87CC00517AF9 /* PrintingView.swift */; };
+		09DF1830257A882000517AF9 /* PrintingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DF182F257A882000517AF9 /* PrintingViewController.swift */; };
+		09DF1831257A882000517AF9 /* PrintingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DF182F257A882000517AF9 /* PrintingViewController.swift */; };
+		09DF1837257A886600517AF9 /* PrintingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DF1836257A886600517AF9 /* PrintingCoordinator.swift */; };
+		09DF1838257A886600517AF9 /* PrintingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DF1836257A886600517AF9 /* PrintingCoordinator.swift */; };
+		09E4374A2576ACAE006F33FF /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E437492576ACAE006F33FF /* TranslationView.swift */; };
+		09E4374B2576ACAE006F33FF /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E437492576ACAE006F33FF /* TranslationView.swift */; };
+		09E437512576ACD9006F33FF /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E437502576ACD9006F33FF /* TranslationViewController.swift */; };
+		09E437522576ACD9006F33FF /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E437502576ACD9006F33FF /* TranslationViewController.swift */; };
+		09E437562576AE4B006F33FF /* TranslationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E437552576AE4B006F33FF /* TranslationCoordinator.swift */; };
+		09E437572576AE4B006F33FF /* TranslationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E437552576AE4B006F33FF /* TranslationCoordinator.swift */; };
+		09F5977A2576995400C6FDC4 /* ConnectionStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F597792576995400C6FDC4 /* ConnectionStatusModel.swift */; };
+		09F5977B2576995400C6FDC4 /* ConnectionStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F597792576995400C6FDC4 /* ConnectionStatusModel.swift */; };
 		09FDB4A3252FED7E007E8D7A /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB4A2252FED7E007E8D7A /* UserSetting.swift */; };
 		09FDB4A4252FED7E007E8D7A /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB4A2252FED7E007E8D7A /* UserSetting.swift */; };
 		09FDB4A6252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB4A5252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift */; };
@@ -69,8 +83,8 @@
 		DC4F8D1E2560CB0300EA616C /* ProductIDCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F8D1D2560CB0300EA616C /* ProductIDCoordinator.swift */; };
 		DC4F8D1F2560CB0300EA616C /* ProductIDCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F8D1D2560CB0300EA616C /* ProductIDCoordinator.swift */; };
 		DC4F8D212560DEB500EA616C /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC4F8D202560DEB500EA616C /* NetworkExtension.framework */; };
-		DC4F8D232560E1A900EA616C /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F8D222560E1A900EA616C /* UITextField+Extension.swift */; };
-		DC4F8D242560E1A900EA616C /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F8D222560E1A900EA616C /* UITextField+Extension.swift */; };
+		DC4F8D232560E1A900EA616C /* UITextField&UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F8D222560E1A900EA616C /* UITextField&UITextView+Extension.swift */; };
+		DC4F8D242560E1A900EA616C /* UITextField&UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F8D222560E1A900EA616C /* UITextField&UITextView+Extension.swift */; };
 		DC5A8F25253537BA00971510 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC5A8F24253537BA00971510 /* CloudKit.framework */; };
 		DC7129912515736A00ACCB2B /* PreviewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7129902515736A00ACCB2B /* PreviewCoordinator.swift */; };
 		DC7129942515743200ACCB2B /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7129932515743200ACCB2B /* PreviewData.swift */; };
@@ -198,6 +212,13 @@
 		09C8ADAD25065154004BA0F7 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		09C8ADAF250652BC004BA0F7 /* ScanAlbumsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAlbumsCoordinator.swift; sourceTree = "<group>"; };
 		09C8ADB1250653FF004BA0F7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		09DF1828257A87CC00517AF9 /* PrintingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintingView.swift; sourceTree = "<group>"; };
+		09DF182F257A882000517AF9 /* PrintingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintingViewController.swift; sourceTree = "<group>"; };
+		09DF1836257A886600517AF9 /* PrintingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintingCoordinator.swift; sourceTree = "<group>"; };
+		09E437492576ACAE006F33FF /* TranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
+		09E437502576ACD9006F33FF /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
+		09E437552576AE4B006F33FF /* TranslationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationCoordinator.swift; sourceTree = "<group>"; };
+		09F597792576995400C6FDC4 /* ConnectionStatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatusModel.swift; sourceTree = "<group>"; };
 		09FDB4A2252FED7E007E8D7A /* UserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetting.swift; sourceTree = "<group>"; };
 		09FDB4A5252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveParamUserSetting.swift; sourceTree = "<group>"; };
 		7206EAEE250C704B00A3DA4A /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
@@ -225,7 +246,7 @@
 		DC4F8D192560C81600EA616C /* ProductIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductIDViewController.swift; sourceTree = "<group>"; };
 		DC4F8D1D2560CB0300EA616C /* ProductIDCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductIDCoordinator.swift; sourceTree = "<group>"; };
 		DC4F8D202560DEB500EA616C /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
-		DC4F8D222560E1A900EA616C /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		DC4F8D222560E1A900EA616C /* UITextField&UITextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField&UITextView+Extension.swift"; sourceTree = "<group>"; };
 		DC5A8F232535377A00971510 /* DEV🛠.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DEV🛠.entitlements"; sourceTree = "<group>"; };
 		DC5A8F24253537BA00971510 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		DC7129902515736A00ACCB2B /* PreviewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCoordinator.swift; sourceTree = "<group>"; };
@@ -368,6 +389,8 @@
 				DC4CD0002514FB08000A84BC /* Preview */,
 				DCB5C6C02556EF9B00E87733 /* SettingScreen */,
 				DCD2C739252D540F00CC391C /* Filter */,
+				09E437472576AC80006F33FF /* Translation */,
+				09DF1826257A875800517AF9 /* Printing */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -425,6 +448,42 @@
 				09C8ADAD25065154004BA0F7 /* Router.swift */,
 			);
 			path = Flow;
+			sourceTree = "<group>";
+		};
+		09DF1826257A875800517AF9 /* Printing */ = {
+			isa = PBXGroup;
+			children = (
+				09DF1836257A886600517AF9 /* PrintingCoordinator.swift */,
+				09DF182F257A882000517AF9 /* PrintingViewController.swift */,
+				09DF1827257A879300517AF9 /* Views */,
+			);
+			path = Printing;
+			sourceTree = "<group>";
+		};
+		09DF1827257A879300517AF9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				09DF1828257A87CC00517AF9 /* PrintingView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		09E437472576AC80006F33FF /* Translation */ = {
+			isa = PBXGroup;
+			children = (
+				09E437552576AE4B006F33FF /* TranslationCoordinator.swift */,
+				09E437502576ACD9006F33FF /* TranslationViewController.swift */,
+				09E437482576AC9A006F33FF /* Views */,
+			);
+			path = Translation;
+			sourceTree = "<group>";
+		};
+		09E437482576AC9A006F33FF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				09E437492576ACAE006F33FF /* TranslationView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		7206EAED250C6D8200A3DA4A /* Gallery */ = {
@@ -628,6 +687,7 @@
 			children = (
 				DCB5C6C92557063F00E87733 /* SettingModel.swift */,
 				DC455AF92568E89300A0089F /* ConnectionUserSetting.swift */,
+				09F597792576995400C6FDC4 /* ConnectionStatusModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -644,7 +704,7 @@
 			isa = PBXGroup;
 			children = (
 				DC8DB881255851A000F8437F /* UIButton+Extension.swift */,
-				DC4F8D222560E1A900EA616C /* UITextField+Extension.swift */,
+				DC4F8D222560E1A900EA616C /* UITextField&UITextView+Extension.swift */,
 				DC301E422558D1BC00E9B50D /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
@@ -865,6 +925,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCB5C6C62556FA6900E87733 /* SettingViewController.swift in Sources */,
+				09DF1830257A882000517AF9 /* PrintingViewController.swift in Sources */,
 				DC215A1F25166321006D409A /* Document+CoreDataProperties.swift in Sources */,
 				DC455B012568F0EC00A0089F /* WifiSelectionCoordinator.swift in Sources */,
 				DC82CC952517058900403550 /* SCANDODateFormatter.swift in Sources */,
@@ -873,6 +934,7 @@
 				DC3F5E96253159CB007B6B3E /* ErodeParamUserSetting.swift in Sources */,
 				09FDB4A6252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift in Sources */,
 				DC215A1D25166321006D409A /* QuadPoint+CoreDataProperties.swift in Sources */,
+				09F5977A2576995400C6FDC4 /* ConnectionStatusModel.swift in Sources */,
 				DCE0E731250AFB5F00971B22 /* SCANDOConstant.swift in Sources */,
 				DC0FAC10253C462F0033593C /* LauncScreenViewController.swift in Sources */,
 				DCA49DE0255A210B007B6A7B /* ProductIDView.swift in Sources */,
@@ -887,10 +949,12 @@
 				DCE922912516E4CB00A30804 /* ScanAlbumsModel.swift in Sources */,
 				DC455B062568F20C00A0089F /* WifiSelectionTableViewController.swift in Sources */,
 				09C8ADAC2506511F004BA0F7 /* Coordinator.swift in Sources */,
+				09DF1829257A87CC00517AF9 /* PrintingView.swift in Sources */,
 				DC82E08E251ACCC800FB9CA7 /* GalleryCache.swift in Sources */,
 				DC972BC4251258C400A6C43B /* ScanImagePickerCoordinator.swift in Sources */,
 				DCB5C6CA2557063F00E87733 /* SettingModel.swift in Sources */,
 				DC8D715D256A90D6009B7606 /* NetworkRequest.swift in Sources */,
+				09E4374A2576ACAE006F33FF /* TranslationView.swift in Sources */,
 				0922627525053E0B00BDDB90 /* DocumentGroupViewController.swift in Sources */,
 				DCB3CE4E251A5A4400D4EDFB /* GalleryData.swift in Sources */,
 				DC215A2025166321006D409A /* DocumentImage+CoreDataClass.swift in Sources */,
@@ -931,13 +995,16 @@
 				DC4F8D1E2560CB0300EA616C /* ProductIDCoordinator.swift in Sources */,
 				DCD2C73E252D546500CC391C /* FilterViewController.swift in Sources */,
 				DC89012425583FA9001318D7 /* ConnectionStatusViewController.swift in Sources */,
+				09E437562576AE4B006F33FF /* TranslationCoordinator.swift in Sources */,
 				DC215A1E25166321006D409A /* Document+CoreDataClass.swift in Sources */,
 				DC75E59F2513AA4700186F30 /* EditScanData.swift in Sources */,
-				DC4F8D232560E1A900EA616C /* UITextField+Extension.swift in Sources */,
+				DC4F8D232560E1A900EA616C /* UITextField&UITextView+Extension.swift in Sources */,
 				DC8DB88025584A3F00F8437F /* ConnectionStatusCoordinator.swift in Sources */,
+				09E437512576ACD9006F33FF /* TranslationViewController.swift in Sources */,
 				DC215A2225166321006D409A /* DocumentGroup+CoreDataClass.swift in Sources */,
 				DC215A262516640E006D409A /* DataManager.swift in Sources */,
 				DCE0E733250AFE2300971B22 /* AlertView.swift in Sources */,
+				09DF1837257A886600517AF9 /* PrintingCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -946,6 +1013,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCB5C6C72556FA6900E87733 /* SettingViewController.swift in Sources */,
+				09DF1831257A882000517AF9 /* PrintingViewController.swift in Sources */,
 				DCD7350D252CACF70046775E /* Document+CoreDataProperties.swift in Sources */,
 				DC455B022568F0EC00A0089F /* WifiSelectionCoordinator.swift in Sources */,
 				DCD7350E252CACF70046775E /* SCANDODateFormatter.swift in Sources */,
@@ -954,6 +1022,7 @@
 				DC3F5E9725315AEC007B6B3E /* ErodeParamUserSetting.swift in Sources */,
 				09FDB4A7252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift in Sources */,
 				DCD73510252CACF70046775E /* QuadPoint+CoreDataProperties.swift in Sources */,
+				09F5977B2576995400C6FDC4 /* ConnectionStatusModel.swift in Sources */,
 				DCD73511252CACF70046775E /* SCANDOConstant.swift in Sources */,
 				DC0FAC11253C469E0033593C /* LauncScreenViewController.swift in Sources */,
 				DCD73512252CACF70046775E /* ScanAlbumsViewController.swift in Sources */,
@@ -968,10 +1037,12 @@
 				DCD73518252CACF70046775E /* KingMaster.xcdatamodeld in Sources */,
 				DC455B072568F20C00A0089F /* WifiSelectionTableViewController.swift in Sources */,
 				DCD73519252CACF70046775E /* ScanAlbumsModel.swift in Sources */,
+				09DF182A257A87CC00517AF9 /* PrintingView.swift in Sources */,
 				DCD7351A252CACF70046775E /* Coordinator.swift in Sources */,
 				DCB5C6CB2557063F00E87733 /* SettingModel.swift in Sources */,
 				DC301E402558C38500E9B50D /* SettingCoordinator.swift in Sources */,
 				DC8D715E256A90D6009B7606 /* NetworkRequest.swift in Sources */,
+				09E4374B2576ACAE006F33FF /* TranslationView.swift in Sources */,
 				DC4F8D1C2560C81B00EA616C /* ProductIDView.swift in Sources */,
 				DCD7351B252CACF70046775E /* GalleryCache.swift in Sources */,
 				DCD7351C252CACF70046775E /* ScanImagePickerCoordinator.swift in Sources */,
@@ -1012,13 +1083,16 @@
 				DC4F8D1F2560CB0300EA616C /* ProductIDCoordinator.swift in Sources */,
 				DC4F8D1B2560C81600EA616C /* ProductIDViewController.swift in Sources */,
 				DCD238EE252DF18700E7C0A3 /* FilterViewController.swift in Sources */,
+				09E437572576AE4B006F33FF /* TranslationCoordinator.swift in Sources */,
 				DC301E412558C38D00E9B50D /* ConnectionStatusCoordinator.swift in Sources */,
 				DCD73538252CACF70046775E /* Document+CoreDataClass.swift in Sources */,
-				DC4F8D242560E1A900EA616C /* UITextField+Extension.swift in Sources */,
+				DC4F8D242560E1A900EA616C /* UITextField&UITextView+Extension.swift in Sources */,
 				DCD73539252CACF70046775E /* EditScanData.swift in Sources */,
+				09E437522576ACD9006F33FF /* TranslationViewController.swift in Sources */,
 				DCD7353A252CACF70046775E /* DocumentGroup+CoreDataClass.swift in Sources */,
 				DCD7353B252CACF70046775E /* DataManager.swift in Sources */,
 				DCD7353C252CACF70046775E /* AlertView.swift in Sources */,
+				09DF1838257A886600517AF9 /* PrintingCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

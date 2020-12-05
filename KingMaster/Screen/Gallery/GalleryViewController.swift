@@ -21,6 +21,7 @@ class GalleryViewController: RBPhotosGalleryViewController {
 		#if SANDBOX
 		case didOpenDev(processedImage: UIImage)
 		#endif
+		case didOpenTranslation
 	}
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
@@ -67,14 +68,15 @@ class GalleryViewController: RBPhotosGalleryViewController {
 		let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 		navigationItem.rightBarButtonItem = screenView.editBarButton
 		#if PRODUCTION
-		toolbarItems = [screenView.deleteBarButton, spacer, screenView.downloadBarButton]
+		toolbarItems = [screenView.downloadBarButton, spacer, screenView.translateBarButton, spacer, screenView.deleteBarButton]
 		#elseif SANDBOX
-		toolbarItems = [screenView.deleteBarButton, spacer, screenView.devBarButton, spacer, screenView.downloadBarButton]
+		toolbarItems = [screenView.downloadBarButton, spacer, screenView.devBarButton, spacer, screenView.translateBarButton, spacer, screenView.deleteBarButton]
 		#endif
 	}
 	
 	private func configureBar() {
 		setLargeTitleDisplayMode(.never)
+		navigationController?.setNavigationBarHidden(false, animated: true)
 		navigationController?.interactivePopGestureRecognizer?.isEnabled = true
 		navigationController?.setToolbarHidden(false, animated: true)
 	}
@@ -88,6 +90,8 @@ class GalleryViewController: RBPhotosGalleryViewController {
 				self?.downloadImage()
 			case .didTapDelete:
 				self?.deleteImage()
+			case .didTapTranslate:
+				self?.openTranslation()
 			#if SANDBOX
 			case .didTapDev:
 				self?.openDev()
@@ -191,6 +195,10 @@ class GalleryViewController: RBPhotosGalleryViewController {
 		onNavigationEvent?(.didOpenDev(processedImage: galleryViewImagesData[currentPageIndex]))
 	}
 	#endif
+	
+	private func openTranslation() {
+		onNavigationEvent?(.didOpenTranslation)
+	}
 }
 
 extension GalleryViewController: RBPhotosGalleryViewDelegate, RBPhotosGalleryViewDataSource {
