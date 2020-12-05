@@ -25,6 +25,8 @@ class PrintingViewController: ViewController<PrintingView> {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		configureViewEvent()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -40,6 +42,26 @@ class PrintingViewController: ViewController<PrintingView> {
 		navigationController?.setNavigationBarHidden(true, animated: true)
 		navigationController?.setToolbarHidden(true, animated: true)
 		navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+	}
+	
+	private func configureViewEvent() {
+		screenView.onViewEvent = { [weak self] (viewEvent: PrintingView.ViewEvent) in
+			
+			switch viewEvent {
+			case .didTapButton(let printingState):
+				self?.actionButtonHandler(printingState)
+			}
+		}
+	}
+	
+	private func actionButtonHandler(_ printingState: PrintingView.PrintingState) {
+		switch printingState {
+		
+		case .connecting, .printingProgress:
+			self.onNavigationEvent?(.cancelPrinting)
+		case .printingDone:
+			self.onNavigationEvent?(.donePrinting)
+		}
 	}
 	
 	private func configureSendData() {
