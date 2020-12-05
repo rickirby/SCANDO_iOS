@@ -47,8 +47,8 @@ class TranslationCoordinator: Coordinator {
 		vc.onNavigationEvent = { [weak self] (navigationEvent: TranslationViewController.NavigationEvent) in
 			
 			switch navigationEvent {
-			case .openPrint:
-				self?.openPrint()
+			case .openPrint(let data):
+				self?.openPrint(data)
 			case .openConnectionStatus:
 				self?.openConnectionStatus()
 			}
@@ -57,9 +57,12 @@ class TranslationCoordinator: Coordinator {
 		return vc
 	}
 	
-	private func openPrint() {
+	private func openPrint(_ data: String) {
 		printingCoordinator = nil
 		printingCoordinator = PrintingCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		printingCoordinator?.passedData = {
+			return data
+		}
 		
 		printingCoordinator?.start()
 	}

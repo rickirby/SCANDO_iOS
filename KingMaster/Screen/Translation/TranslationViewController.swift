@@ -14,7 +14,7 @@ class TranslationViewController: ViewController<TranslationView> {
 	// MARK: - Public Properties
 	
 	enum NavigationEvent {
-		case openPrint
+		case openPrint(data: String )
 		case openConnectionStatus
 	}
 	
@@ -65,13 +65,15 @@ class TranslationViewController: ViewController<TranslationView> {
 		
 		ConnectionStatusModel.shared.checkConnectionStatus { status in
 			
-			self.screenView.stopLoading()
-			switch status {
-			
-			case .directConnected, .sharedConnected:
-				self.onNavigationEvent?(.openPrint)
-			default:
-				self.onNavigationEvent?(.openConnectionStatus)
+			ThreadManager.executeOnMain {
+				self.screenView.stopLoading()
+				switch status {
+				
+				case .directConnected, .sharedConnected:
+					self.onNavigationEvent?(.openPrint(data: self.screenView.resultTextView.text))
+				default:
+					self.onNavigationEvent?(.openConnectionStatus)
+				}
 			}
 		}
 	}
