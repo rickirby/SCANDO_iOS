@@ -14,7 +14,7 @@ class TranslationViewController: ViewController<TranslationView> {
 	// MARK: - Public Properties
 	
 	enum NavigationEvent {
-		case openPrint
+		case openPrint(data: String )
 		case openConnectionStatus
 	}
 	
@@ -69,7 +69,7 @@ class TranslationViewController: ViewController<TranslationView> {
 			switch status {
 			
 			case .directConnected, .sharedConnected:
-				self.onNavigationEvent?(.openPrint)
+				self.onNavigationEvent?(.openPrint(data: self.screenView.resultTextView.text))
 			default:
 				self.onNavigationEvent?(.openConnectionStatus)
 			}
