@@ -76,6 +76,7 @@ class GalleryViewController: RBPhotosGalleryViewController {
 	
 	private func configureBar() {
 		setLargeTitleDisplayMode(.never)
+		navigationController?.setNavigationBarHidden(false, animated: true)
 		navigationController?.interactivePopGestureRecognizer?.isEnabled = true
 		navigationController?.setToolbarHidden(false, animated: true)
 	}
