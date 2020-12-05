@@ -51,7 +51,10 @@ class PrintingCoordinator: Coordinator {
 			
 			switch navigationEvent {
 			case .donePrinting:
-				guard let nav = self.rootViewController as? UINavigationController, let vc = nav.viewControllers[2] as? DocumentGroupViewController else { return }
+				guard let nav = self.rootViewController as? UINavigationController, let vc = nav.viewControllers[2] as? GalleryViewController else {
+					return
+					
+				}
 				nav.popToViewController(vc, animated: true)
 				
 			case .cancelPrinting:
