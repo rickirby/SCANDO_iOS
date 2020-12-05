@@ -65,13 +65,15 @@ class TranslationViewController: ViewController<TranslationView> {
 		
 		ConnectionStatusModel.shared.checkConnectionStatus { status in
 			
-			self.screenView.stopLoading()
-			switch status {
-			
-			case .directConnected, .sharedConnected:
-				self.onNavigationEvent?(.openPrint(data: self.screenView.resultTextView.text))
-			default:
-				self.onNavigationEvent?(.openConnectionStatus)
+			ThreadManager.executeOnMain {
+				self.screenView.stopLoading()
+				switch status {
+				
+				case .directConnected, .sharedConnected:
+					self.onNavigationEvent?(.openPrint(data: self.screenView.resultTextView.text))
+				default:
+					self.onNavigationEvent?(.openConnectionStatus)
+				}
 			}
 		}
 	}

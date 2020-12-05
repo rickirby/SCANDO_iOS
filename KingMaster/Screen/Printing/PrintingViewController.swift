@@ -49,13 +49,16 @@ class PrintingViewController: ViewController<PrintingView> {
 		
 		ConnectionStatusModel.shared.checkConnectionStatus { status in
 			
-			switch status {
-			
-			case .directConnected, .sharedConnected:
-				self.screenView.printingState = .printingProgress
-				self.sendData(isDirectConnected: status == .directConnected)
-			default:
-				break
+			ThreadManager.executeOnMain {
+				switch status {
+				
+				case .directConnected, .sharedConnected:
+					self.screenView.printingState = .printingProgress
+					self.sendData(isDirectConnected: status == .directConnected)
+					
+				default:
+					break
+				}
 			}
 		}
 	}
@@ -72,12 +75,15 @@ class PrintingViewController: ViewController<PrintingView> {
 		
 		NetworkRequest.post(url: (isDirectConnected ? "http://192.168.4.1" : "http://scandohardware.local") + "/senddata", body: postBodyData) { result in
 			
-			self.screenView.stopLoading()
-			guard let msg = result["msg"] as? String, msg == "OK" else {
-				return
+			ThreadManager.executeOnMain {
+				self.screenView.stopLoading()
+				guard let msg = result["msg"] as? String, msg == "OK" else {
+					return
+				}
+				
+				self.screenView.printingState = .printingDone
 			}
 			
-			self.screenView.printingState = .printingDone
 		}
 	}
 }
