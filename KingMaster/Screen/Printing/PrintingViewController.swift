@@ -31,6 +31,7 @@ class PrintingViewController: ViewController<PrintingView> {
 		super.viewWillAppear(animated)
 		
 		configureBar()
+		configureSendData()
 	}
 	
 	// MARK: - Private Methods
@@ -39,5 +40,44 @@ class PrintingViewController: ViewController<PrintingView> {
 		navigationController?.setNavigationBarHidden(true, animated: true)
 		navigationController?.setToolbarHidden(true, animated: true)
 		navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+	}
+	
+	private func configureSendData() {
+		
+		screenView.startLoading()
+		screenView.printingState = .connecting
+		
+		ConnectionStatusModel.shared.checkConnectionStatus { status in
+			
+			switch status {
+			
+			case .directConnected, .sharedConnected:
+				self.screenView.printingState = .printingProgress
+				self.sendData(isDirectConnected: status == .directConnected)
+			default:
+				break
+			}
+		}
+	}
+	
+	private func sendData(isDirectConnected: Bool = false) {
+		guard let data = passedData?() else {
+			return
+		}
+		
+		let postBodyString = "{\"data\":\"\(data)\"}"
+		guard let postBodyData = postBodyString.data(using: String.Encoding.utf8) else {
+			return
+		}
+		
+		NetworkRequest.post(url: (isDirectConnected ? "http://192.168.4.1" : "http://scandohardware.local") + "/senddata", body: postBodyData) { result in
+			
+			self.screenView.stopLoading()
+			guard let msg = result["msg"] as? String, msg == "OK" else {
+				return
+			}
+			
+			self.screenView.printingState = .printingDone
+		}
 	}
 }
