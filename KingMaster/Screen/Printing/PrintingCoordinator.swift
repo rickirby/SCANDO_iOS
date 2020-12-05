@@ -43,6 +43,21 @@ class PrintingCoordinator: Coordinator {
 	private func makePrintingViewController() -> UIViewController {
 		let vc = PrintingViewController()
 		vc.passedData = passedData
+		vc.onNavigationEvent = { [weak self] (navigationEvent: PrintingViewController.NavigationEvent) in
+			
+			guard let self = self else {
+				return
+			}
+			
+			switch navigationEvent {
+			case .donePrinting:
+				guard let nav = self.rootViewController as? UINavigationController, let vc = nav.viewControllers[2] as? DocumentGroupViewController else { return }
+				nav.popToViewController(vc, animated: true)
+				
+			case .cancelPrinting:
+				Router.shared.popViewController(on: self)
+			}
+		}
 		
 		return vc
 	}
