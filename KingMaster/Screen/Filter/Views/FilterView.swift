@@ -64,7 +64,7 @@ class FilterView: View {
 		return activityIndicator
 	}()
 	
-	lazy var downloadBarButton = UIBarButtonItem(image: UIImage(named: "SaveButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(downloadBarButtonTapped))
+	lazy var downloadBarButton = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.down"), style: .plain, target: self, action: #selector(downloadBarButtonTapped))
 	
 	lazy var adjustBarButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(adjustBarButtonTapped))
 	

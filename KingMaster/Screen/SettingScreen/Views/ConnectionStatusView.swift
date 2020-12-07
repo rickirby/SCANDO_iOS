@@ -118,7 +118,7 @@ class ConnectionStatusView: View {
 	
 	// MARK: - Public Methods
 	
-	func configureStatus(for status: ConnectionStatusViewController.Status, sharedSSID: String? = nil) {
+	func configureStatus(for status: ConnectionStatusModel.Status, sharedSSID: String? = nil) {
 		
 		switch status {
 		

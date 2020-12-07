@@ -46,7 +46,7 @@ class ScanAlbumsView: View {
 		return tableView
 	}()
 	
-	lazy var cameraBarButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(cameraBarButtonTapped))
+	lazy var cameraBarButton = UIBarButtonItem(image: UIImage(systemName: "camera.on.rectangle"), style: .plain, target: self, action: #selector(cameraBarButtonTapped))
 	
 	lazy var fileBarButton = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(fileBarButtonTapped))
 	

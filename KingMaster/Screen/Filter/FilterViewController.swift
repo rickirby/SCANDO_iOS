@@ -39,7 +39,7 @@ class FilterViewController: ViewController<FilterView> {
 	private func configureLoadBar() {
 		let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 		navigationItem.titleView = screenView.segmentControl
-		toolbarItems = [screenView.adjustBarButton ,spacer, screenView.downloadBarButton]
+		toolbarItems = [screenView.downloadBarButton, spacer, screenView.adjustBarButton]
 	}
 	
 	private func loadData() {

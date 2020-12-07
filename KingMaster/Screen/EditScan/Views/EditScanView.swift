@@ -54,17 +54,18 @@ class EditScanView: View {
 	
 	lazy var activityIndicator: UIActivityIndicatorView = {
 		let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
 		activityIndicator.color = .gray
 		activityIndicator.hidesWhenStopped = true
-		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+		
 		return activityIndicator
 	}()
 	
 	lazy var nextBarButton = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextBarButtonTapped))
 	
-	lazy var allAreaBarButton = UIBarButtonItem(image: UIImage(named: "AllButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(allAreaBarButtonTapped))
+	lazy var allAreaBarButton = UIBarButtonItem(image: UIImage(systemName: "rectangle.and.arrow.up.right.and.arrow.down.left"), style: .plain, target: self, action: #selector(allAreaBarButtonTapped))
 	
-	lazy var downloadBarButton = UIBarButtonItem(image: UIImage(named: "SaveButton")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(downloadBarButtonTapped))
+	lazy var downloadBarButton = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.down"), style: .plain, target: self, action: #selector(downloadBarButtonTapped))
 	
 	// MARK: - Life Cycle
 	
