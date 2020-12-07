@@ -17,6 +17,7 @@ class FilterView: View {
 		case didChangeSegment(index: Int)
 		case didTapDownload
 		case didTapAdjust
+		case didTapNext
 	}
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
@@ -80,6 +81,8 @@ class FilterView: View {
 	
 	lazy var adjustBarButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(adjustBarButtonTapped))
 	
+	lazy var nextBarButton = UIBarButtonItem(image: UIImage(systemName: "arrowtriangle.right.square"), style: .plain, target: self, action: #selector(nextBarButtonTapped))
+	
 	// MARK: - Life Cycles
 	
 	override func setViews() {
@@ -141,5 +144,9 @@ extension FilterView {
 	
 	@objc func downloadBarButtonTapped() {
 		onViewEvent?(.didTapDownload)
+	}
+	
+	@objc func nextBarButtonTapped() {
+		onViewEvent?(.didTapNext)
 	}
 }
