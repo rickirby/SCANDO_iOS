@@ -12,6 +12,12 @@ import RBImageProcessor
 
 class FilterViewController: ViewController<FilterView> {
 	
+	enum NavigationEvent {
+		case didTapNext
+	}
+	
+	var onNavigationEvent: ((NavigationEvent) -> Void)?
+	
 	// MARK: - Public Properties
 	
 	var passedData: (() -> FilterCoordinator.FilterData)?
@@ -39,11 +45,14 @@ class FilterViewController: ViewController<FilterView> {
 	private func configureLoadBar() {
 		let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 		navigationItem.titleView = screenView.segmentControl
-		toolbarItems = [screenView.downloadBarButton, spacer, screenView.adjustBarButton]
+		toolbarItems = [screenView.downloadBarButton, spacer, screenView.adjustBarButton, spacer, screenView.nextBarButton]
 	}
 	
 	private func loadData() {
-		guard let passedData = passedData?() else { return }
+		guard let passedData = passedData?() else {
+			return
+		}
+		
 		ThreadManager.executeOnMain {
 			self.screenView.startLoading()
 		}
@@ -79,6 +88,8 @@ class FilterViewController: ViewController<FilterView> {
 				self?.downloadImage()
 			case .didTapAdjust:
 				self?.adjustParam()
+			case .didTapNext:
+				self?.nextFilter()
 			}
 		}
 	}
@@ -115,6 +126,10 @@ class FilterViewController: ViewController<FilterView> {
 		screenView.stopLoading()
 		screenView.showSaveAlert(on: self, error: error)
     }
+	
+	private func nextFilter() {
+		onNavigationEvent?(.didTapNext)
+	}
 	
 	private func adjustParam() {
 		switch screenView.segmentControl.selectedSegmentIndex {
