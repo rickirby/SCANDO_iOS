@@ -27,10 +27,22 @@ class FilterView: View {
 		}
 	}
 	
+	var isV2: Bool = false {
+		didSet {
+			layoutIfNeeded()
+			setNeedsLayout()
+		}
+	}
+	
+	// MARK: - Private Properties
+	
+	private let filtersComponents: [String] = ["Ori", "Gray", "AdptvTh", "Dilate", "Erode"]
+	private let filtersV2Components: [String] = ["Blob"]
+	
 	// MARK: - View Components
 	
 	lazy var segmentControl: UISegmentedControl = {
-		let titles = ["Ori", "Gray", "AdptvTh", "Dilate", "Erode"]
+		let titles = isV2 ? filtersV2Components : filtersComponents
 		let segmentControlWidth = UIScreen.main.bounds.width - 100
 		let segmentControl = UISegmentedControl(items: titles)
 		segmentControl.selectedSegmentIndex = 0
