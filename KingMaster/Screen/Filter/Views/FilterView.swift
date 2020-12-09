@@ -38,7 +38,7 @@ class FilterView: View {
 	// MARK: - Private Properties
 	
 	private let filtersComponents: [String] = ["Ori", "Gray", "AdptvTh", "Dilate", "Erode"]
-	private let filtersV2Components: [String] = ["Blob"]
+	private let filtersV2Components: [String] = ["Erode", "Blob"]
 	
 	// MARK: - View Components
 	
