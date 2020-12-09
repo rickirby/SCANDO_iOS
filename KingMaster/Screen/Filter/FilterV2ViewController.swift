@@ -31,6 +31,7 @@ class FilterV2ViewController: ViewController<FilterView> {
 		configureImageProcessor()
 		configureViewState()
 		configureLoadBar()
+		configureViewEvent()
 		loadData()
 	}
 	
@@ -52,6 +53,19 @@ class FilterV2ViewController: ViewController<FilterView> {
 		let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 		navigationItem.titleView = screenView.segmentControl
 		toolbarItems = [screenView.downloadBarButton, spacer, screenView.adjustBarButton]
+	}
+	
+	private func configureViewEvent() {
+		screenView.onViewEvent = { [weak self] (viewEvent: FilterView.ViewEvent) in
+			switch viewEvent {
+			case .didChangeSegment(let index):
+				self?.refreshImage(index: index)
+			case .didTapDownload:
+				self?.downloadImage()
+			default:
+				break
+			}
+		}
 	}
 	
 	private func loadData() {
@@ -93,5 +107,19 @@ class FilterV2ViewController: ViewController<FilterView> {
 		}
 		
 		screenView.adjustBarButton.isEnabled = (index == -1)
+	}
+	
+	private func downloadImage() {
+		guard let image = screenView.image else { return }
+		screenView.startLoading()
+		
+		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+			UIImageWriteToSavedPhotosAlbum(image, self, #selector(self?.image(_:didFinishSavingWithError:contextInfo:)), nil)
+		}
+	}
+	
+	@objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+		screenView.stopLoading()
+		screenView.showSaveAlert(on: self, error: error)
 	}
 }
