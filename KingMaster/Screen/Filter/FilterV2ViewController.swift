@@ -42,7 +42,7 @@ class FilterV2ViewController: ViewController<FilterView> {
 		let dilateParam = DilateParamUserSetting.shared.read()
 		let erodeParam = ErodeParamUserSetting.shared.read()
 		
-		readDot = ReadDot(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 1)
+		readDot = ReadDot(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3)
 	}
 	
 	private func configureViewState() {
@@ -84,7 +84,7 @@ class FilterV2ViewController: ViewController<FilterView> {
 			let dilateParam = DilateParamUserSetting.shared.read()
 			let erodeParam = ErodeParamUserSetting.shared.read()
 			
-			self?.erodeImage = ConvertColor.erode(from: passedData.image, erodeIteration: erodeParam?.iteration ?? 1, dilateIteration: dilateParam?.iteration ?? 1, isGaussian: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7)
+			self?.erodeImage = ConvertColor.erode(from: passedData.image, erodeIteration: erodeParam?.iteration ?? 3, dilateIteration: dilateParam?.iteration ?? 1, isGaussian: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7)
 			
 			// Blob Analysis Image
 			self?.blobAnalysisImage = self?.readDot?.blobAnalysis(from: passedData.image)
