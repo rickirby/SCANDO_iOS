@@ -43,6 +43,7 @@ class FilterV2ViewController: ViewController<FilterView> {
 		let erodeParam = ErodeParamUserSetting.shared.read()
 		
 		readDot = ReadDot(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3)
+		// NOTES: done with the end of FPP-77 & FPP-82
 	}
 	
 	private func configureViewState() {
