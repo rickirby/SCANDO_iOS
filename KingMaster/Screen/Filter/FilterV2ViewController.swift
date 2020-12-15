@@ -18,6 +18,7 @@ class FilterV2ViewController: ViewController<FilterView> {
 	
 	// MARK: - Private Properties
 	
+	var convertColor: ConvertColor?
 	var readDot: ReadDot?
 	
 	var erodeImage: UIImage?
@@ -41,6 +42,8 @@ class FilterV2ViewController: ViewController<FilterView> {
 		let adaptiveParam = AdaptiveParamUserSetting.shared.read()
 		let dilateParam = DilateParamUserSetting.shared.read()
 		let erodeParam = ErodeParamUserSetting.shared.read()
+		
+		convertColor = ConvertColor(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3)
 		
 		readDot = ReadDot(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3)
 		// NOTES: done with the end of FPP-77 & FPP-82
@@ -81,11 +84,8 @@ class FilterV2ViewController: ViewController<FilterView> {
 		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
 			
 			// Erode Image
-			let adaptiveParam = AdaptiveParamUserSetting.shared.read()
-			let dilateParam = DilateParamUserSetting.shared.read()
-			let erodeParam = ErodeParamUserSetting.shared.read()
 			
-			self?.erodeImage = ConvertColor.erode(from: passedData.image, erodeIteration: erodeParam?.iteration ?? 3, dilateIteration: dilateParam?.iteration ?? 1, isGaussian: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7)
+			self?.erodeImage = self?.convertColor?.erode(from: passedData.image)
 			
 			// Blob Analysis Image
 			self?.blobAnalysisImage = self?.readDot?.blobAnalysis(from: passedData.image)

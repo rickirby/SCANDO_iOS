@@ -24,6 +24,8 @@ class FilterViewController: ViewController<FilterView> {
 	
 	// MARK: - Private Properties
 	
+	var convertColor: ConvertColor?
+	
 	var originalImage: UIImage?
 	var grayImage: UIImage?
 	var adaptiveThresholdImage: UIImage?
@@ -35,12 +37,21 @@ class FilterViewController: ViewController<FilterView> {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		configureImageProcessor()
 		configureLoadBar()
 		loadData()
 		configureViewEvent()
 	}
 	
 	// MARK: - Private Methods
+	
+	private func configureImageProcessor() {
+		let adaptiveParam = AdaptiveParamUserSetting.shared.read()
+		let dilateParam = DilateParamUserSetting.shared.read()
+		let erodeParam = ErodeParamUserSetting.shared.read()
+		
+		convertColor = ConvertColor(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3)
+	}
 	
 	private func configureLoadBar() {
 		let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
@@ -61,16 +72,13 @@ class FilterViewController: ViewController<FilterView> {
 			// Original Image
 			self?.originalImage = passedData.image
 			// Gray Image
-			self?.grayImage = ConvertColor.makeGray(from: passedData.image)
+			self?.grayImage = self?.convertColor?.makeGray(from: passedData.image)
 			// Adaptive Threshold Image
-			let adaptiveParam = AdaptiveParamUserSetting.shared.read()
-			self?.adaptiveThresholdImage = ConvertColor.adaptiveThreshold(from: passedData.image, isGaussian: (adaptiveParam?.type ?? 1) == 1, blockSize: adaptiveParam?.blockSize ?? 57, constant: adaptiveParam?.constant ?? 7)
+			self?.adaptiveThresholdImage = self?.convertColor?.adaptiveThreshold(from: passedData.image)
 			// Dilate Image
-			let dilateParam = DilateParamUserSetting.shared.read()
-			self?.dilateImage = ConvertColor.dilate(from: passedData.image, iteration: dilateParam?.iteration ?? 1, isGaussian: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7)
+			self?.dilateImage = self?.convertColor?.dilate(from: passedData.image)
 			// Erode Image
-			let erodeParam = ErodeParamUserSetting.shared.read()
-			self?.erodeImage = ConvertColor.erode(from: passedData.image, erodeIteration: erodeParam?.iteration ?? 3, dilateIteration: dilateParam?.iteration ?? 1, isGaussian: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7)
+			self?.erodeImage = self?.convertColor?.erode(from: passedData.image)
 			
 			ThreadManager.executeOnMain {
 				self?.screenView.stopLoading()
