@@ -161,6 +161,11 @@ class FilterViewController: ViewController<FilterView> {
 			guard let textField0Text = $0.text, let textField1Text = $1.text, let textField2Text = $2.text, let type = Int(textField0Text), let blockSize = Int(textField1Text), let constant = Double(textField2Text) else {
 				// Provide default value if text field error or empty
 				DispatchQueue.global(qos: .userInitiated).async {
+					
+					self.convertColor?.setAdaptiveType(true)
+					self.convertColor?.setAdaptiveBlockSize(57)
+					self.convertColor?.setAdaptiveConstant(7)
+					
 					AdaptiveParamUserSetting.shared.save(AdaptiveParamUserSetting.AdaptiveParam(type: 1, blockSize: 57, constant: 7))
 					
 					self.loadData()
@@ -172,6 +177,11 @@ class FilterViewController: ViewController<FilterView> {
 			if (blockSize > 1) && (blockSize % 2) == 1 {
 				// Check if blockSize value is acceptable to avoid crash
 				DispatchQueue.global(qos: .userInitiated).async {
+					
+					self.convertColor?.setAdaptiveType(type == 1)
+					self.convertColor?.setAdaptiveBlockSize(blockSize)
+					self.convertColor?.setAdaptiveConstant(constant)
+					
 					AdaptiveParamUserSetting.shared.save(AdaptiveParamUserSetting.AdaptiveParam(type: type, blockSize: blockSize, constant: constant))
 					
 					self.loadData()
@@ -192,6 +202,8 @@ class FilterViewController: ViewController<FilterView> {
 			guard let textFieldText = $0.text, let iteration = Int(textFieldText) else { return }
 			
 			DispatchQueue.global(qos: .userInitiated).async {
+				
+				self.convertColor?.setDilateIteration(iteration)
 				DilateParamUserSetting.shared.save(DilateParamUserSetting.DilateParam(iteration: iteration))
 				
 				self.loadData()
@@ -210,6 +222,7 @@ class FilterViewController: ViewController<FilterView> {
 			
 			DispatchQueue.global(qos: .userInitiated).async {
 				
+				self.convertColor?.setErodeIteration(iteration)
 				ErodeParamUserSetting.shared.save(ErodeParamUserSetting.ErodeParam(iteration: iteration))
 				
 				self.loadData()
