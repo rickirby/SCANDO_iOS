@@ -88,7 +88,7 @@ class FilterV2ViewController: ViewController<FilterView> {
 			self?.erodeImage = self?.convertColor?.erode(from: passedData.image)
 			
 			// Blob Analysis Image
-			self?.blobAnalysisImage = self?.readDot?.blobAnalysis(from: passedData.image)
+			self?.blobAnalysisImage = self?.readDot?.segmentation(from: passedData.image)
 			
 			ThreadManager.executeOnMain {
 				self?.screenView.stopLoading()
