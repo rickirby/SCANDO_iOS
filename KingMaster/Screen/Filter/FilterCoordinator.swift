@@ -25,6 +25,7 @@ class FilterCoordinator: Coordinator {
 	// MARK: - Private Properties
 	
 	private weak var navigationController: UINavigationController?
+	private var filterV2Coordinator: FilterV2Coordinator?
 	
 	// MARK: - Life Cycles
 	
@@ -45,8 +46,22 @@ class FilterCoordinator: Coordinator {
 	private func makeFilterViewController() -> UIViewController {
 		let vc = FilterViewController()
 		vc.passedData = passedData
+		vc.onNavigationEvent = { [weak self] (navigationEvent: FilterViewController.NavigationEvent) in
+			
+			switch navigationEvent {
+			case .didTapNext:
+				self?.openFilterV2()
+			}
+		}
 		
 		return vc
+	}
+	
+	private func openFilterV2() {
+		filterV2Coordinator = FilterV2Coordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		filterV2Coordinator?.passedData = passedData
+		
+		filterV2Coordinator?.start()
 	}
 	
 }

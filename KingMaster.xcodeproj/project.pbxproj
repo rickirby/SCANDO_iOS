@@ -19,6 +19,10 @@
 		092E85D5250659B300A01F60 /* DocumentGroupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E85D4250659B300A01F60 /* DocumentGroupCoordinator.swift */; };
 		097A18A825046E660044D5FB /* ScanAlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A18A725046E660044D5FB /* ScanAlbumsViewController.swift */; };
 		097A18AC25046FD70044D5FB /* ScanAlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A18AB25046FD70044D5FB /* ScanAlbumsView.swift */; };
+		0981C882257E900300D8A7E4 /* FilterV2Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981C881257E900300D8A7E4 /* FilterV2Coordinator.swift */; };
+		0981C883257E900300D8A7E4 /* FilterV2Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981C881257E900300D8A7E4 /* FilterV2Coordinator.swift */; };
+		0981C890257E933200D8A7E4 /* FilterV2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981C88F257E933200D8A7E4 /* FilterV2ViewController.swift */; };
+		0981C891257E933200D8A7E4 /* FilterV2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981C88F257E933200D8A7E4 /* FilterV2ViewController.swift */; };
 		09C8ADAC2506511F004BA0F7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADAB2506511F004BA0F7 /* Coordinator.swift */; };
 		09C8ADAE25065154004BA0F7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADAD25065154004BA0F7 /* Router.swift */; };
 		09C8ADB0250652BC004BA0F7 /* ScanAlbumsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADAF250652BC004BA0F7 /* ScanAlbumsCoordinator.swift */; };
@@ -206,6 +210,8 @@
 		092E85D4250659B300A01F60 /* DocumentGroupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentGroupCoordinator.swift; sourceTree = "<group>"; };
 		097A18A725046E660044D5FB /* ScanAlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAlbumsViewController.swift; sourceTree = "<group>"; };
 		097A18AB25046FD70044D5FB /* ScanAlbumsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAlbumsView.swift; sourceTree = "<group>"; };
+		0981C881257E900300D8A7E4 /* FilterV2Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterV2Coordinator.swift; sourceTree = "<group>"; };
+		0981C88F257E933200D8A7E4 /* FilterV2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterV2ViewController.swift; sourceTree = "<group>"; };
 		099AB1FF2503E6C500B76522 /* RBPhotosGallery.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBPhotosGallery.framework; path = Carthage/Build/iOS/RBPhotosGallery.framework; sourceTree = "<group>"; };
 		099AB2002503E6C600B76522 /* RBToolkit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBToolkit.framework; path = Carthage/Build/iOS/RBToolkit.framework; sourceTree = "<group>"; };
 		09C8ADAB2506511F004BA0F7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -725,7 +731,9 @@
 			isa = PBXGroup;
 			children = (
 				DCD2C73F252D54C600CC391C /* FilterCoordinator.swift */,
+				0981C881257E900300D8A7E4 /* FilterV2Coordinator.swift */,
 				DCD2C73D252D546500CC391C /* FilterViewController.swift */,
+				0981C88F257E933200D8A7E4 /* FilterV2ViewController.swift */,
 				DCC826E4252E045D00DBD037 /* Models */,
 				DCD2C73A252D542800CC391C /* Views */,
 			);
@@ -939,6 +947,7 @@
 				DC0FAC10253C462F0033593C /* LauncScreenViewController.swift in Sources */,
 				DCA49DE0255A210B007B6A7B /* ProductIDView.swift in Sources */,
 				097A18A825046E660044D5FB /* ScanAlbumsViewController.swift in Sources */,
+				0981C890257E933200D8A7E4 /* FilterV2ViewController.swift in Sources */,
 				7206EAF1250C73F200A3DA4A /* GalleryCoordinator.swift in Sources */,
 				09C8ADB2250653FF004BA0F7 /* AppCoordinator.swift in Sources */,
 				DC301E432558D1BC00E9B50D /* UIViewController+Extension.swift in Sources */,
@@ -952,6 +961,7 @@
 				09DF1829257A87CC00517AF9 /* PrintingView.swift in Sources */,
 				DC82E08E251ACCC800FB9CA7 /* GalleryCache.swift in Sources */,
 				DC972BC4251258C400A6C43B /* ScanImagePickerCoordinator.swift in Sources */,
+				0981C882257E900300D8A7E4 /* FilterV2Coordinator.swift in Sources */,
 				DCB5C6CA2557063F00E87733 /* SettingModel.swift in Sources */,
 				DC8D715D256A90D6009B7606 /* NetworkRequest.swift in Sources */,
 				09E4374A2576ACAE006F33FF /* TranslationView.swift in Sources */,
@@ -1027,6 +1037,7 @@
 				DC0FAC11253C469E0033593C /* LauncScreenViewController.swift in Sources */,
 				DCD73512252CACF70046775E /* ScanAlbumsViewController.swift in Sources */,
 				DCD73513252CACF70046775E /* GalleryCoordinator.swift in Sources */,
+				0981C891257E933200D8A7E4 /* FilterV2ViewController.swift in Sources */,
 				DCD73514252CACF70046775E /* AppCoordinator.swift in Sources */,
 				DC301E442558D1BC00E9B50D /* UIViewController+Extension.swift in Sources */,
 				DCD73515252CACF70046775E /* PreviewModel.swift in Sources */,
@@ -1040,6 +1051,7 @@
 				09DF182A257A87CC00517AF9 /* PrintingView.swift in Sources */,
 				DCD7351A252CACF70046775E /* Coordinator.swift in Sources */,
 				DCB5C6CB2557063F00E87733 /* SettingModel.swift in Sources */,
+				0981C883257E900300D8A7E4 /* FilterV2Coordinator.swift in Sources */,
 				DC301E402558C38500E9B50D /* SettingCoordinator.swift in Sources */,
 				DC8D715E256A90D6009B7606 /* NetworkRequest.swift in Sources */,
 				09E4374B2576ACAE006F33FF /* TranslationView.swift in Sources */,
