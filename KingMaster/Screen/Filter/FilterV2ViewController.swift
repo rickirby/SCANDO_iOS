@@ -96,6 +96,21 @@ class FilterV2ViewController: ViewController<FilterView> {
 			// Blob Analysis Image
 			self?.blobAnalysisImage = self?.readDot?.segmentation(from: passedData.image)
 			
+			// Raw Contours Image
+			self?.rawContorusImage = self?.readDot?.rawContours(from: passedData.image)
+			
+			// Filtered Contours Image
+			self?.filteredContoursImage = self?.readDot?.filteredContours(from: passedData.image)
+			
+			// Redraw Image
+			self?.redrawImage = self?.readDot?.redraw(from: passedData.image)
+			
+			// Line Coordinate Image
+			self?.lineCoordinateImage = self?.readDot?.lineCoordinate(from: passedData.image)
+			
+			// Segmentation Image
+			self?.segmentationImage = self?.readDot?.segmentation(from: passedData.image)
+			
 			ThreadManager.executeOnMain {
 				self?.screenView.stopLoading()
 				self?.refreshImage(index: self?.screenView.segmentControl.selectedSegmentIndex ?? 0)
