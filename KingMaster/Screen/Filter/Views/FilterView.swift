@@ -17,6 +17,7 @@ class FilterView: View {
 		case didChangeSegment(index: Int)
 		case didTapDownload
 		case didTapAdjust
+		case didTapNext
 	}
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
@@ -27,10 +28,22 @@ class FilterView: View {
 		}
 	}
 	
+	var isV2: Bool = false {
+		didSet {
+			layoutIfNeeded()
+			setNeedsLayout()
+		}
+	}
+	
+	// MARK: - Private Properties
+	
+	private let filtersComponents: [String] = ["Ori", "Gray", "AdptvTh", "Dilate", "Erode"]
+	private let filtersV2Components: [String] = ["Erode", "RawCont", "FiltCont", "reDraw", "Line", "Segmnt"]
+	
 	// MARK: - View Components
 	
 	lazy var segmentControl: UISegmentedControl = {
-		let titles = ["Ori", "Gray", "AdptvTh", "Dilate", "Erode"]
+		let titles = isV2 ? filtersV2Components : filtersComponents
 		let segmentControlWidth = UIScreen.main.bounds.width - 100
 		let segmentControl = UISegmentedControl(items: titles)
 		segmentControl.selectedSegmentIndex = 0
@@ -67,6 +80,8 @@ class FilterView: View {
 	lazy var downloadBarButton = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.down"), style: .plain, target: self, action: #selector(downloadBarButtonTapped))
 	
 	lazy var adjustBarButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(adjustBarButtonTapped))
+	
+	lazy var nextBarButton = UIBarButtonItem(image: UIImage(systemName: "arrowtriangle.right.square"), style: .plain, target: self, action: #selector(nextBarButtonTapped))
 	
 	// MARK: - Life Cycles
 	
@@ -129,5 +144,9 @@ extension FilterView {
 	
 	@objc func downloadBarButtonTapped() {
 		onViewEvent?(.didTapDownload)
+	}
+	
+	@objc func nextBarButtonTapped() {
+		onViewEvent?(.didTapNext)
 	}
 }

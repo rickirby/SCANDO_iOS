@@ -12,11 +12,19 @@ import RBImageProcessor
 
 class FilterViewController: ViewController<FilterView> {
 	
+	enum NavigationEvent {
+		case didTapNext
+	}
+	
+	var onNavigationEvent: ((NavigationEvent) -> Void)?
+	
 	// MARK: - Public Properties
 	
 	var passedData: (() -> FilterCoordinator.FilterData)?
 	
 	// MARK: - Private Properties
+	
+	var convertColor: ConvertColor?
 	
 	var originalImage: UIImage?
 	var grayImage: UIImage?
@@ -29,6 +37,7 @@ class FilterViewController: ViewController<FilterView> {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		configureImageProcessor()
 		configureLoadBar()
 		loadData()
 		configureViewEvent()
@@ -36,14 +45,25 @@ class FilterViewController: ViewController<FilterView> {
 	
 	// MARK: - Private Methods
 	
+	private func configureImageProcessor() {
+		let adaptiveParam = AdaptiveParamUserSetting.shared.read()
+		let dilateParam = DilateParamUserSetting.shared.read()
+		let erodeParam = ErodeParamUserSetting.shared.read()
+		
+		convertColor = ConvertColor(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3)
+	}
+	
 	private func configureLoadBar() {
 		let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 		navigationItem.titleView = screenView.segmentControl
-		toolbarItems = [screenView.downloadBarButton, spacer, screenView.adjustBarButton]
+		toolbarItems = [screenView.downloadBarButton, spacer, screenView.adjustBarButton, spacer, screenView.nextBarButton]
 	}
 	
 	private func loadData() {
-		guard let passedData = passedData?() else { return }
+		guard let passedData = passedData?() else {
+			return
+		}
+		
 		ThreadManager.executeOnMain {
 			self.screenView.startLoading()
 		}
@@ -52,16 +72,13 @@ class FilterViewController: ViewController<FilterView> {
 			// Original Image
 			self?.originalImage = passedData.image
 			// Gray Image
-			self?.grayImage = ConvertColor.makeGray(from: passedData.image)
+			self?.grayImage = self?.convertColor?.makeGray(from: passedData.image)
 			// Adaptive Threshold Image
-			let adaptiveParam = AdaptiveParamUserSetting.shared.read()
-			self?.adaptiveThresholdImage = ConvertColor.adaptiveThreshold(from: passedData.image, isGaussian: (adaptiveParam?.type ?? 1) == 1, blockSize: adaptiveParam?.blockSize ?? 57, constant: adaptiveParam?.constant ?? 7)
+			self?.adaptiveThresholdImage = self?.convertColor?.adaptiveThreshold(from: passedData.image)
 			// Dilate Image
-			let dilateParam = DilateParamUserSetting.shared.read()
-			self?.dilateImage = ConvertColor.dilate(from: passedData.image, iteration: dilateParam?.iteration ?? 1, isGaussian: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7)
+			self?.dilateImage = self?.convertColor?.dilate(from: passedData.image)
 			// Erode Image
-			let erodeParam = ErodeParamUserSetting.shared.read()
-			self?.erodeImage = ConvertColor.erode(from: passedData.image, erodeIteration: erodeParam?.iteration ?? 1, dilateIteration: dilateParam?.iteration ?? 1, isGaussian: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7)
+			self?.erodeImage = self?.convertColor?.erode(from: passedData.image)
 			
 			ThreadManager.executeOnMain {
 				self?.screenView.stopLoading()
@@ -79,6 +96,8 @@ class FilterViewController: ViewController<FilterView> {
 				self?.downloadImage()
 			case .didTapAdjust:
 				self?.adjustParam()
+			case .didTapNext:
+				self?.nextFilter()
 			}
 		}
 	}
@@ -116,6 +135,10 @@ class FilterViewController: ViewController<FilterView> {
 		screenView.showSaveAlert(on: self, error: error)
     }
 	
+	private func nextFilter() {
+		onNavigationEvent?(.didTapNext)
+	}
+	
 	private func adjustParam() {
 		switch screenView.segmentControl.selectedSegmentIndex {
 		case 2:
@@ -138,6 +161,11 @@ class FilterViewController: ViewController<FilterView> {
 			guard let textField0Text = $0.text, let textField1Text = $1.text, let textField2Text = $2.text, let type = Int(textField0Text), let blockSize = Int(textField1Text), let constant = Double(textField2Text) else {
 				// Provide default value if text field error or empty
 				DispatchQueue.global(qos: .userInitiated).async {
+					
+					self.convertColor?.setAdaptiveType(true)
+					self.convertColor?.setAdaptiveBlockSize(57)
+					self.convertColor?.setAdaptiveConstant(7)
+					
 					AdaptiveParamUserSetting.shared.save(AdaptiveParamUserSetting.AdaptiveParam(type: 1, blockSize: 57, constant: 7))
 					
 					self.loadData()
@@ -149,6 +177,11 @@ class FilterViewController: ViewController<FilterView> {
 			if (blockSize > 1) && (blockSize % 2) == 1 {
 				// Check if blockSize value is acceptable to avoid crash
 				DispatchQueue.global(qos: .userInitiated).async {
+					
+					self.convertColor?.setAdaptiveType(type == 1)
+					self.convertColor?.setAdaptiveBlockSize(blockSize)
+					self.convertColor?.setAdaptiveConstant(constant)
+					
 					AdaptiveParamUserSetting.shared.save(AdaptiveParamUserSetting.AdaptiveParam(type: type, blockSize: blockSize, constant: constant))
 					
 					self.loadData()
@@ -169,6 +202,8 @@ class FilterViewController: ViewController<FilterView> {
 			guard let textFieldText = $0.text, let iteration = Int(textFieldText) else { return }
 			
 			DispatchQueue.global(qos: .userInitiated).async {
+				
+				self.convertColor?.setDilateIteration(iteration)
 				DilateParamUserSetting.shared.save(DilateParamUserSetting.DilateParam(iteration: iteration))
 				
 				self.loadData()
@@ -187,6 +222,7 @@ class FilterViewController: ViewController<FilterView> {
 			
 			DispatchQueue.global(qos: .userInitiated).async {
 				
+				self.convertColor?.setErodeIteration(iteration)
 				ErodeParamUserSetting.shared.save(ErodeParamUserSetting.ErodeParam(iteration: iteration))
 				
 				self.loadData()
