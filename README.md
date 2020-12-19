@@ -6,12 +6,12 @@ Created by Ricki Bin Yamin
 - RBToolkit 0.0.3
 - RBPhotosGallery 0.0.5
 - RBCameraDocScan 0.0.3
-- RBImageProcessor 0.0.3
+- RBImageProcessor 0.1.0
 
 Use carthage to download listed framework above
 
 ## Current Project Version
-0.3.0
+0.4.0
 
 ## Testflight Build Number
 1
