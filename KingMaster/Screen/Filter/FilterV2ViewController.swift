@@ -24,6 +24,12 @@ class FilterV2ViewController: ViewController<FilterView> {
 	var erodeImage: UIImage?
 	var blobAnalysisImage: UIImage?
 	
+	var rawContorusImage: UIImage?
+	var filteredContoursImage: UIImage?
+	var redrawImage: UIImage?
+	var lineCoordinateImage: UIImage?
+	var segmentationImage: UIImage?
+	
 	// MARK: - Life Cycles
 	
 	override func viewDidLoad() {
