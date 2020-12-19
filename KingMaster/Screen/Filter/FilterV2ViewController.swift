@@ -22,7 +22,6 @@ class FilterV2ViewController: ViewController<FilterView> {
 	var readDot: ReadDot?
 	
 	var erodeImage: UIImage?
-	var blobAnalysisImage: UIImage?
 	
 	var rawContorusImage: UIImage?
 	var filteredContoursImage: UIImage?
@@ -92,9 +91,6 @@ class FilterV2ViewController: ViewController<FilterView> {
 			// Erode Image
 			
 			self?.erodeImage = self?.convertColor?.erode(from: passedData.image)
-			
-			// Blob Analysis Image
-			self?.blobAnalysisImage = self?.readDot?.segmentation(from: passedData.image)
 			
 			// Raw Contours Image
 			self?.rawContorusImage = self?.readDot?.rawContours(from: passedData.image)
