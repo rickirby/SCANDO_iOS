@@ -17,6 +17,8 @@
 		0922627525053E0B00BDDB90 /* DocumentGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0922627225053E0B00BDDB90 /* DocumentGroupViewController.swift */; };
 		0922627625053E0B00BDDB90 /* DocumentGroupCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0922627325053E0B00BDDB90 /* DocumentGroupCollectionViewCell.swift */; };
 		092E85D5250659B300A01F60 /* DocumentGroupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E85D4250659B300A01F60 /* DocumentGroupCoordinator.swift */; };
+		0957A3B9258EBD6F00AE8491 /* BlobAnalysisParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957A3B8258EBD6F00AE8491 /* BlobAnalysisParamUserSetting.swift */; };
+		0957A3BA258EBD6F00AE8491 /* BlobAnalysisParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957A3B8258EBD6F00AE8491 /* BlobAnalysisParamUserSetting.swift */; };
 		097A18A825046E660044D5FB /* ScanAlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A18A725046E660044D5FB /* ScanAlbumsViewController.swift */; };
 		097A18AC25046FD70044D5FB /* ScanAlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A18AB25046FD70044D5FB /* ScanAlbumsView.swift */; };
 		0981C882257E900300D8A7E4 /* FilterV2Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981C881257E900300D8A7E4 /* FilterV2Coordinator.swift */; };
@@ -208,6 +210,7 @@
 		0922627225053E0B00BDDB90 /* DocumentGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentGroupViewController.swift; sourceTree = "<group>"; };
 		0922627325053E0B00BDDB90 /* DocumentGroupCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentGroupCollectionViewCell.swift; sourceTree = "<group>"; };
 		092E85D4250659B300A01F60 /* DocumentGroupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentGroupCoordinator.swift; sourceTree = "<group>"; };
+		0957A3B8258EBD6F00AE8491 /* BlobAnalysisParamUserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobAnalysisParamUserSetting.swift; sourceTree = "<group>"; };
 		097A18A725046E660044D5FB /* ScanAlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAlbumsViewController.swift; sourceTree = "<group>"; };
 		097A18AB25046FD70044D5FB /* ScanAlbumsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAlbumsView.swift; sourceTree = "<group>"; };
 		0981C881257E900300D8A7E4 /* FilterV2Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterV2Coordinator.swift; sourceTree = "<group>"; };
@@ -723,6 +726,7 @@
 				09FDB4A5252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift */,
 				DC9F070D25314818005A517B /* DilateParamUserSetting.swift */,
 				DC3F5E95253159CB007B6B3E /* ErodeParamUserSetting.swift */,
+				0957A3B8258EBD6F00AE8491 /* BlobAnalysisParamUserSetting.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -934,6 +938,7 @@
 			files = (
 				DCB5C6C62556FA6900E87733 /* SettingViewController.swift in Sources */,
 				09DF1830257A882000517AF9 /* PrintingViewController.swift in Sources */,
+				0957A3B9258EBD6F00AE8491 /* BlobAnalysisParamUserSetting.swift in Sources */,
 				DC215A1F25166321006D409A /* Document+CoreDataProperties.swift in Sources */,
 				DC455B012568F0EC00A0089F /* WifiSelectionCoordinator.swift in Sources */,
 				DC82CC952517058900403550 /* SCANDODateFormatter.swift in Sources */,
@@ -1024,6 +1029,7 @@
 			files = (
 				DCB5C6C72556FA6900E87733 /* SettingViewController.swift in Sources */,
 				09DF1831257A882000517AF9 /* PrintingViewController.swift in Sources */,
+				0957A3BA258EBD6F00AE8491 /* BlobAnalysisParamUserSetting.swift in Sources */,
 				DCD7350D252CACF70046775E /* Document+CoreDataProperties.swift in Sources */,
 				DC455B022568F0EC00A0089F /* WifiSelectionCoordinator.swift in Sources */,
 				DCD7350E252CACF70046775E /* SCANDODateFormatter.swift in Sources */,
