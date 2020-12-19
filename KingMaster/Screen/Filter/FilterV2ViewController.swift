@@ -123,7 +123,15 @@ class FilterV2ViewController: ViewController<FilterView> {
 		case 0:
 			screenView.image = erodeImage
 		case 1:
-			screenView.image = blobAnalysisImage
+			screenView.image = rawContorusImage
+		case 2:
+			screenView.image = filteredContoursImage
+		case 3:
+			screenView.image = redrawImage
+		case 4:
+			screenView.image = lineCoordinateImage
+		case 5:
+			screenView.image = segmentationImage
 		default:
 			screenView.image = erodeImage
 		}
