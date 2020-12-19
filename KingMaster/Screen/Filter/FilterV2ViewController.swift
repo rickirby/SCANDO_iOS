@@ -132,7 +132,7 @@ class FilterV2ViewController: ViewController<FilterView> {
 			screenView.image = erodeImage
 		}
 		
-		screenView.adjustBarButton.isEnabled = (index == -1)
+		screenView.adjustBarButton.isEnabled = (index == 2) || (index == 3) || (index == 4) || (index == 5)
 	}
 	
 	private func downloadImage() {
