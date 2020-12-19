@@ -47,10 +47,11 @@ class FilterV2ViewController: ViewController<FilterView> {
 		let adaptiveParam = AdaptiveParamUserSetting.shared.read()
 		let dilateParam = DilateParamUserSetting.shared.read()
 		let erodeParam = ErodeParamUserSetting.shared.read()
+		let blobAnalysisParam = BlobAnalysisParamUserSetting.shared.read()
 		
 		convertColor = ConvertColor(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3)
 		
-		readDot = ReadDot(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3)
+		readDot = ReadDot(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3, minAreaContourFilter: blobAnalysisParam?.minAreaContourFilter ?? 0, maxAreaContourFilter: blobAnalysisParam?.maxAreaContourFilter ?? 0, redrawCircleSize: blobAnalysisParam?.redrawCircleSize ?? 0, maxSpaceForGroupingSameRowAndCols: blobAnalysisParam?.maxSpaceForGroupingSameRowAndCols ?? 0, maxDotSpaceInterDot: blobAnalysisParam?.maxDotSpaceInterDot ?? 0, defaultDotSpaceInterDot: blobAnalysisParam?.defaultDotSpaceInterDot ?? 0)
 		// NOTES: done with the end of FPP-77 & FPP-82
 	}
 	
