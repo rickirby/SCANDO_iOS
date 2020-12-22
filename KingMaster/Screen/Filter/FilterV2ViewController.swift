@@ -72,6 +72,8 @@ class FilterV2ViewController: ViewController<FilterView> {
 				self?.refreshImage(index: index)
 			case .didTapDownload:
 				self?.downloadImage()
+			case .didTapAdjust:
+				self?.adjustParam()
 			default:
 				break
 			}
@@ -134,6 +136,59 @@ class FilterV2ViewController: ViewController<FilterView> {
 		}
 		
 		screenView.adjustBarButton.isEnabled = (index == 2) || (index == 3) || (index == 4) || (index == 5)
+	}
+	
+	private func adjustParam() {
+		let blobAnalysisParam = BlobAnalysisParamUserSetting.shared.read()
+		
+		AlertView.createBlobAnalysisParamAlert(self, currentMinArea: blobAnalysisParam?.minAreaContourFilter, currentMaxArea: blobAnalysisParam?.maxAreaContourFilter, currentCircleSize: blobAnalysisParam?.redrawCircleSize, currentSpaceForGroupingSameRowCols: blobAnalysisParam?.maxSpaceForGroupingSameRowAndCols, currentMaxDotSpaceInterDot: blobAnalysisParam?.maxDotSpaceInterDot, currentDefaultDotSpaceInterDot: blobAnalysisParam?.defaultDotSpaceInterDot, setHandler: {
+			guard
+				let textField0Text = $0.text,
+				let textField1Text = $1.text,
+				let textField2Text = $2.text,
+				let textField3Text = $3.text,
+				let textField4Text = $4.text,
+				let textField5Text = $5.text,
+				let minAreaContourFilter = Double(textField0Text),
+				let maxAreaContourFilter = Double(textField1Text),
+				let circleSize = Double(textField2Text),
+				let maxSpaceForGroupingSameRowCols = Double(textField3Text),
+				let maxDotSpaceInterDot = Double(textField4Text),
+				let defaultDotSpaceInterDot = Double(textField5Text)
+			else {
+				// Provide default value if text field error or empty
+				DispatchQueue.global(qos: .userInitiated).async {
+					
+					self.readDot?.setMinAreaContourFilter(200)
+					self.readDot?.setMaxAreaContourFilter(500)
+					self.readDot?.setRedrawCircleSize(10)
+					self.readDot?.setMaxSpaceForGroupingSameRowAndCols(20)
+					self.readDot?.setMaxDotSpaceInter(40)
+					self.readDot?.setDefaultDotSpaceInter(30)
+					
+					BlobAnalysisParamUserSetting.shared.save(BlobAnalysisParamUserSetting.BlobAnalysisParam(minAreaContourFilter: 200, maxAreaContourFilter: 500, redrawCircleSize: 10, maxSpaceForGroupingSameRowAndCols: 20, maxDotSpaceInterDot: 40, defaultDotSpaceInterDot: 30))
+					
+					self.loadData()
+				}
+				
+				return
+			}
+			
+			DispatchQueue.global(qos: .userInitiated).async {
+				
+				self.readDot?.setMinAreaContourFilter(minAreaContourFilter)
+				self.readDot?.setMaxAreaContourFilter(maxAreaContourFilter)
+				self.readDot?.setRedrawCircleSize(circleSize)
+				self.readDot?.setMaxSpaceForGroupingSameRowAndCols(maxSpaceForGroupingSameRowCols)
+				self.readDot?.setMaxDotSpaceInter(maxDotSpaceInterDot)
+				self.readDot?.setDefaultDotSpaceInter(defaultDotSpaceInterDot)
+				
+				BlobAnalysisParamUserSetting.shared.save(BlobAnalysisParamUserSetting.BlobAnalysisParam(minAreaContourFilter: minAreaContourFilter, maxAreaContourFilter: maxAreaContourFilter, redrawCircleSize: circleSize, maxSpaceForGroupingSameRowAndCols: maxSpaceForGroupingSameRowCols, maxDotSpaceInterDot: maxDotSpaceInterDot, defaultDotSpaceInterDot: defaultDotSpaceInterDot))
+				
+				self.loadData()
+			}
+			
+		}, cancelHandler: {})
 	}
 	
 	private func downloadImage() {
