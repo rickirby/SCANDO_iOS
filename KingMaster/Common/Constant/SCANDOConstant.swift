@@ -73,6 +73,15 @@ class SCANDOConstant {
 	static let setErodePositiveAction: String = "OK"
 	static let setErodeNegativeAction: String = "Cancel"
 	
+	static let setBlobAnalysisParamTitle: String = "Segmentation Param"
+	static let setBlobAnalysisParamMessage: String = "Set value for following parameters"
+	static let setBlobAnalysisMinAreaPlaceholder: String = "Min Area Contour Filter"
+	static let setBlobAnalysisMaxAreaPlaceholder: String = "Max Area Contour Filter"
+	static let setBlobAnalysisCircleSizePlaceholder: String = "Redraw Circle Size"
+	static let setBlobAnalysisMaxSpaceForGroupingPlaceholder: String = "Max Space for Grouping Same RowCols"
+	static let setBlobAnalysisMaxDotSpaceInterDotPlaceholder: String = "Max Dot Space Inter-Dot"
+	static let setBlobAnalysisDefaultDotSpaceInterDotPlaceholder: String = "Default Dot Space Inter-Dot"
+	
 	static let connectionStatusTitleConnected: String = "Everything is OK"
 	static let connectionStatusDescriptionConnected: String = "You are all set. Connection status is okay. You are ready to copy braille page"
 	static let connectionStatusPositiveButtonConnected: String = "Done"
