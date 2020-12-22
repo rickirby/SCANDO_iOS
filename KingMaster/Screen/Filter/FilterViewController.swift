@@ -246,4 +246,8 @@ extension FilterViewController: RBPhotosGalleryViewDelegate, RBPhotosGalleryView
 	func photosGalleryImages() -> [UIImage] {
 		return galleryViewImagesData.compactMap { $0 }
 	}
+	
+	func didEndScrolling(_ scrollView: UIScrollView) {
+		screenView.segmentControl.selectedSegmentIndex = currentPageIndex
+	}
 }
