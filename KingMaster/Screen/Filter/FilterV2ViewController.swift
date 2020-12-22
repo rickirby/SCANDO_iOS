@@ -9,14 +9,17 @@
 import UIKit
 import RBToolkit
 import RBImageProcessor
+import RBPhotosGallery
 
-class FilterV2ViewController: ViewController<FilterView> {
+class FilterV2ViewController: RBPhotosGalleryViewController {
 	
 	// MARK: - Public Properties
 	
 	var passedData: (() -> FilterCoordinator.FilterData)?
 	
 	// MARK: - Private Properties
+	
+	var screenView = FilterView()
 	
 	var convertColor: ConvertColor?
 	var readDot: ReadDot?
@@ -29,7 +32,21 @@ class FilterV2ViewController: ViewController<FilterView> {
 	var lineCoordinateImage: UIImage?
 	var segmentationImage: UIImage?
 	
+	var galleryViewImagesData: [UIImage?] = []
+	
 	// MARK: - Life Cycles
+	
+	override func loadView() {
+		super.loadView()
+		
+		view.backgroundColor = .systemBackground
+		view.addSubview(screenView.activityIndicator)
+		
+		NSLayoutConstraint.activate([
+			screenView.activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			screenView.activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+		])
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -111,29 +128,17 @@ class FilterV2ViewController: ViewController<FilterView> {
 			self?.segmentationImage = self?.readDot?.segmentation(from: passedData.image)
 			
 			ThreadManager.executeOnMain {
-				self?.screenView.stopLoading()
+				
+				self?.galleryViewImagesData = [self?.erodeImage, self?.rawContorusImage, self?.filteredContoursImage, self?.redrawImage, self?.lineCoordinateImage, self?.segmentationImage]
+				self?.reloadPhotosData()
 				self?.refreshImage(index: self?.screenView.segmentControl.selectedSegmentIndex ?? 0)
+				self?.screenView.stopLoading()
 			}
 		}
 	}
 	
 	private func refreshImage(index: Int) {
-		switch index {
-		case 0:
-			screenView.image = erodeImage
-		case 1:
-			screenView.image = rawContorusImage
-		case 2:
-			screenView.image = filteredContoursImage
-		case 3:
-			screenView.image = redrawImage
-		case 4:
-			screenView.image = lineCoordinateImage
-		case 5:
-			screenView.image = segmentationImage
-		default:
-			screenView.image = erodeImage
-		}
+		self.scrollToPhotos(index: index)
 		
 		screenView.adjustBarButton.isEnabled = (index == 2) || (index == 3) || (index == 4) || (index == 5)
 	}
@@ -192,7 +197,10 @@ class FilterV2ViewController: ViewController<FilterView> {
 	}
 	
 	private func downloadImage() {
-		guard let image = screenView.image else { return }
+		guard let image = galleryViewImagesData[currentPageIndex] else {
+			return
+		}
+		
 		screenView.startLoading()
 		
 		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
@@ -203,5 +211,12 @@ class FilterV2ViewController: ViewController<FilterView> {
 	@objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
 		screenView.stopLoading()
 		screenView.showSaveAlert(on: self, error: error)
+	}
+}
+
+extension FilterV2ViewController: RBPhotosGalleryViewDelegate, RBPhotosGalleryViewDataSource {
+	
+	func photosGalleryImages() -> [UIImage] {
+		return galleryViewImagesData.compactMap { $0 }
 	}
 }
