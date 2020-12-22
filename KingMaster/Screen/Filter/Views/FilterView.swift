@@ -22,12 +22,6 @@ class FilterView: UIView {
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
 	
-//	var image: UIImage? {
-//		didSet {
-//			processedImageView.image = image
-//		}
-//	}
-	
 	var isV2: Bool = false {
 		didSet {
 			layoutIfNeeded()
@@ -57,17 +51,6 @@ class FilterView: UIView {
 		return segmentControl
 	}()
 	
-//	lazy var processedImageView: UIImageView = {
-//		let imageView = UIImageView()
-//		imageView.translatesAutoresizingMaskIntoConstraints = false
-//		imageView.clipsToBounds = true
-//		imageView.isOpaque = true
-//		imageView.backgroundColor = .systemBackground
-//		imageView.contentMode = .scaleAspectFit
-//
-//		return imageView
-//	}()
-	
 	lazy var activityIndicator: UIActivityIndicatorView = {
 		let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
 		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
@@ -82,14 +65,6 @@ class FilterView: UIView {
 	lazy var adjustBarButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(adjustBarButtonTapped))
 	
 	lazy var nextBarButton = UIBarButtonItem(image: UIImage(systemName: "arrowtriangle.right.square"), style: .plain, target: self, action: #selector(nextBarButtonTapped))
-	
-	// MARK: - Life Cycles
-	
-//	override func setViews() {
-//		super.setViews()
-//
-//		configureView()
-//	}
 	
 	// MARK: - Public Methods
 	
@@ -109,25 +84,6 @@ class FilterView: UIView {
 		}
 	}
 	
-	// MARK: - Private Methods
-	
-//	private func configureView() {
-//		backgroundColor = .systemBackground
-//		
-//		addAllSubviews(views: [processedImageView, activityIndicator])
-//		
-//		NSLayoutConstraint.activate([
-//			processedImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-//			processedImageView.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor),
-//			processedImageView.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor),
-//			processedImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
-//			
-//			activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-//			activityIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor)
-//		])
-//		
-//		adjustBarButton.isEnabled = false
-//	}
 }
 
 extension FilterView {
