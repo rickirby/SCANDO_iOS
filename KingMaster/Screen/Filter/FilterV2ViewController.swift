@@ -51,7 +51,7 @@ class FilterV2ViewController: ViewController<FilterView> {
 		
 		convertColor = ConvertColor(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3)
 		
-		readDot = ReadDot(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3, minAreaContourFilter: blobAnalysisParam?.minAreaContourFilter ?? 0, maxAreaContourFilter: blobAnalysisParam?.maxAreaContourFilter ?? 0, redrawCircleSize: blobAnalysisParam?.redrawCircleSize ?? 0, maxSpaceForGroupingSameRowAndCols: blobAnalysisParam?.maxSpaceForGroupingSameRowAndCols ?? 0, maxDotSpaceInterDot: blobAnalysisParam?.maxDotSpaceInterDot ?? 0, defaultDotSpaceInterDot: blobAnalysisParam?.defaultDotSpaceInterDot ?? 0)
+		readDot = ReadDot(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3, minAreaContourFilter: blobAnalysisParam?.minAreaContourFilter ?? 200, maxAreaContourFilter: blobAnalysisParam?.maxAreaContourFilter ?? 500, redrawCircleSize: blobAnalysisParam?.redrawCircleSize ?? 10, maxSpaceForGroupingSameRowAndCols: blobAnalysisParam?.maxSpaceForGroupingSameRowAndCols ?? 20, maxDotSpaceInterDot: blobAnalysisParam?.maxDotSpaceInterDot ?? 40, defaultDotSpaceInterDot: blobAnalysisParam?.defaultDotSpaceInterDot ?? 30)
 		// NOTES: done with the end of FPP-77 & FPP-82
 	}
 	
