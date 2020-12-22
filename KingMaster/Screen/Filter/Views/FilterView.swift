@@ -9,7 +9,7 @@
 import UIKit
 import RBToolkit
 
-class FilterView: View {
+class FilterView: UIView {
 	
 	// MARK: - Public Properties
 	
@@ -22,11 +22,11 @@ class FilterView: View {
 	
 	var onViewEvent: ((ViewEvent) -> Void)?
 	
-	var image: UIImage? {
-		didSet {
-			processedImageView.image = image
-		}
-	}
+//	var image: UIImage? {
+//		didSet {
+//			processedImageView.image = image
+//		}
+//	}
 	
 	var isV2: Bool = false {
 		didSet {
@@ -57,16 +57,16 @@ class FilterView: View {
 		return segmentControl
 	}()
 	
-	lazy var processedImageView: UIImageView = {
-		let imageView = UIImageView()
-		imageView.translatesAutoresizingMaskIntoConstraints = false
-		imageView.clipsToBounds = true
-		imageView.isOpaque = true
-		imageView.backgroundColor = .systemBackground
-		imageView.contentMode = .scaleAspectFit
-		
-		return imageView
-	}()
+//	lazy var processedImageView: UIImageView = {
+//		let imageView = UIImageView()
+//		imageView.translatesAutoresizingMaskIntoConstraints = false
+//		imageView.clipsToBounds = true
+//		imageView.isOpaque = true
+//		imageView.backgroundColor = .systemBackground
+//		imageView.contentMode = .scaleAspectFit
+//
+//		return imageView
+//	}()
 	
 	lazy var activityIndicator: UIActivityIndicatorView = {
 		let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
@@ -85,11 +85,11 @@ class FilterView: View {
 	
 	// MARK: - Life Cycles
 	
-	override func setViews() {
-		super.setViews()
-		
-		configureView()
-	}
+//	override func setViews() {
+//		super.setViews()
+//
+//		configureView()
+//	}
 	
 	// MARK: - Public Methods
 	
@@ -111,23 +111,23 @@ class FilterView: View {
 	
 	// MARK: - Private Methods
 	
-	private func configureView() {
-		backgroundColor = .systemBackground
-		
-		addAllSubviews(views: [processedImageView, activityIndicator])
-		
-		NSLayoutConstraint.activate([
-			processedImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-			processedImageView.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor),
-			processedImageView.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor),
-			processedImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
-			
-			activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-			activityIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor)
-		])
-		
-		adjustBarButton.isEnabled = false
-	}
+//	private func configureView() {
+//		backgroundColor = .systemBackground
+//		
+//		addAllSubviews(views: [processedImageView, activityIndicator])
+//		
+//		NSLayoutConstraint.activate([
+//			processedImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+//			processedImageView.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor),
+//			processedImageView.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor),
+//			processedImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
+//			
+//			activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+//			activityIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+//		])
+//		
+//		adjustBarButton.isEnabled = false
+//	}
 }
 
 extension FilterView {
