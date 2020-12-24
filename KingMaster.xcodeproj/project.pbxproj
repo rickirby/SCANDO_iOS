@@ -25,6 +25,8 @@
 		0981C883257E900300D8A7E4 /* FilterV2Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981C881257E900300D8A7E4 /* FilterV2Coordinator.swift */; };
 		0981C890257E933200D8A7E4 /* FilterV2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981C88F257E933200D8A7E4 /* FilterV2ViewController.swift */; };
 		0981C891257E933200D8A7E4 /* FilterV2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981C88F257E933200D8A7E4 /* FilterV2ViewController.swift */; };
+		09A7B2702594F32800950351 /* RBImageProcessor.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 09A7B26F2594F32800950351 /* RBImageProcessor.bundle */; };
+		09A7B2792594F43F00950351 /* RBImageProcessor.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 09A7B26F2594F32800950351 /* RBImageProcessor.bundle */; };
 		09C8ADAC2506511F004BA0F7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADAB2506511F004BA0F7 /* Coordinator.swift */; };
 		09C8ADAE25065154004BA0F7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADAD25065154004BA0F7 /* Router.swift */; };
 		09C8ADB0250652BC004BA0F7 /* ScanAlbumsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADAF250652BC004BA0F7 /* ScanAlbumsCoordinator.swift */; };
@@ -217,6 +219,7 @@
 		0981C88F257E933200D8A7E4 /* FilterV2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterV2ViewController.swift; sourceTree = "<group>"; };
 		099AB1FF2503E6C500B76522 /* RBPhotosGallery.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBPhotosGallery.framework; path = Carthage/Build/iOS/RBPhotosGallery.framework; sourceTree = "<group>"; };
 		099AB2002503E6C600B76522 /* RBToolkit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBToolkit.framework; path = Carthage/Build/iOS/RBToolkit.framework; sourceTree = "<group>"; };
+		09A7B26F2594F32800950351 /* RBImageProcessor.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = RBImageProcessor.bundle; path = Carthage/Build/iOS/RBImageProcessor.framework/RBImageProcessor.bundle; sourceTree = "<group>"; };
 		09C8ADAB2506511F004BA0F7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		09C8ADAD25065154004BA0F7 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		09C8ADAF250652BC004BA0F7 /* ScanAlbumsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAlbumsCoordinator.swift; sourceTree = "<group>"; };
@@ -605,6 +608,7 @@
 		DC832C57251F42D3001D54C0 /* Bundles */ = {
 			isa = PBXGroup;
 			children = (
+				09A7B26F2594F32800950351 /* RBImageProcessor.bundle */,
 				DC832C55251F4238001D54C0 /* RBCameraDocScan.bundle */,
 			);
 			name = Bundles;
@@ -864,6 +868,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09A7B2792594F43F00950351 /* RBImageProcessor.bundle in Resources */,
 				DC832C56251F4238001D54C0 /* RBCameraDocScan.bundle in Resources */,
 				0901C6AA25038A340051FF16 /* LaunchScreen.storyboard in Resources */,
 				DC46E1452521686E000ED989 /* README.md in Resources */,
@@ -875,6 +880,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09A7B2702594F32800950351 /* RBImageProcessor.bundle in Resources */,
 				DCD73542252CACF70046775E /* RBCameraDocScan.bundle in Resources */,
 				DCD73543252CACF70046775E /* LaunchScreen.storyboard in Resources */,
 				DCD73544252CACF70046775E /* README.md in Resources */,
