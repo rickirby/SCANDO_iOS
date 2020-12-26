@@ -216,8 +216,10 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 		screenView.startLoading()
 		
 		let serviceObject = brailleService?.getTranslatedBraille(from: originalImage)
-		serviceObject?.onSuccess = { result in
-			self.translasionResult = result
+		serviceObject?.onSuccess = {
+			let (rawResult, enhancedResult) = $0
+			print(rawResult)
+			print(enhancedResult)
 			ThreadManager.executeOnMain {
 				self.screenView.stopLoading()
 			}

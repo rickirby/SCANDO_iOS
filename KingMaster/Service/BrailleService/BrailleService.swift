@@ -17,20 +17,36 @@ class BrailleService {
 		self.readDot = readDot
 	}
 	
-	func getTranslatedBraille(from image: UIImage) -> ServiceObject<String> {
-		let serviceObject: ServiceObject<String> = ServiceObject()
+	func getTranslatedBraille(from image: UIImage) -> ServiceObject<(String, String)> {
+		let serviceObject: ServiceObject<(String, String)> = ServiceObject()
 		
 		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-			guard let result = self?.readDot?.translateBraille(from: image) else {
+			guard let rawResult = self?.readDot?.translateBraille(from: image) else {
 				serviceObject.onError?(BrailleServiceError.gotNilWhenTranslate)
 				return
 			}
 			
-			serviceObject.onSuccess?(result)
+			let enhancedResult = rawResult.removeExtraWhiteSpaces()
+			
+			serviceObject.onSuccess?((rawResult, enhancedResult))
 		}
 		
 		return serviceObject
 	}
+	
+	private func enhanceTranslasionResult(from text: String) -> String {
+		return text
+			.replacingOccurrences(of: "\n", with: "")
+			.removeExtraWhiteSpaces()
+	}
+}
+
+extension String {
+	
+	func removeExtraWhiteSpaces() -> String {
+		return self.replacingOccurrences(of: "[\\s]+", with: " ", options: .regularExpression, range: nil)
+	}
+	
 }
 
 extension BrailleService {
