@@ -21,12 +21,13 @@ class BrailleService {
 		let serviceObject: ServiceObject<(String, String)> = ServiceObject()
 		
 		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-			guard let rawResult = self?.readDot?.translateBraille(from: image) else {
+			guard
+				let rawResult = self?.readDot?.translateBraille(from: image),
+				let enhancedResult = self?.enhanceTranslasionResult(from: rawResult)
+			else {
 				serviceObject.onError?(BrailleServiceError.gotNilWhenTranslate)
 				return
 			}
-			
-			let enhancedResult = rawResult.removeExtraWhiteSpaces()
 			
 			serviceObject.onSuccess?((rawResult, enhancedResult))
 		}
@@ -38,6 +39,7 @@ class BrailleService {
 		return text
 			.replacingOccurrences(of: "\n", with: "")
 			.removeExtraWhiteSpaces()
+			.trimmingCharacters(in: .whitespacesAndNewlines)
 	}
 }
 

@@ -15,6 +15,12 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 	
 	// MARK: - Public Properties
 	
+	enum NavigationEvent {
+		case didOpenTranslasion(rawValue: String, enhancedValue: String)
+	}
+	
+	var onNavigationEvent: ((NavigationEvent) -> Void)?
+	
 	var passedData: (() -> FilterCoordinator.FilterData)?
 	
 	// MARK: - Private Properties
@@ -220,6 +226,7 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 			let (rawResult, enhancedResult) = $0
 			print(rawResult)
 			print(enhancedResult)
+			self.onNavigationEvent?(.didOpenTranslasion(rawValue: rawResult, enhancedValue: enhancedResult))
 			ThreadManager.executeOnMain {
 				self.screenView.stopLoading()
 			}

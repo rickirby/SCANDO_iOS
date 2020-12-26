@@ -21,6 +21,8 @@
 		093E6E90259745720061FB43 /* ServiceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E6E8E259745720061FB43 /* ServiceObject.swift */; };
 		093E6E952597465A0061FB43 /* BrailleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E6E942597465A0061FB43 /* BrailleService.swift */; };
 		093E6E962597465A0061FB43 /* BrailleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E6E942597465A0061FB43 /* BrailleService.swift */; };
+		093E6E9925975BF70061FB43 /* TranslasionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E6E9825975BF70061FB43 /* TranslasionData.swift */; };
+		093E6E9A25975BF70061FB43 /* TranslasionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E6E9825975BF70061FB43 /* TranslasionData.swift */; };
 		0957A3B9258EBD6F00AE8491 /* BlobAnalysisParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957A3B8258EBD6F00AE8491 /* BlobAnalysisParamUserSetting.swift */; };
 		0957A3BA258EBD6F00AE8491 /* BlobAnalysisParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957A3B8258EBD6F00AE8491 /* BlobAnalysisParamUserSetting.swift */; };
 		097A18A825046E660044D5FB /* ScanAlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A18A725046E660044D5FB /* ScanAlbumsViewController.swift */; };
@@ -218,6 +220,7 @@
 		092E85D4250659B300A01F60 /* DocumentGroupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentGroupCoordinator.swift; sourceTree = "<group>"; };
 		093E6E8E259745720061FB43 /* ServiceObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceObject.swift; sourceTree = "<group>"; };
 		093E6E942597465A0061FB43 /* BrailleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrailleService.swift; sourceTree = "<group>"; };
+		093E6E9825975BF70061FB43 /* TranslasionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslasionData.swift; sourceTree = "<group>"; };
 		0957A3B8258EBD6F00AE8491 /* BlobAnalysisParamUserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobAnalysisParamUserSetting.swift; sourceTree = "<group>"; };
 		097A18A725046E660044D5FB /* ScanAlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAlbumsViewController.swift; sourceTree = "<group>"; };
 		097A18AB25046FD70044D5FB /* ScanAlbumsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAlbumsView.swift; sourceTree = "<group>"; };
@@ -411,6 +414,14 @@
 			path = BrailleService;
 			sourceTree = "<group>";
 		};
+		093E6E9725975BE40061FB43 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				093E6E9825975BF70061FB43 /* TranslasionData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		097A18A525046CED0044D5FB /* Screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -508,6 +519,7 @@
 			children = (
 				09E437552576AE4B006F33FF /* TranslationCoordinator.swift */,
 				09E437502576ACD9006F33FF /* TranslationViewController.swift */,
+				093E6E9725975BE40061FB43 /* Models */,
 				09E437482576AC9A006F33FF /* Views */,
 			);
 			path = Translation;
@@ -1005,6 +1017,7 @@
 				DCB3CE4E251A5A4400D4EDFB /* GalleryData.swift in Sources */,
 				DC215A2025166321006D409A /* DocumentImage+CoreDataClass.swift in Sources */,
 				DC215A2125166321006D409A /* DocumentImage+CoreDataProperties.swift in Sources */,
+				093E6E9925975BF70061FB43 /* TranslasionData.swift in Sources */,
 				DC9F070E25314818005A517B /* DilateParamUserSetting.swift in Sources */,
 				DC215A1C25166321006D409A /* QuadPoint+CoreDataClass.swift in Sources */,
 				DC7129912515736A00ACCB2B /* PreviewCoordinator.swift in Sources */,
@@ -1098,6 +1111,7 @@
 				DCD7351B252CACF70046775E /* GalleryCache.swift in Sources */,
 				DCD7351C252CACF70046775E /* ScanImagePickerCoordinator.swift in Sources */,
 				DCD7351D252CACF70046775E /* DocumentGroupViewController.swift in Sources */,
+				093E6E9A25975BF70061FB43 /* TranslasionData.swift in Sources */,
 				DCD7351E252CACF70046775E /* GalleryData.swift in Sources */,
 				DC9F070F253149B5005A517B /* DilateParamUserSetting.swift in Sources */,
 				DCD7351F252CACF70046775E /* DocumentImage+CoreDataClass.swift in Sources */,
