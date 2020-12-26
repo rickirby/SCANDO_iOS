@@ -62,8 +62,8 @@ class GalleryCoordinator: Coordinator {
 			case .didOpenDev(let processedImage):
 				self?.openDev(processedImage)
 			#endif
-			case .didOpenTranslation:
-				self?.openTranslation()
+			case .didOpenTranslasion(let rawValue, let enhancedValue):
+				self?.openTranslation(rawValue: rawValue, enhancedValue: enhancedValue)
 			}
 		}
 		
@@ -92,9 +92,12 @@ class GalleryCoordinator: Coordinator {
 	}
 	#endif
 	
-	private func openTranslation() {
+	private func openTranslation(rawValue: String, enhancedValue: String) {
 		translationCoordinator = nil
 		translationCoordinator = TranslationCoordinator(navigationController: self.rootViewController as? UINavigationController ?? UINavigationController())
+		translationCoordinator?.passedData = {
+			return TranslationCoordinator.TranslasionData(rawValue: rawValue, enhancedValue: enhancedValue)
+		}
 		
 		translationCoordinator?.start()
 	}

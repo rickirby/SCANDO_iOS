@@ -9,6 +9,7 @@
 import UIKit
 import RBPhotosGallery
 import RBCameraDocScan
+import RBImageProcessor
 
 class GalleryViewController: RBPhotosGalleryViewController {
 	
@@ -21,7 +22,7 @@ class GalleryViewController: RBPhotosGalleryViewController {
 		#if SANDBOX
 		case didOpenDev(processedImage: UIImage)
 		#endif
-		case didOpenTranslation
+		case didOpenTranslasion(rawValue: String, enhancedValue: String)
 	}
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
@@ -32,6 +33,8 @@ class GalleryViewController: RBPhotosGalleryViewController {
 	var passedData: (() -> GalleryCoordinator.GalleryData)?
 	
 	// MARK: - Private Properties
+	
+	private var brailleService: BrailleService?
 	
 	private var screenView = GalleryView()
 	private let model = GalleryModel()
@@ -51,6 +54,7 @@ class GalleryViewController: RBPhotosGalleryViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		configureService()
 		configureLoadBar()
 		configureViewEvent()
 		loadData()
@@ -79,6 +83,17 @@ class GalleryViewController: RBPhotosGalleryViewController {
 		navigationController?.setNavigationBarHidden(false, animated: true)
 		navigationController?.interactivePopGestureRecognizer?.isEnabled = true
 		navigationController?.setToolbarHidden(false, animated: true)
+	}
+	
+	private func configureService() {
+		let adaptiveParam = AdaptiveParamUserSetting.shared.read()
+		let dilateParam = DilateParamUserSetting.shared.read()
+		let erodeParam = ErodeParamUserSetting.shared.read()
+		let blobAnalysisParam = BlobAnalysisParamUserSetting.shared.read()
+		
+		let readDot = ReadDot(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3, minAreaContourFilter: blobAnalysisParam?.minAreaContourFilter ?? 200, maxAreaContourFilter: blobAnalysisParam?.maxAreaContourFilter ?? 500, redrawCircleSize: blobAnalysisParam?.redrawCircleSize ?? 10, maxSpaceForGroupingSameRowAndCols: blobAnalysisParam?.maxSpaceForGroupingSameRowAndCols ?? 20, maxDotSpaceInterDot: blobAnalysisParam?.maxDotSpaceInterDot ?? 40, defaultDotSpaceInterDot: blobAnalysisParam?.defaultDotSpaceInterDot ?? 30)
+		
+		brailleService = BrailleService(readDot: readDot)
 	}
 	
 	private func configureViewEvent() {
@@ -197,7 +212,25 @@ class GalleryViewController: RBPhotosGalleryViewController {
 	#endif
 	
 	private func openTranslation() {
-		onNavigationEvent?(.didOpenTranslation)
+		screenView.startLoading()
+		let image = galleryViewImagesData[currentPageIndex]
+		let serviceObject = brailleService?.getTranslatedBraille(from: image)
+		serviceObject?.onSuccess = {
+			let (rawResult, enhancedResult) = $0
+			print(rawResult)
+			print(enhancedResult)
+			ThreadManager.executeOnMain {
+				self.screenView.stopLoading()
+				self.onNavigationEvent?(.didOpenTranslasion(rawValue: rawResult, enhancedValue: enhancedResult))
+			}
+		}
+		serviceObject?.onError = { error in
+			print("===*** Got error \(error)")
+			
+			ThreadManager.executeOnMain {
+				self.screenView.stopLoading()
+			}
+		}
 	}
 }
 
