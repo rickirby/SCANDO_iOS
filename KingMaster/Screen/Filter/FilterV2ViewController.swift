@@ -226,9 +226,9 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 			let (rawResult, enhancedResult) = $0
 			print(rawResult)
 			print(enhancedResult)
-			self.onNavigationEvent?(.didOpenTranslasion(rawValue: rawResult, enhancedValue: enhancedResult))
 			ThreadManager.executeOnMain {
 				self.screenView.stopLoading()
+				self.onNavigationEvent?(.didOpenTranslasion(rawValue: rawResult, enhancedValue: enhancedResult))
 			}
 		}
 		serviceObject?.onError = { error in

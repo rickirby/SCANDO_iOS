@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+extension TranslationCoordinator {
+	
+	struct TranslasionData {
+		var rawValue: String
+		var enhancedValue: String
+	}
+	
+}

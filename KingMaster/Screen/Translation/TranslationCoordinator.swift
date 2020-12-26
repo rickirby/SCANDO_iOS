@@ -20,6 +20,8 @@ class TranslationCoordinator: Coordinator {
 		return navigationController
 	}
 	
+	var passedData: (() -> TranslasionData)?
+	
 	// MARK: - Private Properties
 	
 	private weak var navigationController: UINavigationController?
@@ -44,6 +46,7 @@ class TranslationCoordinator: Coordinator {
 	
 	private func makeTranslationViewController() -> UIViewController {
 		let vc = TranslationViewController()
+		vc.passedData = passedData
 		vc.onNavigationEvent = { [weak self] (navigationEvent: TranslationViewController.NavigationEvent) in
 			
 			switch navigationEvent {
