@@ -32,6 +32,8 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 	var lineCoordinateImage: UIImage?
 	var segmentationImage: UIImage?
 	
+	var translasionResult: String?
+	
 	var galleryViewImagesData: [UIImage?] = []
 	
 	// MARK: - Life Cycles
@@ -126,6 +128,9 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 			
 			// Segmentation Image
 			self?.segmentationImage = self?.readDot?.segmentation(from: passedData.image)
+			
+			// Translating Braille
+			self?.translasionResult = self?.readDot?.translateBraille(from: passedData.image)
 			
 			ThreadManager.executeOnMain {
 				
