@@ -69,6 +69,12 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 		loadData()
 	}
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		configureBar()
+	}
+	
 	// MARK: - Private Methods
 	
 	private func configureImageProcessor() {
@@ -95,6 +101,13 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 		let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 		navigationItem.titleView = screenView.segmentControl
 		toolbarItems = [screenView.downloadBarButton, spacer, screenView.adjustBarButton, spacer, screenView.nextBarButton]
+	}
+	
+	private func configureBar() {
+		setLargeTitleDisplayMode(.never)
+		navigationController?.setNavigationBarHidden(false, animated: true)
+		navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+		navigationController?.setToolbarHidden(false, animated: true)
 	}
 	
 	private func configureViewEvent() {
