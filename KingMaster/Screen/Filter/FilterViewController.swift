@@ -73,7 +73,7 @@ class FilterViewController: RBPhotosGalleryViewController {
 		let dilateParam = DilateParamUserSetting.shared.read()
 		let erodeParam = ErodeParamUserSetting.shared.read()
 		
-		convertColor = ConvertColor(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3)
+		convertColor = ConvertColor(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3, cropOffsideX: 200, cropOffsideY: 50)
 	}
 	
 	private func configureLoadBar() {
