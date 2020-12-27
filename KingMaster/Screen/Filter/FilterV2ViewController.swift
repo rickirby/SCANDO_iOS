@@ -15,6 +15,12 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 	
 	// MARK: - Public Properties
 	
+	enum NavigationEvent {
+		case didOpenTranslasion(rawValue: String, enhancedValue: String)
+	}
+	
+	var onNavigationEvent: ((NavigationEvent) -> Void)?
+	
 	var passedData: (() -> FilterCoordinator.FilterData)?
 	
 	// MARK: - Private Properties
@@ -24,6 +30,8 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 	var convertColor: ConvertColor?
 	var readDot: ReadDot?
 	
+	var brailleService: BrailleService?
+	
 	var erodeImage: UIImage?
 	
 	var rawContorusImage: UIImage?
@@ -31,6 +39,8 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 	var redrawImage: UIImage?
 	var lineCoordinateImage: UIImage?
 	var segmentationImage: UIImage?
+	
+	var translasionResult: String?
 	
 	var galleryViewImagesData: [UIImage?] = []
 	
@@ -52,10 +62,17 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 		super.viewDidLoad()
 		
 		configureImageProcessor()
+		configureService()
 		configureViewState()
 		configureLoadBar()
 		configureViewEvent()
 		loadData()
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		configureBar()
 	}
 	
 	// MARK: - Private Methods
@@ -72,6 +89,10 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 		// NOTES: done with the end of FPP-77 & FPP-82
 	}
 	
+	private func configureService() {
+		brailleService = BrailleService(readDot: readDot)
+	}
+	
 	private func configureViewState() {
 		screenView.isV2 = true
 	}
@@ -79,7 +100,14 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 	private func configureLoadBar() {
 		let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 		navigationItem.titleView = screenView.segmentControl
-		toolbarItems = [screenView.downloadBarButton, spacer, screenView.adjustBarButton]
+		toolbarItems = [screenView.downloadBarButton, spacer, screenView.adjustBarButton, spacer, screenView.nextBarButton]
+	}
+	
+	private func configureBar() {
+		setLargeTitleDisplayMode(.never)
+		navigationController?.setNavigationBarHidden(false, animated: true)
+		navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+		navigationController?.setToolbarHidden(false, animated: true)
 	}
 	
 	private func configureViewEvent() {
@@ -91,8 +119,8 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 				self?.downloadImage()
 			case .didTapAdjust:
 				self?.adjustParam()
-			default:
-				break
+			case .didTapNext:
+				self?.translateImage()
 			}
 		}
 	}
@@ -126,6 +154,9 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 			
 			// Segmentation Image
 			self?.segmentationImage = self?.readDot?.segmentation(from: passedData.image)
+			
+			// Translating Braille
+			self?.translasionResult = self?.readDot?.translateBraille(from: passedData.image)
 			
 			ThreadManager.executeOnMain {
 				
@@ -194,6 +225,32 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 			}
 			
 		}, cancelHandler: {})
+	}
+	
+	private func translateImage() {
+		guard let originalImage = passedData?().image else {
+			return
+		}
+		
+		screenView.startLoading()
+		
+		let serviceObject = brailleService?.getTranslatedBraille(from: originalImage)
+		serviceObject?.onSuccess = {
+			let (rawResult, enhancedResult) = $0
+			print(rawResult)
+			print(enhancedResult)
+			ThreadManager.executeOnMain {
+				self.screenView.stopLoading()
+				self.onNavigationEvent?(.didOpenTranslasion(rawValue: rawResult, enhancedValue: enhancedResult))
+			}
+		}
+		serviceObject?.onError = { error in
+			print("===*** Got error \(error)")
+			
+			ThreadManager.executeOnMain {
+				self.screenView.stopLoading()
+			}
+		}
 	}
 	
 	private func downloadImage() {
