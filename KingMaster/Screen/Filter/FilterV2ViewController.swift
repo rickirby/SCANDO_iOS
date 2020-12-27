@@ -40,8 +40,6 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 	var lineCoordinateImage: UIImage?
 	var segmentationImage: UIImage?
 	
-	var translasionResult: String?
-	
 	var galleryViewImagesData: [UIImage?] = []
 	
 	// MARK: - Life Cycles
@@ -85,7 +83,7 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 		
 		convertColor = ConvertColor(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3)
 		
-		readDot = ReadDot(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3, minAreaContourFilter: blobAnalysisParam?.minAreaContourFilter ?? 200, maxAreaContourFilter: blobAnalysisParam?.maxAreaContourFilter ?? 500, redrawCircleSize: blobAnalysisParam?.redrawCircleSize ?? 10, maxSpaceForGroupingSameRowAndCols: blobAnalysisParam?.maxSpaceForGroupingSameRowAndCols ?? 20, maxDotSpaceInterDot: blobAnalysisParam?.maxDotSpaceInterDot ?? 40, defaultDotSpaceInterDot: blobAnalysisParam?.defaultDotSpaceInterDot ?? 30)
+		readDot = ReadDot(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3, minAreaContourFilter: blobAnalysisParam?.minAreaContourFilter ?? 200, maxAreaContourFilter: blobAnalysisParam?.maxAreaContourFilter ?? 500, redrawCircleSize: blobAnalysisParam?.redrawCircleSize ?? 10, maxSpaceForGroupingSameRowAndCols: blobAnalysisParam?.maxSpaceForGroupingSameRowAndCols ?? 20, maxDotSpaceInterDot: blobAnalysisParam?.maxDotSpaceInterDot ?? 40, defaultDotSpaceInterDot: blobAnalysisParam?.defaultDotSpaceInterDot ?? 30, cropOffsideX: 200, cropOffsideY: 50)
 		// NOTES: done with the end of FPP-77 & FPP-82
 	}
 	
@@ -154,9 +152,6 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 			
 			// Segmentation Image
 			self?.segmentationImage = self?.readDot?.segmentation(from: passedData.image)
-			
-			// Translating Braille
-			self?.translasionResult = self?.readDot?.translateBraille(from: passedData.image)
 			
 			ThreadManager.executeOnMain {
 				
