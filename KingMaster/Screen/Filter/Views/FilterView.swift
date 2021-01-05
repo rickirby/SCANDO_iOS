@@ -31,7 +31,7 @@ class FilterView: UIView {
 	
 	// MARK: - Private Properties
 	
-	private let filtersComponents: [String] = ["Ori", "Gray", "AdptvTh", "Dilate", "Erode"]
+	private let filtersComponents: [String] = ["Ori", "Crop", "Gray", "AdptvTh", "Dilate", "Erode"]
 	private let filtersV2Components: [String] = ["Erode", "RawCont", "FiltCont", "reDraw", "Line", "Segmnt"]
 	
 	// MARK: - View Components

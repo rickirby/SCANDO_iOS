@@ -30,6 +30,7 @@ class FilterViewController: RBPhotosGalleryViewController {
 	var convertColor: ConvertColor?
 	
 	var originalImage: UIImage?
+	var croppedImage: UIImage?
 	var grayImage: UIImage?
 	var adaptiveThresholdImage: UIImage?
 	var dilateImage: UIImage?
@@ -101,6 +102,8 @@ class FilterViewController: RBPhotosGalleryViewController {
 		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
 			// Original Image
 			self?.originalImage = passedData.image
+			// Cropped Image
+			self?.croppedImage = self?.convertColor?.makeCropped(from: passedData.image)
 			// Gray Image
 			self?.grayImage = self?.convertColor?.makeGray(from: passedData.image)
 			// Adaptive Threshold Image
@@ -112,7 +115,7 @@ class FilterViewController: RBPhotosGalleryViewController {
 			
 			ThreadManager.executeOnMain {
 				
-				self?.galleryViewImagesData = [self?.originalImage, self?.grayImage, self?.adaptiveThresholdImage, self?.dilateImage, self?.erodeImage]
+				self?.galleryViewImagesData = [self?.originalImage, self?.croppedImage, self?.grayImage, self?.adaptiveThresholdImage, self?.dilateImage, self?.erodeImage]
 				self?.reloadPhotosData()
 				self?.refreshImage(index: self?.screenView.segmentControl.selectedSegmentIndex ?? 0)
 				self?.screenView.stopLoading()
@@ -138,7 +141,7 @@ class FilterViewController: RBPhotosGalleryViewController {
 	private func refreshImage(index: Int) {
 		self.scrollToPhotos(index: index)
 		
-		screenView.adjustBarButton.isEnabled = (index == 2) || (index == 3) || (index == 4)
+		screenView.adjustBarButton.isEnabled = (index == 3) || (index == 4) || (index == 5)
 	}
 	
 	private func downloadImage() {
@@ -164,11 +167,11 @@ class FilterViewController: RBPhotosGalleryViewController {
 	
 	private func adjustParam() {
 		switch screenView.segmentControl.selectedSegmentIndex {
-		case 2:
-			adjustAdaptiveParam()
 		case 3:
-			adjustDilateParam()
+			adjustAdaptiveParam()
 		case 4:
+			adjustDilateParam()
+		case 5:
 			adjustErodeParam()
 		default:
 			break
