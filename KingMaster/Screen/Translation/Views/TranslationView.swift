@@ -27,7 +27,7 @@ class TranslationView: View {
 		textView.layer.borderWidth = 1.0
 		textView.layer.borderColor = UIColor.gray.cgColor
 		textView.layer.cornerRadius = 3.0
-		textView.font = .preferredFont(forTextStyle: .body)
+		textView.font = UIFont.monospacedSystemFont(ofSize: 18, weight: .regular)
 		textView.addDoneButtonOnKeyboard()
 		
 		return textView

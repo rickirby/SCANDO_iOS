@@ -20,6 +20,8 @@ class TranslationViewController: ViewController<TranslationView> {
 	
 	var onNavigationEvent: ((NavigationEvent) -> Void)?
 	
+	var passedData: (() -> TranslationCoordinator.TranslasionData)?
+	
 	// MARK: - Life Cycles
 	
 	override func viewDidLoad() {
@@ -27,6 +29,7 @@ class TranslationViewController: ViewController<TranslationView> {
 		
 		configureLoadBar()
 		configureViewEvent()
+		configureView()
 		automaticallyAdjustKeyboardLayoutGuide = true
 	}
 	
@@ -57,6 +60,14 @@ class TranslationViewController: ViewController<TranslationView> {
 				self?.openPrint()
 			}
 		}
+	}
+	
+	private func configureView() {
+		guard let passedData = passedData?() else {
+			return
+		}
+		
+		screenView.resultTextView.text = passedData.rawValue
 	}
 	
 	private func openPrint() {

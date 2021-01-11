@@ -17,12 +17,22 @@
 		0922627525053E0B00BDDB90 /* DocumentGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0922627225053E0B00BDDB90 /* DocumentGroupViewController.swift */; };
 		0922627625053E0B00BDDB90 /* DocumentGroupCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0922627325053E0B00BDDB90 /* DocumentGroupCollectionViewCell.swift */; };
 		092E85D5250659B300A01F60 /* DocumentGroupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E85D4250659B300A01F60 /* DocumentGroupCoordinator.swift */; };
+		093E6E8F259745720061FB43 /* ServiceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E6E8E259745720061FB43 /* ServiceObject.swift */; };
+		093E6E90259745720061FB43 /* ServiceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E6E8E259745720061FB43 /* ServiceObject.swift */; };
+		093E6E952597465A0061FB43 /* BrailleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E6E942597465A0061FB43 /* BrailleService.swift */; };
+		093E6E962597465A0061FB43 /* BrailleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E6E942597465A0061FB43 /* BrailleService.swift */; };
+		093E6E9925975BF70061FB43 /* TranslasionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E6E9825975BF70061FB43 /* TranslasionData.swift */; };
+		093E6E9A25975BF70061FB43 /* TranslasionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E6E9825975BF70061FB43 /* TranslasionData.swift */; };
+		0957A3B9258EBD6F00AE8491 /* BlobAnalysisParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957A3B8258EBD6F00AE8491 /* BlobAnalysisParamUserSetting.swift */; };
+		0957A3BA258EBD6F00AE8491 /* BlobAnalysisParamUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957A3B8258EBD6F00AE8491 /* BlobAnalysisParamUserSetting.swift */; };
 		097A18A825046E660044D5FB /* ScanAlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A18A725046E660044D5FB /* ScanAlbumsViewController.swift */; };
 		097A18AC25046FD70044D5FB /* ScanAlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A18AB25046FD70044D5FB /* ScanAlbumsView.swift */; };
 		0981C882257E900300D8A7E4 /* FilterV2Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981C881257E900300D8A7E4 /* FilterV2Coordinator.swift */; };
 		0981C883257E900300D8A7E4 /* FilterV2Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981C881257E900300D8A7E4 /* FilterV2Coordinator.swift */; };
 		0981C890257E933200D8A7E4 /* FilterV2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981C88F257E933200D8A7E4 /* FilterV2ViewController.swift */; };
 		0981C891257E933200D8A7E4 /* FilterV2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981C88F257E933200D8A7E4 /* FilterV2ViewController.swift */; };
+		09A7B2702594F32800950351 /* RBImageProcessor.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 09A7B26F2594F32800950351 /* RBImageProcessor.bundle */; };
+		09A7B2792594F43F00950351 /* RBImageProcessor.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 09A7B26F2594F32800950351 /* RBImageProcessor.bundle */; };
 		09C8ADAC2506511F004BA0F7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADAB2506511F004BA0F7 /* Coordinator.swift */; };
 		09C8ADAE25065154004BA0F7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADAD25065154004BA0F7 /* Router.swift */; };
 		09C8ADB0250652BC004BA0F7 /* ScanAlbumsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8ADAF250652BC004BA0F7 /* ScanAlbumsCoordinator.swift */; };
@@ -208,12 +218,17 @@
 		0922627225053E0B00BDDB90 /* DocumentGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentGroupViewController.swift; sourceTree = "<group>"; };
 		0922627325053E0B00BDDB90 /* DocumentGroupCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentGroupCollectionViewCell.swift; sourceTree = "<group>"; };
 		092E85D4250659B300A01F60 /* DocumentGroupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentGroupCoordinator.swift; sourceTree = "<group>"; };
+		093E6E8E259745720061FB43 /* ServiceObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceObject.swift; sourceTree = "<group>"; };
+		093E6E942597465A0061FB43 /* BrailleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrailleService.swift; sourceTree = "<group>"; };
+		093E6E9825975BF70061FB43 /* TranslasionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslasionData.swift; sourceTree = "<group>"; };
+		0957A3B8258EBD6F00AE8491 /* BlobAnalysisParamUserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobAnalysisParamUserSetting.swift; sourceTree = "<group>"; };
 		097A18A725046E660044D5FB /* ScanAlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAlbumsViewController.swift; sourceTree = "<group>"; };
 		097A18AB25046FD70044D5FB /* ScanAlbumsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAlbumsView.swift; sourceTree = "<group>"; };
 		0981C881257E900300D8A7E4 /* FilterV2Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterV2Coordinator.swift; sourceTree = "<group>"; };
 		0981C88F257E933200D8A7E4 /* FilterV2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterV2ViewController.swift; sourceTree = "<group>"; };
 		099AB1FF2503E6C500B76522 /* RBPhotosGallery.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBPhotosGallery.framework; path = Carthage/Build/iOS/RBPhotosGallery.framework; sourceTree = "<group>"; };
 		099AB2002503E6C600B76522 /* RBToolkit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBToolkit.framework; path = Carthage/Build/iOS/RBToolkit.framework; sourceTree = "<group>"; };
+		09A7B26F2594F32800950351 /* RBImageProcessor.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = RBImageProcessor.bundle; path = Carthage/Build/iOS/RBImageProcessor.framework/RBImageProcessor.bundle; sourceTree = "<group>"; };
 		09C8ADAB2506511F004BA0F7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		09C8ADAD25065154004BA0F7 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		09C8ADAF250652BC004BA0F7 /* ScanAlbumsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAlbumsCoordinator.swift; sourceTree = "<group>"; };
@@ -353,6 +368,7 @@
 				09C8ADB1250653FF004BA0F7 /* AppCoordinator.swift */,
 				DC215A032516618A006D409A /* Data */,
 				097A18A525046CED0044D5FB /* Screen */,
+				093E6E92259746350061FB43 /* Service */,
 				09C8ADA9250650E7004BA0F7 /* Common */,
 				0901C6A625038A340051FF16 /* Assets.xcassets */,
 				0901C6A825038A340051FF16 /* LaunchScreen.storyboard */,
@@ -380,6 +396,30 @@
 				0922627325053E0B00BDDB90 /* DocumentGroupCollectionViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		093E6E92259746350061FB43 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				093E6E93259746490061FB43 /* BrailleService */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		093E6E93259746490061FB43 /* BrailleService */ = {
+			isa = PBXGroup;
+			children = (
+				093E6E942597465A0061FB43 /* BrailleService.swift */,
+			);
+			path = BrailleService;
+			sourceTree = "<group>";
+		};
+		093E6E9725975BE40061FB43 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				093E6E9825975BF70061FB43 /* TranslasionData.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		097A18A525046CED0044D5FB /* Screen */ = {
@@ -479,6 +519,7 @@
 			children = (
 				09E437552576AE4B006F33FF /* TranslationCoordinator.swift */,
 				09E437502576ACD9006F33FF /* TranslationViewController.swift */,
+				093E6E9725975BE40061FB43 /* Models */,
 				09E437482576AC9A006F33FF /* Views */,
 			);
 			path = Translation;
@@ -602,6 +643,7 @@
 		DC832C57251F42D3001D54C0 /* Bundles */ = {
 			isa = PBXGroup;
 			children = (
+				09A7B26F2594F32800950351 /* RBImageProcessor.bundle */,
 				DC832C55251F4238001D54C0 /* RBCameraDocScan.bundle */,
 			);
 			name = Bundles;
@@ -631,6 +673,7 @@
 				DCAC3ED625158F6B00F5DD59 /* ThreadManager.swift */,
 				09FDB4A2252FED7E007E8D7A /* UserSetting.swift */,
 				DC8D715C256A90D6009B7606 /* NetworkRequest.swift */,
+				093E6E8E259745720061FB43 /* ServiceObject.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -723,6 +766,7 @@
 				09FDB4A5252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift */,
 				DC9F070D25314818005A517B /* DilateParamUserSetting.swift */,
 				DC3F5E95253159CB007B6B3E /* ErodeParamUserSetting.swift */,
+				0957A3B8258EBD6F00AE8491 /* BlobAnalysisParamUserSetting.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -860,6 +904,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09A7B2792594F43F00950351 /* RBImageProcessor.bundle in Resources */,
 				DC832C56251F4238001D54C0 /* RBCameraDocScan.bundle in Resources */,
 				0901C6AA25038A340051FF16 /* LaunchScreen.storyboard in Resources */,
 				DC46E1452521686E000ED989 /* README.md in Resources */,
@@ -871,6 +916,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09A7B2702594F32800950351 /* RBImageProcessor.bundle in Resources */,
 				DCD73542252CACF70046775E /* RBCameraDocScan.bundle in Resources */,
 				DCD73543252CACF70046775E /* LaunchScreen.storyboard in Resources */,
 				DCD73544252CACF70046775E /* README.md in Resources */,
@@ -934,11 +980,13 @@
 			files = (
 				DCB5C6C62556FA6900E87733 /* SettingViewController.swift in Sources */,
 				09DF1830257A882000517AF9 /* PrintingViewController.swift in Sources */,
+				0957A3B9258EBD6F00AE8491 /* BlobAnalysisParamUserSetting.swift in Sources */,
 				DC215A1F25166321006D409A /* Document+CoreDataProperties.swift in Sources */,
 				DC455B012568F0EC00A0089F /* WifiSelectionCoordinator.swift in Sources */,
 				DC82CC952517058900403550 /* SCANDODateFormatter.swift in Sources */,
 				09C8ADAE25065154004BA0F7 /* Router.swift in Sources */,
 				DC455AFA2568E89300A0089F /* ConnectionUserSetting.swift in Sources */,
+				093E6E8F259745720061FB43 /* ServiceObject.swift in Sources */,
 				DC3F5E96253159CB007B6B3E /* ErodeParamUserSetting.swift in Sources */,
 				09FDB4A6252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift in Sources */,
 				DC215A1D25166321006D409A /* QuadPoint+CoreDataProperties.swift in Sources */,
@@ -969,6 +1017,7 @@
 				DCB3CE4E251A5A4400D4EDFB /* GalleryData.swift in Sources */,
 				DC215A2025166321006D409A /* DocumentImage+CoreDataClass.swift in Sources */,
 				DC215A2125166321006D409A /* DocumentImage+CoreDataProperties.swift in Sources */,
+				093E6E9925975BF70061FB43 /* TranslasionData.swift in Sources */,
 				DC9F070E25314818005A517B /* DilateParamUserSetting.swift in Sources */,
 				DC215A1C25166321006D409A /* QuadPoint+CoreDataClass.swift in Sources */,
 				DC7129912515736A00ACCB2B /* PreviewCoordinator.swift in Sources */,
@@ -1007,6 +1056,7 @@
 				DC89012425583FA9001318D7 /* ConnectionStatusViewController.swift in Sources */,
 				09E437562576AE4B006F33FF /* TranslationCoordinator.swift in Sources */,
 				DC215A1E25166321006D409A /* Document+CoreDataClass.swift in Sources */,
+				093E6E952597465A0061FB43 /* BrailleService.swift in Sources */,
 				DC75E59F2513AA4700186F30 /* EditScanData.swift in Sources */,
 				DC4F8D232560E1A900EA616C /* UITextField&UITextView+Extension.swift in Sources */,
 				DC8DB88025584A3F00F8437F /* ConnectionStatusCoordinator.swift in Sources */,
@@ -1024,11 +1074,13 @@
 			files = (
 				DCB5C6C72556FA6900E87733 /* SettingViewController.swift in Sources */,
 				09DF1831257A882000517AF9 /* PrintingViewController.swift in Sources */,
+				0957A3BA258EBD6F00AE8491 /* BlobAnalysisParamUserSetting.swift in Sources */,
 				DCD7350D252CACF70046775E /* Document+CoreDataProperties.swift in Sources */,
 				DC455B022568F0EC00A0089F /* WifiSelectionCoordinator.swift in Sources */,
 				DCD7350E252CACF70046775E /* SCANDODateFormatter.swift in Sources */,
 				DCD7350F252CACF70046775E /* Router.swift in Sources */,
 				DC455AFB2568E89300A0089F /* ConnectionUserSetting.swift in Sources */,
+				093E6E90259745720061FB43 /* ServiceObject.swift in Sources */,
 				DC3F5E9725315AEC007B6B3E /* ErodeParamUserSetting.swift in Sources */,
 				09FDB4A7252FEE5E007E8D7A /* AdaptiveParamUserSetting.swift in Sources */,
 				DCD73510252CACF70046775E /* QuadPoint+CoreDataProperties.swift in Sources */,
@@ -1059,6 +1111,7 @@
 				DCD7351B252CACF70046775E /* GalleryCache.swift in Sources */,
 				DCD7351C252CACF70046775E /* ScanImagePickerCoordinator.swift in Sources */,
 				DCD7351D252CACF70046775E /* DocumentGroupViewController.swift in Sources */,
+				093E6E9A25975BF70061FB43 /* TranslasionData.swift in Sources */,
 				DCD7351E252CACF70046775E /* GalleryData.swift in Sources */,
 				DC9F070F253149B5005A517B /* DilateParamUserSetting.swift in Sources */,
 				DCD7351F252CACF70046775E /* DocumentImage+CoreDataClass.swift in Sources */,
@@ -1097,6 +1150,7 @@
 				DCD238EE252DF18700E7C0A3 /* FilterViewController.swift in Sources */,
 				09E437572576AE4B006F33FF /* TranslationCoordinator.swift in Sources */,
 				DC301E412558C38D00E9B50D /* ConnectionStatusCoordinator.swift in Sources */,
+				093E6E962597465A0061FB43 /* BrailleService.swift in Sources */,
 				DCD73538252CACF70046775E /* Document+CoreDataClass.swift in Sources */,
 				DC4F8D242560E1A900EA616C /* UITextField&UITextView+Extension.swift in Sources */,
 				DCD73539252CACF70046775E /* EditScanData.swift in Sources */,
@@ -1254,7 +1308,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.4.0;
+				MARKETING_VERSION = 0.5.0;
 				OTHER_SWIFT_FLAGS = "-DPRODUCTION";
 				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.apps.SCANDO;
 				PRODUCT_NAME = SCANDO;
@@ -1281,7 +1335,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.4.0;
+				MARKETING_VERSION = 0.5.0;
 				OTHER_SWIFT_FLAGS = "-DPRODUCTION";
 				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.apps.SCANDO;
 				PRODUCT_NAME = SCANDO;
@@ -1308,7 +1362,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.4.0;
+				MARKETING_VERSION = 0.5.0;
 				OTHER_SWIFT_FLAGS = "-DSANDBOX";
 				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.apps.dev.SCANDO;
 				PRODUCT_NAME = "DEV🛠";
@@ -1335,7 +1389,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.4.0;
+				MARKETING_VERSION = 0.5.0;
 				OTHER_SWIFT_FLAGS = "-DSANDBOX";
 				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.apps.dev.SCANDO;
 				PRODUCT_NAME = "DEV🛠";

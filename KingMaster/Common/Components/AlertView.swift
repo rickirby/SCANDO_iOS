@@ -188,6 +188,55 @@ class AlertView {
 		target.present(ac, animated: true, completion: nil)
 	}
 	
+	static func createBlobAnalysisParamAlert(_ target: UIViewController, currentMinArea: Double?, currentMaxArea: Double?, currentCircleSize: Double?, currentSpaceForGroupingSameRowCols: Double?, currentMaxDotSpaceInterDot: Double?, currentDefaultDotSpaceInterDot: Double?, setHandler: @escaping (UITextField, UITextField, UITextField, UITextField, UITextField, UITextField) -> Void, cancelHandler: @escaping () -> Void) {
+		let ac = UIAlertController(title: SCANDOConstant.setBlobAnalysisParamTitle, message: SCANDOConstant.setBlobAnalysisParamMessage, preferredStyle: .alert)
+		ac.addTextField {
+			$0.placeholder = SCANDOConstant.setBlobAnalysisMinAreaPlaceholder
+			if let minArea = currentMinArea {
+				$0.text = String(minArea)
+			}
+		}
+		ac.addTextField {
+			$0.placeholder = SCANDOConstant.setBlobAnalysisMaxAreaPlaceholder
+			if let maxArea = currentMaxArea {
+				$0.text = String(maxArea)
+			}
+		}
+		ac.addTextField {
+			$0.placeholder = SCANDOConstant.setBlobAnalysisCircleSizePlaceholder
+			if let circleSize = currentCircleSize {
+				$0.text = String(circleSize)
+			}
+		}
+		ac.addTextField {
+			$0.placeholder = SCANDOConstant.setBlobAnalysisMaxSpaceForGroupingSameRowColsPlaceholder
+			if let spaceForGroupingSameRowCols = currentSpaceForGroupingSameRowCols {
+				$0.text = String(spaceForGroupingSameRowCols)
+			}
+		}
+		ac.addTextField {
+			$0.placeholder = SCANDOConstant.setBlobAnalysisMaxDotSpaceInterDotPlaceholder
+			if let maxDotSpaceInterDot = currentMaxDotSpaceInterDot {
+				$0.text = String(maxDotSpaceInterDot)
+			}
+		}
+		ac.addTextField {
+			$0.placeholder = SCANDOConstant.setBlobAnalysisDefaultDotSpaceInterDotPlaceholder
+			if let defaultDotSpaceInterDot = currentDefaultDotSpaceInterDot {
+				$0.text = String(defaultDotSpaceInterDot)
+			}
+		}
+		ac.addAction(UIAlertAction(title: SCANDOConstant.setBlobAnalysisPositiveAction, style: .default, handler: { _ in
+			guard let textField0 = ac.textFields?[0], let textField1 = ac.textFields?[1], let textField2 = ac.textFields?[2], let textField3 = ac.textFields?[3], let textField4 = ac.textFields?[4], let textField5 = ac.textFields?[5] else { return }
+			setHandler(textField0, textField1, textField2, textField3, textField4, textField5)
+		}))
+		ac.addAction(UIAlertAction(title: SCANDOConstant.setBlobAnalysisNegativeAction, style: .cancel, handler: { _ in
+			cancelHandler()
+		}))
+		
+		target.present(ac, animated: true, completion: nil)
+	}
+	
 	static func createConnectionModeAlert(_ target: UIViewController, directConnectHandler: @escaping () -> Void, sharedConnectionHandler: @escaping () -> Void, cancelHandler: @escaping () -> Void) {
 		let ac = UIAlertController(title: SCANDOConstant.connectionModeTitle, message: SCANDOConstant.connectionModeMessage, preferredStyle: .actionSheet)
 		ac.addAction(UIAlertAction(title: SCANDOConstant.connectionModeDirectAction, style: .default, handler: { _ in
