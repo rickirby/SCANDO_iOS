@@ -15,6 +15,12 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 	
 	// MARK: - Public Properties
 	
+	enum NavigationEvent {
+		case didOpenTranslasion(rawValue: String, enhancedValue: String)
+	}
+	
+	var onNavigationEvent: ((NavigationEvent) -> Void)?
+	
 	var passedData: (() -> FilterCoordinator.FilterData)?
 	
 	// MARK: - Private Properties
@@ -23,6 +29,8 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 	
 	var convertColor: ConvertColor?
 	var readDot: ReadDot?
+	
+	var brailleService: BrailleService?
 	
 	var erodeImage: UIImage?
 	
@@ -52,10 +60,17 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 		super.viewDidLoad()
 		
 		configureImageProcessor()
+		configureService()
 		configureViewState()
 		configureLoadBar()
 		configureViewEvent()
 		loadData()
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		configureBar()
 	}
 	
 	// MARK: - Private Methods
@@ -66,10 +81,14 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 		let erodeParam = ErodeParamUserSetting.shared.read()
 		let blobAnalysisParam = BlobAnalysisParamUserSetting.shared.read()
 		
-		convertColor = ConvertColor(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3)
+		convertColor = ConvertColor(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3, cropOffsideX: 200, cropOffsideY: 50)
 		
-		readDot = ReadDot(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3, minAreaContourFilter: blobAnalysisParam?.minAreaContourFilter ?? 200, maxAreaContourFilter: blobAnalysisParam?.maxAreaContourFilter ?? 500, redrawCircleSize: blobAnalysisParam?.redrawCircleSize ?? 10, maxSpaceForGroupingSameRowAndCols: blobAnalysisParam?.maxSpaceForGroupingSameRowAndCols ?? 20, maxDotSpaceInterDot: blobAnalysisParam?.maxDotSpaceInterDot ?? 40, defaultDotSpaceInterDot: blobAnalysisParam?.defaultDotSpaceInterDot ?? 30)
+		readDot = ReadDot(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3, minAreaContourFilter: blobAnalysisParam?.minAreaContourFilter ?? 160, maxAreaContourFilter: blobAnalysisParam?.maxAreaContourFilter ?? 500, redrawCircleSize: blobAnalysisParam?.redrawCircleSize ?? 15, maxSpaceForGroupingSameRowAndCols: blobAnalysisParam?.maxSpaceForGroupingSameRowAndCols ?? 15, maxDotSpaceInterDot: blobAnalysisParam?.maxDotSpaceInterDot ?? 40, defaultDotSpaceInterDot: blobAnalysisParam?.defaultDotSpaceInterDot ?? 30, cropOffsideX: 200, cropOffsideY: 50)
 		// NOTES: done with the end of FPP-77 & FPP-82
+	}
+	
+	private func configureService() {
+		brailleService = BrailleService(readDot: readDot)
 	}
 	
 	private func configureViewState() {
@@ -79,7 +98,14 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 	private func configureLoadBar() {
 		let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 		navigationItem.titleView = screenView.segmentControl
-		toolbarItems = [screenView.downloadBarButton, spacer, screenView.adjustBarButton]
+		toolbarItems = [screenView.downloadBarButton, spacer, screenView.adjustBarButton, spacer, screenView.nextBarButton]
+	}
+	
+	private func configureBar() {
+		setLargeTitleDisplayMode(.never)
+		navigationController?.setNavigationBarHidden(false, animated: true)
+		navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+		navigationController?.setToolbarHidden(false, animated: true)
 	}
 	
 	private func configureViewEvent() {
@@ -91,8 +117,8 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 				self?.downloadImage()
 			case .didTapAdjust:
 				self?.adjustParam()
-			default:
-				break
+			case .didTapNext:
+				self?.translateImage()
 			}
 		}
 	}
@@ -164,14 +190,14 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 				// Provide default value if text field error or empty
 				DispatchQueue.global(qos: .userInitiated).async {
 					
-					self.readDot?.setMinAreaContourFilter(200)
+					self.readDot?.setMinAreaContourFilter(160)
 					self.readDot?.setMaxAreaContourFilter(500)
-					self.readDot?.setRedrawCircleSize(10)
-					self.readDot?.setMaxSpaceForGroupingSameRowAndCols(20)
+					self.readDot?.setRedrawCircleSize(15)
+					self.readDot?.setMaxSpaceForGroupingSameRowAndCols(15)
 					self.readDot?.setMaxDotSpaceInter(40)
 					self.readDot?.setDefaultDotSpaceInter(30)
 					
-					BlobAnalysisParamUserSetting.shared.save(BlobAnalysisParamUserSetting.BlobAnalysisParam(minAreaContourFilter: 200, maxAreaContourFilter: 500, redrawCircleSize: 10, maxSpaceForGroupingSameRowAndCols: 20, maxDotSpaceInterDot: 40, defaultDotSpaceInterDot: 30))
+					BlobAnalysisParamUserSetting.shared.save(BlobAnalysisParamUserSetting.BlobAnalysisParam(minAreaContourFilter: 160, maxAreaContourFilter: 500, redrawCircleSize: 15, maxSpaceForGroupingSameRowAndCols: 15, maxDotSpaceInterDot: 40, defaultDotSpaceInterDot: 30))
 					
 					self.loadData()
 				}
@@ -194,6 +220,32 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 			}
 			
 		}, cancelHandler: {})
+	}
+	
+	private func translateImage() {
+		guard let originalImage = passedData?().image else {
+			return
+		}
+		
+		screenView.startLoading()
+		
+		let serviceObject = brailleService?.getTranslatedBraille(from: originalImage)
+		serviceObject?.onSuccess = {
+			let (rawResult, enhancedResult) = $0
+			print(rawResult)
+			print(enhancedResult)
+			ThreadManager.executeOnMain {
+				self.screenView.stopLoading()
+				self.onNavigationEvent?(.didOpenTranslasion(rawValue: rawResult, enhancedValue: enhancedResult))
+			}
+		}
+		serviceObject?.onError = { error in
+			print("===*** Got error \(error)")
+			
+			ThreadManager.executeOnMain {
+				self.screenView.stopLoading()
+			}
+		}
 	}
 	
 	private func downloadImage() {

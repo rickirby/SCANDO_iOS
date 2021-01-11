@@ -30,6 +30,7 @@ class FilterViewController: RBPhotosGalleryViewController {
 	var convertColor: ConvertColor?
 	
 	var originalImage: UIImage?
+	var croppedImage: UIImage?
 	var grayImage: UIImage?
 	var adaptiveThresholdImage: UIImage?
 	var dilateImage: UIImage?
@@ -60,6 +61,12 @@ class FilterViewController: RBPhotosGalleryViewController {
 		configureViewEvent()
 	}
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		configureBar()
+	}
+	
 	// MARK: - Private Methods
 	
 	private func configureImageProcessor() {
@@ -67,13 +74,20 @@ class FilterViewController: RBPhotosGalleryViewController {
 		let dilateParam = DilateParamUserSetting.shared.read()
 		let erodeParam = ErodeParamUserSetting.shared.read()
 		
-		convertColor = ConvertColor(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3)
+		convertColor = ConvertColor(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3, cropOffsideX: 200, cropOffsideY: 50)
 	}
 	
 	private func configureLoadBar() {
 		let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 		navigationItem.titleView = screenView.segmentControl
 		toolbarItems = [screenView.downloadBarButton, spacer, screenView.adjustBarButton, spacer, screenView.nextBarButton]
+	}
+	
+	private func configureBar() {
+		setLargeTitleDisplayMode(.never)
+		navigationController?.setNavigationBarHidden(false, animated: true)
+		navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+		navigationController?.setToolbarHidden(false, animated: true)
 	}
 	
 	private func loadData() {
@@ -88,6 +102,8 @@ class FilterViewController: RBPhotosGalleryViewController {
 		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
 			// Original Image
 			self?.originalImage = passedData.image
+			// Cropped Image
+			self?.croppedImage = self?.convertColor?.makeCropped(from: passedData.image)
 			// Gray Image
 			self?.grayImage = self?.convertColor?.makeGray(from: passedData.image)
 			// Adaptive Threshold Image
@@ -99,7 +115,7 @@ class FilterViewController: RBPhotosGalleryViewController {
 			
 			ThreadManager.executeOnMain {
 				
-				self?.galleryViewImagesData = [self?.originalImage, self?.grayImage, self?.adaptiveThresholdImage, self?.dilateImage, self?.erodeImage]
+				self?.galleryViewImagesData = [self?.originalImage, self?.croppedImage, self?.grayImage, self?.adaptiveThresholdImage, self?.dilateImage, self?.erodeImage]
 				self?.reloadPhotosData()
 				self?.refreshImage(index: self?.screenView.segmentControl.selectedSegmentIndex ?? 0)
 				self?.screenView.stopLoading()
@@ -125,7 +141,7 @@ class FilterViewController: RBPhotosGalleryViewController {
 	private func refreshImage(index: Int) {
 		self.scrollToPhotos(index: index)
 		
-		screenView.adjustBarButton.isEnabled = (index == 2) || (index == 3) || (index == 4)
+		screenView.adjustBarButton.isEnabled = (index == 3) || (index == 4) || (index == 5)
 	}
 	
 	private func downloadImage() {
@@ -151,11 +167,11 @@ class FilterViewController: RBPhotosGalleryViewController {
 	
 	private func adjustParam() {
 		switch screenView.segmentControl.selectedSegmentIndex {
-		case 2:
-			adjustAdaptiveParam()
 		case 3:
-			adjustDilateParam()
+			adjustAdaptiveParam()
 		case 4:
+			adjustDilateParam()
+		case 5:
 			adjustErodeParam()
 		default:
 			break
