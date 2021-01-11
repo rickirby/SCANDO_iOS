@@ -83,7 +83,7 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 		
 		convertColor = ConvertColor(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3, cropOffsideX: 200, cropOffsideY: 50)
 		
-		readDot = ReadDot(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3, minAreaContourFilter: blobAnalysisParam?.minAreaContourFilter ?? 200, maxAreaContourFilter: blobAnalysisParam?.maxAreaContourFilter ?? 500, redrawCircleSize: blobAnalysisParam?.redrawCircleSize ?? 10, maxSpaceForGroupingSameRowAndCols: blobAnalysisParam?.maxSpaceForGroupingSameRowAndCols ?? 20, maxDotSpaceInterDot: blobAnalysisParam?.maxDotSpaceInterDot ?? 40, defaultDotSpaceInterDot: blobAnalysisParam?.defaultDotSpaceInterDot ?? 30, cropOffsideX: 200, cropOffsideY: 50)
+		readDot = ReadDot(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3, minAreaContourFilter: blobAnalysisParam?.minAreaContourFilter ?? 160, maxAreaContourFilter: blobAnalysisParam?.maxAreaContourFilter ?? 500, redrawCircleSize: blobAnalysisParam?.redrawCircleSize ?? 15, maxSpaceForGroupingSameRowAndCols: blobAnalysisParam?.maxSpaceForGroupingSameRowAndCols ?? 15, maxDotSpaceInterDot: blobAnalysisParam?.maxDotSpaceInterDot ?? 40, defaultDotSpaceInterDot: blobAnalysisParam?.defaultDotSpaceInterDot ?? 30, cropOffsideX: 200, cropOffsideY: 50)
 		// NOTES: done with the end of FPP-77 & FPP-82
 	}
 	
@@ -190,14 +190,14 @@ class FilterV2ViewController: RBPhotosGalleryViewController {
 				// Provide default value if text field error or empty
 				DispatchQueue.global(qos: .userInitiated).async {
 					
-					self.readDot?.setMinAreaContourFilter(200)
+					self.readDot?.setMinAreaContourFilter(160)
 					self.readDot?.setMaxAreaContourFilter(500)
-					self.readDot?.setRedrawCircleSize(10)
-					self.readDot?.setMaxSpaceForGroupingSameRowAndCols(20)
+					self.readDot?.setRedrawCircleSize(15)
+					self.readDot?.setMaxSpaceForGroupingSameRowAndCols(15)
 					self.readDot?.setMaxDotSpaceInter(40)
 					self.readDot?.setDefaultDotSpaceInter(30)
 					
-					BlobAnalysisParamUserSetting.shared.save(BlobAnalysisParamUserSetting.BlobAnalysisParam(minAreaContourFilter: 200, maxAreaContourFilter: 500, redrawCircleSize: 10, maxSpaceForGroupingSameRowAndCols: 20, maxDotSpaceInterDot: 40, defaultDotSpaceInterDot: 30))
+					BlobAnalysisParamUserSetting.shared.save(BlobAnalysisParamUserSetting.BlobAnalysisParam(minAreaContourFilter: 160, maxAreaContourFilter: 500, redrawCircleSize: 15, maxSpaceForGroupingSameRowAndCols: 15, maxDotSpaceInterDot: 40, defaultDotSpaceInterDot: 30))
 					
 					self.loadData()
 				}
