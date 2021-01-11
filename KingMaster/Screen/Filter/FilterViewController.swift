@@ -9,8 +9,9 @@
 import UIKit
 import RBToolkit
 import RBImageProcessor
+import RBPhotosGallery
 
-class FilterViewController: ViewController<FilterView> {
+class FilterViewController: RBPhotosGalleryViewController {
 	
 	enum NavigationEvent {
 		case didTapNext
@@ -24,15 +25,32 @@ class FilterViewController: ViewController<FilterView> {
 	
 	// MARK: - Private Properties
 	
+	var screenView = FilterView()
+	
 	var convertColor: ConvertColor?
 	
 	var originalImage: UIImage?
+	var croppedImage: UIImage?
 	var grayImage: UIImage?
 	var adaptiveThresholdImage: UIImage?
 	var dilateImage: UIImage?
 	var erodeImage: UIImage?
 	
+	var galleryViewImagesData: [UIImage?] = []
+	
 	// MARK: - Life Cycles
+	
+	override func loadView() {
+		super.loadView()
+		
+		view.backgroundColor = .systemBackground
+		view.addSubview(screenView.activityIndicator)
+		
+		NSLayoutConstraint.activate([
+			screenView.activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			screenView.activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+		])
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -43,6 +61,12 @@ class FilterViewController: ViewController<FilterView> {
 		configureViewEvent()
 	}
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		configureBar()
+	}
+	
 	// MARK: - Private Methods
 	
 	private func configureImageProcessor() {
@@ -50,13 +74,20 @@ class FilterViewController: ViewController<FilterView> {
 		let dilateParam = DilateParamUserSetting.shared.read()
 		let erodeParam = ErodeParamUserSetting.shared.read()
 		
-		convertColor = ConvertColor(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3)
+		convertColor = ConvertColor(adaptiveType: (adaptiveParam?.type ?? 1) == 1, adaptiveBlockSize: adaptiveParam?.blockSize ?? 57, adaptiveConstant: adaptiveParam?.constant ?? 7, dilateIteration: dilateParam?.iteration ?? 1, erodeIteration: erodeParam?.iteration ?? 3, cropOffsideX: 200, cropOffsideY: 50)
 	}
 	
 	private func configureLoadBar() {
 		let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 		navigationItem.titleView = screenView.segmentControl
 		toolbarItems = [screenView.downloadBarButton, spacer, screenView.adjustBarButton, spacer, screenView.nextBarButton]
+	}
+	
+	private func configureBar() {
+		setLargeTitleDisplayMode(.never)
+		navigationController?.setNavigationBarHidden(false, animated: true)
+		navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+		navigationController?.setToolbarHidden(false, animated: true)
 	}
 	
 	private func loadData() {
@@ -71,6 +102,8 @@ class FilterViewController: ViewController<FilterView> {
 		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
 			// Original Image
 			self?.originalImage = passedData.image
+			// Cropped Image
+			self?.croppedImage = self?.convertColor?.makeCropped(from: passedData.image)
 			// Gray Image
 			self?.grayImage = self?.convertColor?.makeGray(from: passedData.image)
 			// Adaptive Threshold Image
@@ -81,8 +114,11 @@ class FilterViewController: ViewController<FilterView> {
 			self?.erodeImage = self?.convertColor?.erode(from: passedData.image)
 			
 			ThreadManager.executeOnMain {
-				self?.screenView.stopLoading()
+				
+				self?.galleryViewImagesData = [self?.originalImage, self?.croppedImage, self?.grayImage, self?.adaptiveThresholdImage, self?.dilateImage, self?.erodeImage]
+				self?.reloadPhotosData()
 				self?.refreshImage(index: self?.screenView.segmentControl.selectedSegmentIndex ?? 0)
+				self?.screenView.stopLoading()
 			}
 		}
 	}
@@ -103,26 +139,16 @@ class FilterViewController: ViewController<FilterView> {
 	}
 	
 	private func refreshImage(index: Int) {
-		switch index {
-		case 0:
-			screenView.image = originalImage
-		case 1:
-			screenView.image = grayImage
-		case 2:
-			screenView.image = adaptiveThresholdImage
-		case 3:
-			screenView.image = dilateImage
-		case 4:
-			screenView.image = erodeImage
-		default:
-			screenView.image = originalImage
-		}
+		self.scrollToPhotos(index: index)
 		
-		screenView.adjustBarButton.isEnabled = (index == 2) || (index == 3) || (index == 4)
+		screenView.adjustBarButton.isEnabled = (index == 3) || (index == 4) || (index == 5)
 	}
 	
 	private func downloadImage() {
-		guard let image = screenView.image else { return }
+		guard let image = galleryViewImagesData[currentPageIndex] else {
+			return
+		}
+		
 		screenView.startLoading()
 		
 		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
@@ -141,11 +167,11 @@ class FilterViewController: ViewController<FilterView> {
 	
 	private func adjustParam() {
 		switch screenView.segmentControl.selectedSegmentIndex {
-		case 2:
-			adjustAdaptiveParam()
 		case 3:
-			adjustDilateParam()
+			adjustAdaptiveParam()
 		case 4:
+			adjustDilateParam()
+		case 5:
 			adjustErodeParam()
 		default:
 			break
@@ -228,5 +254,16 @@ class FilterViewController: ViewController<FilterView> {
 				self.loadData()
 			}
 		}, cancelHandler: {})
+	}
+}
+
+extension FilterViewController: RBPhotosGalleryViewDelegate, RBPhotosGalleryViewDataSource {
+	
+	func photosGalleryImages() -> [UIImage] {
+		return galleryViewImagesData.compactMap { $0 }
+	}
+	
+	func didEndScrolling(_ scrollView: UIScrollView) {
+		screenView.segmentControl.selectedSegmentIndex = currentPageIndex
 	}
 }
