@@ -24,9 +24,6 @@ class TranslationView: View {
 	lazy var resultTextView: UITextView = {
 		let textView = UITextView()
 		textView.translatesAutoresizingMaskIntoConstraints = false
-		textView.layer.borderWidth = 1.0
-		textView.layer.borderColor = UIColor.gray.cgColor
-		textView.layer.cornerRadius = 3.0
 		textView.font = UIFont.monospacedSystemFont(ofSize: 18, weight: .regular)
 		textView.addDoneButtonOnKeyboard()
 		
@@ -73,10 +70,10 @@ class TranslationView: View {
 		addAllSubviews(views: [resultTextView, activityIndicator])
 		
 		NSLayoutConstraint.activate([
-			resultTextView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
-			resultTextView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),
-			resultTextView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20),
-			resultTextView.bottomAnchor.constraint(equalTo: self.keyboardLayoutGuide.topAnchor, constant: -40),
+			resultTextView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 5),
+			resultTextView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 5),
+			resultTextView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -5),
+			resultTextView.bottomAnchor.constraint(equalTo: self.keyboardLayoutGuide.topAnchor),
 			
 			activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 			activityIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor)
