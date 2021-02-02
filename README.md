@@ -6,7 +6,7 @@ Created by Ricki Bin Yamin
 - RBToolkit 0.0.3
 - RBPhotosGallery 0.0.5
 - RBCameraDocScan 0.0.3
-- RBImageProcessor 0.2.0
+- RBImageProcessor 0.2.1
 
 Use carthage to download listed framework above
 
