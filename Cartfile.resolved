@@ -1,4 +1,4 @@
-git "git@bitbucket.org:rb-scando/rb_cameradocscan_core_ios.git" "0.0.3"
-git "git@bitbucket.org:rb-scando/rb_imageprocessor_core_ios.git" "0.2.0"
-git "git@bitbucket.org:rb-scando/rb_photogallery_core_ios.git" "0.0.6"
-git "git@bitbucket.org:rb-scando/rb_toolkit_core_ios.git" "0.0.3"
+github "rickirby/RBCameraDocScan" "0.0.3"
+github "rickirby/RBImageProcessor" "0.2.1"
+github "rickirby/RBPhotosGallery" "0.0.6"
+github "rickirby/RBToolkit" "0.0.3"
