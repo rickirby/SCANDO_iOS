@@ -8,9 +8,9 @@ Photo-Copier machine just can not do this stuff. It can only duplicate ink-print
 
 Check the video demo here. [https://youtu.be/uzVC4SG5RDM](https://youtu.be/uzVC4SG5RDM)
 
-On the begining of the videos, you’ll see the step by step how the braille document is translated to the text. It covers about cropping image, applying perspective transform, grayscaling, applying adaptive threshold, dilation, erotion, finding contour, filtering the contour, getting braille dot’s coordinate, finding the one-line dots member statistically, grouping to make a segmentation, decoding every segment, and looking up from the table to encode it to be readable text.
+In the begining of video, you’ll see the step by step how the braille document is translated to the text. It covers about cropping image, applying perspective transform, grayscaling, applying adaptive threshold, dilation, erotion, finding contour, filtering the contour, getting braille dot’s coordinate, finding the one-line dots member statistically, grouping to make a segmentation, decoding every segment, and looking up from the table to encode it to be readable text.
 
-An iOS apps for translating Braille document captured by iPhone camera, then send translation result to ITS's Braille printer for duplicating purpose (re-printing, copying braille document with no original text).
+Then in the end part of video, you'll see how the translation data was transmitted wirelessly via HTTP Request which had been hosted by ESP32. Then, this device will communicate with braille printer via RS-232 communication protocol to print desired braille text.
 
 This is the Main repo project for iOS side application. See also [SCANDO_ESP32](https://github.com/rickirby/SCANDO_ESP32) for the Main repo project for ESP32 firmware application.
 
