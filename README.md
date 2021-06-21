@@ -8,6 +8,8 @@ Photo-Copier machine just can not do this stuff. It can only duplicate ink-print
 
 Check the video demo here. [https://youtu.be/uzVC4SG5RDM](https://youtu.be/uzVC4SG5RDM)
 
+See also my LinkedIn post for the discussion here. [https://www.linkedin.com/feed/update/urn:li:activity:6811276772794093568/](https://www.linkedin.com/feed/update/urn:li:activity:6811276772794093568/)
+
 In the begining of video, you’ll see the step by step how the braille document is translated to the text. It covers about cropping image, applying perspective transform, grayscaling, applying adaptive threshold, dilation, erotion, finding contour, filtering the contour, getting braille dot’s coordinate, finding the one-line dots member statistically, grouping to make a segmentation, decoding every segment, and looking up from the table to encode it to be readable text.
 
 Then in the end part of video, you'll see how the translation data was transmitted wirelessly via HTTP Request which had been hosted by ESP32. Then, this device will communicate with braille printer via RS-232 communication protocol to print desired braille text.
